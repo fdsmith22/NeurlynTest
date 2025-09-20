@@ -114,7 +114,7 @@ jobs:
           NODE_ENV: test
 
       - name: 📊 Upload Coverage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coverage-report
@@ -172,7 +172,7 @@ jobs:
           fi
 
       - name: 📦 Upload Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: dist/
