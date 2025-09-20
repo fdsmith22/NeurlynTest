@@ -84,9 +84,7 @@ export default defineConfig({
       reuseExistingServer: true
     },
     {
-      command: process.env.CI
-        ? 'NODE_ENV=test PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key STRIPE_SECRET_KEY=sk_test_dummy node backend.js'
-        : 'PORT=3002 node backend.js',
+      command: 'node scripts/start-test-backend.js',
       port: 3002,
       timeout: 120 * 1000,
       reuseExistingServer: true

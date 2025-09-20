@@ -42,6 +42,7 @@ jobs:
         env:
           NODE_ENV: test
           MONGODB_URI: mongodb://localhost:27017/neurlyn-test
+          JWT_SECRET: test-secret-key-for-ci-testing-purposes-only-32chars
 
       - name: 🔒 Security audit
         run: npm audit --audit-level=moderate

@@ -90,7 +90,12 @@ export default [
       'js/report-generator.js',
       'js/modules/*.js',
       'js/tasks/*.js',
-      'sw.js'
+      'sw.js',
+      'playwright-report/**',
+      'test-results/**',
+      'screenshots/**',
+      'logs/**',
+      '.husky/**'
     ]
   }
 ];

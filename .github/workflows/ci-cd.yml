@@ -82,12 +82,12 @@ jobs:
           echo "NODE_ENV=test" >> .env
           echo "PORT=3002" >> .env
           echo "MONGODB_URI=mongodb://localhost:27017/neurlyn-test" >> .env
-          echo "JWT_SECRET=test-secret-key" >> .env
+          echo "JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars" >> .env
           echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
 
       - name: 🏃‍♂️ Start Backend Server
         run: |
-          PORT=3002 NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key STRIPE_SECRET_KEY=sk_test_dummy node backend.js &
+          PORT=3002 NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars STRIPE_SECRET_KEY=sk_test_dummy node backend.js &
           sleep 5
           echo "Backend server started"
 
@@ -150,12 +150,12 @@ jobs:
           echo "NODE_ENV=test" >> .env
           echo "PORT=3002" >> .env
           echo "MONGODB_URI=mongodb://localhost:27017/neurlyn-test" >> .env
-          echo "JWT_SECRET=test-secret-key" >> .env
+          echo "JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars" >> .env
           echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
 
       - name: 🏃‍♂️ Start Servers
         run: |
-          PORT=3002 NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key STRIPE_SECRET_KEY=sk_test_dummy node backend.js &
+          PORT=3002 NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars STRIPE_SECRET_KEY=sk_test_dummy node backend.js &
           python3 -m http.server 8080 &
           sleep 5
 
