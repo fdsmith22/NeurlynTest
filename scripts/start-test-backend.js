@@ -21,4 +21,18 @@ console.log('Starting test backend with environment:', {
 });
 
 // Start the backend
-require('../backend.js');
+try {
+  const app = require('../backend.js');
+
+  // In test mode, the server doesn't start automatically, so start it here
+  const PORT = process.env.PORT || 3002;
+  const server = app.listen(PORT, () => {
+    console.log(`Test backend server started on port ${PORT}`);
+  });
+
+  // Store server reference for cleanup
+  app.server = server;
+} catch (error) {
+  console.error('Failed to start backend:', error);
+  process.exit(1);
+}
