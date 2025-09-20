@@ -1,264 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lateral Question Test</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .test-container {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .test-result {
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid;
-        }
-        .success {
-            background: #d4edda;
-            border-color: #28a745;
-            color: #155724;
-        }
-        .error {
-            background: #f8d7da;
-            border-color: #dc3545;
-            color: #721c24;
-        }
-        .info {
-            background: #d1ecf1;
-            border-color: #17a2b8;
-            color: #0c5460;
-        }
-        #question-container {
-            margin: 30px 0;
-            min-height: 200px;
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        button {
-            background: #6C9E83;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin: 10px 5px;
-        }
-        button:hover {
-            background: #5a8a70;
-        }
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .test-container {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .test-result {
+        margin: 20px 0;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid;
+      }
+      .success {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+      }
+      .error {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+      .info {
+        background: #d1ecf1;
+        border-color: #17a2b8;
+        color: #0c5460;
+      }
+      #question-container {
+        margin: 30px 0;
+        min-height: 200px;
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        padding: 20px;
+      }
+      button {
+        background: #6c9e83;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 10px 5px;
+      }
+      button:hover {
+        background: #5a8a70;
+      }
+      button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="test-container">
-        <h1>🧪 Lateral Question Rendering Test</h1>
-        
-        <div class="test-result info">
-            <strong>Test Purpose:</strong> Verify that lateral questions like "If your personality was a recipe..." 
-            display with multiple choice options instead of Likert scales.
-        </div>
-        
-        <div id="test-results"></div>
-        
-        <button onclick="runTest()">Run Test</button>
-        <button onclick="testSpecificQuestion()">Test "Recipe" Question</button>
-        <button onclick="validateTaskController()">Validate Task Controller</button>
-        
-        <h3>Question Rendering:</h3>
-        <div id="question-container">
-            <em>Click "Run Test" to load a lateral question here...</em>
-        </div>
-        
-        <div id="debug-log" style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-top: 20px; font-family: monospace; font-size: 12px; white-space: pre-wrap; max-height: 300px; overflow-y: auto;"></div>
+      <h1>🧪 Lateral Question Rendering Test</h1>
+
+      <div class="test-result info">
+        <strong>Test Purpose:</strong> Verify that lateral questions like "If your personality was a
+        recipe..." display with multiple choice options instead of Likert scales.
+      </div>
+
+      <div id="test-results"></div>
+
+      <button onclick="runTest()">Run Test</button>
+      <button onclick="testSpecificQuestion()">Test "Recipe" Question</button>
+      <button onclick="validateTaskController()">Validate Task Controller</button>
+
+      <h3>Question Rendering:</h3>
+      <div id="question-container">
+        <em>Click "Run Test" to load a lateral question here...</em>
+      </div>
+
+      <div
+        id="debug-log"
+        style="
+          background: #f8f9fa;
+          padding: 15px;
+          border-radius: 6px;
+          margin-top: 20px;
+          font-family: monospace;
+          font-size: 12px;
+          white-space: pre-wrap;
+          max-height: 300px;
+          overflow-y: auto;
+        "
+      ></div>
     </div>
 
     <script type="module">
-        let debugLog = '';
-        
-        function log(message, type = 'info') {
-            const timestamp = new Date().toLocaleTimeString();
-            debugLog += `[${timestamp}] ${message}\n`;
-            document.getElementById('debug-log').textContent = debugLog;
-            console.log(message);
+      let debugLog = '';
+
+      function log(message, type = 'info') {
+        const timestamp = new Date().toLocaleTimeString();
+        debugLog += `[${timestamp}] ${message}\n`;
+        document.getElementById('debug-log').textContent = debugLog;
+        console.log(message);
+      }
+
+      function showResult(message, type = 'info') {
+        const div = document.createElement('div');
+        div.className = `test-result ${type}`;
+        div.innerHTML = message;
+        document.getElementById('test-results').appendChild(div);
+      }
+
+      window.runTest = async function () {
+        log('🚀 Starting lateral question test...');
+
+        try {
+          // Import the modules
+          log('📦 Importing modules...');
+          const { getLateralQuestions } = await import('./js/questions/lateral-questions.js');
+          const { taskController } = await import('./js/modules/task-controller.js');
+
+          log('✅ Modules imported successfully');
+
+          // Get a lateral question
+          log('🔍 Getting lateral questions...');
+          const lateralQuestions = getLateralQuestions(1);
+
+          if (lateralQuestions.length === 0) {
+            throw new Error('No lateral questions found');
+          }
+
+          const question = lateralQuestions[0];
+          log(`📝 Retrieved question: "${question.text.substring(0, 50)}..."`);
+          log(`🏷️  Question type: ${question.type}`);
+          log(`📊 Options count: ${question.options?.length || 'none'}`);
+
+          // Create the question object for the task controller
+          const questionData = {
+            type: 'lateral',
+            id: question.id,
+            question: question.text,
+            options: question.options,
+            category: 'Lateral Thinking',
+            measures: question.measures
+          };
+
+          log('🎯 Attempting to load lateral task...');
+
+          // Try to load the lateral task
+          const task = await taskController.loadTask('lateral', questionData);
+
+          log(`✅ Task loaded successfully: ${task.constructor.name}`);
+
+          // Render the task
+          log('🎨 Rendering task...');
+          const container = document.getElementById('question-container');
+          container.innerHTML = '';
+
+          const taskElement = await task.render();
+          container.appendChild(taskElement);
+
+          // Initialize the task
+          await task.initialize();
+
+          log('🎉 Task rendered and initialized successfully!');
+
+          // Check what type of interface was rendered
+          const hasLikertOptions = container.querySelector('.likert-option');
+          const hasLateralOptions = container.querySelector('.lateral-option-btn');
+
+          if (hasLateralOptions) {
+            showResult(
+              '✅ <strong>SUCCESS:</strong> Lateral question rendered with multiple choice interface!',
+              'success'
+            );
+            log('✅ Confirmed: Multiple choice interface detected');
+          } else if (hasLikertOptions) {
+            showResult(
+              '❌ <strong>FAILURE:</strong> Lateral question rendered with Likert scale instead of multiple choice!',
+              'error'
+            );
+            log('❌ Problem: Likert interface detected instead of multiple choice');
+          } else {
+            showResult('⚠️ <strong>UNKNOWN:</strong> Could not determine interface type', 'error');
+            log('⚠️ Warning: Could not identify interface type');
+          }
+        } catch (error) {
+          log(`❌ Error: ${error.message}`);
+          showResult(`❌ <strong>ERROR:</strong> ${error.message}`, 'error');
         }
-        
-        function showResult(message, type = 'info') {
-            const div = document.createElement('div');
-            div.className = `test-result ${type}`;
-            div.innerHTML = message;
-            document.getElementById('test-results').appendChild(div);
+      };
+
+      window.testSpecificQuestion = async function () {
+        log('🧑‍🍳 Testing specific "recipe" question...');
+
+        try {
+          const { getLateralQuestions } = await import('./js/questions/lateral-questions.js');
+          const { taskController } = await import('./js/modules/task-controller.js');
+
+          // Find the specific recipe question
+          const allQuestions = getLateralQuestions(100); // Get all questions
+          const recipeQuestion = allQuestions.find(
+            q =>
+              q.text.toLowerCase().includes('recipe') ||
+              q.text.toLowerCase().includes('personality')
+          );
+
+          if (!recipeQuestion) {
+            throw new Error('Recipe question not found');
+          }
+
+          log(`🧑‍🍳 Found recipe question: "${recipeQuestion.text}"`);
+          log(`📋 Options: ${recipeQuestion.options.join(', ')}`);
+
+          const questionData = {
+            type: 'lateral',
+            id: recipeQuestion.id,
+            question: recipeQuestion.text,
+            options: recipeQuestion.options,
+            category: 'Lateral Thinking',
+            measures: recipeQuestion.measures
+          };
+
+          const task = await taskController.loadTask('lateral', questionData);
+
+          const container = document.getElementById('question-container');
+          container.innerHTML = '';
+
+          const taskElement = await task.render();
+          container.appendChild(taskElement);
+          await task.initialize();
+
+          showResult(
+            '✅ <strong>Recipe question loaded successfully!</strong> Check the rendering above.',
+            'success'
+          );
+        } catch (error) {
+          log(`❌ Error testing recipe question: ${error.message}`);
+          showResult(`❌ <strong>ERROR:</strong> ${error.message}`, 'error');
         }
-        
-        window.runTest = async function() {
-            log('🚀 Starting lateral question test...');
-            
-            try {
-                // Import the modules
-                log('📦 Importing modules...');
-                const { getLateralQuestions } = await import('./js/questions/lateral-questions.js');
-                const { taskController } = await import('./js/modules/task-controller.js');
-                
-                log('✅ Modules imported successfully');
-                
-                // Get a lateral question
-                log('🔍 Getting lateral questions...');
-                const lateralQuestions = getLateralQuestions(1);
-                
-                if (lateralQuestions.length === 0) {
-                    throw new Error('No lateral questions found');
-                }
-                
-                const question = lateralQuestions[0];
-                log(`📝 Retrieved question: "${question.text.substring(0, 50)}..."`);
-                log(`🏷️  Question type: ${question.type}`);
-                log(`📊 Options count: ${question.options?.length || 'none'}`);
-                
-                // Create the question object for the task controller
-                const questionData = {
-                    type: 'lateral',
-                    id: question.id,
-                    question: question.text,
-                    options: question.options,
-                    category: 'Lateral Thinking',
-                    measures: question.measures
-                };
-                
-                log('🎯 Attempting to load lateral task...');
-                
-                // Try to load the lateral task
-                const task = await taskController.loadTask('lateral', questionData);
-                
-                log(`✅ Task loaded successfully: ${task.constructor.name}`);
-                
-                // Render the task
-                log('🎨 Rendering task...');
-                const container = document.getElementById('question-container');
-                container.innerHTML = '';
-                
-                const taskElement = await task.render();
-                container.appendChild(taskElement);
-                
-                // Initialize the task
-                await task.initialize();
-                
-                log('🎉 Task rendered and initialized successfully!');
-                
-                // Check what type of interface was rendered
-                const hasLikertOptions = container.querySelector('.likert-option');
-                const hasLateralOptions = container.querySelector('.lateral-option-btn');
-                
-                if (hasLateralOptions) {
-                    showResult('✅ <strong>SUCCESS:</strong> Lateral question rendered with multiple choice interface!', 'success');
-                    log('✅ Confirmed: Multiple choice interface detected');
-                } else if (hasLikertOptions) {
-                    showResult('❌ <strong>FAILURE:</strong> Lateral question rendered with Likert scale instead of multiple choice!', 'error');
-                    log('❌ Problem: Likert interface detected instead of multiple choice');
-                } else {
-                    showResult('⚠️ <strong>UNKNOWN:</strong> Could not determine interface type', 'error');
-                    log('⚠️ Warning: Could not identify interface type');
-                }
-                
-            } catch (error) {
-                log(`❌ Error: ${error.message}`);
-                showResult(`❌ <strong>ERROR:</strong> ${error.message}`, 'error');
-            }
-        };
-        
-        window.testSpecificQuestion = async function() {
-            log('🧑‍🍳 Testing specific "recipe" question...');
-            
-            try {
-                const { getLateralQuestions } = await import('./js/questions/lateral-questions.js');
-                const { taskController } = await import('./js/modules/task-controller.js');
-                
-                // Find the specific recipe question
-                const allQuestions = getLateralQuestions(100); // Get all questions
-                const recipeQuestion = allQuestions.find(q => 
-                    q.text.toLowerCase().includes('recipe') || 
-                    q.text.toLowerCase().includes('personality')
-                );
-                
-                if (!recipeQuestion) {
-                    throw new Error('Recipe question not found');
-                }
-                
-                log(`🧑‍🍳 Found recipe question: "${recipeQuestion.text}"`);
-                log(`📋 Options: ${recipeQuestion.options.join(', ')}`);
-                
-                const questionData = {
-                    type: 'lateral',
-                    id: recipeQuestion.id,
-                    question: recipeQuestion.text,
-                    options: recipeQuestion.options,
-                    category: 'Lateral Thinking',
-                    measures: recipeQuestion.measures
-                };
-                
-                const task = await taskController.loadTask('lateral', questionData);
-                
-                const container = document.getElementById('question-container');
-                container.innerHTML = '';
-                
-                const taskElement = await task.render();
-                container.appendChild(taskElement);
-                await task.initialize();
-                
-                showResult('✅ <strong>Recipe question loaded successfully!</strong> Check the rendering above.', 'success');
-                
-            } catch (error) {
-                log(`❌ Error testing recipe question: ${error.message}`);
-                showResult(`❌ <strong>ERROR:</strong> ${error.message}`, 'error');
-            }
-        };
-        
-        window.validateTaskController = async function() {
-            log('🔧 Validating task controller mappings...');
-            
-            try {
-                const { taskController } = await import('./js/modules/task-controller.js');
-                
-                // Check if lateral is in the task types
-                const hasLateral = taskController.taskTypes.hasOwnProperty('lateral');
-                
-                if (hasLateral) {
-                    log('✅ "lateral" task type found in taskTypes mapping');
-                    log(`📋 Mapped to class: ${taskController.taskTypes.lateral}`);
-                    showResult('✅ <strong>SUCCESS:</strong> "lateral" task type is properly mapped!', 'success');
-                } else {
-                    log('❌ "lateral" task type NOT found in taskTypes mapping');
-                    showResult('❌ <strong>FAILURE:</strong> "lateral" task type is missing from taskTypes mapping!', 'error');
-                }
-                
-                log('📊 All available task types:');
-                Object.entries(taskController.taskTypes).forEach(([type, className]) => {
-                    log(`   ${type} → ${className}`);
-                });
-                
-            } catch (error) {
-                log(`❌ Error validating task controller: ${error.message}`);
-                showResult(`❌ <strong>ERROR:</strong> ${error.message}`, 'error');
-            }
-        };
-        
-        // Auto-run validation on page load
-        window.addEventListener('load', () => {
-            setTimeout(validateTaskController, 1000);
-        });
+      };
+
+      window.validateTaskController = async function () {
+        log('🔧 Validating task controller mappings...');
+
+        try {
+          const { taskController } = await import('./js/modules/task-controller.js');
+
+          // Check if lateral is in the task types
+          const hasLateral = taskController.taskTypes.hasOwnProperty('lateral');
+
+          if (hasLateral) {
+            log('✅ "lateral" task type found in taskTypes mapping');
+            log(`📋 Mapped to class: ${taskController.taskTypes.lateral}`);
+            showResult(
+              '✅ <strong>SUCCESS:</strong> "lateral" task type is properly mapped!',
+              'success'
+            );
+          } else {
+            log('❌ "lateral" task type NOT found in taskTypes mapping');
+            showResult(
+              '❌ <strong>FAILURE:</strong> "lateral" task type is missing from taskTypes mapping!',
+              'error'
+            );
+          }
+
+          log('📊 All available task types:');
+          Object.entries(taskController.taskTypes).forEach(([type, className]) => {
+            log(`   ${type} → ${className}`);
+          });
+        } catch (error) {
+          log(`❌ Error validating task controller: ${error.message}`);
+          showResult(`❌ <strong>ERROR:</strong> ${error.message}`, 'error');
+        }
+      };
+
+      // Auto-run validation on page load
+      window.addEventListener('load', () => {
+        setTimeout(validateTaskController, 1000);
+      });
     </script>
-</body>
+  </body>
 </html>

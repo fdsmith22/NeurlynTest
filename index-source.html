@@ -1,312 +1,346 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neurlyn - Intelligent Personality Assessment</title>
-    <meta name="description" content="Professional personality assessment platform powered by advanced psychometric science">
-    <meta name="theme-color" content="#6C9E83">
-    
+    <meta
+      name="description"
+      content="Professional personality assessment platform powered by advanced psychometric science"
+    />
+    <meta name="theme-color" content="#6C9E83" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
-    
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Neurlyn - Intelligent Personality Assessment">
-    <meta property="og:description" content="Discover your unique personality profile through scientifically-validated assessments">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://neurlyn.com">
-    <meta property="og:image" content="https://neurlyn.com/assets/images/og-image.png">
-    
+    <meta property="og:title" content="Neurlyn - Intelligent Personality Assessment" />
+    <meta
+      property="og:description"
+      content="Discover your unique personality profile through scientifically-validated assessments"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neurlyn.com" />
+    <meta property="og:image" content="https://neurlyn.com/assets/images/og-image.png" />
+
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Neurlyn - Intelligent Personality Assessment">
-    <meta name="twitter:description" content="Professional personality assessment platform">
-    <meta name="twitter:image" content="https://neurlyn.com/assets/images/twitter-card.png">
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Neurlyn - Intelligent Personality Assessment" />
+    <meta name="twitter:description" content="Professional personality assessment platform" />
+    <meta name="twitter:image" content="https://neurlyn.com/assets/images/twitter-card.png" />
+
     <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Neurlyn Stylesheets -->
-    <link rel="stylesheet" href="styles/neurlyn.css">
+    <link rel="stylesheet" href="styles/neurlyn.css" />
     <!-- Dark mode removed -->
-    <link rel="stylesheet" href="styles/neurlyn-enhancements.css">
-    <link rel="stylesheet" href="styles/neurlyn-navigation.css">
-    <link rel="stylesheet" href="styles/neurlyn-gamified.css">
-    <link rel="stylesheet" href="styles/neurlyn-interactive.css">
-    <link rel="stylesheet" href="styles/neurlyn-neurodiversity.css">
-    <link rel="stylesheet" href="styles/neurlyn-print.css" media="print">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/neurlyn-enhancements.css" />
+    <link rel="stylesheet" href="styles/neurlyn-navigation.css" />
+    <link rel="stylesheet" href="styles/neurlyn-gamified.css" />
+    <link rel="stylesheet" href="styles/neurlyn-interactive.css" />
+    <link rel="stylesheet" href="styles/neurlyn-neurodiversity.css" />
+    <link rel="stylesheet" href="styles/neurlyn-print.css" media="print" />
+  </head>
+  <body>
     <!-- Load SVG Icons -->
-    <div style="display: none;" aria-hidden="true">
-        <object data="assets/icons/icons.svg" type="image/svg+xml"></object>
+    <div style="display: none" aria-hidden="true">
+      <object data="assets/icons/icons.svg" type="image/svg+xml"></object>
     </div>
-    
+
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <!-- Navigation -->
     <nav class="main-nav">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-brand-group">
-                    <a href="index.html" class="nav-brand">Neurlyn</a>
-                    <span class="nav-tagline">Intelligent Personality Assessment</span>
-                </div>
-                <div class="nav-links">
-                    <a href="index.html" class="nav-link active">Assessment</a>
-                    <a href="support.html" class="nav-link">Support</a>
-                    <a href="about.html" class="nav-link">About</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="nav-content">
+          <div class="nav-brand-group">
+            <a href="index.html" class="nav-brand">Neurlyn</a>
+            <span class="nav-tagline">Intelligent Personality Assessment</span>
+          </div>
+          <div class="nav-links">
+            <a href="index.html" class="nav-link active">Assessment</a>
+            <a href="support.html" class="nav-link">Support</a>
+            <a href="about.html" class="nav-link">About</a>
+          </div>
         </div>
+      </div>
     </nav>
-    
+
     <!-- Main Container -->
     <div class="container" id="main-content">
-        <!-- Disclaimer Screen -->
-        <section id="disclaimer-screen" class="screen active">
-            <div class="card disclaimer-card ultra-wide">
-                <h2 class="compact-title">Welcome to Neurlyn</h2>
-                <p class="disclaimer-intro compact">Quick personality assessment with neurodivergent trait insights</p>
-                
-                <div class="disclaimer-ultra-compact">
-                    <div class="features-pricing-row">
-                        <div class="feature-row compact">
-                            <div class="feature-item compact">
-                                <svg width="18" height="18" class="feature-icon">
-                                    <use href="assets/icons/icons.svg#icon-brain"></use>
-                                </svg>
-                                <div>
-                                    <strong>Smart Analysis</strong>
-                                    <p>Big Five, ADHD, Autism</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item compact">
-                                <svg width="18" height="18" class="feature-icon">
-                                    <use href="assets/icons/icons.svg#icon-user"></use>
-                                </svg>
-                                <div>
-                                    <strong>100% Private</strong>
-                                    <p>No data stored</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item compact">
-                                <svg width="18" height="18" class="feature-icon">
-                                    <use href="assets/icons/icons.svg#icon-info"></use>
-                                </svg>
-                                <div>
-                                    <strong>Self-Discovery</strong>
-                                    <p>Insights only</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="assessment-selector compact">
-                            <div class="selector-tabs compact">
-                                <button class="selector-tab compact active" data-plan="free">
-                                    <span class="tab-label">Free</span>
-                                    <span class="tab-desc">5-min test</span>
-                                </button>
-                                <button class="selector-tab compact premium" data-plan="premium">
-                                    <span class="tab-label">In-Depth</span>
-                                    <span class="tab-price">£1.99</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="consent-row compact">
-                        <label class="consent-checkbox compact">
-                            <input type="checkbox" id="consent-check" />
-                            <span>I understand this is for insights, not medical diagnosis</span>
-                        </label>
-                        <label class="consent-checkbox compact">
-                            <input type="checkbox" id="age-check" />
-                            <span>I am 13+ years old</span>
-                        </label>
-                        <button id="accept-disclaimer" class="btn btn-primary compact" disabled>
-                            Start Free Assessment
-                        </button>
-                    </div>
+      <!-- Disclaimer Screen -->
+      <section id="disclaimer-screen" class="screen active">
+        <div class="card disclaimer-card ultra-wide">
+          <h2 class="compact-title">Welcome to Neurlyn</h2>
+          <p class="disclaimer-intro compact">
+            Quick personality assessment with neurodivergent trait insights
+          </p>
+
+          <div class="disclaimer-ultra-compact">
+            <div class="features-pricing-row">
+              <div class="feature-row compact">
+                <div class="feature-item compact">
+                  <svg width="18" height="18" class="feature-icon">
+                    <use href="assets/icons/icons.svg#icon-brain"></use>
+                  </svg>
+                  <div>
+                    <strong>Smart Analysis</strong>
+                    <p>Big Five, ADHD, Autism</p>
+                  </div>
                 </div>
+
+                <div class="feature-item compact">
+                  <svg width="18" height="18" class="feature-icon">
+                    <use href="assets/icons/icons.svg#icon-user"></use>
+                  </svg>
+                  <div>
+                    <strong>100% Private</strong>
+                    <p>No data stored</p>
+                  </div>
+                </div>
+
+                <div class="feature-item compact">
+                  <svg width="18" height="18" class="feature-icon">
+                    <use href="assets/icons/icons.svg#icon-info"></use>
+                  </svg>
+                  <div>
+                    <strong>Self-Discovery</strong>
+                    <p>Insights only</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="assessment-selector compact">
+                <div class="selector-tabs compact">
+                  <button class="selector-tab compact active" data-plan="free">
+                    <span class="tab-label">Free</span>
+                    <span class="tab-desc">5-min test</span>
+                  </button>
+                  <button class="selector-tab compact premium" data-plan="premium">
+                    <span class="tab-label">In-Depth</span>
+                    <span class="tab-price">£1.99</span>
+                  </button>
+                </div>
+              </div>
             </div>
-        </section>
-        
-        <!-- Welcome Screen -->
-        <section id="welcome-screen" class="screen hidden">
-            <div class="card compact">
-                <h2 class="compact-title">Select Your Assessment</h2>
-                
-                <!-- Assessment Track Selection -->
-                <div class="track-selection compact">
-                    <div class="track-options compact">
-                        <button class="track-option compact" data-track="personality">
-                            <div class="track-icon compact">
-                                <svg width="32" height="32"><use href="assets/icons/icons.svg#icon-user"></use></svg>
-                            </div>
-                            <h4>Personality</h4>
-                            <p>Big Five traits</p>
-                        </button>
-                        <button class="track-option compact" data-track="neurodiversity">
-                            <div class="track-icon compact">
-                                <svg width="32" height="32"><use href="assets/icons/icons.svg#icon-brain"></use></svg>
-                            </div>
-                            <h4>Neurodiversity</h4>
-                            <p>ADHD, Autism, Dyslexia</p>
-                        </button>
-                        <button class="track-option compact" data-track="comprehensive">
-                            <div class="track-icon compact">
-                                <svg width="32" height="32"><use href="assets/icons/icons.svg#icon-layers"></use></svg>
-                            </div>
-                            <h4>Comprehensive</h4>
-                            <p>Complete profile</p>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Assessment Modes -->
-                <div class="mode-selection compact">
-                    <div class="mode-grid compact">
-                        <button class="mode-option compact" data-mode="quick">
-                            <div class="mode-icon compact">
-                                <svg width="24" height="24"><use href="assets/icons/icons.svg#icon-lightning"></use></svg>
-                            </div>
-                            <h4>Quick</h4>
-                            <p>5-7 min</p>
-                        </button>
-                        <button class="mode-option compact" data-mode="standard">
-                            <div class="mode-icon compact">
-                                <svg width="24" height="24"><use href="assets/icons/icons.svg#icon-chart"></use></svg>
-                            </div>
-                            <h4>Standard</h4>
-                            <p>15-20 min</p>
-                        </button>
-                        <button class="mode-option compact" data-mode="deep">
-                            <div class="mode-icon compact">
-                                <svg width="24" height="24"><use href="assets/icons/icons.svg#icon-microscope"></use></svg>
-                            </div>
-                            <h4>Deep</h4>
-                            <p>25-30 min</p>
-                        </button>
-                    </div>
-                </div>
-                
-                <button id="start-assessment" class="btn btn-primary compact" disabled>
-                    Begin Assessment
-                </button>
+
+            <div class="consent-row compact">
+              <label class="consent-checkbox compact">
+                <input type="checkbox" id="consent-check" />
+                <span>I understand this is for insights, not medical diagnosis</span>
+              </label>
+              <label class="consent-checkbox compact">
+                <input type="checkbox" id="age-check" />
+                <span>I am 13+ years old</span>
+              </label>
+              <button id="accept-disclaimer" class="btn btn-primary compact" disabled>
+                Start Free Assessment
+              </button>
             </div>
-        </section>
-        
-        <!-- Question Screen -->
-        <section id="question-screen" class="screen hidden">
-            <!-- Progress Bar -->
-            <div class="progress-container compact">
-                <div class="progress-bar">
-                    <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Welcome Screen -->
+      <section id="welcome-screen" class="screen hidden">
+        <div class="card compact">
+          <h2 class="compact-title">Select Your Assessment</h2>
+
+          <!-- Assessment Track Selection -->
+          <div class="track-selection compact">
+            <div class="track-options compact">
+              <button class="track-option compact" data-track="personality">
+                <div class="track-icon compact">
+                  <svg width="32" height="32">
+                    <use href="assets/icons/icons.svg#icon-user"></use>
+                  </svg>
                 </div>
-                <div class="progress-info compact">
-                    <span>Question <span id="question-num">1</span> of <span id="total-questions">50</span></span>
-                    <span id="progress-percent">0%</span>
+                <h4>Personality</h4>
+                <p>Big Five traits</p>
+              </button>
+              <button class="track-option compact" data-track="neurodiversity">
+                <div class="track-icon compact">
+                  <svg width="32" height="32">
+                    <use href="assets/icons/icons.svg#icon-brain"></use>
+                  </svg>
                 </div>
+                <h4>Neurodiversity</h4>
+                <p>ADHD, Autism, Dyslexia</p>
+              </button>
+              <button class="track-option compact" data-track="comprehensive">
+                <div class="track-icon compact">
+                  <svg width="32" height="32">
+                    <use href="assets/icons/icons.svg#icon-layers"></use>
+                  </svg>
+                </div>
+                <h4>Comprehensive</h4>
+                <p>Complete profile</p>
+              </button>
             </div>
-            
-            <!-- Question Card -->
-            <div class="card question-card compact">
-                <div class="question-header compact">
-                    <span id="question-category" class="category-badge">Personality</span>
+          </div>
+
+          <!-- Assessment Modes -->
+          <div class="mode-selection compact">
+            <div class="mode-grid compact">
+              <button class="mode-option compact" data-mode="quick">
+                <div class="mode-icon compact">
+                  <svg width="24" height="24">
+                    <use href="assets/icons/icons.svg#icon-lightning"></use>
+                  </svg>
                 </div>
-                
-                <div id="question-content" class="question-content">
-                    <!-- Dynamic question content -->
+                <h4>Quick</h4>
+                <p>5-7 min</p>
+              </button>
+              <button class="mode-option compact" data-mode="standard">
+                <div class="mode-icon compact">
+                  <svg width="24" height="24">
+                    <use href="assets/icons/icons.svg#icon-chart"></use>
+                  </svg>
                 </div>
-                
-                <!-- Navigation -->
-                <div class="question-nav compact">
-                    <button id="prev-button" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-arrow-left"></use></svg>
-                        Prev
-                    </button>
-                    <button id="skip-button" class="btn btn-ghost compact">Skip</button>
-                    <button id="next-button" class="btn btn-primary compact" disabled>
-                        Next
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-arrow-right"></use></svg>
-                    </button>
+                <h4>Standard</h4>
+                <p>15-20 min</p>
+              </button>
+              <button class="mode-option compact" data-mode="deep">
+                <div class="mode-icon compact">
+                  <svg width="24" height="24">
+                    <use href="assets/icons/icons.svg#icon-microscope"></use>
+                  </svg>
                 </div>
+                <h4>Deep</h4>
+                <p>25-30 min</p>
+              </button>
             </div>
-        </section>
-        
-        <!-- Results Screen -->
-        <section id="results-screen" class="screen hidden">
-            <div class="card compact">
-                <h2 class="compact-title">Your Personality Profile</h2>
-                <div id="results-content" class="results-content compact">
-                    <!-- Dynamic results content -->
-                </div>
-                
-                <div class="results-actions compact">
-                    <button id="download-results" class="btn btn-primary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-download"></use></svg>
-                        Download
-                    </button>
-                    <button id="share-results" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-share"></use></svg>
-                        Share
-                    </button>
-                    <button id="retake-assessment" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-refresh"></use></svg>
-                        Retake
-                    </button>
-                    <button id="home-button" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-arrow-left"></use></svg>
-                        Home
-                    </button>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Loading Screen -->
-        <section id="loading-screen" class="screen hidden">
-            <div class="loading-container">
-                <div class="loading-spinner"></div>
-                <p>Loading...</p>
-            </div>
-        </section>
-        
-        <!-- Error Screen -->
-        <section id="error-screen" class="screen hidden">
-            <div class="card">
-                <h2>Something went wrong</h2>
-                <p id="error-message">An unexpected error occurred.</p>
-                <button onclick="location.reload()" class="btn btn-primary">
-                    Reload Page
-                </button>
-            </div>
-        </section>
+          </div>
+
+          <button id="start-assessment" class="btn btn-primary compact" disabled>
+            Begin Assessment
+          </button>
+        </div>
+      </section>
+
+      <!-- Question Screen -->
+      <section id="question-screen" class="screen hidden">
+        <!-- Progress Bar -->
+        <div class="progress-container compact">
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <div class="progress-info compact">
+            <span
+              >Question <span id="question-num">1</span> of
+              <span id="total-questions">50</span></span
+            >
+            <span id="progress-percent">0%</span>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="card question-card compact">
+          <div class="question-header compact">
+            <span id="question-category" class="category-badge">Personality</span>
+          </div>
+
+          <div id="question-content" class="question-content">
+            <!-- Dynamic question content -->
+          </div>
+
+          <!-- Navigation -->
+          <div class="question-nav compact">
+            <button id="prev-button" class="btn btn-secondary compact">
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-arrow-left"></use>
+              </svg>
+              Prev
+            </button>
+            <button id="skip-button" class="btn btn-ghost compact">Skip</button>
+            <button id="next-button" class="btn btn-primary compact" disabled>
+              Next
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Screen -->
+      <section id="results-screen" class="screen hidden">
+        <div class="card compact">
+          <h2 class="compact-title">Your Personality Profile</h2>
+          <div id="results-content" class="results-content compact">
+            <!-- Dynamic results content -->
+          </div>
+
+          <div class="results-actions compact">
+            <button id="download-results" class="btn btn-primary compact">
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-download"></use>
+              </svg>
+              Download
+            </button>
+            <button id="share-results" class="btn btn-secondary compact">
+              <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-share"></use></svg>
+              Share
+            </button>
+            <button id="retake-assessment" class="btn btn-secondary compact">
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-refresh"></use>
+              </svg>
+              Retake
+            </button>
+            <button id="home-button" class="btn btn-secondary compact">
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-arrow-left"></use>
+              </svg>
+              Home
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading Screen -->
+      <section id="loading-screen" class="screen hidden">
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <p>Loading...</p>
+        </div>
+      </section>
+
+      <!-- Error Screen -->
+      <section id="error-screen" class="screen hidden">
+        <div class="card">
+          <h2>Something went wrong</h2>
+          <p id="error-message">An unexpected error occurred.</p>
+          <button onclick="location.reload()" class="btn btn-primary">Reload Page</button>
+        </div>
+      </section>
     </div>
-    
+
     <!-- Footer -->
     <footer class="footer compact">
-        <div class="footer-content">
-            <span>&copy; 2024 Neurlyn. All rights reserved.</span>
-            <span class="footer-separator">|</span>
-            <a href="#privacy">Privacy</a>
-            <span class="footer-separator">|</span>
-            <a href="#terms">Terms</a>
-            <span class="footer-separator">|</span>
-            <a href="#contact">Contact</a>
-        </div>
+      <div class="footer-content">
+        <span>&copy; 2024 Neurlyn. All rights reserved.</span>
+        <span class="footer-separator">|</span>
+        <a href="#privacy">Privacy</a>
+        <span class="footer-separator">|</span>
+        <a href="#terms">Terms</a>
+        <span class="footer-separator">|</span>
+        <a href="#contact">Contact</a>
+      </div>
     </footer>
-    
+
     <!-- Neurlyn Simple JavaScript -->
     <script src="js/neurlyn-simple.js"></script>
-</body>
+  </body>
 </html>

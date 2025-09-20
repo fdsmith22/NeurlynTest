@@ -1,12 +1,14 @@
 # Neurlyn API Reference
 
 ## Base URL
+
 ```
 Development: http://localhost:3000
 Production: https://your-domain.com
 ```
 
 ## Authentication
+
 Currently, the API uses session-based authentication. JWT authentication is prepared for future implementation.
 
 ## Endpoints
@@ -14,9 +16,11 @@ Currently, the API uses session-based authentication. JWT authentication is prep
 ### Health Check
 
 #### GET /health
+
 Check if the backend service is running.
 
 **Response:**
+
 ```json
 {
   "status": "ok",
@@ -31,9 +35,11 @@ Check if the backend service is running.
 ### Questions API
 
 #### GET /api/questions/stats
+
 Get statistics about questions in the database.
 
 **Response:**
+
 ```json
 {
   "totalQuestions": 295,
@@ -46,15 +52,18 @@ Get statistics about questions in the database.
 ---
 
 #### GET /api/questions/assessment/neurodiversity
+
 Get neurodiversity assessment questions.
 
 **Query Parameters:**
+
 - `tier` (string, required): Assessment tier - `basic`, `quick`, `core`, `comprehensive`, `specialized`, `experimental`
 - `category` (string, optional): Specific category - `executive_function`, `social_processing`, etc.
 - `complexity` (string, optional): Question complexity - `low`, `medium`, `high`
 - `limit` (number, optional): Number of questions to return (default: 20)
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -81,14 +90,17 @@ Get neurodiversity assessment questions.
 ---
 
 #### GET /api/questions/assessment/personality
+
 Get personality assessment questions.
 
 **Query Parameters:**
+
 - `tier` (string, required): Assessment tier
 - `trait` (string, optional): Specific personality trait
 - `limit` (number, optional): Number of questions (default: 20)
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -114,9 +126,11 @@ Get personality assessment questions.
 ### Assessment API
 
 #### POST /api/assessments/start
+
 Start a new assessment session.
 
 **Request Body:**
+
 ```json
 {
   "mode": "adaptive",
@@ -126,6 +140,7 @@ Start a new assessment session.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -139,9 +154,11 @@ Start a new assessment session.
 ---
 
 #### POST /api/assessments/:sessionId/submit
+
 Submit answers for an assessment.
 
 **Request Body:**
+
 ```json
 {
   "responses": [
@@ -155,6 +172,7 @@ Submit answers for an assessment.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -167,9 +185,11 @@ Submit answers for an assessment.
 ---
 
 #### GET /api/assessments/:sessionId/results
+
 Get assessment results.
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -182,9 +202,9 @@ Get assessment results.
       },
       "personality": {
         "openness": 0.75,
-        "conscientiousness": 0.60,
+        "conscientiousness": 0.6,
         "extraversion": 0.45,
-        "agreeableness": 0.70,
+        "agreeableness": 0.7,
         "neuroticism": 0.35
       }
     },
@@ -199,9 +219,11 @@ Get assessment results.
 ### Payment API
 
 #### POST /api/payment/create-session
+
 Create a Stripe checkout session.
 
 **Request Body:**
+
 ```json
 {
   "tier": "comprehensive",
@@ -210,6 +232,7 @@ Create a Stripe checkout session.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -221,9 +244,11 @@ Create a Stripe checkout session.
 ---
 
 #### POST /api/webhook/stripe
+
 Stripe webhook endpoint for payment confirmations.
 
 **Headers:**
+
 - `stripe-signature`: Stripe webhook signature
 
 **Note:** This endpoint is called directly by Stripe.
@@ -233,9 +258,11 @@ Stripe webhook endpoint for payment confirmations.
 ### Reports API
 
 #### GET /api/reports/:assessmentId
+
 Get detailed assessment report.
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -255,6 +282,7 @@ Get detailed assessment report.
 ---
 
 #### GET /api/reports/:assessmentId/pdf
+
 Download assessment report as PDF.
 
 **Response:** PDF file download
@@ -274,6 +302,7 @@ All endpoints may return error responses in the following format:
 ```
 
 ### Common Error Codes
+
 - `VALIDATION_ERROR` - Invalid request parameters
 - `NOT_FOUND` - Resource not found
 - `UNAUTHORIZED` - Authentication required
@@ -310,6 +339,7 @@ curl "http://localhost:3000/api/questions/assessment/personality?tier=core&limit
 ## WebSocket Events (Future)
 
 Planned for real-time assessment updates:
+
 - `assessment:progress` - Progress updates
 - `assessment:complete` - Assessment completed
 - `question:next` - Next question available
@@ -317,6 +347,7 @@ Planned for real-time assessment updates:
 ## SDK Examples
 
 ### JavaScript/TypeScript
+
 ```javascript
 class NeurlynAPI {
   constructor(baseURL = 'http://localhost:3000') {
@@ -330,9 +361,7 @@ class NeurlynAPI {
 
   async getQuestions(type, tier, options = {}) {
     const params = new URLSearchParams({ tier, ...options });
-    const response = await fetch(
-      `${this.baseURL}/api/questions/assessment/${type}?${params}`
-    );
+    const response = await fetch(`${this.baseURL}/api/questions/assessment/${type}?${params}`);
     return response.json();
   }
 }
@@ -343,6 +372,7 @@ const questions = await api.getQuestions('neurodiversity', 'basic', { limit: 5 }
 ```
 
 ### Python
+
 ```python
 import requests
 
@@ -369,6 +399,7 @@ questions = api.get_questions('neurodiversity', 'basic', limit=5)
 ## Changelog
 
 ### Version 1.0.0
+
 - Initial API release
 - Basic assessment endpoints
 - Question retrieval system

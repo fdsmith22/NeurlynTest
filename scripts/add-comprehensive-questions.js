@@ -206,7 +206,7 @@ async function addComprehensiveQuestions() {
       // Agreeableness - Advanced Questions
       {
         questionId: 'COMP_AGREEABLENESS_1',
-        text: 'I have a natural ability to understand and validate others\' emotional experiences',
+        text: "I have a natural ability to understand and validate others' emotional experiences",
         trait: 'agreeableness',
         category: 'personality',
         subcategory: 'empathic_understanding',
@@ -315,11 +315,27 @@ async function addComprehensiveQuestions() {
     // Add additional questions for deeper assessment
     const deeperQuestions = [];
     for (let i = 0; i < 40; i++) {
-      const traits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+      const traits = [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ];
       const trait = traits[i % traits.length];
       const subcategories = {
-        openness: ['creativity', 'intellectual_curiosity', 'aesthetic_appreciation', 'unconventionality'],
-        conscientiousness: ['self_discipline', 'orderliness', 'achievement_striving', 'deliberation'],
+        openness: [
+          'creativity',
+          'intellectual_curiosity',
+          'aesthetic_appreciation',
+          'unconventionality'
+        ],
+        conscientiousness: [
+          'self_discipline',
+          'orderliness',
+          'achievement_striving',
+          'deliberation'
+        ],
         extraversion: ['assertiveness', 'activity_level', 'positive_emotions', 'social_warmth'],
         agreeableness: ['trust', 'compliance', 'altruism', 'modesty'],
         neuroticism: ['anxiety', 'depression', 'vulnerability', 'impulsiveness']
@@ -395,7 +411,6 @@ async function addComprehensiveQuestions() {
     console.log(`Questions available for comprehensive tier: ${testResult.length}/75`);
 
     console.log('✅ Comprehensive questions added successfully');
-
   } catch (error) {
     console.error('❌ Error adding comprehensive questions:', error);
   } finally {

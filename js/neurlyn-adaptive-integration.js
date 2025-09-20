@@ -31,8 +31,8 @@ class NeurlynAdaptiveAssessment {
       // Show loading state
       this.showLoading('Initializing your personalized assessment...');
 
-// console.log('Starting assessment with API:', `${this.apiBase}/assessments/adaptive`);
-// console.log('Request body:', { tier, concerns, demographics });
+      // console.log('Starting assessment with API:', `${this.apiBase}/assessments/adaptive`);
+      // console.log('Request body:', { tier, concerns, demographics });
 
       const response = await fetch(`${this.apiBase}/assessments/adaptive-optimized`, {
         method: 'POST',
@@ -40,14 +40,20 @@ class NeurlynAdaptiveAssessment {
         body: JSON.stringify({
           tier,
           assessmentType: 'personality',
-          targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+          targetTraits: [
+            'openness',
+            'conscientiousness',
+            'extraversion',
+            'agreeableness',
+            'neuroticism'
+          ],
           previousResponses: this.responses || [],
           userProfile: demographics || {}
         })
       });
 
       const data = await response.json();
-// console.log('API Response:', data);
+      // console.log('API Response:', data);
 
       if (!response.ok) {
         throw new Error(data.error || 'Failed to start assessment');
@@ -58,7 +64,7 @@ class NeurlynAdaptiveAssessment {
       this.progress = { current: 0, total: data.totalQuestions || data.questions?.length || 45 };
       this.currentQuestions = data.questions || [];
 
-// console.log('Questions received:', this.currentQuestions.length);
+      // console.log('Questions received:', this.currentQuestions.length);
 
       // Initialize UI
       this.initializeAssessmentUI();
@@ -66,7 +72,7 @@ class NeurlynAdaptiveAssessment {
       // Check if questions exist before displaying
       if (this.currentQuestions.length > 0) {
         this.displayQuestions(this.currentQuestions);
-// console.log('Questions displayed successfully');
+        // console.log('Questions displayed successfully');
       } else {
         console.error('No questions received from API');
         this.showError('No questions available. Please try again.');
@@ -675,14 +681,14 @@ window.NeurlynAdaptiveAssessment = NeurlynAdaptiveAssessment;
 
 // Auto-resume on page load
 document.addEventListener('DOMContentLoaded', async () => {
-// console.log('DOMContentLoaded - checking for assessment resume');
+  // console.log('DOMContentLoaded - checking for assessment resume');
   const resumed = await assessment.resumeAssessment();
   if (!resumed) {
     // Check if we should start a new assessment
     const urlParams = new URLSearchParams(window.location.search);
     const tier = urlParams.get('tier');
     if (tier) {
-// console.log('Starting assessment from URL parameter:', tier);
+      // console.log('Starting assessment from URL parameter:', tier);
       assessment.startAssessment({ tier });
     }
   }

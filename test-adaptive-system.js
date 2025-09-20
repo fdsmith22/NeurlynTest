@@ -20,7 +20,13 @@ async function testAdaptiveSystem() {
       body: {
         tier: 'free',
         assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+        targetTraits: [
+          'openness',
+          'conscientiousness',
+          'extraversion',
+          'agreeableness',
+          'neuroticism'
+        ],
         previousResponses: [],
         userProfile: {}
       }
@@ -35,7 +41,7 @@ async function testAdaptiveSystem() {
       console.log('Trait coverage:', result1.adaptiveMetadata.traitCoverage);
       console.log('First 3 questions:');
       result1.questions.slice(0, 3).forEach((q, i) => {
-        console.log(`  ${i+1}. [${q.trait}] ${q.text.substring(0, 60)}...`);
+        console.log(`  ${i + 1}. [${q.trait}] ${q.text.substring(0, 60)}...`);
       });
     } else {
       console.log('❌ Test 1 failed:', result1.error);
@@ -77,7 +83,13 @@ async function testAdaptiveSystem() {
       body: {
         tier: 'comprehensive',
         assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+        targetTraits: [
+          'openness',
+          'conscientiousness',
+          'extraversion',
+          'agreeableness',
+          'neuroticism'
+        ],
         previousResponses: [],
         userProfile: {}
       }
@@ -125,14 +137,15 @@ async function testAdaptiveSystem() {
 
     if (result4.success) {
       console.log(`✅ Generated ${result4.questions.length} questions (neurodiversity scenario)`);
-      const neurodiversityQuestions = result4.questions.filter(q => q.category === 'neurodiversity');
+      const neurodiversityQuestions = result4.questions.filter(
+        q => q.category === 'neurodiversity'
+      );
       console.log(`Neurodiversity questions included: ${neurodiversityQuestions.length}`);
     } else {
       console.log('❌ Test 4 failed:', result4.error);
     }
 
     console.log('\n🎉 All adaptive system tests completed!');
-
   } catch (error) {
     console.error('❌ Test failed:', error);
   } finally {
@@ -147,9 +160,16 @@ function mockResponse() {
   const headers = {};
 
   return {
-    status: (code) => { statusCode = code; return mockResponse(); },
-    json: (data) => { response = data; },
-    setHeader: (key, value) => { headers[key] = value; },
+    status: code => {
+      statusCode = code;
+      return mockResponse();
+    },
+    json: data => {
+      response = data;
+    },
+    setHeader: (key, value) => {
+      headers[key] = value;
+    },
     end: () => {},
     getResponse: () => response,
     getStatus: () => statusCode,

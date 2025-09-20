@@ -6,7 +6,6 @@ import { test, expect } from '@playwright/test';
  */
 
 test.describe('Mobile Views Assessment', () => {
-
   // Mobile device configurations to test
   const mobileDevices = [
     { name: 'iPhone 13', width: 390, height: 844 },
@@ -17,7 +16,6 @@ test.describe('Mobile Views Assessment', () => {
 
   mobileDevices.forEach(device => {
     test.describe(`${device.name} (${device.width}x${device.height})`, () => {
-
       test.beforeEach(async ({ page }) => {
         await page.setViewportSize({ width: device.width, height: device.height });
       });
@@ -55,7 +53,7 @@ test.describe('Mobile Views Assessment', () => {
         // Look for pricing section
         const pricingSection = page.locator('.pricing-section, .pricing, .cards, [class*="price"]');
 
-        if (await pricingSection.count() > 0) {
+        if ((await pricingSection.count()) > 0) {
           await expect(pricingSection.first()).toBeVisible();
 
           // Take screenshot of pricing section
@@ -93,9 +91,11 @@ test.describe('Mobile Views Assessment', () => {
         await page.waitForLoadState('networkidle');
 
         // Look for mobile menu toggle (hamburger button)
-        const menuToggle = page.locator('button[class*="menu"], .menu-toggle, .hamburger, .nav-toggle, [aria-label*="menu" i]');
+        const menuToggle = page.locator(
+          'button[class*="menu"], .menu-toggle, .hamburger, .nav-toggle, [aria-label*="menu" i]'
+        );
 
-        if (await menuToggle.count() > 0) {
+        if ((await menuToggle.count()) > 0) {
           await expect(menuToggle.first()).toBeVisible();
 
           // Click menu toggle
@@ -103,8 +103,10 @@ test.describe('Mobile Views Assessment', () => {
           await page.waitForTimeout(500);
 
           // Check if mobile menu appeared
-          const mobileMenu = page.locator('.mobile-menu, .nav-menu, .menu-open, [class*="menu"][class*="open"]');
-          if (await mobileMenu.count() > 0) {
+          const mobileMenu = page.locator(
+            '.mobile-menu, .nav-menu, .menu-open, [class*="menu"][class*="open"]'
+          );
+          if ((await mobileMenu.count()) > 0) {
             await expect(mobileMenu.first()).toBeVisible();
           }
 
@@ -131,7 +133,9 @@ test.describe('Mobile Views Assessment', () => {
         });
 
         // Check main assessment container
-        const assessmentContainer = page.locator('.assessment, .question-container, main, .container');
+        const assessmentContainer = page.locator(
+          '.assessment, .question-container, main, .container'
+        );
         await expect(assessmentContainer.first()).toBeVisible();
 
         // Check for form elements
@@ -151,9 +155,7 @@ test.describe('Mobile Views Assessment', () => {
         for (let i = 0; i < Math.min(headingCount, 5); i++) {
           const heading = headings.nth(i);
           if (await heading.isVisible()) {
-            const fontSize = await heading.evaluate(el =>
-              window.getComputedStyle(el).fontSize
-            );
+            const fontSize = await heading.evaluate(el => window.getComputedStyle(el).fontSize);
             const fontSizePx = parseInt(fontSize);
 
             // Headings should be at least 14px on mobile for readability (more lenient)
@@ -164,10 +166,10 @@ test.describe('Mobile Views Assessment', () => {
 
         // Check body text
         const bodyText = page.locator('p, .text, .content, body');
-        if (await bodyText.count() > 0) {
-          const fontSize = await bodyText.first().evaluate(el =>
-            window.getComputedStyle(el).fontSize
-          );
+        if ((await bodyText.count()) > 0) {
+          const fontSize = await bodyText
+            .first()
+            .evaluate(el => window.getComputedStyle(el).fontSize);
           const fontSizePx = parseInt(fontSize);
 
           // Body text should be at least 12px on mobile (more lenient)
@@ -187,7 +189,9 @@ test.describe('Mobile Views Assessment', () => {
         const buttonCount = await primaryButtons.count();
         const linkCount = await primaryLinks.count();
 
-        console.log(`Found ${buttonCount + linkCount} major interactive elements on ${device.name}`);
+        console.log(
+          `Found ${buttonCount + linkCount} major interactive elements on ${device.name}`
+        );
 
         let touchFriendlyElements = 0;
         let totalElementsChecked = 0;
@@ -200,10 +204,13 @@ test.describe('Mobile Views Assessment', () => {
             if (boundingBox) {
               totalElementsChecked++;
               const smallestDimension = Math.min(boundingBox.width, boundingBox.height);
-              if (smallestDimension >= 32) {  // Reasonable mobile touch target
+              if (smallestDimension >= 32) {
+                // Reasonable mobile touch target
                 touchFriendlyElements++;
               }
-              console.log(`Button ${i + 1} size: ${boundingBox.width.toFixed(1)}x${boundingBox.height.toFixed(1)}px`);
+              console.log(
+                `Button ${i + 1} size: ${boundingBox.width.toFixed(1)}x${boundingBox.height.toFixed(1)}px`
+              );
             }
           }
         }
@@ -216,17 +223,23 @@ test.describe('Mobile Views Assessment', () => {
             if (boundingBox) {
               totalElementsChecked++;
               const smallestDimension = Math.min(boundingBox.width, boundingBox.height);
-              if (smallestDimension >= 28) {  // Navigation can be slightly smaller
+              if (smallestDimension >= 28) {
+                // Navigation can be slightly smaller
                 touchFriendlyElements++;
               }
-              console.log(`Link ${i + 1} size: ${boundingBox.width.toFixed(1)}x${boundingBox.height.toFixed(1)}px`);
+              console.log(
+                `Link ${i + 1} size: ${boundingBox.width.toFixed(1)}x${boundingBox.height.toFixed(1)}px`
+              );
             }
           }
         }
 
         // At least 50% of major interactive elements should be touch-friendly
-        const touchFriendlyPercentage = totalElementsChecked > 0 ? (touchFriendlyElements / totalElementsChecked) * 100 : 0;
-        console.log(`Touch-friendly elements: ${touchFriendlyElements}/${totalElementsChecked} (${touchFriendlyPercentage.toFixed(1)}%)`);
+        const touchFriendlyPercentage =
+          totalElementsChecked > 0 ? (touchFriendlyElements / totalElementsChecked) * 100 : 0;
+        console.log(
+          `Touch-friendly elements: ${touchFriendlyElements}/${totalElementsChecked} (${touchFriendlyPercentage.toFixed(1)}%)`
+        );
 
         expect(touchFriendlyPercentage).toBeGreaterThanOrEqual(50);
       });
@@ -276,7 +289,6 @@ test.describe('Mobile Views Assessment', () => {
           fullPage: true
         });
       });
-
     });
   });
 
@@ -284,7 +296,8 @@ test.describe('Mobile Views Assessment', () => {
   test('Consistent layout across different mobile devices', async ({ browser }) => {
     const results = [];
 
-    for (const device of mobileDevices.slice(0, 2)) { // Test first 2 devices
+    for (const device of mobileDevices.slice(0, 2)) {
+      // Test first 2 devices
       const context = await browser.newContext({
         viewport: { width: device.width, height: device.height }
       });
@@ -294,8 +307,14 @@ test.describe('Mobile Views Assessment', () => {
       await page.waitForLoadState('networkidle');
 
       // Measure key elements
-      const headerHeight = await page.locator('header, .header, nav').first().evaluate(el => el.offsetHeight);
-      const mainContentWidth = await page.locator('main, .main-content, .container').first().evaluate(el => el.offsetWidth);
+      const headerHeight = await page
+        .locator('header, .header, nav')
+        .first()
+        .evaluate(el => el.offsetHeight);
+      const mainContentWidth = await page
+        .locator('main, .main-content, .container')
+        .first()
+        .evaluate(el => el.offsetWidth);
 
       results.push({
         device: device.name,
@@ -315,5 +334,4 @@ test.describe('Mobile Views Assessment', () => {
       expect(headerHeightDiff).toBeLessThan(50); // Headers should be similar height
     }
   });
-
 });

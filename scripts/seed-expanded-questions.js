@@ -785,7 +785,7 @@ const specialInterestsQuestions = [
 async function seedExpandedQuestions() {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
-// console.log('Connected to MongoDB');
+    // console.log('Connected to MongoDB');
 
     const Question = mongoose.model(
       'Question',
@@ -817,7 +817,7 @@ async function seedExpandedQuestions() {
       ...specialInterestsQuestions
     ];
 
-// console.log(`Seeding ${allNewQuestions.length} expanded assessment questions...`);
+    // console.log(`Seeding ${allNewQuestions.length} expanded assessment questions...`);
 
     // Insert questions
     for (const question of allNewQuestions) {
@@ -827,7 +827,7 @@ async function seedExpandedQuestions() {
       });
     }
 
-// console.log('Successfully seeded expanded questions!');
+    // console.log('Successfully seeded expanded questions!');
 
     // Print statistics
     const categories = {};
@@ -836,9 +836,9 @@ async function seedExpandedQuestions() {
       categories[key] = (categories[key] || 0) + 1;
     });
 
-// console.log('\nQuestion distribution:');
+    // console.log('\nQuestion distribution:');
     Object.entries(categories).forEach(([cat, count]) => {
-// console.log(`  ${cat}: ${count} questions`);
+      // console.log(`  ${cat}: ${count} questions`);
     });
 
     process.exit(0);

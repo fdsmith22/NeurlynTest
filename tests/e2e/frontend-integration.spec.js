@@ -6,7 +6,6 @@ import { test, expect } from '@playwright/test';
  */
 
 test.describe('Frontend Adaptive Assessment Integration', () => {
-
   test.beforeEach(async ({ page }) => {
     // Start from homepage
     await page.goto('http://localhost:8080');
@@ -28,7 +27,11 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
     await page.waitForSelector('#welcome-screen', { timeout: 10000 });
 
     // Click on Personality assessment card (from screenshot we see this is the UI structure)
-    const personalityCard = page.locator('button[data-track="personality"], .track-option:has-text("Personality"), .assessment-type:has-text("Personality")').first();
+    const personalityCard = page
+      .locator(
+        'button[data-track="personality"], .track-option:has-text("Personality"), .assessment-type:has-text("Personality")'
+      )
+      .first();
     await personalityCard.click();
     await page.waitForTimeout(1000);
 
@@ -54,7 +57,7 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
       }
     }
 
-    if (modeButton && await modeButton.isVisible()) {
+    if (modeButton && (await modeButton.isVisible())) {
       await modeButton.click();
       await page.waitForTimeout(500);
     } else {
@@ -84,7 +87,7 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
       }
     }
 
-    if (finalStartButton && await finalStartButton.isVisible()) {
+    if (finalStartButton && (await finalStartButton.isVisible())) {
       await expect(finalStartButton).toBeEnabled();
       await finalStartButton.click();
     } else {
@@ -130,7 +133,7 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
       let questionsFound = false;
       for (const selector of questionSelectors) {
         const questionElements = page.locator(selector);
-        if (await questionElements.count() > 0) {
+        if ((await questionElements.count()) > 0) {
           questionsFound = true;
           console.log(`Questions loaded successfully with selector: ${selector}`);
           break;
@@ -140,7 +143,7 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
       if (!questionsFound) {
         // Check for any error messages
         const errorMessages = page.locator('.error-message, .error-state, .error');
-        if (await errorMessages.count() > 0) {
+        if ((await errorMessages.count()) > 0) {
           const errorText = await errorMessages.first().textContent();
           console.log('Error message found:', errorText);
         } else {
@@ -154,15 +157,24 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
 
   test('Assessment API integration works correctly', async ({ page }) => {
     // Test that the API is accessible and returns proper data
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: [
+            'openness',
+            'conscientiousness',
+            'extraversion',
+            'agreeableness',
+            'neuroticism'
+          ],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     expect(response.status()).toBe(200);
     const result = await response.json();
@@ -182,15 +194,18 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
     ];
 
     for (const tierTest of tierTests) {
-      const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-        data: {
-          tier: tierTest.tier,
-          assessmentType: 'personality',
-          targetTraits: ['openness', 'conscientiousness'],
-          previousResponses: [],
-          userProfile: {}
+      const response = await page.request.post(
+        'http://localhost:3002/api/assessments/adaptive-optimized',
+        {
+          data: {
+            tier: tierTest.tier,
+            assessmentType: 'personality',
+            targetTraits: ['openness', 'conscientiousness'],
+            previousResponses: [],
+            userProfile: {}
+          }
         }
-      });
+      );
 
       expect(response.status()).toBe(200);
       const result = await response.json();
@@ -203,32 +218,38 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
 
   test('Adaptive system responds to user responses', async ({ page }) => {
     // First request - no previous responses
-    const initialResponse = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'core',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness'],
-        previousResponses: [],
-        userProfile: {}
+    const initialResponse = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'core',
+          assessmentType: 'personality',
+          targetTraits: ['openness', 'conscientiousness'],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const initialResult = await initialResponse.json();
     expect(initialResult.success).toBe(true);
 
     // Second request - with previous responses
-    const adaptiveResponse = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'core',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness'],
-        previousResponses: [
-          { questionId: 'test1', trait: 'openness', value: 5 },
-          { questionId: 'test2', trait: 'conscientiousness', value: 1 }
-        ],
-        userProfile: { age: 25 }
+    const adaptiveResponse = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'core',
+          assessmentType: 'personality',
+          targetTraits: ['openness', 'conscientiousness'],
+          previousResponses: [
+            { questionId: 'test1', trait: 'openness', value: 5 },
+            { questionId: 'test2', trait: 'conscientiousness', value: 1 }
+          ],
+          userProfile: { age: 25 }
+        }
       }
-    });
+    );
 
     const adaptiveResult = await adaptiveResponse.json();
     expect(adaptiveResult.success).toBe(true);
@@ -280,22 +301,25 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
 
     // Should handle error gracefully (check for error messages or fallback)
     const errorElements = page.locator('.error-message, .error-state, [class*="error"]');
-    if (await errorElements.count() > 0) {
+    if ((await errorElements.count()) > 0) {
       // Error handling working
       console.log('Error handling detected');
     }
   });
 
   test('Assessment metadata includes algorithm information', async ({ page }) => {
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: ['openness'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: ['openness'],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -308,15 +332,18 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
   });
 
   test('Question format is correct for frontend consumption', async ({ page }) => {
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: ['openness'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: ['openness'],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -339,5 +366,4 @@ test.describe('Frontend Adaptive Assessment Integration', () => {
       expect(question.metadata.tier).toBeDefined();
     });
   });
-
 });

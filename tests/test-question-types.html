@@ -1,414 +1,423 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Question Type Verification Test</title>
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f9fafb;
-        }
-        h1 {
-            color: #111827;
-            margin-bottom: 30px;
-        }
-        .test-section {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .test-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e5e7eb;
-        }
-        .status {
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .status.success {
-            background: #d1fae5;
-            color: #065f46;
-        }
-        .status.error {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        .status.warning {
-            background: #fed7aa;
-            color: #92400e;
-        }
-        .question-list {
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 10px;
-        }
-        .question-item {
-            padding: 10px;
-            margin: 5px 0;
-            background: #f9fafb;
-            border-radius: 6px;
-            border: 1px solid #e5e7eb;
-        }
-        .question-item.error {
-            background: #fef2f2;
-            border-color: #fca5a5;
-        }
-        .question-text {
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-        .question-meta {
-            display: flex;
-            gap: 15px;
-            font-size: 13px;
-            color: #6b7280;
-        }
-        .meta-tag {
-            padding: 2px 8px;
-            background: white;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-        }
-        .meta-tag.type {
-            background: #dbeafe;
-            border-color: #93c5fd;
-            color: #1e40af;
-        }
-        button {
-            background: #6C9E83;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        button:hover {
-            background: #5a8a70;
-        }
-        .summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .summary-card {
-            background: #f3f4f6;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .summary-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #111827;
-        }
-        .summary-label {
-            font-size: 14px;
-            color: #6b7280;
-            margin-top: 5px;
-        }
-        #render-test {
-            margin-top: 30px;
-            min-height: 300px;
-            border: 2px dashed #d1d5db;
-            border-radius: 12px;
-            padding: 20px;
-            background: white;
-        }
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f9fafb;
+      }
+      h1 {
+        color: #111827;
+        margin-bottom: 30px;
+      }
+      .test-section {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .test-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      .status {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .status.success {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .status.error {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .status.warning {
+        background: #fed7aa;
+        color: #92400e;
+      }
+      .question-list {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 10px;
+      }
+      .question-item {
+        padding: 10px;
+        margin: 5px 0;
+        background: #f9fafb;
+        border-radius: 6px;
+        border: 1px solid #e5e7eb;
+      }
+      .question-item.error {
+        background: #fef2f2;
+        border-color: #fca5a5;
+      }
+      .question-text {
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .question-meta {
+        display: flex;
+        gap: 15px;
+        font-size: 13px;
+        color: #6b7280;
+      }
+      .meta-tag {
+        padding: 2px 8px;
+        background: white;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+      }
+      .meta-tag.type {
+        background: #dbeafe;
+        border-color: #93c5fd;
+        color: #1e40af;
+      }
+      button {
+        background: #6c9e83;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background: #5a8a70;
+      }
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .summary-card {
+        background: #f3f4f6;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .summary-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #111827;
+      }
+      .summary-label {
+        font-size: 14px;
+        color: #6b7280;
+        margin-top: 5px;
+      }
+      #render-test {
+        margin-top: 30px;
+        min-height: 300px;
+        border: 2px dashed #d1d5db;
+        border-radius: 12px;
+        padding: 20px;
+        background: white;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>🔍 Question Type Verification Test</h1>
-    
+
     <div class="test-section">
-        <div class="test-header">
-            <h2>Test Controls</h2>
-        </div>
-        <button onclick="testAllQuestions()">Test All Question Types</button>
-        <button onclick="testLateralQuestions()">Test Lateral Questions</button>
-        <button onclick="testImprovedQuestions()">Test Improved Questions</button>
-        <button onclick="testQuestionGeneration()">Test Question Generation</button>
-        <button onclick="testRenderingMismatch()">Test Rendering Mismatches</button>
+      <div class="test-header">
+        <h2>Test Controls</h2>
+      </div>
+      <button onclick="testAllQuestions()">Test All Question Types</button>
+      <button onclick="testLateralQuestions()">Test Lateral Questions</button>
+      <button onclick="testImprovedQuestions()">Test Improved Questions</button>
+      <button onclick="testQuestionGeneration()">Test Question Generation</button>
+      <button onclick="testRenderingMismatch()">Test Rendering Mismatches</button>
     </div>
-    
-    <div class="test-section" id="summary-section" style="display: none;">
-        <h2>Summary</h2>
-        <div class="summary" id="summary"></div>
+
+    <div class="test-section" id="summary-section" style="display: none">
+      <h2>Summary</h2>
+      <div class="summary" id="summary"></div>
     </div>
-    
-    <div class="test-section" id="results-section" style="display: none;">
-        <div class="test-header">
-            <h2>Test Results</h2>
-            <span id="overall-status" class="status"></span>
-        </div>
-        <div id="test-results"></div>
+
+    <div class="test-section" id="results-section" style="display: none">
+      <div class="test-header">
+        <h2>Test Results</h2>
+        <span id="overall-status" class="status"></span>
+      </div>
+      <div id="test-results"></div>
     </div>
-    
-    <div id="render-test" style="display: none;">
-        <h3>Live Render Test</h3>
-        <div id="render-container"></div>
+
+    <div id="render-test" style="display: none">
+      <h3>Live Render Test</h3>
+      <div id="render-container"></div>
     </div>
 
     <script type="module">
-        import { getLateralQuestions } from './js/questions/lateral-questions.js';
-        import { getBalancedQuestions } from './js/questions/improved-questions.js';
-        import { taskController } from './js/modules/task-controller.js';
-        
-        window.testAllQuestions = async function() {
-            console.log('🚀 Testing all question types...');
-            const results = {
-                lateral: [],
-                improved: [],
-                errors: [],
-                warnings: []
-            };
-            
-            // Test lateral questions
-            try {
-                const lateralQuestions = getLateralQuestions(100);
-                lateralQuestions.forEach(q => {
-                    results.lateral.push({
-                        text: q.text,
-                        type: q.type || 'MISSING TYPE',
-                        hasOptions: !!q.options,
-                        optionsCount: q.options?.length,
-                        measures: q.measures,
-                        error: !q.options ? 'No options defined' : null
-                    });
-                });
-            } catch (error) {
-                results.errors.push(`Failed to load lateral questions: ${error.message}`);
-            }
-            
-            // Test improved questions
-            try {
-                const improvedQuestions = getBalancedQuestions(50);
-                improvedQuestions.forEach(q => {
-                    results.improved.push({
-                        text: q.text,
-                        type: 'likert (expected)',
-                        category: q.category,
-                        reversed: q.reversed
-                    });
-                });
-            } catch (error) {
-                results.errors.push(`Failed to load improved questions: ${error.message}`);
-            }
-            
-            displayResults(results);
+      import { getLateralQuestions } from './js/questions/lateral-questions.js';
+      import { getBalancedQuestions } from './js/questions/improved-questions.js';
+      import { taskController } from './js/modules/task-controller.js';
+
+      window.testAllQuestions = async function () {
+        console.log('🚀 Testing all question types...');
+        const results = {
+          lateral: [],
+          improved: [],
+          errors: [],
+          warnings: []
         };
-        
-        window.testLateralQuestions = async function() {
-            console.log('🎯 Testing lateral questions specifically...');
-            const lateralQuestions = getLateralQuestions(20);
-            
-            const results = {
-                questions: [],
-                issues: []
-            };
-            
-            for (const q of lateralQuestions) {
-                const questionData = {
-                    type: 'lateral',
-                    id: q.id,
-                    question: q.text,
-                    options: q.options,
-                    category: 'Lateral Thinking',
-                    measures: q.measures
-                };
-                
-                try {
-                    // Try to load as lateral task
-                    const task = await taskController.loadTask('lateral', questionData);
-                    
-                    results.questions.push({
-                        text: q.text.substring(0, 100) + '...',
-                        taskType: task.type,
-                        hasOptions: !!task.options,
-                        optionsCount: task.options?.length,
-                        status: 'success'
-                    });
-                } catch (error) {
-                    results.issues.push({
-                        question: q.text.substring(0, 100) + '...',
-                        error: error.message
-                    });
-                }
-            }
-            
-            displayLateralResults(results);
-        };
-        
-        window.testImprovedQuestions = function() {
-            console.log('📝 Testing improved questions...');
-            const questions = getBalancedQuestions(30);
-            
-            const results = {
-                byCategory: {},
-                total: questions.length
-            };
-            
-            questions.forEach(q => {
-                if (!results.byCategory[q.category]) {
-                    results.byCategory[q.category] = [];
-                }
-                results.byCategory[q.category].push({
-                    text: q.text,
-                    reversed: q.reversed
-                });
+
+        // Test lateral questions
+        try {
+          const lateralQuestions = getLateralQuestions(100);
+          lateralQuestions.forEach(q => {
+            results.lateral.push({
+              text: q.text,
+              type: q.type || 'MISSING TYPE',
+              hasOptions: !!q.options,
+              optionsCount: q.options?.length,
+              measures: q.measures,
+              error: !q.options ? 'No options defined' : null
             });
-            
-            displayImprovedResults(results);
-        };
-        
-        window.testQuestionGeneration = async function() {
-            console.log('🔧 Testing question generation from NeurlynIntegratedApp...');
-            
-            // Import the app
-            const module = await import('./js/neurlyn-integrated.js');
-            
-            // Create a mock app instance to test question generation
-            const testApp = {
-                state: { taskMode: 'hybrid' },
-                generateQuestionsForMode: module.default.prototype.generateQuestionsForMode,
-                generateGamifiedTasks: module.default.prototype.generateGamifiedTasks,
-                createLateralQuestion: module.default.prototype.createLateralQuestion,
-                generateLikertQuestions: module.default.prototype.generateLikertQuestions,
-                createLikertQuestion: module.default.prototype.createLikertQuestion
-            };
-            
-            const standardConfig = {
-                questionCount: 20,
-                gamifiedTasks: ['risk-balloon', 'word-association']
-            };
-            
-            const questions = testApp.generateQuestionsForMode.call(testApp, standardConfig);
-            
-            const summary = {
-                total: questions.length,
-                byType: {}
-            };
-            
-            questions.forEach(q => {
-                if (!summary.byType[q.type]) {
-                    summary.byType[q.type] = {
-                        count: 0,
-                        examples: []
-                    };
-                }
-                summary.byType[q.type].count++;
-                if (summary.byType[q.type].examples.length < 3) {
-                    summary.byType[q.type].examples.push(q.question || q.text || 'No question text');
-                }
+          });
+        } catch (error) {
+          results.errors.push(`Failed to load lateral questions: ${error.message}`);
+        }
+
+        // Test improved questions
+        try {
+          const improvedQuestions = getBalancedQuestions(50);
+          improvedQuestions.forEach(q => {
+            results.improved.push({
+              text: q.text,
+              type: 'likert (expected)',
+              category: q.category,
+              reversed: q.reversed
             });
-            
-            displayGenerationResults(summary);
+          });
+        } catch (error) {
+          results.errors.push(`Failed to load improved questions: ${error.message}`);
+        }
+
+        displayResults(results);
+      };
+
+      window.testLateralQuestions = async function () {
+        console.log('🎯 Testing lateral questions specifically...');
+        const lateralQuestions = getLateralQuestions(20);
+
+        const results = {
+          questions: [],
+          issues: []
         };
-        
-        window.testRenderingMismatch = async function() {
-            console.log('🔄 Testing for rendering mismatches...');
-            
-            const testCases = [
-                {
-                    name: 'Lateral Question (Recipe)',
-                    question: {
-                        type: 'lateral',
-                        question: 'If your personality was a recipe, what would be the main ingredient?',
-                        options: ['Spice and unpredictability', 'Sugar and warmth', 'Salt and reliability', 'Herbs and complexity', 'Simple bread and butter'],
-                        category: 'Lateral Thinking'
-                    }
-                },
-                {
-                    name: 'Likert Question',
-                    question: {
-                        type: 'likert',
-                        question: 'I enjoy meeting new people at social events',
-                        category: 'Extraversion',
-                        scale: 5
-                    }
-                },
-                {
-                    name: 'Risk Balloon Task',
-                    question: {
-                        type: 'risk-balloon',
-                        question: 'Inflate the balloon to earn points, but be careful not to pop it!',
-                        category: 'Risk Assessment',
-                        balloons: 5
-                    }
-                }
-            ];
-            
-            const results = [];
-            
-            for (const testCase of testCases) {
-                try {
-                    const task = await taskController.loadTask(testCase.question.type, testCase.question);
-                    const container = document.getElementById('render-container');
-                    container.innerHTML = '';
-                    
-                    const element = await task.render();
-                    container.appendChild(element);
-                    await task.initialize();
-                    
-                    // Check what was actually rendered
-                    const hasLikert = container.querySelector('.likert-option');
-                    const hasLateral = container.querySelector('.lateral-option-btn');
-                    const hasCanvas = container.querySelector('canvas');
-                    
-                    results.push({
-                        name: testCase.name,
-                        expectedType: testCase.question.type,
-                        actualTask: task.type,
-                        rendered: {
-                            likert: !!hasLikert,
-                            lateral: !!hasLateral,
-                            canvas: !!hasCanvas
-                        },
-                        status: task.type === testCase.question.type ? 'success' : 'error'
-                    });
-                    
-                    // Clean up
-                    if (task.destroy) task.destroy();
-                    
-                } catch (error) {
-                    results.push({
-                        name: testCase.name,
-                        expectedType: testCase.question.type,
-                        error: error.message,
-                        status: 'error'
-                    });
-                }
+
+        for (const q of lateralQuestions) {
+          const questionData = {
+            type: 'lateral',
+            id: q.id,
+            question: q.text,
+            options: q.options,
+            category: 'Lateral Thinking',
+            measures: q.measures
+          };
+
+          try {
+            // Try to load as lateral task
+            const task = await taskController.loadTask('lateral', questionData);
+
+            results.questions.push({
+              text: q.text.substring(0, 100) + '...',
+              taskType: task.type,
+              hasOptions: !!task.options,
+              optionsCount: task.options?.length,
+              status: 'success'
+            });
+          } catch (error) {
+            results.issues.push({
+              question: q.text.substring(0, 100) + '...',
+              error: error.message
+            });
+          }
+        }
+
+        displayLateralResults(results);
+      };
+
+      window.testImprovedQuestions = function () {
+        console.log('📝 Testing improved questions...');
+        const questions = getBalancedQuestions(30);
+
+        const results = {
+          byCategory: {},
+          total: questions.length
+        };
+
+        questions.forEach(q => {
+          if (!results.byCategory[q.category]) {
+            results.byCategory[q.category] = [];
+          }
+          results.byCategory[q.category].push({
+            text: q.text,
+            reversed: q.reversed
+          });
+        });
+
+        displayImprovedResults(results);
+      };
+
+      window.testQuestionGeneration = async function () {
+        console.log('🔧 Testing question generation from NeurlynIntegratedApp...');
+
+        // Import the app
+        const module = await import('./js/neurlyn-integrated.js');
+
+        // Create a mock app instance to test question generation
+        const testApp = {
+          state: { taskMode: 'hybrid' },
+          generateQuestionsForMode: module.default.prototype.generateQuestionsForMode,
+          generateGamifiedTasks: module.default.prototype.generateGamifiedTasks,
+          createLateralQuestion: module.default.prototype.createLateralQuestion,
+          generateLikertQuestions: module.default.prototype.generateLikertQuestions,
+          createLikertQuestion: module.default.prototype.createLikertQuestion
+        };
+
+        const standardConfig = {
+          questionCount: 20,
+          gamifiedTasks: ['risk-balloon', 'word-association']
+        };
+
+        const questions = testApp.generateQuestionsForMode.call(testApp, standardConfig);
+
+        const summary = {
+          total: questions.length,
+          byType: {}
+        };
+
+        questions.forEach(q => {
+          if (!summary.byType[q.type]) {
+            summary.byType[q.type] = {
+              count: 0,
+              examples: []
+            };
+          }
+          summary.byType[q.type].count++;
+          if (summary.byType[q.type].examples.length < 3) {
+            summary.byType[q.type].examples.push(q.question || q.text || 'No question text');
+          }
+        });
+
+        displayGenerationResults(summary);
+      };
+
+      window.testRenderingMismatch = async function () {
+        console.log('🔄 Testing for rendering mismatches...');
+
+        const testCases = [
+          {
+            name: 'Lateral Question (Recipe)',
+            question: {
+              type: 'lateral',
+              question: 'If your personality was a recipe, what would be the main ingredient?',
+              options: [
+                'Spice and unpredictability',
+                'Sugar and warmth',
+                'Salt and reliability',
+                'Herbs and complexity',
+                'Simple bread and butter'
+              ],
+              category: 'Lateral Thinking'
             }
-            
-            displayMismatchResults(results);
-            document.getElementById('render-test').style.display = 'block';
-        };
-        
-        function displayResults(results) {
-            const container = document.getElementById('test-results');
-            const summaryDiv = document.getElementById('summary');
-            
-            // Show sections
-            document.getElementById('results-section').style.display = 'block';
-            document.getElementById('summary-section').style.display = 'block';
-            
-            // Summary
-            summaryDiv.innerHTML = `
+          },
+          {
+            name: 'Likert Question',
+            question: {
+              type: 'likert',
+              question: 'I enjoy meeting new people at social events',
+              category: 'Extraversion',
+              scale: 5
+            }
+          },
+          {
+            name: 'Risk Balloon Task',
+            question: {
+              type: 'risk-balloon',
+              question: 'Inflate the balloon to earn points, but be careful not to pop it!',
+              category: 'Risk Assessment',
+              balloons: 5
+            }
+          }
+        ];
+
+        const results = [];
+
+        for (const testCase of testCases) {
+          try {
+            const task = await taskController.loadTask(testCase.question.type, testCase.question);
+            const container = document.getElementById('render-container');
+            container.innerHTML = '';
+
+            const element = await task.render();
+            container.appendChild(element);
+            await task.initialize();
+
+            // Check what was actually rendered
+            const hasLikert = container.querySelector('.likert-option');
+            const hasLateral = container.querySelector('.lateral-option-btn');
+            const hasCanvas = container.querySelector('canvas');
+
+            results.push({
+              name: testCase.name,
+              expectedType: testCase.question.type,
+              actualTask: task.type,
+              rendered: {
+                likert: !!hasLikert,
+                lateral: !!hasLateral,
+                canvas: !!hasCanvas
+              },
+              status: task.type === testCase.question.type ? 'success' : 'error'
+            });
+
+            // Clean up
+            if (task.destroy) task.destroy();
+          } catch (error) {
+            results.push({
+              name: testCase.name,
+              expectedType: testCase.question.type,
+              error: error.message,
+              status: 'error'
+            });
+          }
+        }
+
+        displayMismatchResults(results);
+        document.getElementById('render-test').style.display = 'block';
+      };
+
+      function displayResults(results) {
+        const container = document.getElementById('test-results');
+        const summaryDiv = document.getElementById('summary');
+
+        // Show sections
+        document.getElementById('results-section').style.display = 'block';
+        document.getElementById('summary-section').style.display = 'block';
+
+        // Summary
+        summaryDiv.innerHTML = `
                 <div class="summary-card">
                     <div class="summary-number">${results.lateral.length}</div>
                     <div class="summary-label">Lateral Questions</div>
@@ -422,23 +431,23 @@
                     <div class="summary-label">Errors</div>
                 </div>
             `;
-            
-            // Detailed results
-            let html = '';
-            
-            if (results.errors.length > 0) {
-                html += '<h3>❌ Errors</h3><div class="question-list">';
-                results.errors.forEach(error => {
-                    html += `<div class="question-item error">${error}</div>`;
-                });
-                html += '</div>';
-            }
-            
-            // Lateral questions
-            html += '<h3>🎨 Lateral Questions</h3><div class="question-list">';
-            results.lateral.forEach(q => {
-                const hasError = q.error || q.type === 'MISSING TYPE';
-                html += `
+
+        // Detailed results
+        let html = '';
+
+        if (results.errors.length > 0) {
+          html += '<h3>❌ Errors</h3><div class="question-list">';
+          results.errors.forEach(error => {
+            html += `<div class="question-item error">${error}</div>`;
+          });
+          html += '</div>';
+        }
+
+        // Lateral questions
+        html += '<h3>🎨 Lateral Questions</h3><div class="question-list">';
+        results.lateral.forEach(q => {
+          const hasError = q.error || q.type === 'MISSING TYPE';
+          html += `
                     <div class="question-item ${hasError ? 'error' : ''}">
                         <div class="question-text">${q.text.substring(0, 100)}...</div>
                         <div class="question-meta">
@@ -448,32 +457,32 @@
                         </div>
                     </div>
                 `;
-            });
-            html += '</div>';
-            
-            container.innerHTML = html;
-            
-            // Overall status
-            const overallStatus = document.getElementById('overall-status');
-            if (results.errors.length > 0) {
-                overallStatus.textContent = 'Issues Found';
-                overallStatus.className = 'status error';
-            } else {
-                overallStatus.textContent = 'All Tests Passed';
-                overallStatus.className = 'status success';
-            }
+        });
+        html += '</div>';
+
+        container.innerHTML = html;
+
+        // Overall status
+        const overallStatus = document.getElementById('overall-status');
+        if (results.errors.length > 0) {
+          overallStatus.textContent = 'Issues Found';
+          overallStatus.className = 'status error';
+        } else {
+          overallStatus.textContent = 'All Tests Passed';
+          overallStatus.className = 'status success';
         }
-        
-        function displayLateralResults(results) {
-            const container = document.getElementById('test-results');
-            document.getElementById('results-section').style.display = 'block';
-            
-            let html = '<h3>Lateral Question Task Loading Test</h3>';
-            
-            if (results.issues.length > 0) {
-                html += '<h4>❌ Issues</h4><div class="question-list">';
-                results.issues.forEach(issue => {
-                    html += `
+      }
+
+      function displayLateralResults(results) {
+        const container = document.getElementById('test-results');
+        document.getElementById('results-section').style.display = 'block';
+
+        let html = '<h3>Lateral Question Task Loading Test</h3>';
+
+        if (results.issues.length > 0) {
+          html += '<h4>❌ Issues</h4><div class="question-list">';
+          results.issues.forEach(issue => {
+            html += `
                         <div class="question-item error">
                             <div class="question-text">${issue.question}</div>
                             <div class="question-meta">
@@ -481,13 +490,13 @@
                             </div>
                         </div>
                     `;
-                });
-                html += '</div>';
-            }
-            
-            html += '<h4>✅ Successfully Loaded</h4><div class="question-list">';
-            results.questions.forEach(q => {
-                html += `
+          });
+          html += '</div>';
+        }
+
+        html += '<h4>✅ Successfully Loaded</h4><div class="question-list">';
+        results.questions.forEach(q => {
+          html += `
                     <div class="question-item">
                         <div class="question-text">${q.text}</div>
                         <div class="question-meta">
@@ -496,26 +505,27 @@
                         </div>
                     </div>
                 `;
-            });
-            html += '</div>';
-            
-            container.innerHTML = html;
-            
-            const overallStatus = document.getElementById('overall-status');
-            overallStatus.textContent = results.issues.length > 0 ? 'Issues Found' : 'All Lateral Questions Valid';
-            overallStatus.className = results.issues.length > 0 ? 'status error' : 'status success';
-        }
-        
-        function displayImprovedResults(results) {
-            const container = document.getElementById('test-results');
-            document.getElementById('results-section').style.display = 'block';
-            
-            let html = '<h3>Improved Questions by Category</h3>';
-            
-            Object.entries(results.byCategory).forEach(([category, questions]) => {
-                html += `<h4>${category} (${questions.length} questions)</h4><div class="question-list">`;
-                questions.forEach(q => {
-                    html += `
+        });
+        html += '</div>';
+
+        container.innerHTML = html;
+
+        const overallStatus = document.getElementById('overall-status');
+        overallStatus.textContent =
+          results.issues.length > 0 ? 'Issues Found' : 'All Lateral Questions Valid';
+        overallStatus.className = results.issues.length > 0 ? 'status error' : 'status success';
+      }
+
+      function displayImprovedResults(results) {
+        const container = document.getElementById('test-results');
+        document.getElementById('results-section').style.display = 'block';
+
+        let html = '<h3>Improved Questions by Category</h3>';
+
+        Object.entries(results.byCategory).forEach(([category, questions]) => {
+          html += `<h4>${category} (${questions.length} questions)</h4><div class="question-list">`;
+          questions.forEach(q => {
+            html += `
                         <div class="question-item">
                             <div class="question-text">${q.text}</div>
                             <div class="question-meta">
@@ -523,59 +533,63 @@
                             </div>
                         </div>
                     `;
-                });
-                html += '</div>';
-            });
-            
-            container.innerHTML = html;
-            
-            const overallStatus = document.getElementById('overall-status');
-            overallStatus.textContent = `${results.total} Questions Loaded`;
-            overallStatus.className = 'status success';
-        }
-        
-        function displayGenerationResults(summary) {
-            const container = document.getElementById('test-results');
-            document.getElementById('results-section').style.display = 'block';
-            document.getElementById('summary-section').style.display = 'block';
-            
-            const summaryDiv = document.getElementById('summary');
-            summaryDiv.innerHTML = Object.entries(summary.byType).map(([type, data]) => `
+          });
+          html += '</div>';
+        });
+
+        container.innerHTML = html;
+
+        const overallStatus = document.getElementById('overall-status');
+        overallStatus.textContent = `${results.total} Questions Loaded`;
+        overallStatus.className = 'status success';
+      }
+
+      function displayGenerationResults(summary) {
+        const container = document.getElementById('test-results');
+        document.getElementById('results-section').style.display = 'block';
+        document.getElementById('summary-section').style.display = 'block';
+
+        const summaryDiv = document.getElementById('summary');
+        summaryDiv.innerHTML = Object.entries(summary.byType)
+          .map(
+            ([type, data]) => `
                 <div class="summary-card">
                     <div class="summary-number">${data.count}</div>
                     <div class="summary-label">${type}</div>
                 </div>
-            `).join('');
-            
-            let html = '<h3>Generated Questions by Type</h3>';
-            
-            Object.entries(summary.byType).forEach(([type, data]) => {
-                html += `<h4>${type} (${data.count} questions)</h4><div class="question-list">`;
-                data.examples.forEach(text => {
-                    html += `
+            `
+          )
+          .join('');
+
+        let html = '<h3>Generated Questions by Type</h3>';
+
+        Object.entries(summary.byType).forEach(([type, data]) => {
+          html += `<h4>${type} (${data.count} questions)</h4><div class="question-list">`;
+          data.examples.forEach(text => {
+            html += `
                         <div class="question-item">
                             <div class="question-text">${text.substring(0, 150)}...</div>
                         </div>
                     `;
-                });
-                html += '</div>';
-            });
-            
-            container.innerHTML = html;
-            
-            const overallStatus = document.getElementById('overall-status');
-            overallStatus.textContent = `${summary.total} Questions Generated`;
-            overallStatus.className = 'status success';
-        }
-        
-        function displayMismatchResults(results) {
-            const container = document.getElementById('test-results');
-            document.getElementById('results-section').style.display = 'block';
-            
-            let html = '<h3>Rendering Mismatch Test</h3><div class="question-list">';
-            
-            results.forEach(r => {
-                html += `
+          });
+          html += '</div>';
+        });
+
+        container.innerHTML = html;
+
+        const overallStatus = document.getElementById('overall-status');
+        overallStatus.textContent = `${summary.total} Questions Generated`;
+        overallStatus.className = 'status success';
+      }
+
+      function displayMismatchResults(results) {
+        const container = document.getElementById('test-results');
+        document.getElementById('results-section').style.display = 'block';
+
+        let html = '<h3>Rendering Mismatch Test</h3><div class="question-list">';
+
+        results.forEach(r => {
+          html += `
                     <div class="question-item ${r.status === 'error' ? 'error' : ''}">
                         <div class="question-text">${r.name}</div>
                         <div class="question-meta">
@@ -583,30 +597,36 @@
                             ${r.actualTask ? `<span class="meta-tag">Actual: ${r.actualTask}</span>` : ''}
                             ${r.error ? `<span class="meta-tag" style="color: red;">Error: ${r.error}</span>` : ''}
                         </div>
-                        ${r.rendered ? `
+                        ${
+                          r.rendered
+                            ? `
                             <div class="question-meta" style="margin-top: 5px;">
                                 <span class="meta-tag">Likert: ${r.rendered.likert ? '✅' : '❌'}</span>
                                 <span class="meta-tag">Lateral: ${r.rendered.lateral ? '✅' : '❌'}</span>
                                 <span class="meta-tag">Canvas: ${r.rendered.canvas ? '✅' : '❌'}</span>
                             </div>
-                        ` : ''}
+                        `
+                            : ''
+                        }
                     </div>
                 `;
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
-            
-            const hasErrors = results.some(r => r.status === 'error');
-            const overallStatus = document.getElementById('overall-status');
-            overallStatus.textContent = hasErrors ? 'Rendering Mismatches Found' : 'All Renderings Correct';
-            overallStatus.className = hasErrors ? 'status error' : 'status success';
-        }
-        
-        // Auto-run comprehensive test on load
-        window.addEventListener('load', () => {
-            console.log('Page loaded - ready to test');
         });
+
+        html += '</div>';
+        container.innerHTML = html;
+
+        const hasErrors = results.some(r => r.status === 'error');
+        const overallStatus = document.getElementById('overall-status');
+        overallStatus.textContent = hasErrors
+          ? 'Rendering Mismatches Found'
+          : 'All Renderings Correct';
+        overallStatus.className = hasErrors ? 'status error' : 'status success';
+      }
+
+      // Auto-run comprehensive test on load
+      window.addEventListener('load', () => {
+        console.log('Page loaded - ready to test');
+      });
     </script>
-</body>
+  </body>
 </html>

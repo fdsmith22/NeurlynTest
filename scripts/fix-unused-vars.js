@@ -7,9 +7,7 @@ const path = require('path');
 const fixes = [
   {
     file: 'api/assessments/adaptive.js',
-    changes: [
-      { old: 'const { demographics } =', new: 'const { demographics: _demographics } =' }
-    ]
+    changes: [{ old: 'const { demographics } =', new: 'const { demographics: _demographics } =' }]
   },
   {
     file: 'backend.js',
@@ -26,9 +24,7 @@ const fixes = [
   },
   {
     file: 'js/api-client.js',
-    changes: [
-      { old: 'taskMode =', new: '_taskMode =' }
-    ]
+    changes: [{ old: 'taskMode =', new: '_taskMode =' }]
   },
   {
     file: 'js/comprehensive-report-generator.js',
@@ -53,7 +49,10 @@ fixes.forEach(({ file, changes }) => {
 
   changes.forEach(({ old, new: newStr }) => {
     if (content.includes(old)) {
-      content = content.replace(new RegExp(old.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), newStr);
+      content = content.replace(
+        new RegExp(old.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
+        newStr
+      );
       modified = true;
       console.log(`Fixed: ${old} -> ${newStr} in ${file}`);
     }

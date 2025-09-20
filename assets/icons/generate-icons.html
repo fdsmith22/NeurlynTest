@@ -1,77 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>Generate Neurlyn Icons</title>
-</head>
-<body>
+  </head>
+  <body>
     <canvas id="canvas"></canvas>
     <script>
-        // Generate PWA icons in different sizes
-        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
-        
-        function generateIcon(size) {
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = size;
-            canvas.height = size;
-            
-            // Background gradient
-            const gradient = ctx.createLinearGradient(0, 0, size, size);
-            gradient.addColorStop(0, '#6C9E83');
-            gradient.addColorStop(1, '#5A8970');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, size, size);
-            
-            // White circle background for text
-            ctx.beginPath();
-            ctx.arc(size/2, size/2, size * 0.35, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            ctx.fill();
-            
-            // Text "N" for Neurlyn
-            ctx.fillStyle = '#6C9E83';
-            ctx.font = `bold ${size * 0.4}px Inter, -apple-system, BlinkMacSystemFont, sans-serif`;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('N', size/2, size/2);
-            
-            // Convert to blob and trigger download
-            canvas.toBlob(function(blob) {
-                const link = document.createElement('a');
-                link.download = `icon-${size}x${size}.png`;
-                link.href = URL.createObjectURL(blob);
-                link.click();
-            });
-        }
-        
-        // Generate all sizes with delay
-        sizes.forEach((size, index) => {
-            setTimeout(() => generateIcon(size), index * 200);
+      // Generate PWA icons in different sizes
+      const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+
+      function generateIcon(size) {
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = size;
+        canvas.height = size;
+
+        // Background gradient
+        const gradient = ctx.createLinearGradient(0, 0, size, size);
+        gradient.addColorStop(0, '#6C9E83');
+        gradient.addColorStop(1, '#5A8970');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, size, size);
+
+        // White circle background for text
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size * 0.35, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+        ctx.fill();
+
+        // Text "N" for Neurlyn
+        ctx.fillStyle = '#6C9E83';
+        ctx.font = `bold ${size * 0.4}px Inter, -apple-system, BlinkMacSystemFont, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('N', size / 2, size / 2);
+
+        // Convert to blob and trigger download
+        canvas.toBlob(function (blob) {
+          const link = document.createElement('a');
+          link.download = `icon-${size}x${size}.png`;
+          link.href = URL.createObjectURL(blob);
+          link.click();
         });
-        
-        // Also generate favicon
-        setTimeout(() => {
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = 32;
-            canvas.height = 32;
-            
-            ctx.fillStyle = '#6C9E83';
-            ctx.fillRect(0, 0, 32, 32);
-            
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 20px sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('N', 16, 16);
-            
-            canvas.toBlob(function(blob) {
-                const link = document.createElement('a');
-                link.download = 'favicon.png';
-                link.href = URL.createObjectURL(blob);
-                link.click();
-            });
-        }, sizes.length * 200);
+      }
+
+      // Generate all sizes with delay
+      sizes.forEach((size, index) => {
+        setTimeout(() => generateIcon(size), index * 200);
+      });
+
+      // Also generate favicon
+      setTimeout(() => {
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 32;
+        canvas.height = 32;
+
+        ctx.fillStyle = '#6C9E83';
+        ctx.fillRect(0, 0, 32, 32);
+
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('N', 16, 16);
+
+        canvas.toBlob(function (blob) {
+          const link = document.createElement('a');
+          link.download = 'favicon.png';
+          link.href = URL.createObjectURL(blob);
+          link.click();
+        });
+      }, sizes.length * 200);
     </script>
-</body>
+  </body>
 </html>

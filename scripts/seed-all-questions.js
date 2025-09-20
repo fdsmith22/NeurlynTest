@@ -408,13 +408,13 @@ async function main() {
     const summary = await seedAllQuestions();
 
     logger.info('🎉 Database seeding completed successfully!');
-// console.log('\n📊 Question Bank Summary:');
-// console.log(`   Total Questions: ${summary.total}`);
-// console.log(`   ├── Personality: ${summary.personality}`);
-// console.log(`   ├── Lateral Thinking: ${summary.lateral}`);
-// console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
-// console.log(`   ├── Cognitive: ${summary.cognitive}`);
-// console.log(`   └── Interactive: ${summary.interactive}`);
+    // console.log('\n📊 Question Bank Summary:');
+    // console.log(`   Total Questions: ${summary.total}`);
+    // console.log(`   ├── Personality: ${summary.personality}`);
+    // console.log(`   ├── Lateral Thinking: ${summary.lateral}`);
+    // console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
+    // console.log(`   ├── Cognitive: ${summary.cognitive}`);
+    // console.log(`   └── Interactive: ${summary.interactive}`);
 
     await mongoose.disconnect();
     process.exit(0);

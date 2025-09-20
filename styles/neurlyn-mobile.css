@@ -513,7 +513,7 @@ h3 {
   }
 
   .pricing-card.active {
-    border-color: #6C9E83;
+    border-color: #6c9e83;
     background: #f8fffe;
   }
 
@@ -533,7 +533,7 @@ h3 {
   }
 
   .pricing-card-badge {
-    background: #6C9E83;
+    background: #6c9e83;
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
@@ -544,7 +544,7 @@ h3 {
   .pricing-card-price {
     font-size: 2rem;
     font-weight: 700;
-    color: #6C9E83;
+    color: #6c9e83;
     margin: 0 0 1rem 0;
     line-height: 1;
   }
@@ -576,7 +576,7 @@ h3 {
   .pricing-card-features svg {
     width: 16px;
     height: 16px;
-    color: #6C9E83;
+    color: #6c9e83;
     flex-shrink: 0;
   }
 

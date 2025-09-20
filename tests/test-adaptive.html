@@ -1,87 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Adaptive Assessment</title>
-    <link rel="stylesheet" href="styles/neurlyn.css">
-    <link rel="stylesheet" href="styles/neurlyn-report.css">
+    <link rel="stylesheet" href="styles/neurlyn.css" />
+    <link rel="stylesheet" href="styles/neurlyn-report.css" />
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            padding: 2rem;
-            background: #f8f9fa;
-        }
-        .test-controls {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .test-controls h2 {
-            margin-bottom: 1rem;
-        }
-        .control-group {
-            margin-bottom: 1rem;
-        }
-        .control-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        .control-group select,
-        .control-group input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-        }
-        .btn {
-            background: #7C9885;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 1rem;
-        }
-        .btn:hover {
-            background: #6A8A73;
-        }
-        #assessment-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+      body {
+        font-family: 'Inter', sans-serif;
+        padding: 2rem;
+        background: #f8f9fa;
+      }
+      .test-controls {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .test-controls h2 {
+        margin-bottom: 1rem;
+      }
+      .control-group {
+        margin-bottom: 1rem;
+      }
+      .control-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      .control-group select,
+      .control-group input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+      }
+      .btn {
+        background: #7c9885;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+      .btn:hover {
+        background: #6a8a73;
+      }
+      #assessment-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="test-controls">
-        <h2>Test Adaptive Assessment</h2>
+      <h2>Test Adaptive Assessment</h2>
 
-        <div class="control-group">
-            <label for="tier-select">Assessment Tier:</label>
-            <select id="tier-select">
-                <option value="quick">Quick (20 questions)</option>
-                <option value="standard" selected>Standard (45 questions)</option>
-                <option value="deep">Deep (75 questions)</option>
-            </select>
-        </div>
+      <div class="control-group">
+        <label for="tier-select">Assessment Tier:</label>
+        <select id="tier-select">
+          <option value="quick">Quick (20 questions)</option>
+          <option value="standard" selected>Standard (45 questions)</option>
+          <option value="deep">Deep (75 questions)</option>
+        </select>
+      </div>
 
-        <div class="control-group">
-            <label for="concerns-select">Primary Concerns:</label>
-            <select id="concerns-select" multiple size="4">
-                <option value="attention">Attention & Focus</option>
-                <option value="social">Social Interaction</option>
-                <option value="sensory">Sensory Processing</option>
-                <option value="emotional">Emotional Regulation</option>
-            </select>
-            <small>Hold Ctrl/Cmd to select multiple</small>
-        </div>
+      <div class="control-group">
+        <label for="concerns-select">Primary Concerns:</label>
+        <select id="concerns-select" multiple size="4">
+          <option value="attention">Attention & Focus</option>
+          <option value="social">Social Interaction</option>
+          <option value="sensory">Sensory Processing</option>
+          <option value="emotional">Emotional Regulation</option>
+        </select>
+        <small>Hold Ctrl/Cmd to select multiple</small>
+      </div>
 
-        <button class="btn" onclick="startTest()">Start Assessment</button>
+      <button class="btn" onclick="startTest()">Start Assessment</button>
     </div>
 
     <div id="assessment-container"></div>
@@ -92,48 +92,50 @@
     <script src="js/report-display-component.js"></script>
 
     <script>
-        // Initialize assessment on page load
-        window.assessment = new NeurlynAdaptiveAssessment();
+      // Initialize assessment on page load
+      window.assessment = new NeurlynAdaptiveAssessment();
 
-        // Configure API base for testing
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            // Use port 3002 where our backend is running
-            window.assessment.apiBase = 'http://localhost:3002/api';
-        }
+      // Configure API base for testing
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // Use port 3002 where our backend is running
+        window.assessment.apiBase = 'http://localhost:3002/api';
+      }
 
-        function startTest() {
-            const tier = document.getElementById('tier-select').value;
-            const concernsSelect = document.getElementById('concerns-select');
-            const concerns = Array.from(concernsSelect.selectedOptions).map(opt => opt.value);
+      function startTest() {
+        const tier = document.getElementById('tier-select').value;
+        const concernsSelect = document.getElementById('concerns-select');
+        const concerns = Array.from(concernsSelect.selectedOptions).map(opt => opt.value);
 
-            console.log('Starting assessment with:', { tier, concerns });
+        console.log('Starting assessment with:', { tier, concerns });
 
-            // Hide controls
-            document.querySelector('.test-controls').style.display = 'none';
+        // Hide controls
+        document.querySelector('.test-controls').style.display = 'none';
 
-            // Start assessment
-            window.assessment.startAssessment({
-                tier: tier,
-                concerns: concerns,
-                demographics: {
-                    age: 25,
-                    gender: 'not_specified'
-                }
-            }).catch(error => {
-                console.error('Failed to start assessment:', error);
-                alert('Failed to start assessment. Check console for details.');
-                document.querySelector('.test-controls').style.display = 'block';
-            });
-        }
-
-        // Auto-resume on load
-        document.addEventListener('DOMContentLoaded', async () => {
-            const resumed = await window.assessment.resumeAssessment();
-            if (resumed) {
-                console.log('Resumed existing assessment');
-                document.querySelector('.test-controls').style.display = 'none';
+        // Start assessment
+        window.assessment
+          .startAssessment({
+            tier: tier,
+            concerns: concerns,
+            demographics: {
+              age: 25,
+              gender: 'not_specified'
             }
-        });
+          })
+          .catch(error => {
+            console.error('Failed to start assessment:', error);
+            alert('Failed to start assessment. Check console for details.');
+            document.querySelector('.test-controls').style.display = 'block';
+          });
+      }
+
+      // Auto-resume on load
+      document.addEventListener('DOMContentLoaded', async () => {
+        const resumed = await window.assessment.resumeAssessment();
+        if (resumed) {
+          console.log('Resumed existing assessment');
+          document.querySelector('.test-controls').style.display = 'none';
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

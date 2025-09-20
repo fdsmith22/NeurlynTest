@@ -5,7 +5,10 @@ const assessmentSchema = new mongoose.Schema(
     userId: { type: String, index: true },
     sessionId: { type: String, unique: true, required: true },
     mode: { type: String, enum: ['validated', 'experimental', 'adaptive'], required: true },
-    tier: { type: String, enum: ['core', 'comprehensive', 'specialized', 'experimental', 'quick', 'basic'] },
+    tier: {
+      type: String,
+      enum: ['core', 'comprehensive', 'specialized', 'experimental', 'quick', 'basic']
+    },
     startTime: { type: Date, default: Date.now },
     completionTime: Date,
     responses: [

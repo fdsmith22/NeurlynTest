@@ -25,15 +25,15 @@ const svgIcon = `
   <!-- White circle -->
   <circle cx="256" cy="256" r="180" fill="rgba(255,255,255,0.95)"/>
   <!-- Letter N -->
-  <text x="256" y="256" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="240" font-weight="bold" fill="#6C9E83" 
+  <text x="256" y="256" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="240" font-weight="bold" fill="#6C9E83"
         text-anchor="middle" dominant-baseline="central">N</text>
 </svg>
 `;
 
 // Generate icons
 async function generateIcons() {
-// console.log('Generating Neurlyn icons...');
+  // console.log('Generating Neurlyn icons...');
 
   // Create base icon from SVG
   const svgBuffer = Buffer.from(svgIcon);
@@ -45,7 +45,7 @@ async function generateIcons() {
         .resize(size, size)
         .png()
         .toFile(path.join(iconsDir, `icon-${size}x${size}.png`));
-// console.log(`✓ Generated icon-${size}x${size}.png`);
+      // console.log(`✓ Generated icon-${size}x${size}.png`);
     } catch (error) {
       console.error(`Error generating ${size}x${size} icon:`, error);
     }
@@ -54,7 +54,7 @@ async function generateIcons() {
   // Generate favicon (32x32)
   try {
     await sharp(svgBuffer).resize(32, 32).png().toFile(path.join(iconsDir, 'favicon.png'));
-// console.log('✓ Generated favicon.png');
+    // console.log('✓ Generated favicon.png');
   } catch (error) {
     console.error('Error generating favicon:', error);
   }
@@ -65,16 +65,16 @@ async function generateIcons() {
       .resize(180, 180)
       .png()
       .toFile(path.join(iconsDir, 'apple-touch-icon.png'));
-// console.log('✓ Generated apple-touch-icon.png');
+    // console.log('✓ Generated apple-touch-icon.png');
   } catch (error) {
     console.error('Error generating apple-touch-icon:', error);
   }
 
   // Save the SVG as well
   fs.writeFileSync(path.join(iconsDir, 'favicon.svg'), svgIcon);
-// console.log('✓ Generated favicon.svg');
+  // console.log('✓ Generated favicon.svg');
 
-// console.log('\nAll icons generated successfully!');
+  // console.log('\nAll icons generated successfully!');
 }
 
 generateIcons().catch(console.error);

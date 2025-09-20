@@ -1,1103 +1,1299 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
     <title>Neurlyn - Intelligent Personality Assessment</title>
-    <meta name="description" content="Professional personality assessment platform powered by advanced psychometric science">
-    <meta name="theme-color" content="#6C9E83">
-    
+    <meta
+      name="description"
+      content="Professional personality assessment platform powered by advanced psychometric science"
+    />
+    <meta name="theme-color" content="#6C9E83" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <!-- Manifest disabled to fix navigation issues -->
     <!-- <link rel="manifest" href="manifest.json"> -->
-    
+
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Neurlyn - Intelligent Personality Assessment">
-    <meta property="og:description" content="Discover your unique personality profile through scientifically-validated assessments">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://neurlyn.com">
-    <meta property="og:image" content="https://neurlyn.com/assets/images/og-image.png">
-    
+    <meta property="og:title" content="Neurlyn - Intelligent Personality Assessment" />
+    <meta
+      property="og:description"
+      content="Discover your unique personality profile through scientifically-validated assessments"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neurlyn.com" />
+    <meta property="og:image" content="https://neurlyn.com/assets/images/og-image.png" />
+
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Neurlyn - Intelligent Personality Assessment">
-    <meta name="twitter:description" content="Professional personality assessment platform">
-    <meta name="twitter:image" content="https://neurlyn.com/assets/images/twitter-card.png">
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Neurlyn - Intelligent Personality Assessment" />
+    <meta name="twitter:description" content="Professional personality assessment platform" />
+    <meta name="twitter:image" content="https://neurlyn.com/assets/images/twitter-card.png" />
+
     <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Fonts with display swap for better loading -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    /></noscript>
+
     <!-- Neurlyn Stylesheets -->
-    <link rel="stylesheet" href="styles/neurlyn.css">
+    <link rel="stylesheet" href="styles/neurlyn.css" />
     <!-- Dark mode removed -->
-    <link rel="stylesheet" href="styles/neurlyn-navigation.css">
-    <link rel="stylesheet" href="styles/neurlyn-gamified.css">
-    <link rel="stylesheet" href="styles/neurlyn-interactive.css">
-    <link rel="stylesheet" href="styles/neurlyn-neurodiversity.css">
-    <link rel="stylesheet" href="styles/assessment-layout-fix.css">
-    <link rel="stylesheet" href="styles/neurlyn-mobile.css">
-    <link rel="stylesheet" href="styles/neurlyn-refinements.css">
+    <link rel="stylesheet" href="styles/neurlyn-navigation.css" />
+    <link rel="stylesheet" href="styles/neurlyn-gamified.css" />
+    <link rel="stylesheet" href="styles/neurlyn-interactive.css" />
+    <link rel="stylesheet" href="styles/neurlyn-neurodiversity.css" />
+    <link rel="stylesheet" href="styles/assessment-layout-fix.css" />
+    <link rel="stylesheet" href="styles/neurlyn-mobile.css" />
+    <link rel="stylesheet" href="styles/neurlyn-refinements.css" />
     <!-- Mobile Override Fixes - Load Last for highest specificity -->
-    <link rel="stylesheet" href="styles/neurlyn-mobile-override.css">
-    <link rel="stylesheet" href="styles/z-index-architecture.css">
-    <link rel="stylesheet" href="styles/neurlyn-print.css" media="print">
-    
+    <link rel="stylesheet" href="styles/neurlyn-mobile-override.css" />
+    <link rel="stylesheet" href="styles/z-index-architecture.css" />
+    <link rel="stylesheet" href="styles/neurlyn-print.css" media="print" />
+
     <style>
-        /* Enhanced Landing Page Styles */
-        :root {
-            --primary-gradient: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            --soft-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
-            --hover-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --nordic-white: #FAFAFA;
-            --nordic-gray: #E8E8E8;
-            --nordic-charcoal: #2C2C2C;
-        }
+      /* Enhanced Landing Page Styles */
+      :root {
+        --primary-gradient: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        --soft-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+        --hover-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --nordic-white: #fafafa;
+        --nordic-gray: #e8e8e8;
+        --nordic-charcoal: #2c2c2c;
+      }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background:
-                radial-gradient(ellipse at top left, rgba(124, 152, 133, 0.05) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(124, 152, 133, 0.03) 0%, transparent 50%),
-                linear-gradient(180deg, #FFFFFF 0%, #F8FAF9 100%);
-            min-height: 100vh;
-            color: var(--nordic-charcoal);
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            position: relative;
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background:
+          radial-gradient(ellipse at top left, rgba(124, 152, 133, 0.05) 0%, transparent 50%),
+          radial-gradient(ellipse at bottom right, rgba(124, 152, 133, 0.03) 0%, transparent 50%),
+          linear-gradient(180deg, #ffffff 0%, #f8faf9 100%);
+        min-height: 100vh;
+        color: var(--nordic-charcoal);
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        position: relative;
+      }
+
+      #disclaimer-screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 60px);
+        padding: 0.5rem 0 60px;
+        position: relative;
+      }
+
+      /* Decorative elements */
+      #disclaimer-screen::before {
+        content: '';
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        width: 300px;
+        height: 300px;
+        background:
+          radial-gradient(circle at center, rgba(124, 152, 133, 0.08) 0%, transparent 40%),
+          linear-gradient(45deg, rgba(124, 152, 133, 0.03) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(40px);
+        transform: rotate(45deg);
+        z-index: 0;
+      }
+
+      #disclaimer-screen::after {
+        content: '';
+        position: absolute;
+        bottom: 15%;
+        left: 8%;
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(
+          circle at center,
+          rgba(106, 138, 115, 0.06) 0%,
+          transparent 50%
+        );
+        border-radius: 50%;
+        filter: blur(50px);
+        z-index: 0;
+      }
+
+      .disclaimer-card {
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 255, 254, 0.98) 100%),
+          linear-gradient(135deg, #ffffff 0%, #fafffe 100%);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        box-shadow:
+          0 1px 2px rgba(124, 152, 133, 0.05),
+          0 4px 8px rgba(124, 152, 133, 0.05),
+          0 8px 24px rgba(124, 152, 133, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        padding: 1.75rem 2rem 1.25rem;
+        max-width: 95vw;
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid rgba(124, 152, 133, 0.12);
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Removed hover effect for cleaner Scandinavian style */
+
+      .disclaimer-ultra-compact {
+        width: 100%;
+      }
+
+      .features-pricing-row {
+        margin: 1rem 0;
+        width: 100%;
+      }
+
+      .feature-row {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        transition: all 0.3s ease;
+        padding: 0.5rem;
+        border-radius: 12px;
+      }
+
+      .feature-item:hover {
+        background: rgba(124, 152, 133, 0.05);
+        transform: translateX(4px);
+      }
+
+      .feature-icon {
+        width: 20px;
+        height: 20px;
+        fill: #7c9885;
+        flex-shrink: 0;
+        opacity: 0.9;
+        transition: transform 0.3s ease;
+      }
+
+      .feature-item:hover .feature-icon {
+        transform: scale(1.1);
+      }
+
+      .feature-item strong {
+        display: block;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.9rem;
+        color: #4a6b56;
+        margin-bottom: 0.1rem;
+        font-weight: 500;
+      }
+
+      .feature-item p {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        color: #8b8b8b;
+        margin: 0;
+        font-weight: 300;
+      }
+
+      /* Pricing Cards Section - Horizontal Layout */
+      .pricing-section {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 1rem auto;
+        width: 100%;
+        max-width: 90vw;
+      }
+
+      .pricing-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(255, 255, 255, 0.98) 100%
+        );
+        border-radius: 16px;
+        padding: 1rem 1.5rem;
+        border: 1px solid rgba(124, 152, 133, 0.15);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        flex: 1;
+        max-width: 650px;
+        display: flex;
+        flex-direction: column;
+        box-shadow:
+          0 1px 3px rgba(124, 152, 133, 0.05),
+          0 4px 12px rgba(124, 152, 133, 0.05);
+      }
+
+      .pricing-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: transparent;
+        transition: all 0.3s ease;
+      }
+
+      .pricing-card.free.active {
+        border-color: rgba(124, 152, 133, 0.3);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fbf9 100%);
+        box-shadow:
+          0 1px 3px rgba(124, 152, 133, 0.08),
+          0 4px 12px rgba(124, 152, 133, 0.1),
+          0 0 0 1px rgba(124, 152, 133, 0.1) inset;
+      }
+
+      .pricing-card.free.active::before {
+        background: linear-gradient(90deg, #7c9885 0%, #6a8a73 50%, #7c9885 100%);
+        height: 3px;
+      }
+
+      .pricing-card.premium {
+        background: #fafafa;
+      }
+
+      .pricing-card.premium.active {
+        border-color: #5a7a6a;
+        background: linear-gradient(135deg, #fafafa 0%, #f5f8f6 100%);
+      }
+
+      .pricing-card.premium.active::before {
+        background: linear-gradient(135deg, #5a7a6a 0%, #4a6b56 100%);
+      }
+
+      .pricing-card-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .pricing-card-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--nordic-charcoal);
+        margin: 0;
+      }
+
+      .pricing-card-badge {
+        background: linear-gradient(
+          135deg,
+          rgba(124, 152, 133, 0.1) 0%,
+          rgba(124, 152, 133, 0.15) 100%
+        );
+        color: #6a8a73;
+        padding: 0.2rem 0.6rem;
+        border: 1px solid rgba(124, 152, 133, 0.25);
+        border-radius: 10px;
+        font-size: 0.65rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-left: auto;
+        box-shadow: 0 2px 4px rgba(124, 152, 133, 0.1);
+      }
+
+      .pricing-card.premium .pricing-card-badge {
+        background: rgba(90, 122, 106, 0.1);
+        color: #4a6b56;
+        border-color: rgba(90, 122, 106, 0.3);
+      }
+
+      .pricing-card-price {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--nordic-charcoal);
+        margin: 0 0 0.25rem 0;
+      }
+
+      .pricing-card-description {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        color: #6b6b6b;
+        line-height: 1.3;
+        margin-bottom: 0.6rem;
+      }
+
+      .pricing-card-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .pricing-card-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
+        color: #6b6b6b;
+        line-height: 1.1;
+      }
+
+      .pricing-card-features svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: #7c9885;
+        stroke-width: 2;
+        flex-shrink: 0;
+      }
+
+      .pricing-card.premium .pricing-card-features svg {
+        stroke: #5a7a6a;
+      }
+
+      .pricing-card-select {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        border: 1px solid rgba(124, 152, 133, 0.3);
+        margin-left: 0.5rem;
+        transition: all 0.2s ease;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .pricing-card.active .pricing-card-select {
+        border-color: #7c9885;
+        background: #7c9885;
+      }
+
+      .pricing-card.premium.active .pricing-card-select {
+        border-color: #5a7a6a;
+        background: #5a7a6a;
+      }
+
+      .pricing-card.active .pricing-card-select::after {
+        content: '';
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 1.5px 1.5px 0;
+        transform: rotate(45deg);
+        margin-bottom: 2px;
+      }
+
+      .assessment-selector {
+        display: none;
+      }
+
+      .selector-tabs {
+        display: flex;
+        gap: 1rem;
+        background: white;
+        border-radius: 12px;
+        padding: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .selector-tab {
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .selector-tab.active {
+        background: #6c9e83;
+        color: white;
+      }
+
+      .selector-tab:hover:not(.active) {
+        background: rgba(108, 158, 131, 0.1);
+      }
+
+      .tab-label {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .tab-desc,
+      .tab-price {
+        font-size: 0.875rem;
+        opacity: 0.9;
+      }
+
+      .selector-tab.active .tab-desc,
+      .selector-tab.active .tab-price {
+        color: white;
+      }
+
+      .consent-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--nordic-gray);
+      }
+
+      .consent-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        color: #6b6b6b;
+        transition: opacity 0.2s ease;
+      }
+
+      .consent-checkbox:hover {
+        opacity: 0.7;
+      }
+
+      .consent-checkbox input[type='checkbox'] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        accent-color: #7c9885;
+        border-radius: 4px;
+        appearance: none;
+        -webkit-appearance: none;
+        border: 2px solid #7c9885;
+        background: white;
+        position: relative;
+        transition: all 0.2s ease;
+      }
+
+      .consent-checkbox input[type='checkbox']:checked {
+        background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        border-color: #6c9e83;
+      }
+
+      .consent-checkbox input[type='checkbox']:checked::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .consent-checkbox input[type='checkbox']:hover {
+        border-color: #6c9e83;
+        box-shadow: 0 0 0 2px rgba(108, 158, 131, 0.2);
+      }
+
+      .consent-checkbox input[type='checkbox']:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(108, 158, 131, 0.3);
+      }
+
+      #accept-disclaimer {
+        background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        color: white;
+        border: 1px solid transparent;
+        padding: 0.8rem 2.2rem;
+        border-radius: 12px;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-left: auto;
+        box-shadow:
+          0 2px 4px rgba(124, 152, 133, 0.2),
+          0 4px 12px rgba(124, 152, 133, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      /* Clean hover state */
+
+      #accept-disclaimer:not(:disabled):hover {
+        background: linear-gradient(135deg, #8ca595 0%, #7c9885 100%);
+        box-shadow:
+          0 4px 8px rgba(124, 152, 133, 0.25),
+          0 8px 20px rgba(124, 152, 133, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px) scale(1.02);
+      }
+
+      #accept-disclaimer:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      /* Minimal Nordic animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
-        
+        to {
+          opacity: 1;
+        }
+      }
+
+      .disclaimer-card {
+        animation: fadeIn 0.4s ease-out;
+      }
+
+      .disclaimer-card:hover {
+        border-color: rgba(124, 152, 133, 0.2);
+        box-shadow:
+          0 2px 4px rgba(124, 152, 133, 0.06),
+          0 8px 16px rgba(124, 152, 133, 0.08),
+          0 16px 32px rgba(124, 152, 133, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        transform: translateY(-1px);
+      }
+
+      .pricing-card:hover {
+        border-color: rgba(124, 152, 133, 0.25);
+        box-shadow:
+          0 2px 4px rgba(124, 152, 133, 0.08),
+          0 8px 20px rgba(124, 152, 133, 0.12),
+          0 0 0 1px rgba(124, 152, 133, 0.05) inset;
+        transform: translateY(-3px) scale(1.01);
+      }
+
+      /* Smooth transitions for all interactive elements */
+      * {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      @media (max-width: 768px) {
         #disclaimer-screen {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: calc(100vh - 60px);
-            padding: 0.5rem 0 60px;
-            position: relative;
-        }
-
-        /* Decorative elements */
-        #disclaimer-screen::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            right: 5%;
-            width: 300px;
-            height: 300px;
-            background:
-                radial-gradient(circle at center, rgba(124, 152, 133, 0.08) 0%, transparent 40%),
-                linear-gradient(45deg, rgba(124, 152, 133, 0.03) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(40px);
-            transform: rotate(45deg);
-            z-index: 0;
-        }
-
-        #disclaimer-screen::after {
-            content: '';
-            position: absolute;
-            bottom: 15%;
-            left: 8%;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle at center, rgba(106, 138, 115, 0.06) 0%, transparent 50%);
-            border-radius: 50%;
-            filter: blur(50px);
-            z-index: 0;
-        }
-        
-        .disclaimer-card {
-            background:
-                linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 255, 254, 0.98) 100%),
-                linear-gradient(135deg, #FFFFFF 0%, #FAFFFE 100%);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            box-shadow:
-                0 1px 2px rgba(124, 152, 133, 0.05),
-                0 4px 8px rgba(124, 152, 133, 0.05),
-                0 8px 24px rgba(124, 152, 133, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            padding: 1.75rem 2rem 1.25rem;
-            max-width: 95vw;
-            width: 100%;
-            margin: 0 auto;
-            border: 1px solid rgba(124, 152, 133, 0.12);
-            position: relative;
-            z-index: 1;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Removed hover effect for cleaner Scandinavian style */
-        
-        .disclaimer-ultra-compact {
-            width: 100%;
-        }
-
-        .features-pricing-row {
-            margin: 1rem 0;
-            width: 100%;
+          padding-bottom: 80px;
         }
 
         .feature-row {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 1.25rem;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            border: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem;
-            border-radius: 12px;
-        }
-
-        .feature-item:hover {
-            background: rgba(124, 152, 133, 0.05);
-            transform: translateX(4px);
-        }
-        
-        .feature-icon {
-            width: 20px;
-            height: 20px;
-            fill: #7C9885;
-            flex-shrink: 0;
-            opacity: 0.9;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-item:hover .feature-icon {
-            transform: scale(1.1);
-        }
-        
-        .feature-item strong {
-            display: block;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            color: #4A6B56;
-            margin-bottom: 0.1rem;
-            font-weight: 500;
-        }
-
-        .feature-item p {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #8B8B8B;
-            margin: 0;
-            font-weight: 300;
-        }
-        
-        /* Pricing Cards Section - Horizontal Layout */
-        .pricing-section {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1rem auto;
-            width: 100%;
-            max-width: 90vw;
-        }
-
-        .pricing-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
-            border-radius: 16px;
-            padding: 1rem 1.5rem;
-            border: 1px solid rgba(124, 152, 133, 0.15);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            flex: 1;
-            max-width: 650px;
-            display: flex;
-            flex-direction: column;
-            box-shadow:
-                0 1px 3px rgba(124, 152, 133, 0.05),
-                0 4px 12px rgba(124, 152, 133, 0.05);
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card.free.active {
-            border-color: rgba(124, 152, 133, 0.3);
-            background: linear-gradient(135deg, #FFFFFF 0%, #F8FBF9 100%);
-            box-shadow:
-                0 1px 3px rgba(124, 152, 133, 0.08),
-                0 4px 12px rgba(124, 152, 133, 0.1),
-                0 0 0 1px rgba(124, 152, 133, 0.1) inset;
-        }
-
-        .pricing-card.free.active::before {
-            background: linear-gradient(90deg, #7C9885 0%, #6A8A73 50%, #7C9885 100%);
-            height: 3px;
-        }
-
-        .pricing-card.premium {
-            background: #FAFAFA;
-        }
-
-        .pricing-card.premium.active {
-            border-color: #5A7A6A;
-            background: linear-gradient(135deg, #FAFAFA 0%, #F5F8F6 100%);
-        }
-
-        .pricing-card.premium.active::before {
-            background: linear-gradient(135deg, #5A7A6A 0%, #4A6B56 100%);
-        }
-
-        .pricing-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-card-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--nordic-charcoal);
-            margin: 0;
-        }
-
-        .pricing-card-badge {
-            background: linear-gradient(135deg, rgba(124, 152, 133, 0.1) 0%, rgba(124, 152, 133, 0.15) 100%);
-            color: #6A8A73;
-            padding: 0.2rem 0.6rem;
-            border: 1px solid rgba(124, 152, 133, 0.25);
-            border-radius: 10px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-left: auto;
-            box-shadow: 0 2px 4px rgba(124, 152, 133, 0.1);
-        }
-
-        .pricing-card.premium .pricing-card-badge {
-            background: rgba(90, 122, 106, 0.1);
-            color: #4A6B56;
-            border-color: rgba(90, 122, 106, 0.3);
-        }
-
-        .pricing-card-price {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--nordic-charcoal);
-            margin: 0 0 0.25rem 0;
-        }
-
-        .pricing-card-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #6B6B6B;
-            line-height: 1.3;
-            margin-bottom: 0.6rem;
-        }
-
-        .pricing-card-features {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .pricing-card-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            color: #6B6B6B;
-            line-height: 1.1;
-        }
-
-        .pricing-card-features svg {
-            width: 14px;
-            height: 14px;
-            fill: none;
-            stroke: #7C9885;
-            stroke-width: 2;
-            flex-shrink: 0;
-        }
-
-        .pricing-card.premium .pricing-card-features svg {
-            stroke: #5A7A6A;
-        }
-
-        .pricing-card-select {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            border-radius: 4px;
-            border: 1px solid rgba(124, 152, 133, 0.3);
-            margin-left: 0.5rem;
-            transition: all 0.2s ease;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .pricing-card.active .pricing-card-select {
-            border-color: #7C9885;
-            background: #7C9885;
-        }
-
-        .pricing-card.premium.active .pricing-card-select {
-            border-color: #5A7A6A;
-            background: #5A7A6A;
-        }
-
-        .pricing-card.active .pricing-card-select::after {
-            content: '';
-            width: 6px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 1.5px 1.5px 0;
-            transform: rotate(45deg);
-            margin-bottom: 2px;
-        }
-
-        .assessment-selector {
-            display: none;
-        }
-        
-        .selector-tabs {
-            display: flex;
-            gap: 1rem;
-            background: white;
-            border-radius: 12px;
-            padding: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-        
-        .selector-tab {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .selector-tab.active {
-            background: #6C9E83;
-            color: white;
-        }
-        
-        .selector-tab:hover:not(.active) {
-            background: rgba(108, 158, 131, 0.1);
-        }
-        
-        .tab-label {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .tab-desc, .tab-price {
-            font-size: 0.875rem;
-            opacity: 0.9;
-        }
-        
-        .selector-tab.active .tab-desc,
-        .selector-tab.active .tab-price {
-            color: white;
-        }
-        
-        .consent-row {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--nordic-gray);
-        }
-        
-        .consent-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #6B6B6B;
-            transition: opacity 0.2s ease;
-        }
-
-        .consent-checkbox:hover {
-            opacity: 0.7;
-        }
-        
-        .consent-checkbox input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #7C9885;
-            border-radius: 4px;
-            appearance: none;
-            -webkit-appearance: none;
-            border: 2px solid #7C9885;
-            background: white;
-            position: relative;
-            transition: all 0.2s ease;
-        }
-
-        .consent-checkbox input[type="checkbox"]:checked {
-            background: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            border-color: #6C9E83;
-        }
-
-        .consent-checkbox input[type="checkbox"]:checked::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .consent-checkbox input[type="checkbox"]:hover {
-            border-color: #6C9E83;
-            box-shadow: 0 0 0 2px rgba(108, 158, 131, 0.2);
-        }
-
-        .consent-checkbox input[type="checkbox"]:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(108, 158, 131, 0.3);
-        }
-        
-        #accept-disclaimer {
-            background: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            color: white;
-            border: 1px solid transparent;
-            padding: 0.8rem 2.2rem;
-            border-radius: 12px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-left: auto;
-            box-shadow:
-                0 2px 4px rgba(124, 152, 133, 0.2),
-                0 4px 12px rgba(124, 152, 133, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        /* Clean hover state */
-
-        #accept-disclaimer:not(:disabled):hover {
-            background: linear-gradient(135deg, #8CA595 0%, #7C9885 100%);
-            box-shadow:
-                0 4px 8px rgba(124, 152, 133, 0.25),
-                0 8px 20px rgba(124, 152, 133, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        #accept-disclaimer:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-        
-        /* Minimal Nordic animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
         }
 
         .disclaimer-card {
-            animation: fadeIn 0.4s ease-out;
+          padding: 2rem 1.5rem;
         }
 
-        .disclaimer-card:hover {
-            border-color: rgba(124, 152, 133, 0.2);
-            box-shadow:
-                0 2px 4px rgba(124, 152, 133, 0.06),
-                0 8px 16px rgba(124, 152, 133, 0.08),
-                0 16px 32px rgba(124, 152, 133, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
-            transform: translateY(-1px);
+        .pricing-section {
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
 
-        .pricing-card:hover {
-            border-color: rgba(124, 152, 133, 0.25);
-            box-shadow:
-                0 2px 4px rgba(124, 152, 133, 0.08),
-                0 8px 20px rgba(124, 152, 133, 0.12),
-                0 0 0 1px rgba(124, 152, 133, 0.05) inset;
-            transform: translateY(-3px) scale(1.01);
+        .selector-tabs {
+          flex-direction: column;
+          width: 100%;
         }
 
-        /* Smooth transitions for all interactive elements */
-        * {
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        .selector-tab {
+          width: 100%;
+          min-height: 44px;
         }
 
-        @media (max-width: 768px) {
-            #disclaimer-screen {
-                padding-bottom: 80px;
-            }
+        /* Mobile button improvements */
+        .btn {
+          min-height: 44px;
+          touch-action: manipulation;
+        }
+      }
 
-            .feature-row {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
-
-            .disclaimer-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .pricing-section {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .selector-tabs {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .selector-tab {
-                width: 100%;
-                min-height: 44px;
-            }
-
-            /* Mobile button improvements */
-            .btn {
-                min-height: 44px;
-                touch-action: manipulation;
-            }
+      @media (max-width: 480px) {
+        /* Small mobile optimizations */
+        .disclaimer-card {
+          padding: 1.5rem 1rem;
+          margin: 0 0.5rem;
         }
 
-        @media (max-width: 480px) {
-            /* Small mobile optimizations */
-            .disclaimer-card {
-                padding: 1.5rem 1rem;
-                margin: 0 0.5rem;
-            }
-
-            .feature-item {
-                padding: 0.75rem;
-                font-size: 0.85rem;
-            }
-
-            h1 {
-                font-size: clamp(1.5rem, 5vw, 2rem);
-            }
+        .feature-item {
+          padding: 0.75rem;
+          font-size: 0.85rem;
         }
+
+        h1 {
+          font-size: clamp(1.5rem, 5vw, 2rem);
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Load SVG Icons -->
-    <div style="display: none;" aria-hidden="true">
-        <object data="assets/icons/icons.svg" type="image/svg+xml"></object>
+    <div style="display: none" aria-hidden="true">
+      <object data="assets/icons/icons.svg" type="image/svg+xml"></object>
     </div>
-    
+
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <!-- Navigation -->
     <nav class="main-nav">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-brand-group">
-                    <a href="index.html" class="nav-brand">Neurlyn</a>
-                    <span class="nav-tagline">Intelligent Personality Assessment</span>
-                </div>
-                <div class="nav-links">
-                    <a href="index.html" class="nav-link active">Assessment</a>
-                    <a href="support.html" class="nav-link">Support</a>
-                    <a href="about.html" class="nav-link">About</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="nav-content">
+          <div class="nav-brand-group">
+            <a href="index.html" class="nav-brand">Neurlyn</a>
+            <span class="nav-tagline">Intelligent Personality Assessment</span>
+          </div>
+          <div class="nav-links">
+            <a href="index.html" class="nav-link active">Assessment</a>
+            <a href="support.html" class="nav-link">Support</a>
+            <a href="about.html" class="nav-link">About</a>
+          </div>
         </div>
+      </div>
     </nav>
-    
+
     <!-- Main Container -->
-    <div class="container" id="main-content" style="flex: 1;">
-        <!-- Disclaimer Screen -->
-        <section id="disclaimer-screen" class="screen active">
-            <div class="disclaimer-card">
-                <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; margin-bottom: 0.6rem; background: linear-gradient(135deg, #2C2C2C 0%, #4A6B56 50%, #6A8A73 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 500; letter-spacing: -0.02em; line-height: 1; position: relative;">Welcome to Neurlyn</h1>
-                <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #5A7A6A; margin-bottom: 1.75rem; line-height: 1.3; font-weight: 300;">Discover your unique personality profile through science-based assessments</p>
-                
-                <div class="disclaimer-ultra-compact">
-                    <!-- Features Row -->
-                        <div class="feature-row">
-                            <div class="feature-item">
-                                <svg class="feature-icon" viewBox="0 0 24 24">
-                                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" fill="currentColor"/>
-                                </svg>
-                                <div>
-                                    <strong>Adaptive Intelligence</strong>
-                                    <p>241+ validated questions</p>
-                                </div>
-                            </div>
+    <div class="container" id="main-content" style="flex: 1">
+      <!-- Disclaimer Screen -->
+      <section id="disclaimer-screen" class="screen active">
+        <div class="disclaimer-card">
+          <h1
+            style="
+              font-family: 'Space Grotesk', sans-serif;
+              font-size: 2.25rem;
+              margin-bottom: 0.6rem;
+              background: linear-gradient(135deg, #2c2c2c 0%, #4a6b56 50%, #6a8a73 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              font-weight: 500;
+              letter-spacing: -0.02em;
+              line-height: 1;
+              position: relative;
+            "
+          >
+            Welcome to Neurlyn
+          </h1>
+          <p
+            style="
+              font-family: 'Inter', sans-serif;
+              font-size: 1rem;
+              color: #5a7a6a;
+              margin-bottom: 1.75rem;
+              line-height: 1.3;
+              font-weight: 300;
+            "
+          >
+            Discover your unique personality profile through science-based assessments
+          </p>
 
-                            <div class="feature-item">
-                                <svg class="feature-icon" viewBox="0 0 24 24">
-                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
-                                </svg>
-                                <div>
-                                    <strong>100% Private</strong>
-                                    <p>No data stored</p>
-                                </div>
-                            </div>
-
-                            <div class="feature-item">
-                                <svg class="feature-icon" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
-                                </svg>
-                                <div>
-                                    <strong>Personalized Reports</strong>
-                                    <p>15-section deep analysis</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    <!-- Pricing Cards -->
-                    <div class="pricing-section">
-                            <div class="pricing-card free active" data-plan="free">
-                                <div class="pricing-card-header">
-                                    <h3 class="pricing-card-title">Free Assessment</h3>
-                                    <div class="pricing-card-select"></div>
-                                    <span class="pricing-card-badge">Popular</span>
-                                </div>
-                                <p class="pricing-card-price">£0</p>
-                                <p class="pricing-card-description">Smart 20-question adaptive assessment with core personality insights</p>
-                                <ul class="pricing-card-features">
-                                    <li>
-                                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                        Adaptive question selection
-                                    </li>
-                                    <li>
-                                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                        Big Five personality traits
-                                    </li>
-                                    <li>
-                                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                        Instant personalized report
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="pricing-card premium" data-plan="premium">
-                                <div class="pricing-card-header">
-                                    <h3 class="pricing-card-title">In-Depth Analysis</h3>
-                                    <div class="pricing-card-select"></div>
-                                    <span class="pricing-card-badge">Complete</span>
-                                </div>
-                                <p class="pricing-card-price">£1.99</p>
-                                <p class="pricing-card-description">Complete 75-question adaptive assessment with comprehensive analysis</p>
-                                <ul class="pricing-card-features">
-                                    <li>
-                                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                        Full neurodiversity screening
-                                    </li>
-                                    <li>
-                                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                        Hidden strengths discovery
-                                    </li>
-                                    <li>
-                                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                        15-section detailed report
-                                    </li>
-                                    <li>
-                                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                        Personalized strategies
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-
-                    <!-- Consent Section -->
-                    <div class="consent-row">
-                        <label class="consent-checkbox">
-                            <input type="checkbox" id="consent-check" />
-                            <span>I understand this is for insights, not medical diagnosis</span>
-                        </label>
-                        <label class="consent-checkbox">
-                            <input type="checkbox" id="age-check" />
-                            <span>I am 16+ years old or have parent/guardian permission</span>
-                        </label>
-                        <button id="accept-disclaimer" disabled>
-                            Start Free Assessment
-                        </button>
-                    </div>
+          <div class="disclaimer-ultra-compact">
+            <!-- Features Row -->
+            <div class="feature-row">
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div>
+                  <strong>Adaptive Intelligence</strong>
+                  <p>241+ validated questions</p>
                 </div>
+              </div>
+
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div>
+                  <strong>100% Private</strong>
+                  <p>No data stored</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div>
+                  <strong>Personalized Reports</strong>
+                  <p>15-section deep analysis</p>
+                </div>
+              </div>
             </div>
-        </section>
-        
-        <!-- Welcome Screen -->
-        <section id="welcome-screen" class="screen hidden">
-            <div class="card compact">
-                <h2 class="compact-title">Select Your Assessment</h2>
-                
-                <!-- Step Indicator -->
-                <div class="step-indicator">
-                    <div class="step active" id="step-1" onclick="window.goToStep(1)" style="cursor: pointer;">
-                        <div class="step-number">1</div>
-                        <div class="step-label">Type</div>
-                    </div>
-                    <div class="step" id="step-2" onclick="window.goToStep(2)" style="cursor: pointer;">
-                        <div class="step-number">2</div>
-                        <div class="step-label">Length</div>
-                    </div>
-                    <div class="step" id="step-3" onclick="window.goToStep(3)" style="cursor: pointer;">
-                        <div class="step-number">3</div>
-                        <div class="step-label">Style</div>
-                    </div>
-                </div>
 
-                <!-- Steps Container -->
-                <div class="steps-container">
-                    <!-- Assessment Track Selection -->
-                    <div class="track-selection compact assessment-step active" id="step-1-content">
-                        <h3 style="text-align: center; margin: 0 auto 1.5rem; padding: 0; font-size: 1.6rem;">Step 1: Select Assessment Type</h3>
-                        <div class="track-options compact">
-                        <button class="track-option compact" data-track="personality">
-                            <div class="track-icon compact">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                                </svg>
-                            </div>
-                            <h4 style="font-size: 1.4rem;">Personality</h4>
-                            <p style="font-size: 1.1rem;">Big Five traits</p>
-                        </button>
-                        <button class="track-option compact" data-track="neurodiversity">
-                            <div class="track-icon compact">
-                                <svg width="32" height="32"><use href="assets/icons/icons.svg#icon-brain"></use></svg>
-                            </div>
-                            <h4 style="font-size: 1.4rem;">Neurodiversity</h4>
-                            <p style="font-size: 1.1rem;">ADHD, Autism, Dyslexia</p>
-                        </button>
-                        <button class="track-option compact" data-track="comprehensive">
-                            <div class="track-icon compact">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                </svg>
-                            </div>
-                            <h4 style="font-size: 1.4rem;">Comprehensive</h4>
-                            <p style="font-size: 1.1rem;">Complete profile</p>
-                        </button>
-                        </div>
-                    </div>
-                
-                    <!-- Assessment Modes -->
-                    <div class="mode-selection compact assessment-step" id="step-2-content">
-                        <h3 style="text-align: center; margin: 0 auto 1.5rem; padding: 0; font-size: 1.6rem;">Step 2: Select Assessment Length</h3>
-                    <div class="mode-grid compact">
-                        <button class="mode-option compact" data-mode="quick">
-                            <div class="mode-icon compact">
-                                <svg width="24" height="24"><use href="assets/icons/icons.svg#icon-lightning"></use></svg>
-                            </div>
-                            <h4 style="font-size: 1.5rem; margin: 0.5rem 0;">Quick</h4>
-                            <p style="font-size: 1.1rem;">20 questions</p>
-                        </button>
-                        <button class="mode-option compact" data-mode="standard">
-                            <div class="mode-icon compact">
-                                <svg width="24" height="24"><use href="assets/icons/icons.svg#icon-chart"></use></svg>
-                            </div>
-                            <h4 style="font-size: 1.5rem; margin: 0.5rem 0;">Standard</h4>
-                            <p style="font-size: 1.1rem;">45 questions</p>
-                        </button>
-                        <button class="mode-option compact" data-mode="deep">
-                            <div class="mode-icon compact">
-                                <svg width="24" height="24"><use href="assets/icons/icons.svg#icon-microscope"></use></svg>
-                            </div>
-                            <h4 style="font-size: 1.5rem; margin: 0.5rem 0;">Deep</h4>
-                            <p style="font-size: 1.1rem;">75 questions</p>
-                        </button>
-                        </div>
-                    </div>
+            <!-- Pricing Cards -->
+            <div class="pricing-section">
+              <div class="pricing-card free active" data-plan="free">
+                <div class="pricing-card-header">
+                  <h3 class="pricing-card-title">Free Assessment</h3>
+                  <div class="pricing-card-select"></div>
+                  <span class="pricing-card-badge">Popular</span>
+                </div>
+                <p class="pricing-card-price">£0</p>
+                <p class="pricing-card-description">
+                  Smart 20-question adaptive assessment with core personality insights
+                </p>
+                <ul class="pricing-card-features">
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Adaptive question selection
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Big Five personality traits
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Instant personalized report
+                  </li>
+                </ul>
+              </div>
 
-                    <!-- Assessment Style (Step 3) -->
-                    <div id="step-3-content" class="assessment-step">
-                        <div id="task-type-selector-container"></div>
-                    </div>
+              <div class="pricing-card premium" data-plan="premium">
+                <div class="pricing-card-header">
+                  <h3 class="pricing-card-title">In-Depth Analysis</h3>
+                  <div class="pricing-card-select"></div>
+                  <span class="pricing-card-badge">Complete</span>
                 </div>
-                
-                <div id="start-button-container" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: none;">
-                    <button id="start-assessment" class="btn btn-primary" style="font-size: 1.3rem; padding: 1rem 3rem;" disabled>
-                        Begin Assessment
-                    </button>
-                </div>
+                <p class="pricing-card-price">£1.99</p>
+                <p class="pricing-card-description">
+                  Complete 75-question adaptive assessment with comprehensive analysis
+                </p>
+                <ul class="pricing-card-features">
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Full neurodiversity screening
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Hidden strengths discovery
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    15-section detailed report
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Personalized strategies
+                  </li>
+                </ul>
+              </div>
             </div>
-        </section>
-        
-        <!-- Question Screen -->
-        <section id="question-screen" class="screen hidden">
-            <div class="question-screen-layout">
-                <!-- Main Question Area -->
-                <div class="question-main">
-                    <!-- Question Card -->
-                    <div class="card question-card compact">
-                <div class="question-header compact">
-                    <span id="question-category" class="category-badge">Personality</span>
-                </div>
-                
-                <div id="question-content" class="question-content">
-                    <!-- Dynamic question content -->
-                </div>
-                
-                <!-- Navigation -->
-                <div class="question-nav compact">
-                    <button id="prev-button" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-arrow-left"></use></svg>
-                        Prev
-                    </button>
-                    <button id="skip-button" class="btn btn-ghost compact">Skip</button>
-                    <button id="next-button" class="btn btn-primary compact" disabled>
-                        Next
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-arrow-right"></use></svg>
-                    </button>
-                </div>
-            </div>
-                </div>
 
-                <!-- Vertical Progress Bar on Right -->
-                <div class="progress-sidebar">
-                    <div class="progress-info-vertical">
-                        <span id="progress-percent">0%</span>
-                        <span class="progress-text">Question</span>
-                        <span><span id="question-num">1</span>/<span id="total-questions">50</span></span>
-                    </div>
-                    <div class="progress-bar-vertical">
-                        <div id="progress-fill-vertical" class="progress-fill-vertical"></div>
-                    </div>
-                </div>
+            <!-- Consent Section -->
+            <div class="consent-row">
+              <label class="consent-checkbox">
+                <input type="checkbox" id="consent-check" />
+                <span>I understand this is for insights, not medical diagnosis</span>
+              </label>
+              <label class="consent-checkbox">
+                <input type="checkbox" id="age-check" />
+                <span>I am 16+ years old or have parent/guardian permission</span>
+              </label>
+              <button id="accept-disclaimer" disabled>Start Free Assessment</button>
             </div>
-        </section>
-        
-        <!-- Adaptive Assessment Container -->
-        <section id="adaptive-assessment-screen" class="screen hidden">
-            <div id="assessment-container">
-                <!-- Adaptive assessment will be rendered here -->
-            </div>
-        </section>
-
-        <!-- Results Screen -->
-        <section id="results-screen" class="screen hidden">
-            <div class="card compact">
-                <h2 class="compact-title">Your Personality Profile</h2>
-                <div id="results-content" class="results-content compact">
-                    <!-- Dynamic results content -->
-                </div>
-                
-                <div class="results-actions compact">
-                    <button id="download-results" class="btn btn-primary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-download"></use></svg>
-                        Download
-                    </button>
-                    <button id="share-results" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-share"></use></svg>
-                        Share
-                    </button>
-                    <button id="retake-assessment" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-refresh"></use></svg>
-                        Retake
-                    </button>
-                    <button id="home-button" class="btn btn-secondary compact">
-                        <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-arrow-left"></use></svg>
-                        Home
-                    </button>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Loading Screen -->
-        <section id="loading-screen" class="screen hidden">
-            <div class="loading-container">
-                <div class="loading-spinner"></div>
-                <p>Loading...</p>
-            </div>
-        </section>
-        
-        <!-- Error Screen -->
-        <section id="error-screen" class="screen hidden">
-            <div class="card">
-                <h2>Something went wrong</h2>
-                <p id="error-message">An unexpected error occurred.</p>
-                <button onclick="location.reload()" class="btn btn-primary">
-                    Reload Page
-                </button>
-            </div>
-        </section>
-    </div>
-    
-    <!-- Footer -->
-    <footer class="footer compact" style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(90deg, rgba(248, 250, 249, 0.95) 0%, rgba(243, 247, 245, 0.95) 100%); backdrop-filter: blur(10px); border-top: 1px solid rgba(124, 152, 133, 0.15); padding: 0.75rem 0; z-index: 100; box-shadow: 0 -2px 10px rgba(124, 152, 133, 0.05);">
-        <div class="footer-content">
-            <span>&copy; 2024 Neurlyn. All rights reserved.</span>
-            <span class="footer-separator">|</span>
-            <a href="#privacy">Privacy</a>
-            <span class="footer-separator">|</span>
-            <a href="#terms">Terms</a>
-            <span class="footer-separator">|</span>
-            <a href="#contact">Contact</a>
+          </div>
         </div>
+      </section>
+
+      <!-- Welcome Screen -->
+      <section id="welcome-screen" class="screen hidden">
+        <div class="card compact">
+          <h2 class="compact-title">Select Your Assessment</h2>
+
+          <!-- Step Indicator -->
+          <div class="step-indicator">
+            <div
+              class="step active"
+              id="step-1"
+              onclick="window.goToStep(1)"
+              style="cursor: pointer"
+            >
+              <div class="step-number">1</div>
+              <div class="step-label">Type</div>
+            </div>
+            <div class="step" id="step-2" onclick="window.goToStep(2)" style="cursor: pointer">
+              <div class="step-number">2</div>
+              <div class="step-label">Length</div>
+            </div>
+            <div class="step" id="step-3" onclick="window.goToStep(3)" style="cursor: pointer">
+              <div class="step-number">3</div>
+              <div class="step-label">Style</div>
+            </div>
+          </div>
+
+          <!-- Steps Container -->
+          <div class="steps-container">
+            <!-- Assessment Track Selection -->
+            <div class="track-selection compact assessment-step active" id="step-1-content">
+              <h3 style="text-align: center; margin: 0 auto 1.5rem; padding: 0; font-size: 1.6rem">
+                Step 1: Select Assessment Type
+              </h3>
+              <div class="track-options compact">
+                <button class="track-option compact" data-track="personality">
+                  <div class="track-icon compact">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                      <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 style="font-size: 1.4rem">Personality</h4>
+                  <p style="font-size: 1.1rem">Big Five traits</p>
+                </button>
+                <button class="track-option compact" data-track="neurodiversity">
+                  <div class="track-icon compact">
+                    <svg width="32" height="32">
+                      <use href="assets/icons/icons.svg#icon-brain"></use>
+                    </svg>
+                  </div>
+                  <h4 style="font-size: 1.4rem">Neurodiversity</h4>
+                  <p style="font-size: 1.1rem">ADHD, Autism, Dyslexia</p>
+                </button>
+                <button class="track-option compact" data-track="comprehensive">
+                  <div class="track-icon compact">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 style="font-size: 1.4rem">Comprehensive</h4>
+                  <p style="font-size: 1.1rem">Complete profile</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Assessment Modes -->
+            <div class="mode-selection compact assessment-step" id="step-2-content">
+              <h3 style="text-align: center; margin: 0 auto 1.5rem; padding: 0; font-size: 1.6rem">
+                Step 2: Select Assessment Length
+              </h3>
+              <div class="mode-grid compact">
+                <button class="mode-option compact" data-mode="quick">
+                  <div class="mode-icon compact">
+                    <svg width="24" height="24">
+                      <use href="assets/icons/icons.svg#icon-lightning"></use>
+                    </svg>
+                  </div>
+                  <h4 style="font-size: 1.5rem; margin: 0.5rem 0">Quick</h4>
+                  <p style="font-size: 1.1rem">20 questions</p>
+                </button>
+                <button class="mode-option compact" data-mode="standard">
+                  <div class="mode-icon compact">
+                    <svg width="24" height="24">
+                      <use href="assets/icons/icons.svg#icon-chart"></use>
+                    </svg>
+                  </div>
+                  <h4 style="font-size: 1.5rem; margin: 0.5rem 0">Standard</h4>
+                  <p style="font-size: 1.1rem">45 questions</p>
+                </button>
+                <button class="mode-option compact" data-mode="deep">
+                  <div class="mode-icon compact">
+                    <svg width="24" height="24">
+                      <use href="assets/icons/icons.svg#icon-microscope"></use>
+                    </svg>
+                  </div>
+                  <h4 style="font-size: 1.5rem; margin: 0.5rem 0">Deep</h4>
+                  <p style="font-size: 1.1rem">75 questions</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Assessment Style (Step 3) -->
+            <div id="step-3-content" class="assessment-step">
+              <div id="task-type-selector-container"></div>
+            </div>
+          </div>
+
+          <div
+            id="start-button-container"
+            style="
+              position: absolute;
+              bottom: 2rem;
+              left: 50%;
+              transform: translateX(-50%);
+              display: none;
+            "
+          >
+            <button
+              id="start-assessment"
+              class="btn btn-primary"
+              style="font-size: 1.3rem; padding: 1rem 3rem"
+              disabled
+            >
+              Begin Assessment
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Question Screen -->
+      <section id="question-screen" class="screen hidden">
+        <div class="question-screen-layout">
+          <!-- Main Question Area -->
+          <div class="question-main">
+            <!-- Question Card -->
+            <div class="card question-card compact">
+              <div class="question-header compact">
+                <span id="question-category" class="category-badge">Personality</span>
+              </div>
+
+              <div id="question-content" class="question-content">
+                <!-- Dynamic question content -->
+              </div>
+
+              <!-- Navigation -->
+              <div class="question-nav compact">
+                <button id="prev-button" class="btn btn-secondary compact">
+                  <svg width="14" height="14">
+                    <use href="assets/icons/icons.svg#icon-arrow-left"></use>
+                  </svg>
+                  Prev
+                </button>
+                <button id="skip-button" class="btn btn-ghost compact">Skip</button>
+                <button id="next-button" class="btn btn-primary compact" disabled>
+                  Next
+                  <svg width="14" height="14">
+                    <use href="assets/icons/icons.svg#icon-arrow-right"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vertical Progress Bar on Right -->
+          <div class="progress-sidebar">
+            <div class="progress-info-vertical">
+              <span id="progress-percent">0%</span>
+              <span class="progress-text">Question</span>
+              <span><span id="question-num">1</span>/<span id="total-questions">50</span></span>
+            </div>
+            <div class="progress-bar-vertical">
+              <div id="progress-fill-vertical" class="progress-fill-vertical"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Adaptive Assessment Container -->
+      <section id="adaptive-assessment-screen" class="screen hidden">
+        <div id="assessment-container">
+          <!-- Adaptive assessment will be rendered here -->
+        </div>
+      </section>
+
+      <!-- Results Screen -->
+      <section id="results-screen" class="screen hidden">
+        <div class="card compact">
+          <h2 class="compact-title">Your Personality Profile</h2>
+          <div id="results-content" class="results-content compact">
+            <!-- Dynamic results content -->
+          </div>
+
+          <div class="results-actions compact">
+            <button id="download-results" class="btn btn-primary compact">
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-download"></use>
+              </svg>
+              Download
+            </button>
+            <button id="share-results" class="btn btn-secondary compact">
+              <svg width="14" height="14"><use href="assets/icons/icons.svg#icon-share"></use></svg>
+              Share
+            </button>
+            <button id="retake-assessment" class="btn btn-secondary compact">
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-refresh"></use>
+              </svg>
+              Retake
+            </button>
+            <button id="home-button" class="btn btn-secondary compact">
+              <svg width="14" height="14">
+                <use href="assets/icons/icons.svg#icon-arrow-left"></use>
+              </svg>
+              Home
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading Screen -->
+      <section id="loading-screen" class="screen hidden">
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <p>Loading...</p>
+        </div>
+      </section>
+
+      <!-- Error Screen -->
+      <section id="error-screen" class="screen hidden">
+        <div class="card">
+          <h2>Something went wrong</h2>
+          <p id="error-message">An unexpected error occurred.</p>
+          <button onclick="location.reload()" class="btn btn-primary">Reload Page</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="footer compact"
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(248, 250, 249, 0.95) 0%,
+          rgba(243, 247, 245, 0.95) 100%
+        );
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(124, 152, 133, 0.15);
+        padding: 0.75rem 0;
+        z-index: 100;
+        box-shadow: 0 -2px 10px rgba(124, 152, 133, 0.05);
+      "
+    >
+      <div class="footer-content">
+        <span>&copy; 2024 Neurlyn. All rights reserved.</span>
+        <span class="footer-separator">|</span>
+        <a href="#privacy">Privacy</a>
+        <span class="footer-separator">|</span>
+        <a href="#terms">Terms</a>
+        <span class="footer-separator">|</span>
+        <a href="#contact">Contact</a>
+      </div>
     </footer>
-    
+
     <!-- Neurlyn Simple JavaScript -->
     <script>
-    // Service worker disabled - uncomment when sw.js is available
-    // if ('serviceWorker' in navigator) {
-    //     navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    //         for(let registration of registrations) {
-    //             registration.unregister();
-    //             console.log('Service worker unregistered');
-    //         }
-    //     });
-    // }
-    
-    // Clear caches to ensure fresh content
-    if ('caches' in window) {
-        caches.keys().then(function(names) {
-            for (let name of names) {
-                caches.delete(name);
-                console.log('Cache cleared:', name);
-            }
+      // Service worker disabled - uncomment when sw.js is available
+      // if ('serviceWorker' in navigator) {
+      //     navigator.serviceWorker.getRegistrations().then(function(registrations) {
+      //         for(let registration of registrations) {
+      //             registration.unregister();
+      //             console.log('Service worker unregistered');
+      //         }
+      //     });
+      // }
+
+      // Clear caches to ensure fresh content
+      if ('caches' in window) {
+        caches.keys().then(function (names) {
+          for (let name of names) {
+            caches.delete(name);
+            console.log('Cache cleared:', name);
+          }
         });
-    }
-    
-    // Simple initialization script without dark mode
-    document.addEventListener('DOMContentLoaded', function() {
+      }
+
+      // Simple initialization script without dark mode
+      document.addEventListener('DOMContentLoaded', function () {
         // Initialize consent checkboxes
         const consentCheck = document.getElementById('consent-check');
         const ageCheck = document.getElementById('age-check');
         const acceptBtn = document.getElementById('accept-disclaimer');
-        
+
         // Setup pricing card selection
         const pricingCards = document.querySelectorAll('.pricing-card');
         const pricingTabs = document.querySelectorAll('.selector-tab');
         const selectedDescription = document.getElementById('selected-description');
-        
+
         // Handle pricing card clicks
         if (pricingCards.length > 0) {
-            pricingCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    // Remove active from all cards
-                    pricingCards.forEach(c => c.classList.remove('active'));
-                    // Add active to clicked card
-                    card.classList.add('active');
+          pricingCards.forEach(card => {
+            card.addEventListener('click', () => {
+              // Remove active from all cards
+              pricingCards.forEach(c => c.classList.remove('active'));
+              // Add active to clicked card
+              card.classList.add('active');
 
-                    // Update button text based on selection
-                    const plan = card.dataset.plan;
-                    if (plan === 'free') {
-                        if (acceptBtn) {
-                            acceptBtn.textContent = 'Start Free Assessment';
-                        }
-                    } else if (plan === 'premium') {
-                        if (acceptBtn) {
-                            acceptBtn.textContent = 'Start In-Depth Analysis - £1.99';
-                        }
-                    }
+              // Update button text based on selection
+              const plan = card.dataset.plan;
+              if (plan === 'free') {
+                if (acceptBtn) {
+                  acceptBtn.textContent = 'Start Free Assessment';
+                }
+              } else if (plan === 'premium') {
+                if (acceptBtn) {
+                  acceptBtn.textContent = 'Start In-Depth Analysis - £1.99';
+                }
+              }
 
-                    // Also update legacy tabs if they exist
-                    pricingTabs.forEach(tab => {
-                        if (tab.dataset.plan === plan) {
-                            tab.classList.add('active');
-                        } else {
-                            tab.classList.remove('active');
-                        }
-                    });
-                });
+              // Also update legacy tabs if they exist
+              pricingTabs.forEach(tab => {
+                if (tab.dataset.plan === plan) {
+                  tab.classList.add('active');
+                } else {
+                  tab.classList.remove('active');
+                }
+              });
             });
+          });
         }
 
         // Legacy tab support
         if (pricingTabs.length > 0) {
-            pricingTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active from all tabs
-                    pricingTabs.forEach(t => t.classList.remove('active'));
-                    // Add active to clicked tab
-                    tab.classList.add('active');
+          pricingTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+              // Remove active from all tabs
+              pricingTabs.forEach(t => t.classList.remove('active'));
+              // Add active to clicked tab
+              tab.classList.add('active');
 
-                    // Update description and button text based on selection
-                    const plan = tab.dataset.plan;
-                    if (plan === 'free') {
-                        if (selectedDescription) {
-                            selectedDescription.textContent = 'Get your basic personality profile with key traits - completely free';
-                        }
-                        if (acceptBtn) {
-                            acceptBtn.textContent = 'Start Free Assessment';
-                        }
-                    } else if (plan === 'premium') {
-                        if (selectedDescription) {
-                            selectedDescription.textContent = 'Complete neurodiversity screening with detailed analysis and downloadable report';
-                        }
-                        if (acceptBtn) {
-                            acceptBtn.textContent = 'Start In-Depth Analysis - £1.99';
-                        }
-                    }
-                });
+              // Update description and button text based on selection
+              const plan = tab.dataset.plan;
+              if (plan === 'free') {
+                if (selectedDescription) {
+                  selectedDescription.textContent =
+                    'Get your basic personality profile with key traits - completely free';
+                }
+                if (acceptBtn) {
+                  acceptBtn.textContent = 'Start Free Assessment';
+                }
+              } else if (plan === 'premium') {
+                if (selectedDescription) {
+                  selectedDescription.textContent =
+                    'Complete neurodiversity screening with detailed analysis and downloadable report';
+                }
+                if (acceptBtn) {
+                  acceptBtn.textContent = 'Start In-Depth Analysis - £1.99';
+                }
+              }
             });
+          });
         }
-        
+
         // Handle consent checkboxes
         if (consentCheck && ageCheck && acceptBtn) {
-            const checkConsent = () => {
-                acceptBtn.disabled = !(consentCheck.checked && ageCheck.checked);
-            };
-            
-            consentCheck.addEventListener('change', checkConsent);
-            ageCheck.addEventListener('change', checkConsent);
-            
-            acceptBtn.addEventListener('click', () => {
-                // For now, just show the welcome screen
-                const disclaimerScreen = document.getElementById('disclaimer-screen');
-                const welcomeScreen = document.getElementById('welcome-screen');
-                
-                if (disclaimerScreen) {
-                    disclaimerScreen.classList.add('hidden');
-                    disclaimerScreen.classList.remove('active');
-                }
-                
-                if (welcomeScreen) {
-                    welcomeScreen.classList.remove('hidden');
-                    welcomeScreen.classList.add('active');
-                }
-            });
+          const checkConsent = () => {
+            acceptBtn.disabled = !(consentCheck.checked && ageCheck.checked);
+          };
+
+          consentCheck.addEventListener('change', checkConsent);
+          ageCheck.addEventListener('change', checkConsent);
+
+          acceptBtn.addEventListener('click', () => {
+            // For now, just show the welcome screen
+            const disclaimerScreen = document.getElementById('disclaimer-screen');
+            const welcomeScreen = document.getElementById('welcome-screen');
+
+            if (disclaimerScreen) {
+              disclaimerScreen.classList.add('hidden');
+              disclaimerScreen.classList.remove('active');
+            }
+
+            if (welcomeScreen) {
+              welcomeScreen.classList.remove('hidden');
+              welcomeScreen.classList.add('active');
+            }
+          });
         }
-    });
+      });
     </script>
 
     <!-- Load Neurlyn Integrated App -->
@@ -1119,36 +1315,36 @@
     <!-- Load Report Components -->
     <script type="module" src="js/comprehensive-report-generator.js"></script>
     <script type="module" src="js/report-display-component.js"></script>
-    <link rel="stylesheet" href="styles/neurlyn-report.css">
+    <link rel="stylesheet" href="styles/neurlyn-report.css" />
 
     <!-- Override service worker initialization to prevent errors -->
     <script>
-    // Wait for app to be initialized then override initServiceWorker
-    setTimeout(() => {
+      // Wait for app to be initialized then override initServiceWorker
+      setTimeout(() => {
         if (window.neurlynApp && window.neurlynApp.initServiceWorker) {
-            window.neurlynApp.initServiceWorker = function() {
-                console.log('Service Worker disabled - sw.js file not available');
-            };
+          window.neurlynApp.initServiceWorker = function () {
+            console.log('Service Worker disabled - sw.js file not available');
+          };
         }
 
         // Function to show assessment style selection
         function showAssessmentStyleSelection(assessmentType) {
-            console.log('=== Showing Style Selection ===');
-            console.log('Assessment type:', assessmentType);
+          console.log('=== Showing Style Selection ===');
+          console.log('Assessment type:', assessmentType);
 
-            // Hide all screens
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.add('hidden');
-            });
+          // Hide all screens
+          document.querySelectorAll('.screen').forEach(screen => {
+            screen.classList.add('hidden');
+          });
 
-            // Create or show style selection screen
-            let styleScreen = document.getElementById('style-selection-screen');
-            if (!styleScreen) {
-                // Create the style selection screen dynamically
-                styleScreen = document.createElement('div');
-                styleScreen.id = 'style-selection-screen';
-                styleScreen.className = 'screen';
-                styleScreen.innerHTML = `
+          // Create or show style selection screen
+          let styleScreen = document.getElementById('style-selection-screen');
+          if (!styleScreen) {
+            // Create the style selection screen dynamically
+            styleScreen = document.createElement('div');
+            styleScreen.id = 'style-selection-screen';
+            styleScreen.className = 'screen';
+            styleScreen.innerHTML = `
                     <div class="assessment-container">
                         <div class="progress-header">
                             <div class="step-indicator">
@@ -1301,22 +1497,22 @@
                         </style>
                     </div>
                 `;
-                document.querySelector('.app-container').appendChild(styleScreen);
+            document.querySelector('.app-container').appendChild(styleScreen);
 
-                // Add event listeners to style buttons
-                styleScreen.querySelectorAll('.select-style-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const selectedStyle = this.dataset.style;
-                        console.log('Style selected:', selectedStyle);
-                        window.selectedAssessmentStyle = selectedStyle;
+            // Add event listeners to style buttons
+            styleScreen.querySelectorAll('.select-style-btn').forEach(btn => {
+              btn.addEventListener('click', function () {
+                const selectedStyle = this.dataset.style;
+                console.log('Style selected:', selectedStyle);
+                window.selectedAssessmentStyle = selectedStyle;
 
-                        // Now start the assessment with both type and style
-                        startAdaptiveAssessment(window.selectedAssessmentType, selectedStyle);
-                    });
-                });
-            }
+                // Now start the assessment with both type and style
+                startAdaptiveAssessment(window.selectedAssessmentType, selectedStyle);
+              });
+            });
+          }
 
-            styleScreen.classList.remove('hidden');
+          styleScreen.classList.remove('hidden');
         }
 
         // Make function globally available
@@ -1324,88 +1520,88 @@
 
         // Function to start adaptive assessment
         async function startAdaptiveAssessment(assessmentType, assessmentStyle = 'standard') {
-            console.log('=== Starting Adaptive Assessment ===');
-            console.log('Assessment type:', assessmentType);
-            console.log('Assessment style:', assessmentStyle);
-            console.log('Window.assessment exists?', !!window.assessment);
+          console.log('=== Starting Adaptive Assessment ===');
+          console.log('Assessment type:', assessmentType);
+          console.log('Assessment style:', assessmentStyle);
+          console.log('Window.assessment exists?', !!window.assessment);
 
-            // Check if adaptive assessment is available
-            if (!window.assessment) {
-                console.error('Assessment module not loaded - attempting to initialize');
-                alert('Assessment system is still loading. Please try again in a moment.');
-                return;
-            }
+          // Check if adaptive assessment is available
+          if (!window.assessment) {
+            console.error('Assessment module not loaded - attempting to initialize');
+            alert('Assessment system is still loading. Please try again in a moment.');
+            return;
+          }
 
-            // Map assessment type to tier and concerns
-            const tierMap = {
-                'basic': 'standard',
-                'personality': 'standard',
-                'focus': 'standard',
-                'social': 'standard',
-                'emotional': 'standard',
-                'comprehensive': 'comprehensive',
-                'standard': 'standard',
-                'deep': 'comprehensive'
-            };
+          // Map assessment type to tier and concerns
+          const tierMap = {
+            basic: 'standard',
+            personality: 'standard',
+            focus: 'standard',
+            social: 'standard',
+            emotional: 'standard',
+            comprehensive: 'comprehensive',
+            standard: 'standard',
+            deep: 'comprehensive'
+          };
 
-            const concernsMap = {
-                'basic': [],
-                'personality': [],
-                'focus': ['adhd', 'attention'],
-                'social': ['autism', 'social'],
-                'emotional': ['trauma', 'emotional'],
-                'comprehensive': ['adhd', 'autism', 'trauma', 'giftedness']
-            };
+          const concernsMap = {
+            basic: [],
+            personality: [],
+            focus: ['adhd', 'attention'],
+            social: ['autism', 'social'],
+            emotional: ['trauma', 'emotional'],
+            comprehensive: ['adhd', 'autism', 'trauma', 'giftedness']
+          };
 
-            const tier = tierMap[assessmentType] || 'standard';
-            const concerns = concernsMap[assessmentType] || [];
+          const tier = tierMap[assessmentType] || 'standard';
+          const concerns = concernsMap[assessmentType] || [];
 
-            console.log('Tier:', tier, 'Concerns:', concerns);
+          console.log('Tier:', tier, 'Concerns:', concerns);
 
-            // Hide all screens
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.add('hidden');
-            });
+          // Hide all screens
+          document.querySelectorAll('.screen').forEach(screen => {
+            screen.classList.add('hidden');
+          });
 
-            // Show adaptive assessment screen
-            const adaptiveScreen = document.getElementById('adaptive-assessment-screen');
-            if (adaptiveScreen) {
-                adaptiveScreen.classList.remove('hidden');
-                console.log('Adaptive screen shown');
+          // Show adaptive assessment screen
+          const adaptiveScreen = document.getElementById('adaptive-assessment-screen');
+          if (adaptiveScreen) {
+            adaptiveScreen.classList.remove('hidden');
+            console.log('Adaptive screen shown');
 
-                try {
-                    // Add a small delay for DOM update
-                    await new Promise(resolve => setTimeout(resolve, 100));
+            try {
+              // Add a small delay for DOM update
+              await new Promise(resolve => setTimeout(resolve, 100));
 
-                    // Start the assessment
-                    const result = await window.assessment.startAssessment({
-                        tier: tier,
-                        concerns: concerns
-                    });
+              // Start the assessment
+              const result = await window.assessment.startAssessment({
+                tier: tier,
+                concerns: concerns
+              });
 
-                    if (result) {
-                        console.log('Assessment started successfully');
-                    } else {
-                        console.error('Failed to start assessment');
-                    }
-                } catch (error) {
-                    console.error('Error starting assessment:', error);
-                    // Show error in UI
-                    const container = document.getElementById('assessment-container');
-                    if (container) {
-                        container.innerHTML = `
+              if (result) {
+                console.log('Assessment started successfully');
+              } else {
+                console.error('Failed to start assessment');
+              }
+            } catch (error) {
+              console.error('Error starting assessment:', error);
+              // Show error in UI
+              const container = document.getElementById('assessment-container');
+              if (container) {
+                container.innerHTML = `
                             <div class="error-message" style="padding: 20px; text-align: center;">
                                 <h3>Unable to start assessment</h3>
                                 <p>${error.message || 'Please check your connection and try again.'}</p>
                                 <button onclick="location.reload()" class="btn-primary">Refresh Page</button>
                             </div>
                         `;
-                    }
-                }
-            } else {
-                console.error('Adaptive assessment screen not found');
-                alert('Assessment screen not found. Please refresh the page.');
+              }
             }
+          } else {
+            console.error('Adaptive assessment screen not found');
+            alert('Assessment screen not found. Please refresh the page.');
+          }
         }
 
         // Make function globally available
@@ -1414,108 +1610,109 @@
         // Override the start assessment button to use adaptive assessment
         const startBtn = document.getElementById('start-assessment');
         if (startBtn) {
-            startBtn.addEventListener('click', async function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+          startBtn.addEventListener('click', async function (e) {
+            e.preventDefault();
+            e.stopPropagation();
 
-                console.log('Start Assessment button clicked');
+            console.log('Start Assessment button clicked');
 
-                // Get selected mode and tier
-                const selectedMode = window.neurlynApp?.state?.currentMode || 'standard';
-                const selectedTrack = window.neurlynApp?.state?.assessmentTrack || 'comprehensive';
+            // Get selected mode and tier
+            const selectedMode = window.neurlynApp?.state?.currentMode || 'standard';
+            const selectedTrack = window.neurlynApp?.state?.assessmentTrack || 'comprehensive';
 
-                console.log('Selected mode:', selectedMode, 'Selected track:', selectedTrack);
+            console.log('Selected mode:', selectedMode, 'Selected track:', selectedTrack);
 
-                // Map mode to tier for adaptive system
-                const tierMap = {
-                    'quick': 'quick',
-                    'standard': 'standard',
-                    'deep': 'deep'
+            // Map mode to tier for adaptive system
+            const tierMap = {
+              quick: 'quick',
+              standard: 'standard',
+              deep: 'deep'
+            };
+
+            const tier = tierMap[selectedMode] || 'standard';
+
+            // Hide all screens first
+            document.querySelectorAll('.screen').forEach(screen => {
+              screen.classList.add('hidden');
+            });
+
+            // Show adaptive assessment screen first
+            const adaptiveScreen = document.getElementById('adaptive-assessment-screen');
+            const questionScreen = document.getElementById('question-screen');
+
+            console.log('=== ASSESSMENT TYPE CLICKED ===');
+            console.log('Selected mode:', selectedMode);
+            console.log('Selected track:', selectedTrack);
+            console.log('Tier:', tier);
+            console.log('Assessment system available:', !!window.assessment);
+            console.log('Window.assessment object:', window.assessment);
+            console.log('Adaptive screen found:', !!adaptiveScreen);
+            console.log('Question screen found:', !!questionScreen);
+
+            // Try adaptive assessment first
+            if (window.assessment && adaptiveScreen) {
+              console.log('Starting adaptive assessment flow...');
+              adaptiveScreen.classList.remove('hidden');
+
+              try {
+                // Map track to concerns
+                const concernsMap = {
+                  personality: [],
+                  neurodiversity: ['attention', 'social', 'sensory'],
+                  comprehensive: ['attention', 'social', 'sensory', 'emotional']
                 };
 
-                const tier = tierMap[selectedMode] || 'standard';
+                const concerns = concernsMap[selectedTrack] || [];
 
-                // Hide all screens first
-                document.querySelectorAll('.screen').forEach(screen => {
-                    screen.classList.add('hidden');
+                console.log('Starting adaptive assessment with tier:', tier, 'concerns:', concerns);
+
+                // Add a small delay to ensure DOM is ready
+                await new Promise(resolve => setTimeout(resolve, 100));
+
+                // Start the assessment
+                const result = await window.assessment.startAssessment({
+                  tier: tier,
+                  concerns: concerns
                 });
 
-                // Show adaptive assessment screen first
-                const adaptiveScreen = document.getElementById('adaptive-assessment-screen');
-                const questionScreen = document.getElementById('question-screen');
+                if (result) {
+                  console.log('Adaptive assessment started successfully:', result);
+                } else {
+                  console.error('Assessment failed to start - result was null');
+                  // The error is already shown in the UI by showError method
+                }
+              } catch (error) {
+                console.error('Adaptive assessment failed with exception:', error);
 
-                console.log('=== ASSESSMENT TYPE CLICKED ===');
-                console.log('Selected mode:', selectedMode);
-                console.log('Selected track:', selectedTrack);
-                console.log('Tier:', tier);
-                console.log('Assessment system available:', !!window.assessment);
-                console.log('Window.assessment object:', window.assessment);
-                console.log('Adaptive screen found:', !!adaptiveScreen);
-                console.log('Question screen found:', !!questionScreen);
-
-                // Try adaptive assessment first
-                if (window.assessment && adaptiveScreen) {
-                    console.log('Starting adaptive assessment flow...');
-                    adaptiveScreen.classList.remove('hidden');
-
-                    try {
-                        // Map track to concerns
-                        const concernsMap = {
-                            'personality': [],
-                            'neurodiversity': ['attention', 'social', 'sensory'],
-                            'comprehensive': ['attention', 'social', 'sensory', 'emotional']
-                        };
-
-                        const concerns = concernsMap[selectedTrack] || [];
-
-                        console.log('Starting adaptive assessment with tier:', tier, 'concerns:', concerns);
-
-                        // Add a small delay to ensure DOM is ready
-                        await new Promise(resolve => setTimeout(resolve, 100));
-
-                        // Start the assessment
-                        const result = await window.assessment.startAssessment({
-                            tier: tier,
-                            concerns: concerns
-                        });
-
-                        if (result) {
-                            console.log('Adaptive assessment started successfully:', result);
-                        } else {
-                            console.error('Assessment failed to start - result was null');
-                            // The error is already shown in the UI by showError method
-                        }
-                    } catch (error) {
-                        console.error('Adaptive assessment failed with exception:', error);
-
-                        // Show error message in the adaptive screen
-                        const assessmentContainer = document.getElementById('assessment-container');
-                        if (assessmentContainer) {
-                            assessmentContainer.innerHTML = `
+                // Show error message in the adaptive screen
+                const assessmentContainer = document.getElementById('assessment-container');
+                if (assessmentContainer) {
+                  assessmentContainer.innerHTML = `
                                 <div class="error-message" style="padding: 20px; color: red;">
                                     <h3>Unable to start assessment</h3>
                                     <p>${error.message || 'Please check your connection and try again.'}</p>
                                     <button onclick="location.reload()" class="btn-primary">Refresh Page</button>
                                 </div>
                             `;
-                        }
+                }
 
-                        // Don't hide the adaptive screen - keep it visible with error
-                        // adaptiveScreen.classList.add('hidden');
+                // Don't hide the adaptive screen - keep it visible with error
+                // adaptiveScreen.classList.add('hidden');
 
-                        if (false && questionScreen) { // Disabled fallback temporarily
-                            questionScreen.classList.remove('hidden');
-                            console.log('Falling back to regular question screen');
+                if (false && questionScreen) {
+                  // Disabled fallback temporarily
+                  questionScreen.classList.remove('hidden');
+                  console.log('Falling back to regular question screen');
 
-                            // Start regular assessment
-                            if (window.neurlynApp && window.neurlynApp.startAssessment) {
-                                window.neurlynApp.startAssessment();
-                            }
-                        } else {
-                            // Show error message if no fallback available
-                            const container = document.getElementById('assessment-container');
-                            if (container) {
-                                container.innerHTML = `
+                  // Start regular assessment
+                  if (window.neurlynApp && window.neurlynApp.startAssessment) {
+                    window.neurlynApp.startAssessment();
+                  }
+                } else {
+                  // Show error message if no fallback available
+                  const container = document.getElementById('assessment-container');
+                  if (container) {
+                    container.innerHTML = `
                                     <div class="error-state" style="text-align: center; padding: 2rem;">
                                         <div class="error-icon" style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
                                         <h3 style="color: #dc2626; margin-bottom: 1rem;">Assessment Unavailable</h3>
@@ -1523,30 +1720,30 @@
                                         <button onclick="location.reload()" class="btn btn-primary">Reload Page</button>
                                     </div>
                                 `;
-                            }
-                        }
-                    }
-                } else {
-                    console.log('Using fallback to regular assessment');
-
-                    // Fallback to regular assessment
-                    if (questionScreen) {
-                        questionScreen.classList.remove('hidden');
-
-                        if (window.neurlynApp && window.neurlynApp.startAssessment) {
-                            window.neurlynApp.startAssessment();
-                        }
-                    } else {
-                        console.error('No assessment system available');
-                    }
+                  }
                 }
-            });
-        }
-    }, 100);
+              }
+            } else {
+              console.log('Using fallback to regular assessment');
 
-    // Function to update vertical progress bar with debouncing
-    let lastProgressUpdate = 0;
-    function updateVerticalProgress() {
+              // Fallback to regular assessment
+              if (questionScreen) {
+                questionScreen.classList.remove('hidden');
+
+                if (window.neurlynApp && window.neurlynApp.startAssessment) {
+                  window.neurlynApp.startAssessment();
+                }
+              } else {
+                console.error('No assessment system available');
+              }
+            }
+          });
+        }
+      }, 100);
+
+      // Function to update vertical progress bar with debouncing
+      let lastProgressUpdate = 0;
+      function updateVerticalProgress() {
         if (!window.neurlynApp || !window.neurlynApp.state) return;
 
         // Debounce updates to prevent infinite loops
@@ -1559,1172 +1756,1192 @@
         const questionNum = document.getElementById('question-num');
 
         if (progressFill && window.neurlynApp.questions) {
-            const currentIndex = window.neurlynApp.state.currentQuestionIndex || 0;
-            const totalQuestions = window.neurlynApp.questions.length || 50;
-            const percent = Math.min(100, ((currentIndex + 1) / totalQuestions) * 100);
+          const currentIndex = window.neurlynApp.state.currentQuestionIndex || 0;
+          const totalQuestions = window.neurlynApp.questions.length || 50;
+          const percent = Math.min(100, ((currentIndex + 1) / totalQuestions) * 100);
 
-            // Update visual bar
-            progressFill.style.height = percent + '%';
+          // Update visual bar
+          progressFill.style.height = percent + '%';
 
-            // Update text displays
-            if (percentSpan) {
-                percentSpan.textContent = Math.round(percent) + '%';
-            }
-            if (questionNum) {
-                questionNum.textContent = currentIndex + 1;
-            }
+          // Update text displays
+          if (percentSpan) {
+            percentSpan.textContent = Math.round(percent) + '%';
+          }
+          if (questionNum) {
+            questionNum.textContent = currentIndex + 1;
+          }
         }
-    }
+      }
 
-    // Override multiple methods to catch progress updates
-    setTimeout(() => {
+      // Override multiple methods to catch progress updates
+      setTimeout(() => {
         if (window.neurlynApp) {
-            // Override updateProgress if it exists
-            if (window.neurlynApp.updateProgress) {
-                const originalUpdateProgress = window.neurlynApp.updateProgress.bind(window.neurlynApp);
-                window.neurlynApp.updateProgress = function() {
-                    originalUpdateProgress();
-                    updateVerticalProgress();
-                };
-            }
+          // Override updateProgress if it exists
+          if (window.neurlynApp.updateProgress) {
+            const originalUpdateProgress = window.neurlynApp.updateProgress.bind(window.neurlynApp);
+            window.neurlynApp.updateProgress = function () {
+              originalUpdateProgress();
+              updateVerticalProgress();
+            };
+          }
 
-            // Override showQuestion to catch question changes
-            if (window.neurlynApp.showQuestion) {
-                const originalShowQuestion = window.neurlynApp.showQuestion.bind(window.neurlynApp);
-                window.neurlynApp.showQuestion = function() {
-                    const result = originalShowQuestion.apply(this, arguments);
-                    setTimeout(updateVerticalProgress, 100);
-                    return result;
-                };
-            }
+          // Override showQuestion to catch question changes
+          if (window.neurlynApp.showQuestion) {
+            const originalShowQuestion = window.neurlynApp.showQuestion.bind(window.neurlynApp);
+            window.neurlynApp.showQuestion = function () {
+              const result = originalShowQuestion.apply(this, arguments);
+              setTimeout(updateVerticalProgress, 100);
+              return result;
+            };
+          }
 
-            // Override nextQuestion to catch navigation
-            if (window.neurlynApp.nextQuestion) {
-                const originalNextQuestion = window.neurlynApp.nextQuestion.bind(window.neurlynApp);
-                window.neurlynApp.nextQuestion = function() {
-                    const result = originalNextQuestion.apply(this, arguments);
-                    setTimeout(updateVerticalProgress, 100);
-                    return result;
-                };
-            }
+          // Override nextQuestion to catch navigation
+          if (window.neurlynApp.nextQuestion) {
+            const originalNextQuestion = window.neurlynApp.nextQuestion.bind(window.neurlynApp);
+            window.neurlynApp.nextQuestion = function () {
+              const result = originalNextQuestion.apply(this, arguments);
+              setTimeout(updateVerticalProgress, 100);
+              return result;
+            };
+          }
 
-            // Also monitor for DOM changes in the question content area
-            const questionContent = document.getElementById('question-content');
-            if (questionContent) {
-                const observer = new MutationObserver(() => {
-                    updateVerticalProgress();
-                });
-                observer.observe(questionContent, { childList: true, subtree: true });
-            }
-
-            // Initial update on page load or resume
-            updateVerticalProgress();
-
-            // Also update when screen changes to question screen
-            const screenObserver = new MutationObserver(() => {
-                const questionScreen = document.getElementById('question-screen');
-                if (questionScreen && !questionScreen.classList.contains('hidden')) {
-                    setTimeout(updateVerticalProgress, 200);
-                }
+          // Also monitor for DOM changes in the question content area
+          const questionContent = document.getElementById('question-content');
+          if (questionContent) {
+            const observer = new MutationObserver(() => {
+              updateVerticalProgress();
             });
+            observer.observe(questionContent, { childList: true, subtree: true });
+          }
 
-            document.querySelectorAll('.screen').forEach(screen => {
-                screenObserver.observe(screen, { attributes: true, attributeFilter: ['class'] });
-            });
+          // Initial update on page load or resume
+          updateVerticalProgress();
+
+          // Also update when screen changes to question screen
+          const screenObserver = new MutationObserver(() => {
+            const questionScreen = document.getElementById('question-screen');
+            if (questionScreen && !questionScreen.classList.contains('hidden')) {
+              setTimeout(updateVerticalProgress, 200);
+            }
+          });
+
+          document.querySelectorAll('.screen').forEach(screen => {
+            screenObserver.observe(screen, { attributes: true, attributeFilter: ['class'] });
+          });
         }
-    }, 500);
+      }, 500);
     </script>
 
     <!-- Enhanced assessment flow styles -->
     <style>
-        /* Smooth step transitions */
-        .assessment-step {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-            position: absolute;
-            width: 100%;
-            left: 0;
+      /* Smooth step transitions */
+      .assessment-step {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        left: 0;
+      }
+
+      .assessment-step.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        position: relative;
+      }
+
+      .assessment-step.completed {
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        position: absolute;
+        height: 0;
+        overflow: hidden;
+      }
+
+      /* Steps container */
+      .steps-container {
+        position: relative;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 60px; /* Space for back button */
+      }
+
+      /* Back button styling - positioned relative to card */
+      .step-back-btn {
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        padding: 0.5rem 1rem;
+        background: white;
+        border: 1px solid rgba(124, 152, 133, 0.2);
+        border-radius: 8px;
+        color: #6a8a73;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 0.5s forwards;
+      }
+
+      .step-back-btn:hover {
+        background: #f0f8f4;
+        border-color: #7c9885;
+        transform: translateX(-4px);
+      }
+
+      .step-back-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      /* Hide initially */
+      .mode-selection,
+      #task-type-selector {
+        display: none;
+      }
+
+      .mode-selection.visible,
+      #task-type-selector.visible {
+        display: block;
+      }
+
+      /* Track options styling */
+      .track-option.selected {
+        background: linear-gradient(135deg, #e8f4ed 0%, #d4e8dc 100%);
+        color: #4a6b56;
+        border-color: #7c9885;
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(124, 152, 133, 0.2);
+      }
+
+      .mode-option.selected {
+        background: linear-gradient(135deg, #e8f4ed 0%, #d4e8dc 100%);
+        color: #4a6b56;
+        border-color: #7c9885;
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(124, 152, 133, 0.2);
+      }
+
+      /* Assessment style cards */
+      .task-type-options {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .task-type-option {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: white;
+        border: 2px solid rgba(124, 152, 133, 0.2);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        min-width: 0;
+      }
+
+      .task-type-option:hover {
+        border-color: rgba(124, 152, 133, 0.4);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fbf9 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(124, 152, 133, 0.15);
+      }
+
+      .task-type-option input[type='radio'] {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .task-type-option input[type='radio']:checked + .option-content {
+        color: #6a8a73;
+      }
+
+      .task-type-option input[type='radio']:checked ~ .option-check {
+        display: block;
+      }
+
+      .option-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        flex: 1;
+      }
+
+      .option-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--nordic-charcoal);
+      }
+
+      .option-desc {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        color: #6b6b6b;
+        line-height: 1.2;
+      }
+
+      .option-check {
+        display: none;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        border-radius: 50%;
+        color: white;
+      }
+
+      .option-check::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+      }
+
+      .task-type-option.selected {
+        background: linear-gradient(135deg, #f0f8f4 0%, #e8f4ed 100%);
+        border-color: #7c9885;
+        box-shadow: 0 4px 12px rgba(124, 152, 133, 0.15);
+      }
+
+      /* Step indicators */
+      .step-indicator {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+      }
+
+      .step.active {
+        opacity: 1;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--nordic-gray);
+        color: #6b6b6b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .step:hover .step-number {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(124, 152, 133, 0.3);
+      }
+
+      .step.active .step-number {
+        background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        color: white;
+      }
+
+      .step.completed .step-number {
+        background: #7c9885;
+        color: white;
+      }
+
+      /* Fix for track and mode options */
+      .track-selection .track-options {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      .track-option {
+        flex: 1;
+        max-width: 350px;
+        min-height: 200px;
+        padding: 1.5rem;
+      }
+
+      .track-option h4 {
+        font-size: 1.5rem;
+        margin: 0.75rem 0;
+        font-weight: 600;
+      }
+
+      .track-option p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      /* Track icon styling - ensure white icons on green background */
+      .track-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+
+      .track-icon svg {
+        fill: white !important;
+      }
+
+      .track-icon.compact {
+        width: 56px;
+        height: 56px;
+      }
+
+      /* Increase mode option text sizes */
+      .mode-option h4 {
+        font-size: 1.4rem;
+      }
+
+      .mode-option p {
+        font-size: 1.05rem;
+      }
+
+      /* Increase assessment style text */
+      .task-type-option .option-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .task-type-option .option-desc {
+        font-size: 1rem;
+      }
+
+      .mode-selection .mode-grid {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        max-width: 85%;
+        margin: 0 auto;
+      }
+
+      .mode-option {
+        flex: 1;
+        max-width: 250px;
+        min-height: 180px;
+        padding: 1.5rem;
+      }
+
+      /* Make the welcome card wider */
+      #welcome-screen .card {
+        max-width: 1600px;
+        width: 98%;
+      }
+
+      /* Ensure all cards use full width */
+      .card {
+        max-width: 1600px !important;
+        width: 98% !important;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Override container width from neurlyn.css */
+      .container {
+        max-width: 95vw !important;
+        width: 100% !important;
+      }
+
+      /* Ensure welcome and assessment containers use full width */
+      #welcome-screen .container,
+      #assessment-screen .container {
+        max-width: 95vw !important;
+      }
+
+      /* Side toast notifications */
+      .toast {
+        position: fixed !important;
+        bottom: 2rem !important;
+        right: 2rem !important;
+        left: auto !important;
+        transform: translateX(400px) !important;
+      }
+
+      .toast.show {
+        transform: translateX(0) !important;
+      }
+
+      /* Optimize question screen for viewport fit with vertical progress */
+      .question-screen-layout {
+        display: flex;
+        gap: 1.5rem;
+        height: calc(100vh - 100px); /* Account for header and footer height */
+        padding: 0.5rem 1rem;
+        padding-top: 0;
+        overflow: hidden;
+        align-items: flex-start; /* Align items to top */
+      }
+
+      /* Remove extra padding from question screen */
+      #question-screen {
+        padding-top: 0 !important;
+        padding: 0 !important;
+      }
+
+      .question-main {
+        flex: 1;
+        display: flex;
+        align-items: flex-start; /* Changed from center to flex-start */
+        justify-content: center;
+        overflow: hidden;
+        padding-top: 1.5rem; /* Slightly more padding from top */
+        margin-top: 0; /* Remove negative margin */
+      }
+
+      #question-screen .card {
+        padding: 0.5rem 0.75rem !important;
+        padding-top: 0.3rem !important;
+        height: fit-content;
+        max-height: calc(100vh - 140px); /* Adjust for header and footer */
+        width: 100%;
+        max-width: 900px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0 !important;
+        position: relative;
+        top: 0; /* Remove negative positioning */
+      }
+
+      /* Vertical progress bar on right */
+      .progress-sidebar {
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Align to top */
+        height: fit-content; /* Only as tall as content */
+        align-self: flex-start; /* Align to top of parent */
+        padding-top: 1.5rem; /* Match question-main padding */
+        max-height: calc(100vh - 140px); /* Match card max-height */
+      }
+
+      .progress-info-vertical {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .progress-info-vertical #progress-percent {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #6c9e83;
+      }
+
+      .progress-info-vertical .progress-text {
+        font-size: 0.75rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .progress-info-vertical span:last-child {
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      .progress-bar-vertical {
+        height: clamp(200px, 40vh, 300px); /* Responsive height */
+        width: 8px;
+        background: #e8e8e8;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress-fill-vertical {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(180deg, #7c9885 0%, #6a8a73 100%);
+        border-radius: 4px;
+        transition: height 0.5s ease;
+        height: 2%; /* Initial small height */
+      }
+
+      /* Show/hide progress bars based on screen size */
+      @media (min-width: 769px) {
+        .progress-container.compact {
+          display: none !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .vertical-progress-sidebar {
+          display: none !important;
         }
 
-        .assessment-step.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-            position: relative;
+        .progress-container.compact {
+          display: block !important;
         }
+      }
 
-        .assessment-step.completed {
-            opacity: 0;
-            transform: translateY(-20px);
-            pointer-events: none;
-            position: absolute;
-            height: 0;
-            overflow: hidden;
+      .question-header {
+        padding: 0.6rem 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+        text-align: center;
+      }
+
+      .question-content {
+        padding: 0.4rem !important;
+        padding-top: 0.2rem !important;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* Reduce category badge spacing */
+      .category-badge {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.85rem !important;
+        margin-bottom: 0.3rem !important;
+        display: inline-block !important;
+      }
+
+      /* Reduce likert scale size */
+      .likert-scale {
+        margin: 0.5rem 0 !important;
+        gap: 0.4rem !important;
+      }
+
+      .likert-option {
+        padding: 0.5rem !important;
+        min-height: auto !important;
+      }
+
+      .likert-value {
+        font-size: 1rem !important;
+        margin-bottom: 0.15rem !important;
+      }
+
+      .likert-label {
+        font-size: 0.75rem !important;
+        line-height: 1 !important;
+      }
+
+      /* Reduce lateral question sizes */
+      .lateral-question-text {
+        font-size: 0.95rem !important;
+        padding: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+
+      .lateral-options-container {
+        margin: 0.5rem 0 !important;
+        gap: 0.3rem !important;
+      }
+
+      .lateral-option-btn {
+        padding: 0.5rem 0.7rem !important;
+        font-size: 0.85rem !important;
+      }
+
+      .lateral-hint {
+        margin-top: 0.5rem !important;
+        padding: 0.4rem !important;
+        font-size: 0.75rem !important;
+      }
+
+      .question-nav.compact {
+        padding: 0.5rem 0.6rem !important;
+        margin-top: 0.5rem !important;
+      }
+
+      /* Task instructions more compact */
+      .task-instructions {
+        padding: 0.3rem !important;
+        margin-bottom: 0.3rem !important;
+        font-size: 0.8rem !important;
+      }
+
+      /* Reduce question text size */
+      .task-question {
+        font-size: 1rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.3rem !important;
+        margin-top: 0 !important;
+        padding: 0.3rem !important;
+      }
+
+      /* Tighten task content spacing */
+      .task-content {
+        padding-top: 0 !important;
+      }
+
+      .step-label {
+        font-size: 0.85rem;
+        color: #6b6b6b;
+        font-family: 'Inter', sans-serif;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-
-        /* Steps container */
-        .steps-container {
-            position: relative;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-bottom: 60px; /* Space for back button */
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        /* Back button styling - positioned relative to card */
-        .step-back-btn {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            padding: 0.5rem 1rem;
-            background: white;
-            border: 1px solid rgba(124, 152, 133, 0.2);
-            border-radius: 8px;
-            color: #6A8A73;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out 0.5s forwards;
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
-
-        .step-back-btn:hover {
-            background: #F0F8F4;
-            border-color: #7C9885;
-            transform: translateX(-4px);
+        to {
+          opacity: 1;
         }
+      }
 
-        .step-back-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
         }
-
-        /* Hide initially */
-        .mode-selection,
-        #task-type-selector {
-            display: none;
+        to {
+          opacity: 0;
         }
+      }
 
-        .mode-selection.visible,
-        #task-type-selector.visible {
-            display: block;
+      /* Smooth selection animations */
+      .track-option,
+      .mode-option {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .track-option.selecting,
+      .mode-option.selecting {
+        animation: pulse 0.5s ease-out;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
         }
-
-        /* Track options styling */
-        .track-option.selected {
-            background: linear-gradient(135deg, #E8F4ED 0%, #D4E8DC 100%);
-            color: #4A6B56;
-            border-color: #7C9885;
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.2);
+        50% {
+          transform: scale(1.05);
         }
-
-        .mode-option.selected {
-            background: linear-gradient(135deg, #E8F4ED 0%, #D4E8DC 100%);
-            color: #4A6B56;
-            border-color: #7C9885;
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.2);
+        100% {
+          transform: scale(1);
         }
+      }
 
-        /* Assessment style cards */
+      @media (max-width: 1024px) {
         .task-type-options {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .task-type-options {
+          grid-template-columns: 1fr;
         }
 
-        .task-type-option {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            background: white;
-            border: 2px solid rgba(124, 152, 133, 0.2);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            min-width: 0;
-        }
-
-        .task-type-option:hover {
-            border-color: rgba(124, 152, 133, 0.4);
-            background: linear-gradient(135deg, #FFFFFF 0%, #F8FBF9 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.15);
-        }
-
-        .task-type-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .task-type-option input[type="radio"]:checked + .option-content {
-            color: #6A8A73;
-        }
-
-        .task-type-option input[type="radio"]:checked ~ .option-check {
-            display: block;
-        }
-
-        .option-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            flex: 1;
-        }
-
-        .option-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--nordic-charcoal);
-        }
-
-        .option-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #6B6B6B;
-            line-height: 1.2;
-        }
-
-        .option-check {
-            display: none;
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            border-radius: 50%;
-            color: white;
-        }
-
-        .option-check::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 14px;
-        }
-
-        .task-type-option.selected {
-            background: linear-gradient(135deg, #F0F8F4 0%, #E8F4ED 100%);
-            border-color: #7C9885;
-            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.15);
-        }
-
-        /* Step indicators */
-        .step-indicator {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0.4;
-            transition: opacity 0.3s ease;
-        }
-
-        .step.active {
-            opacity: 1;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--nordic-gray);
-            color: #6B6B6B;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .step:hover .step-number {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.3);
-        }
-
-        .step.active .step-number {
-            background: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            color: white;
-        }
-
-        .step.completed .step-number {
-            background: #7C9885;
-            color: white;
-        }
-
-        /* Fix for track and mode options */
-        .track-selection .track-options {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        .track-option {
-            flex: 1;
-            max-width: 350px;
-            min-height: 200px;
-            padding: 1.5rem;
-        }
-
-        .track-option h4 {
-            font-size: 1.5rem;
-            margin: 0.75rem 0;
-            font-weight: 600;
-        }
-
-        .track-option p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Track icon styling - ensure white icons on green background */
-        .track-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-        }
-
-        .track-icon svg {
-            fill: white !important;
-        }
-
-        .track-icon.compact {
-            width: 56px;
-            height: 56px;
-        }
-
-        /* Increase mode option text sizes */
-        .mode-option h4 {
-            font-size: 1.4rem;
-        }
-
-        .mode-option p {
-            font-size: 1.05rem;
-        }
-
-        /* Increase assessment style text */
-        .task-type-option .option-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .task-type-option .option-desc {
-            font-size: 1rem;
-        }
-
+        .track-selection .track-options,
         .mode-selection .mode-grid {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            max-width: 85%;
-            margin: 0 auto;
+          flex-direction: column;
+          padding: 0 1rem;
         }
 
-        .mode-option {
-            flex: 1;
-            max-width: 250px;
-            min-height: 180px;
-            padding: 1.5rem;
-        }
-
-        /* Make the welcome card wider */
-        #welcome-screen .card {
-            max-width: 1600px;
-            width: 98%;
-        }
-
-        /* Ensure all cards use full width */
-        .card {
-            max-width: 1600px !important;
-            width: 98% !important;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Override container width from neurlyn.css */
-        .container {
-            max-width: 95vw !important;
-            width: 100% !important;
-        }
-
-        /* Ensure welcome and assessment containers use full width */
-        #welcome-screen .container,
-        #assessment-screen .container {
-            max-width: 95vw !important;
-        }
-
-        /* Side toast notifications */
-        .toast {
-            position: fixed !important;
-            bottom: 2rem !important;
-            right: 2rem !important;
-            left: auto !important;
-            transform: translateX(400px) !important;
-        }
-
-        .toast.show {
-            transform: translateX(0) !important;
-        }
-
-        /* Optimize question screen for viewport fit with vertical progress */
-        .question-screen-layout {
-            display: flex;
-            gap: 1.5rem;
-            height: calc(100vh - 100px); /* Account for header and footer height */
-            padding: 0.5rem 1rem;
-            padding-top: 0;
-            overflow: hidden;
-            align-items: flex-start; /* Align items to top */
-        }
-
-        /* Remove extra padding from question screen */
-        #question-screen {
-            padding-top: 0 !important;
-            padding: 0 !important;
-        }
-
-        .question-main {
-            flex: 1;
-            display: flex;
-            align-items: flex-start; /* Changed from center to flex-start */
-            justify-content: center;
-            overflow: hidden;
-            padding-top: 1.5rem; /* Slightly more padding from top */
-            margin-top: 0; /* Remove negative margin */
-        }
-
-        #question-screen .card {
-            padding: 0.5rem 0.75rem !important;
-            padding-top: 0.3rem !important;
-            height: fit-content;
-            max-height: calc(100vh - 140px); /* Adjust for header and footer */
-            width: 100%;
-            max-width: 900px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            margin-top: 0 !important;
-            position: relative;
-            top: 0; /* Remove negative positioning */
-        }
-
-        /* Vertical progress bar on right */
-        .progress-sidebar {
-            width: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; /* Align to top */
-            height: fit-content; /* Only as tall as content */
-            align-self: flex-start; /* Align to top of parent */
-            padding-top: 1.5rem; /* Match question-main padding */
-            max-height: calc(100vh - 140px); /* Match card max-height */
-        }
-
-        .progress-info-vertical {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .progress-info-vertical #progress-percent {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #6C9E83;
-        }
-
-        .progress-info-vertical .progress-text {
-            font-size: 0.75rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .progress-info-vertical span:last-child {
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        .progress-bar-vertical {
-            height: clamp(200px, 40vh, 300px); /* Responsive height */
-            width: 8px;
-            background: #E8E8E8;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill-vertical {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(180deg, #7C9885 0%, #6A8A73 100%);
-            border-radius: 4px;
-            transition: height 0.5s ease;
-            height: 2%; /* Initial small height */
-        }
-
-        /* Show/hide progress bars based on screen size */
-        @media (min-width: 769px) {
-            .progress-container.compact {
-                display: none !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .vertical-progress-sidebar {
-                display: none !important;
-            }
-
-            .progress-container.compact {
-                display: block !important;
-            }
-        }
-
-        .question-header {
-            padding: 0.6rem 0.8rem !important;
-            margin-bottom: 0.8rem !important;
-            text-align: center;
-        }
-
-        .question-content {
-            padding: 0.4rem !important;
-            padding-top: 0.2rem !important;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Reduce category badge spacing */
-        .category-badge {
-            padding: 0.4rem 0.8rem !important;
-            font-size: 0.85rem !important;
-            margin-bottom: 0.3rem !important;
-            display: inline-block !important;
-        }
-
-        /* Reduce likert scale size */
-        .likert-scale {
-            margin: 0.5rem 0 !important;
-            gap: 0.4rem !important;
-        }
-
-        .likert-option {
-            padding: 0.5rem !important;
-            min-height: auto !important;
-        }
-
-        .likert-value {
-            font-size: 1rem !important;
-            margin-bottom: 0.15rem !important;
-        }
-
-        .likert-label {
-            font-size: 0.75rem !important;
-            line-height: 1 !important;
-        }
-
-        /* Reduce lateral question sizes */
-        .lateral-question-text {
-            font-size: 0.95rem !important;
-            padding: 0.5rem !important;
-            margin-bottom: 0.5rem !important;
-        }
-
-        .lateral-options-container {
-            margin: 0.5rem 0 !important;
-            gap: 0.3rem !important;
-        }
-
-        .lateral-option-btn {
-            padding: 0.5rem 0.7rem !important;
-            font-size: 0.85rem !important;
-        }
-
-        .lateral-hint {
-            margin-top: 0.5rem !important;
-            padding: 0.4rem !important;
-            font-size: 0.75rem !important;
-        }
-
-        .question-nav.compact {
-            padding: 0.5rem 0.6rem !important;
-            margin-top: 0.5rem !important;
-        }
-
-        /* Task instructions more compact */
-        .task-instructions {
-            padding: 0.3rem !important;
-            margin-bottom: 0.3rem !important;
-            font-size: 0.8rem !important;
-        }
-
-        /* Reduce question text size */
-        .task-question {
-            font-size: 1rem !important;
-            line-height: 1.2 !important;
-            margin-bottom: 0.3rem !important;
-            margin-top: 0 !important;
-            padding: 0.3rem !important;
-        }
-
-        /* Tighten task content spacing */
-        .task-content {
-            padding-top: 0 !important;
-        }
-
-        .step-label {
-            font-size: 0.85rem;
-            color: #6B6B6B;
-            font-family: 'Inter', sans-serif;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-
-        /* Smooth selection animations */
         .track-option,
         .mode-option {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          width: 100%;
+          min-height: auto;
+          padding: 1rem;
         }
 
-        .track-option.selecting,
-        .mode-option.selecting {
-            animation: pulse 0.5s ease-out;
+        .track-option h4,
+        .mode-option h4 {
+          font-size: 1.1rem;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .question-nav button {
+          min-height: 44px;
         }
+      }
 
-        @media (max-width: 1024px) {
-            .task-type-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
+      /* Adaptive Assessment Styles */
+      #adaptive-assessment-screen {
+        min-height: calc(100vh - 120px);
+        padding: 1rem;
+      }
+
+      #assessment-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .neurlyn-assessment {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(124, 152, 133, 0.1);
+      }
+
+      .assessment-header {
+        margin-bottom: 2rem;
+      }
+
+      .progress-container {
+        background: rgba(124, 152, 133, 0.05);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .progress-bar {
+        height: 8px;
+        background: rgba(124, 152, 133, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #7c9885 0%, #6a8a73 100%);
+        transition: width 0.5s ease;
+      }
+
+      .progress-text {
+        text-align: center;
+        color: #6a8a73;
+        font-size: 0.9rem;
+      }
+
+      .pathway-indicators {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+      }
+
+      .pathway-indicator {
+        background: rgba(124, 152, 133, 0.1);
+        color: #6a8a73;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+      }
+
+      .pathway-indicator.active {
+        background: #7c9885;
+        color: white;
+      }
+
+      .question-card {
+        background: white;
+        padding: 2rem;
+        min-height: 300px;
+        display: none;
+      }
+
+      .question-card.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .question-category,
+      .question-subcategory {
+        display: inline-block;
+        background: rgba(124, 152, 133, 0.1);
+        color: #6a8a73;
+        padding: 0.25rem 0.75rem;
+        border-radius: 8px;
+        margin-right: 0.5rem;
+        font-size: 0.85rem;
+      }
+
+      .question-text {
+        font-size: 1.3rem;
+        margin: 1.5rem 0;
+        color: var(--nordic-charcoal);
+      }
+
+      .response-options {
+        margin: 2rem 0;
+      }
+
+      .likert-scale {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .likert-option {
+        flex: 1;
+        text-align: center;
+        cursor: pointer;
+        padding: 1rem;
+        border: 2px solid rgba(124, 152, 133, 0.2);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .likert-option:hover {
+        border-color: #7c9885;
+        background: rgba(124, 152, 133, 0.05);
+      }
+
+      .likert-option input {
+        display: none;
+      }
+
+      .likert-option input:checked ~ .likert-label {
+        font-weight: 600;
+      }
+
+      .likert-option input:checked ~ .likert-label::after {
+        content: '✓';
+        display: block;
+        color: #7c9885;
+        margin-top: 0.25rem;
+      }
+
+      .navigation-controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(124, 152, 133, 0.1);
+      }
+
+      .navigation-controls button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary {
+        background: white;
+        border: 1px solid rgba(124, 152, 133, 0.3);
+        color: #6a8a73;
+      }
+
+      .btn-secondary:hover:not(:disabled) {
+        background: rgba(124, 152, 133, 0.05);
+        border-color: #7c9885;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        border: none;
+        color: white;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        background: linear-gradient(135deg, #8ca595 0%, #7c9885 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(124, 152, 133, 0.3);
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .assessment-info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(124, 152, 133, 0.1);
+      }
+
+      .tier-badge {
+        background: rgba(124, 152, 133, 0.1);
+        color: #6a8a73;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+      }
+
+      .time-estimate {
+        color: #888;
+        font-size: 0.85rem;
+        align-self: center;
+      }
+
+      .loading-state,
+      .error-state {
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+
+      .spinner {
+        width: 48px;
+        height: 48px;
+        border: 3px solid rgba(124, 152, 133, 0.2);
+        border-top-color: #7c9885;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
+      }
 
-        @media (max-width: 768px) {
-            .task-type-options {
-                grid-template-columns: 1fr;
-            }
+      .toast-message {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--nordic-charcoal);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.3s ease;
+        z-index: 1000;
+      }
 
-            .track-selection .track-options,
-            .mode-selection .mode-grid {
-                flex-direction: column;
-                padding: 0 1rem;
-            }
-
-            .track-option,
-            .mode-option {
-                width: 100%;
-                min-height: auto;
-                padding: 1rem;
-            }
-
-            .track-option h4,
-            .mode-option h4 {
-                font-size: 1.1rem;
-            }
-
-            .question-nav button {
-                min-height: 44px;
-            }
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
         }
-
-        /* Adaptive Assessment Styles */
-        #adaptive-assessment-screen {
-            min-height: calc(100vh - 120px);
-            padding: 1rem;
+        to {
+          transform: translateX(0);
         }
+      }
 
-        #assessment-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+      .assessment-complete {
+        text-align: center;
+        padding: 3rem;
+      }
 
-        .neurlyn-assessment {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.1);
-        }
+      .complete-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        margin: 0 auto 1rem;
+      }
 
-        .assessment-header {
-            margin-bottom: 2rem;
-        }
+      .summary-card {
+        background: rgba(124, 152, 133, 0.05);
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+      }
 
-        .progress-container {
-            background: rgba(124, 152, 133, 0.05);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
+      .confidence-meter {
+        margin: 1rem 0;
+      }
 
-        .progress-bar {
-            height: 8px;
-            background: rgba(124, 152, 133, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-        }
+      .confidence-bar {
+        height: 12px;
+        background: rgba(124, 152, 133, 0.1);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 0.5rem 0;
+      }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #7C9885 0%, #6A8A73 100%);
-            transition: width 0.5s ease;
-        }
+      .confidence-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #7c9885 0%, #6a8a73 100%);
+      }
 
-        .progress-text {
-            text-align: center;
-            color: #6A8A73;
-            font-size: 0.9rem;
-        }
+      .pathways-activated,
+      .quick-recommendations {
+        text-align: left;
+        margin: 1.5rem 0;
+      }
 
-        .pathway-indicators {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
+      .pathway-badges {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+      }
 
-        .pathway-indicator {
-            background: rgba(124, 152, 133, 0.1);
-            color: #6A8A73;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-        }
-
-        .pathway-indicator.active {
-            background: #7C9885;
-            color: white;
-        }
-
-        .question-card {
-            background: white;
-            padding: 2rem;
-            min-height: 300px;
-            display: none;
-        }
-
-        .question-card.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .question-category,
-        .question-subcategory {
-            display: inline-block;
-            background: rgba(124, 152, 133, 0.1);
-            color: #6A8A73;
-            padding: 0.25rem 0.75rem;
-            border-radius: 8px;
-            margin-right: 0.5rem;
-            font-size: 0.85rem;
-        }
-
-        .question-text {
-            font-size: 1.3rem;
-            margin: 1.5rem 0;
-            color: var(--nordic-charcoal);
-        }
-
-        .response-options {
-            margin: 2rem 0;
-        }
-
-        .likert-scale {
-            display: flex;
-            justify-content: space-between;
-            gap: 0.5rem;
-        }
-
-        .likert-option {
-            flex: 1;
-            text-align: center;
-            cursor: pointer;
-            padding: 1rem;
-            border: 2px solid rgba(124, 152, 133, 0.2);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .likert-option:hover {
-            border-color: #7C9885;
-            background: rgba(124, 152, 133, 0.05);
-        }
-
-        .likert-option input {
-            display: none;
-        }
-
-        .likert-option input:checked ~ .likert-label {
-            font-weight: 600;
-        }
-
-        .likert-option input:checked ~ .likert-label::after {
-            content: '✓';
-            display: block;
-            color: #7C9885;
-            margin-top: 0.25rem;
-        }
-
-        .navigation-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(124, 152, 133, 0.1);
-        }
-
-        .navigation-controls button {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary {
-            background: white;
-            border: 1px solid rgba(124, 152, 133, 0.3);
-            color: #6A8A73;
-        }
-
-        .btn-secondary:hover:not(:disabled) {
-            background: rgba(124, 152, 133, 0.05);
-            border-color: #7C9885;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            border: none;
-            color: white;
-        }
-
-        .btn-primary:hover:not(:disabled) {
-            background: linear-gradient(135deg, #8CA595 0%, #7C9885 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.3);
-        }
-
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .assessment-info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(124, 152, 133, 0.1);
-        }
-
-        .tier-badge {
-            background: rgba(124, 152, 133, 0.1);
-            color: #6A8A73;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-        }
-
-        .time-estimate {
-            color: #888;
-            font-size: 0.85rem;
-            align-self: center;
-        }
-
-        .loading-state,
-        .error-state {
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid rgba(124, 152, 133, 0.2);
-            border-top-color: #7C9885;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .toast-message {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--nordic-charcoal);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            animation: slideIn 0.3s ease;
-            z-index: 1000;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        .assessment-complete {
-            text-align: center;
-            padding: 3rem;
-        }
-
-        .complete-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #7C9885 0%, #6A8A73 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            margin: 0 auto 1rem;
-        }
-
-        .summary-card {
-            background: rgba(124, 152, 133, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        .confidence-meter {
-            margin: 1rem 0;
-        }
-
-        .confidence-bar {
-            height: 12px;
-            background: rgba(124, 152, 133, 0.1);
-            border-radius: 6px;
-            overflow: hidden;
-            margin: 0.5rem 0;
-        }
-
-        .confidence-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #7C9885 0%, #6A8A73 100%);
-        }
-
-        .pathways-activated,
-        .quick-recommendations {
-            text-align: left;
-            margin: 1.5rem 0;
-        }
-
-        .pathway-badges {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        .pathway-badge {
-            background: #7C9885;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
+      .pathway-badge {
+        background: #7c9885;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+      }
     </style>
 
     <!-- Fix for duplicate assessment style options -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         // Override the showTaskTypeSelector function after a short delay
-        setTimeout(function() {
-            if (window.neurlynApp && window.neurlynApp.showTaskTypeSelector) {
-                // Smooth step transitions
-                window.transitionToStep = function(stepNum) {
-                    // Hide all steps first
-                    document.querySelectorAll('.assessment-step').forEach(step => {
-                        step.classList.remove('active');
-                        step.classList.add('completed');
-                    });
+        setTimeout(function () {
+          if (window.neurlynApp && window.neurlynApp.showTaskTypeSelector) {
+            // Smooth step transitions
+            window.transitionToStep = function (stepNum) {
+              // Hide all steps first
+              document.querySelectorAll('.assessment-step').forEach(step => {
+                step.classList.remove('active');
+                step.classList.add('completed');
+              });
 
-                    // Show the target step
-                    setTimeout(() => {
-                        const targetStep = document.getElementById(`step-${stepNum}-content`);
-                        if (targetStep) {
-                            targetStep.classList.remove('completed');
-                            targetStep.classList.add('active');
-                        }
+              // Show the target step
+              setTimeout(() => {
+                const targetStep = document.getElementById(`step-${stepNum}-content`);
+                if (targetStep) {
+                  targetStep.classList.remove('completed');
+                  targetStep.classList.add('active');
+                }
 
-                        // Update step indicators
-                        document.querySelectorAll('.step').forEach((indicator, index) => {
-                            if (index < stepNum - 1) {
-                                indicator.classList.add('completed');
-                                indicator.classList.remove('active');
-                            } else if (index === stepNum - 1) {
-                                indicator.classList.add('active');
-                                indicator.classList.remove('completed');
-                            } else {
-                                indicator.classList.remove('active', 'completed');
-                            }
-                        });
-                    }, 300);
-                };
+                // Update step indicators
+                document.querySelectorAll('.step').forEach((indicator, index) => {
+                  if (index < stepNum - 1) {
+                    indicator.classList.add('completed');
+                    indicator.classList.remove('active');
+                  } else if (index === stepNum - 1) {
+                    indicator.classList.add('active');
+                    indicator.classList.remove('completed');
+                  } else {
+                    indicator.classList.remove('active', 'completed');
+                  }
+                });
+              }, 300);
+            };
 
-                // Navigation function for step circles
-                window.goToStep = function(stepNum) {
-                    // Only allow navigation to completed steps or current step
-                    const currentStep = document.querySelector('.step.active');
-                    const targetStep = document.getElementById(`step-${stepNum}`);
+            // Navigation function for step circles
+            window.goToStep = function (stepNum) {
+              // Only allow navigation to completed steps or current step
+              const currentStep = document.querySelector('.step.active');
+              const targetStep = document.getElementById(`step-${stepNum}`);
 
-                    if (targetStep && (targetStep.classList.contains('completed') || targetStep.classList.contains('active'))) {
-                        window.transitionToStep(stepNum);
+              if (
+                targetStep &&
+                (targetStep.classList.contains('completed') ||
+                  targetStep.classList.contains('active'))
+              ) {
+                window.transitionToStep(stepNum);
 
-                        // Reset selections for steps after the target
-                    if (stepNum === 1) {
-                        // Reset track selection
-                        document.querySelectorAll('.track-option').forEach(opt => {
-                            opt.classList.remove('selected');
-                        });
-                        window.neurlynApp.state.assessmentTrack = null;
-                        window.neurlynApp.state.currentMode = null;
-                        window.neurlynApp.state.taskMode = null;
-                    } else if (stepNum === 2) {
-                        // Reset mode selection
-                        document.querySelectorAll('.mode-option').forEach(opt => {
-                            opt.classList.remove('selected');
-                        });
-                        window.neurlynApp.state.currentMode = null;
-                        window.neurlynApp.state.taskMode = null;
-                    }
-                    }
-                };
+                // Reset selections for steps after the target
+                if (stepNum === 1) {
+                  // Reset track selection
+                  document.querySelectorAll('.track-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                  });
+                  window.neurlynApp.state.assessmentTrack = null;
+                  window.neurlynApp.state.currentMode = null;
+                  window.neurlynApp.state.taskMode = null;
+                } else if (stepNum === 2) {
+                  // Reset mode selection
+                  document.querySelectorAll('.mode-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                  });
+                  window.neurlynApp.state.currentMode = null;
+                  window.neurlynApp.state.taskMode = null;
+                }
+              }
+            };
 
-                // Override selectTrack to use smooth transition
-                const originalSelectTrack = window.neurlynApp.selectTrack;
-                window.neurlynApp.selectTrack = function(track) {
-                    originalSelectTrack.call(this, track);
+            // Override selectTrack to use smooth transition
+            const originalSelectTrack = window.neurlynApp.selectTrack;
+            window.neurlynApp.selectTrack = function (track) {
+              originalSelectTrack.call(this, track);
 
-                    // Add selecting animation
-                    document.querySelectorAll('.track-option').forEach(opt => {
-                        if (opt.dataset.track === track) {
-                            opt.classList.add('selecting');
-                            setTimeout(() => opt.classList.remove('selecting'), 500);
-                        }
-                    });
+              // Add selecting animation
+              document.querySelectorAll('.track-option').forEach(opt => {
+                if (opt.dataset.track === track) {
+                  opt.classList.add('selecting');
+                  setTimeout(() => opt.classList.remove('selecting'), 500);
+                }
+              });
 
-                    // Transition to step 2
-                    setTimeout(() => {
-                        window.transitionToStep(2);
+              // Transition to step 2
+              setTimeout(() => {
+                window.transitionToStep(2);
 
-                        // Make mode selection visible
-                        const modeSelection = document.getElementById('step-2-content');
-                        if (modeSelection) {
-                            modeSelection.classList.add('visible');
-                        }
-                    }, 600);
-                };
+                // Make mode selection visible
+                const modeSelection = document.getElementById('step-2-content');
+                if (modeSelection) {
+                  modeSelection.classList.add('visible');
+                }
+              }, 600);
+            };
 
-                // Override selectMode to use smooth transition
-                const originalSelectMode = window.neurlynApp.selectMode;
-                window.neurlynApp.selectMode = function(mode) {
-                    originalSelectMode.call(this, mode);
+            // Override selectMode to use smooth transition
+            const originalSelectMode = window.neurlynApp.selectMode;
+            window.neurlynApp.selectMode = function (mode) {
+              originalSelectMode.call(this, mode);
 
-                    // Add selecting animation
-                    document.querySelectorAll('.mode-option').forEach(opt => {
-                        if (opt.dataset.mode === mode) {
-                            opt.classList.add('selecting');
-                            setTimeout(() => opt.classList.remove('selecting'), 500);
-                        }
-                    });
+              // Add selecting animation
+              document.querySelectorAll('.mode-option').forEach(opt => {
+                if (opt.dataset.mode === mode) {
+                  opt.classList.add('selecting');
+                  setTimeout(() => opt.classList.remove('selecting'), 500);
+                }
+              });
 
-                    // Transition to step 3
-                    setTimeout(() => {
-                        window.transitionToStep(3);
+              // Transition to step 3
+              setTimeout(() => {
+                window.transitionToStep(3);
 
-                        // Show task type selector
-                        setTimeout(() => {
-                            this.showTaskTypeSelector();
-                            const selector = document.getElementById('task-type-selector');
-                            if (selector) {
-                                selector.classList.add('visible');
-                            }
-                        }, 300);
-                    }, 600);
-                };
+                // Show task type selector
+                setTimeout(() => {
+                  this.showTaskTypeSelector();
+                  const selector = document.getElementById('task-type-selector');
+                  if (selector) {
+                    selector.classList.add('visible');
+                  }
+                }, 300);
+              }, 600);
+            };
 
-                window.neurlynApp.showTaskTypeSelector = function() {
-                    const existingSelector = document.getElementById('task-type-selector');
-                    if (existingSelector) {
-                        existingSelector.remove();
-                    }
+            window.neurlynApp.showTaskTypeSelector = function () {
+              const existingSelector = document.getElementById('task-type-selector');
+              if (existingSelector) {
+                existingSelector.remove();
+              }
 
-                    const selector = document.createElement('div');
-                    selector.id = 'task-type-selector';
-                    selector.className = 'task-type-selector';
-                    selector.innerHTML = `
+              const selector = document.createElement('div');
+              selector.id = 'task-type-selector';
+              selector.className = 'task-type-selector';
+              selector.innerHTML = `
                         <h3 style="text-align: center; margin: 0 auto 1.5rem; padding: 0; font-size: 1.6rem;">Step 3: Select Assessment Style</h3>
                         <div class="task-type-options">
                             <label class="task-type-option">
@@ -2762,100 +2979,109 @@
                         </div>
                     `;
 
-                    const container = document.getElementById('task-type-selector-container');
-                    if (container) {
-                        container.appendChild(selector);
-                    }
+              const container = document.getElementById('task-type-selector-container');
+              if (container) {
+                container.appendChild(selector);
+              }
 
-                    // Add event listeners for task type selection
-                    selector.querySelectorAll('input[name="taskType"]').forEach(input => {
-                        input.addEventListener('change', (e) => {
-                            console.log('Task type checkbox changed:', e.target.value, 'checked:', e.target.checked);
+              // Add event listeners for task type selection
+              selector.querySelectorAll('input[name="taskType"]').forEach(input => {
+                input.addEventListener('change', e => {
+                  console.log(
+                    'Task type checkbox changed:',
+                    e.target.value,
+                    'checked:',
+                    e.target.checked
+                  );
 
-                            // Toggle selected class on the parent label based on checkbox state
-                            const parentOption = e.target.closest('.task-type-option');
-                            if (e.target.checked) {
-                                parentOption.classList.add('selected');
-                                // Also add inline styles to ensure visibility
-                                parentOption.style.background = 'linear-gradient(135deg, #7C9885 0%, #6A8A73 100%)';
-                                parentOption.style.borderColor = '#6C9E83';
-                                parentOption.style.boxShadow = '0 0 0 3px rgba(108, 158, 131, 0.2)';
-                                // Make text white
-                                parentOption.querySelectorAll('.option-title, .option-desc').forEach(el => {
-                                    el.style.color = 'white';
-                                });
-
-                                // Store the selected assessment type
-                                window.selectedAssessmentType = e.target.value;
-                                console.log('Assessment type selected:', e.target.value);
-
-                                // Show the style selection screen instead of starting immediately
-                                showAssessmentStyleSelection(e.target.value);
-                            } else {
-                                parentOption.classList.remove('selected');
-                                // Remove inline styles
-                                parentOption.style.background = '';
-                                parentOption.style.borderColor = '';
-                                parentOption.style.boxShadow = '';
-                                // Reset text color
-                                parentOption.querySelectorAll('.option-title, .option-desc').forEach(el => {
-                                    el.style.color = '';
-                                });
-                            }
-
-                            // Update step indicator
-                            document.getElementById('step-3').classList.add('completed');
-
-                            if (window.neurlynApp) {
-                                window.neurlynApp.state.taskMode = e.target.value;
-                                window.neurlynApp.showToast(`Assessment style: ${e.target.value}`, 'info');
-
-                                // Show and enable start button
-                                const startContainer = document.getElementById('start-button-container');
-                                const startBtn = document.getElementById('start-assessment');
-
-                                if (startContainer) {
-                                    startContainer.style.display = 'block';
-                                }
-
-                                if (startBtn) {
-                                    startBtn.disabled = false;
-                                    startBtn.classList.add('pulse');
-                                    setTimeout(() => startBtn.classList.remove('pulse'), 600);
-                                }
-                            }
-                        });
+                  // Toggle selected class on the parent label based on checkbox state
+                  const parentOption = e.target.closest('.task-type-option');
+                  if (e.target.checked) {
+                    parentOption.classList.add('selected');
+                    // Also add inline styles to ensure visibility
+                    parentOption.style.background =
+                      'linear-gradient(135deg, #7C9885 0%, #6A8A73 100%)';
+                    parentOption.style.borderColor = '#6C9E83';
+                    parentOption.style.boxShadow = '0 0 0 3px rgba(108, 158, 131, 0.2)';
+                    // Make text white
+                    parentOption.querySelectorAll('.option-title, .option-desc').forEach(el => {
+                      el.style.color = 'white';
                     });
 
-                    // Set default selection
-                    const hybridOption = selector.querySelector('input[value="hybrid"]');
-                    if (hybridOption) {
-                        hybridOption.checked = true;
-                        const parentOption = hybridOption.closest('.task-type-option');
-                        parentOption.classList.add('selected');
-                        // Add inline styles for default selection
-                        parentOption.style.background = 'linear-gradient(135deg, #7C9885 0%, #6A8A73 100%)';
-                        parentOption.style.borderColor = '#6C9E83';
-                        parentOption.style.boxShadow = '0 0 0 3px rgba(108, 158, 131, 0.2)';
-                        parentOption.querySelectorAll('.option-title, .option-desc').forEach(el => {
-                            el.style.color = 'white';
-                        });
-                    }
-                };
-            }
-        }, 1000);
-    });
+                    // Store the selected assessment type
+                    window.selectedAssessmentType = e.target.value;
+                    console.log('Assessment type selected:', e.target.value);
 
-    // Register Service Worker for offline functionality
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                // Registration was successful
-            }, function(err) {
-                // registration failed :(
-            });
+                    // Show the style selection screen instead of starting immediately
+                    showAssessmentStyleSelection(e.target.value);
+                  } else {
+                    parentOption.classList.remove('selected');
+                    // Remove inline styles
+                    parentOption.style.background = '';
+                    parentOption.style.borderColor = '';
+                    parentOption.style.boxShadow = '';
+                    // Reset text color
+                    parentOption.querySelectorAll('.option-title, .option-desc').forEach(el => {
+                      el.style.color = '';
+                    });
+                  }
+
+                  // Update step indicator
+                  document.getElementById('step-3').classList.add('completed');
+
+                  if (window.neurlynApp) {
+                    window.neurlynApp.state.taskMode = e.target.value;
+                    window.neurlynApp.showToast(`Assessment style: ${e.target.value}`, 'info');
+
+                    // Show and enable start button
+                    const startContainer = document.getElementById('start-button-container');
+                    const startBtn = document.getElementById('start-assessment');
+
+                    if (startContainer) {
+                      startContainer.style.display = 'block';
+                    }
+
+                    if (startBtn) {
+                      startBtn.disabled = false;
+                      startBtn.classList.add('pulse');
+                      setTimeout(() => startBtn.classList.remove('pulse'), 600);
+                    }
+                  }
+                });
+              });
+
+              // Set default selection
+              const hybridOption = selector.querySelector('input[value="hybrid"]');
+              if (hybridOption) {
+                hybridOption.checked = true;
+                const parentOption = hybridOption.closest('.task-type-option');
+                parentOption.classList.add('selected');
+                // Add inline styles for default selection
+                parentOption.style.background = 'linear-gradient(135deg, #7C9885 0%, #6A8A73 100%)';
+                parentOption.style.borderColor = '#6C9E83';
+                parentOption.style.boxShadow = '0 0 0 3px rgba(108, 158, 131, 0.2)';
+                parentOption.querySelectorAll('.option-title, .option-desc').forEach(el => {
+                  el.style.color = 'white';
+                });
+              }
+            };
+          }
+        }, 1000);
+      });
+
+      // Register Service Worker for offline functionality
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').then(
+            function (registration) {
+              // Registration was successful
+            },
+            function (err) {
+              // registration failed :(
+            }
+          );
         });
-    }
+      }
     </script>
-</body>
+  </body>
 </html>

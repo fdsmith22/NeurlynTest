@@ -16,8 +16,11 @@ import { chromium } from 'playwright';
 
   // Click on Assessment link if available
   console.log('📸 Trying to start assessment...');
-  const assessmentButton = page.locator('a, button').filter({ hasText: /assessment|start|begin/i }).first();
-  if (await assessmentButton.count() > 0) {
+  const assessmentButton = page
+    .locator('a, button')
+    .filter({ hasText: /assessment|start|begin/i })
+    .first();
+  if ((await assessmentButton.count()) > 0) {
     await assessmentButton.click();
     await page.waitForTimeout(2000);
     await page.screenshot({ path: 'screenshots/assessment-started.png', fullPage: true });

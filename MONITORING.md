@@ -35,6 +35,7 @@ Tracks real-time performance metrics including:
 - **System Health Score**: Calculates overall system health (0-100%)
 
 **Key Features:**
+
 - Automatic alerts for performance degradation
 - Performance trend analysis
 - Configurable thresholds
@@ -51,6 +52,7 @@ Comprehensive error tracking system that:
 - **Alert System**: Real-time alerts for critical issues
 
 **Key Features:**
+
 - Stack trace cleaning and formatting
 - Error deduplication
 - Contextual error information
@@ -128,13 +130,13 @@ pre-commit run --all-files
 
 Default performance thresholds (configurable):
 
-| Metric | Threshold | Alert Level |
-|--------|-----------|-------------|
-| API Response Time | 1000ms | Warning |
-| Page Load Time | 3000ms | Warning |
-| DB Query Time | 100ms | Warning |
-| Memory Limit | 500MB | Critical |
-| Error Rate | 1% | Warning |
+| Metric            | Threshold | Alert Level |
+| ----------------- | --------- | ----------- |
+| API Response Time | 1000ms    | Warning     |
+| Page Load Time    | 3000ms    | Warning     |
+| DB Query Time     | 100ms     | Warning     |
+| Memory Limit      | 500MB     | Critical    |
+| Error Rate        | 1%        | Warning     |
 
 ## 🛠️ Middleware Integration
 
@@ -150,7 +152,10 @@ Express middleware that automatically:
 ### Integration Example
 
 ```javascript
-const { performanceMiddleware, errorTrackingMiddleware } = require('./middleware/performance-tracking');
+const {
+  performanceMiddleware,
+  errorTrackingMiddleware
+} = require('./middleware/performance-tracking');
 
 // Add to Express app
 app.use(performanceMiddleware);
@@ -159,16 +164,16 @@ app.use(errorTrackingMiddleware);
 
 ## 📝 Available NPM Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run monitor` | Start performance monitoring |
-| `npm run monitor:errors` | Start error tracking |
-| `npm run monitor:all` | Run all monitoring systems |
-| `npm run monitor:dashboard` | Open monitoring dashboard |
-| `npm run lint` | Run ESLint |
-| `npm run test` | Run test suite |
-| `npm run e2e` | Run Playwright E2E tests |
-| `npm run check:all` | Run all validation checks |
+| Command                     | Description                  |
+| --------------------------- | ---------------------------- |
+| `npm run monitor`           | Start performance monitoring |
+| `npm run monitor:errors`    | Start error tracking         |
+| `npm run monitor:all`       | Run all monitoring systems   |
+| `npm run monitor:dashboard` | Open monitoring dashboard    |
+| `npm run lint`              | Run ESLint                   |
+| `npm run test`              | Run test suite               |
+| `npm run e2e`               | Run Playwright E2E tests     |
+| `npm run check:all`         | Run all validation checks    |
 
 ## 🔍 Log Files
 
@@ -182,12 +187,14 @@ Monitoring data is stored in:
 ## 🚨 Alert Types
 
 ### Performance Alerts
+
 - `SLOW_API` - API response exceeds threshold
 - `SLOW_PAGE_LOAD` - Page load time excessive
 - `SLOW_DB_QUERY` - Database query too slow
 - `HIGH_MEMORY` - Memory usage critical
 
 ### Error Alerts
+
 - `high-error-rate` - Error rate exceeds threshold
 - `critical-error` - Critical severity errors detected
 - `error-spike` - Sudden increase in error rate
@@ -260,5 +267,5 @@ For issues or questions about the monitoring systems:
 
 ---
 
-*Last Updated: [Current Date]*
-*Version: 1.0.0*
+_Last Updated: [Current Date]_
+_Version: 1.0.0_

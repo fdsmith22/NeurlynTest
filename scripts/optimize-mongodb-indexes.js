@@ -130,7 +130,11 @@ async function optimizeMongoDBIndexes() {
       },
       {
         name: 'High-weight questions',
-        query: { weight: { $gte: 1 }, trait: { $in: ['openness', 'conscientiousness'] }, active: true }
+        query: {
+          weight: { $gte: 1 },
+          trait: { $in: ['openness', 'conscientiousness'] },
+          active: true
+        }
       }
     ];
 
@@ -145,7 +149,6 @@ async function optimizeMongoDBIndexes() {
     await generateOptimizationReport(collection);
 
     logger.info('✅ MongoDB index optimization completed successfully');
-
   } catch (error) {
     logger.error('❌ Index optimization failed:', error);
     throw error;
@@ -162,11 +165,20 @@ async function generateOptimizationReport(collection) {
   logger.info(`Total active questions: ${totalQuestions}`);
 
   // Big 5 distribution
-  const big5Counts = await collection.aggregate([
-    { $match: { trait: { $in: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'] }, active: true } },
-    { $group: { _id: '$trait', count: { $sum: 1 } } },
-    { $sort: { count: -1 } }
-  ]).toArray();
+  const big5Counts = await collection
+    .aggregate([
+      {
+        $match: {
+          trait: {
+            $in: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism']
+          },
+          active: true
+        }
+      },
+      { $group: { _id: '$trait', count: { $sum: 1 } } },
+      { $sort: { count: -1 } }
+    ])
+    .toArray();
 
   logger.info('Big 5 trait distribution:');
   big5Counts.forEach(trait => {
@@ -174,11 +186,13 @@ async function generateOptimizationReport(collection) {
   });
 
   // Tier distribution
-  const tierCounts = await collection.aggregate([
-    { $match: { active: true } },
-    { $group: { _id: '$tier', count: { $sum: 1 } } },
-    { $sort: { count: -1 } }
-  ]).toArray();
+  const tierCounts = await collection
+    .aggregate([
+      { $match: { active: true } },
+      { $group: { _id: '$tier', count: { $sum: 1 } } },
+      { $sort: { count: -1 } }
+    ])
+    .toArray();
 
   logger.info('Tier distribution:');
   tierCounts.forEach(tier => {
@@ -186,11 +200,13 @@ async function generateOptimizationReport(collection) {
   });
 
   // Category distribution
-  const categoryCounts = await collection.aggregate([
-    { $match: { active: true } },
-    { $group: { _id: '$category', count: { $sum: 1 } } },
-    { $sort: { count: -1 } }
-  ]).toArray();
+  const categoryCounts = await collection
+    .aggregate([
+      { $match: { active: true } },
+      { $group: { _id: '$category', count: { $sum: 1 } } },
+      { $sort: { count: -1 } }
+    ])
+    .toArray();
 
   logger.info('Category distribution:');
   categoryCounts.forEach(cat => {
@@ -207,8 +223,12 @@ async function generateOptimizationReport(collection) {
     active: true
   });
 
-  logger.info(`Questions with scientific source: ${scientificSourceCount}/${totalQuestions} (${Math.round(scientificSourceCount/totalQuestions*100)}%)`);
-  logger.info(`Questions with validation studies: ${validationStudyCount}/${totalQuestions} (${Math.round(validationStudyCount/totalQuestions*100)}%)`);
+  logger.info(
+    `Questions with scientific source: ${scientificSourceCount}/${totalQuestions} (${Math.round((scientificSourceCount / totalQuestions) * 100)}%)`
+  );
+  logger.info(
+    `Questions with validation studies: ${validationStudyCount}/${totalQuestions} (${Math.round((validationStudyCount / totalQuestions) * 100)}%)`
+  );
 
   logger.info('=== END REPORT ===\n');
 }

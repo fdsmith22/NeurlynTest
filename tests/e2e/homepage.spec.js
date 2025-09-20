@@ -26,9 +26,12 @@ test.describe('Homepage Tests', () => {
 
   test('should have a working "Start Assessment" button', async ({ page }) => {
     // Look for CTA button
-    const startButton = page.locator('button, a').filter({
-      hasText: /start|begin|take.*assessment|get started/i
-    }).first();
+    const startButton = page
+      .locator('button, a')
+      .filter({
+        hasText: /start|begin|take.*assessment|get started/i
+      })
+      .first();
 
     await expect(startButton).toBeVisible();
     await expect(startButton).toBeEnabled();
@@ -66,7 +69,7 @@ test.describe('Homepage Tests', () => {
 
     // Mobile menu button might appear
     const mobileMenuButton = page.locator('[class*="menu"], [class*="burger"], [class*="toggle"]');
-    if (await mobileMenuButton.count() > 0) {
+    if ((await mobileMenuButton.count()) > 0) {
       await expect(mobileMenuButton.first()).toBeVisible();
     }
   });
@@ -96,10 +99,9 @@ test.describe('Homepage Tests', () => {
     await page.waitForTimeout(2000); // Wait for any async operations
 
     // Check for critical errors (ignore minor warnings)
-    const criticalErrors = consoleErrors.filter(error =>
-      !error.includes('favicon') &&
-      !error.includes('404') &&
-      !error.includes('Mixed Content')
+    const criticalErrors = consoleErrors.filter(
+      error =>
+        !error.includes('favicon') && !error.includes('404') && !error.includes('Mixed Content')
     );
 
     expect(criticalErrors).toHaveLength(0);
@@ -125,7 +127,7 @@ test.describe('Homepage Tests', () => {
 
     // Check for skip navigation link (accessibility best practice)
     const skipLink = page.locator('a[href="#main"], a[href="#content"], .skip-link');
-    if (await skipLink.count() > 0) {
+    if ((await skipLink.count()) > 0) {
       await expect(skipLink.first()).toHaveAttribute('href', /#main|#content/);
     }
   });

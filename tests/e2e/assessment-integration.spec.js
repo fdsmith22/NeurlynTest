@@ -6,7 +6,6 @@ import { test, expect } from '@playwright/test';
  */
 
 test.describe('Assessment Integration with Adaptive Questions', () => {
-
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:8080');
     await page.waitForLoadState('networkidle');
@@ -119,7 +118,7 @@ test.describe('Assessment Integration with Adaptive Questions', () => {
 
     // Check if error is handled gracefully (depends on frontend implementation)
     const errorElement = page.locator('.error-message, .alert, [role="alert"]');
-    if (await errorElement.count() > 0) {
+    if ((await errorElement.count()) > 0) {
       const errorText = await errorElement.textContent();
       expect(errorText.toLowerCase()).toContain('error');
     }
@@ -155,7 +154,8 @@ test.describe('Assessment Integration with Adaptive Questions', () => {
       await page.click('input[value="3"]');
       await page.click('#next-button');
 
-      if (i < 2) { // Don't wait after last iteration
+      if (i < 2) {
+        // Don't wait after last iteration
         await page.waitForSelector('#question-text', { timeout: 5000 });
       }
     }
@@ -208,9 +208,11 @@ test.describe('Assessment Integration with Adaptive Questions', () => {
     // Check if other assessment types are available
     const assessmentOptions = await page.locator('#assessment-type option').count();
     if (assessmentOptions > 1) {
-      const optionValues = await page.locator('#assessment-type option').evaluateAll(options =>
-        options.map(option => option.value).filter(value => value !== 'personality')
-      );
+      const optionValues = await page
+        .locator('#assessment-type option')
+        .evaluateAll(options =>
+          options.map(option => option.value).filter(value => value !== 'personality')
+        );
 
       if (optionValues.length > 0) {
         await page.selectOption('#tier-select', 'free');
@@ -280,5 +282,4 @@ test.describe('Assessment Integration with Adaptive Questions', () => {
     const titleElement = await page.locator('h1').textContent();
     expect(titleElement).toContain('Assessment');
   });
-
 });

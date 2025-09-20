@@ -4,86 +4,86 @@
 
 /* Main Navigation */
 .main-nav {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(108, 158, 131, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    padding: 0.75rem 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(108, 158, 131, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 0;
 }
 
 .nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-brand-group {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
 }
 
 .nav-brand {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #6C9E83;
-    text-decoration: none;
-    transition: color 0.2s ease;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #6c9e83;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .nav-brand:hover {
-    color: #5A8A70;
+  color: #5a8a70;
 }
 
 .nav-tagline {
-    font-size: 0.85rem;
-    color: #6B7280;
-    font-weight: 400;
-    display: none;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 400;
+  display: none;
 }
 
 /* Desktop tagline display - handled in neurlyn-mobile.css */
 
 .nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 .nav-link {
-    color: #4B5563;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    position: relative;
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
 .nav-link:hover {
-    color: #6C9E83;
-    background: rgba(108, 158, 131, 0.05);
+  color: #6c9e83;
+  background: rgba(108, 158, 131, 0.05);
 }
 
 .nav-link.active {
-    color: #6C9E83;
-    background: rgba(108, 158, 131, 0.1);
+  color: #6c9e83;
+  background: rgba(108, 158, 131, 0.1);
 }
 
 .nav-cta {
-    background: #6C9E83;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background 0.2s ease;
+  background: #6c9e83;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
 }
 
 .nav-cta:hover {
-    background: #5A8A70;
+  background: #5a8a70;
 }
 
 /* Mobile navigation styles moved to neurlyn-mobile.css */
@@ -147,7 +147,7 @@
   text-decoration: underline;
 }
 
-.breadcrumb [aria-current="page"] {
+.breadcrumb [aria-current='page'] {
   color: var(--gray-900);
   font-weight: 500;
 }
@@ -450,7 +450,8 @@
 }
 
 @keyframes pulse-border {
-  0%, 100% {
+  0%,
+  100% {
     border-color: var(--sage-400);
   }
   50% {
@@ -595,7 +596,7 @@
 }
 
 .star {
-  color: #F59E0B;
+  color: #f59e0b;
   font-size: 0.875rem;
 }
 
@@ -642,12 +643,7 @@
 
 /* Enhanced Loading States */
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--gray-100) 25%,
-    var(--gray-200) 50%,
-    var(--gray-100) 75%
-  );
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: var(--radius-md);
@@ -748,4 +744,3 @@
   border-right: 4px solid transparent;
   border-top: 4px solid var(--gray-900);
 }
-

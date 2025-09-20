@@ -27,7 +27,13 @@ module.exports = async function handler(req, res) {
       assessmentType = 'personality',
       previousResponses = [],
       userProfile = {},
-      targetTraits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism']
+      targetTraits = [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ]
     } = req.body || {};
 
     // Define question limits by tier
@@ -65,7 +71,6 @@ module.exports = async function handler(req, res) {
         estimatedTime: selectedQuestions.length * 0.5 // 30 seconds per question
       }
     });
-
   } catch (error) {
     console.error('Adaptive assessment error:', error);
     res.status(500).json({
@@ -315,7 +320,8 @@ function shuffleQuestions(questions) {
 
   // Light shuffle of chunk order
   for (let i = chunks.length - 1; i > 0; i--) {
-    if (Math.random() > 0.5) { // Only shuffle 50% of the time
+    if (Math.random() > 0.5) {
+      // Only shuffle 50% of the time
       const j = Math.floor(Math.random() * (i + 1));
       [chunks[i], chunks[j]] = [chunks[j], chunks[i]];
     }

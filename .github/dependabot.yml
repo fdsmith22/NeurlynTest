@@ -3,56 +3,56 @@ version: 2
 
 updates:
   # NPM dependencies
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "03:00"
+      interval: 'weekly'
+      day: 'monday'
+      time: '03:00'
     open-pull-requests-limit: 5
-    target-branch: "develop"
+    target-branch: 'develop'
     commit-message:
-      prefix: "deps"
-      prefix-development: "deps-dev"
+      prefix: 'deps'
+      prefix-development: 'deps-dev'
     labels:
-      - "dependencies"
-      - "automated"
+      - 'dependencies'
+      - 'automated'
     reviewers:
-      - "fdsmith22"
+      - 'fdsmith22'
     groups:
       # Group all patch updates together
       patch-updates:
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "patch"
+          - 'patch'
       # Group minor updates for dev dependencies
       dev-dependencies:
-        dependency-type: "development"
+        dependency-type: 'development'
         update-types:
-          - "minor"
-          - "patch"
+          - 'minor'
+          - 'patch'
     # Ignore specific dependencies if needed
     ignore:
       # Don't auto-update major versions of critical packages
-      - dependency-name: "mongoose"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "express"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: 'mongoose'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'express'
+        update-types: ['version-update:semver-major']
     # Version requirement updates
-    versioning-strategy: "increase"
+    versioning-strategy: 'increase'
 
   # GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "monthly"
-      day: "monday"
-      time: "03:00"
+      interval: 'monthly'
+      day: 'monday'
+      time: '03:00'
     commit-message:
-      prefix: "ci"
+      prefix: 'ci'
     labels:
-      - "ci/cd"
-      - "automated"
+      - 'ci/cd'
+      - 'automated'
     reviewers:
-      - "fdsmith22"
+      - 'fdsmith22'

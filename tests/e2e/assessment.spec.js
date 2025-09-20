@@ -73,9 +73,7 @@ test.describe('Assessment Flow Tests', () => {
     await expect(page.locator('.progress-bar')).toBeVisible();
 
     // Progress should be at 5% for first question (1/20)
-    const progressWidth = await page.locator('#progress-fill').evaluate(
-      el => el.style.width
-    );
+    const progressWidth = await page.locator('#progress-fill').evaluate(el => el.style.width);
     expect(parseInt(progressWidth)).toBeGreaterThan(0);
     expect(parseInt(progressWidth)).toBeLessThanOrEqual(10);
   });
@@ -97,7 +95,7 @@ test.describe('Assessment Flow Tests', () => {
 
     // Check if results or completion message appears
     const completionIndicators = page.locator('text=/complete|finish|results|thank you/i');
-    if (await completionIndicators.count() > 0) {
+    if ((await completionIndicators.count()) > 0) {
       await expect(completionIndicators.first()).toBeVisible();
     }
   });
@@ -140,24 +138,24 @@ test.describe('Assessment Flow Tests', () => {
 
     // Select gamified mode if available
     const gamifiedOption = page.locator('.task-type-option, input[value="gamified"]');
-    if (await gamifiedOption.count() > 0) {
+    if ((await gamifiedOption.count()) > 0) {
       await gamifiedOption.first().click();
     }
 
     // Start assessment
     const startButton = page.locator('button').filter({ hasText: /start|begin/i });
-    if (await startButton.count() > 0) {
+    if ((await startButton.count()) > 0) {
       await startButton.first().click();
     }
 
     // Check for gamified elements
     const gamifiedElements = page.locator('.gamified-task, .game-task, [class*="gamified"]');
-    if (await gamifiedElements.count() > 0) {
+    if ((await gamifiedElements.count()) > 0) {
       await expect(gamifiedElements.first()).toBeVisible();
 
       // Check for timer or special instructions
       const timer = page.locator('.task-timer, .timer, [class*="timer"]');
-      if (await timer.count() > 0) {
+      if ((await timer.count()) > 0) {
         await expect(timer.first()).toBeVisible();
       }
     }

@@ -7,7 +7,6 @@ import { makeApiRequestWithRetry, addTestDelay } from './test-helpers.js';
  */
 
 test.describe('Adaptive Question API Tests - Optimized', () => {
-
   const apiUrl = 'http://localhost:3002/api/assessments/adaptive-optimized';
 
   // Add delay between tests to reduce rate limiting
@@ -19,7 +18,13 @@ test.describe('Adaptive Question API Tests - Optimized', () => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
       tier: 'free',
       assessmentType: 'personality',
-      targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
       previousResponses: [],
       userProfile: {}
     });
@@ -37,7 +42,13 @@ test.describe('Adaptive Question API Tests - Optimized', () => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
       tier: 'core',
       assessmentType: 'personality',
-      targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
       previousResponses: [],
       userProfile: {}
     });
@@ -54,7 +65,13 @@ test.describe('Adaptive Question API Tests - Optimized', () => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
       tier: 'comprehensive',
       assessmentType: 'personality',
-      targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
       previousResponses: [],
       userProfile: {}
     });
@@ -103,5 +120,4 @@ test.describe('Adaptive Question API Tests - Optimized', () => {
     expect(result.success).toBe(true);
     expect(responseTime).toBeLessThan(3000); // Allow 3 seconds for retry logic
   });
-
 });

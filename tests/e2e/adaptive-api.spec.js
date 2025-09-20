@@ -7,7 +7,6 @@ import { makeApiRequestWithRetry, addTestDelay } from './test-helpers.js';
  */
 
 test.describe('Adaptive Question API Tests', () => {
-
   const apiUrl = 'http://localhost:3002/api/assessments/adaptive-optimized';
 
   // Add delay between tests to reduce rate limiting
@@ -19,7 +18,13 @@ test.describe('Adaptive Question API Tests', () => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
       tier: 'free',
       assessmentType: 'personality',
-      targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
       previousResponses: [],
       userProfile: {}
     });
@@ -60,11 +65,17 @@ test.describe('Adaptive Question API Tests', () => {
 
   test('Core tier provides 45 questions with enhanced selection', async ({ request }) => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
-        tier: 'core',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses: [],
-        userProfile: {}
+      tier: 'core',
+      assessmentType: 'personality',
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
+      previousResponses: [],
+      userProfile: {}
     });
 
     expect(response.status()).toBe(200);
@@ -84,11 +95,17 @@ test.describe('Adaptive Question API Tests', () => {
 
   test('Comprehensive tier provides 75 questions with maximum diversity', async ({ request }) => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
-        tier: 'comprehensive',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses: [],
-        userProfile: {}
+      tier: 'comprehensive',
+      assessmentType: 'personality',
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
+      previousResponses: [],
+      userProfile: {}
     });
 
     expect(response.status()).toBe(200);
@@ -107,7 +124,9 @@ test.describe('Adaptive Question API Tests', () => {
     });
   });
 
-  test('Adaptive selection with previous responses affects question choice', async ({ request }) => {
+  test('Adaptive selection with previous responses affects question choice', async ({
+    request
+  }) => {
     // Simulate user with strong openness responses
     const previousResponses = [
       { questionId: 'test1', trait: 'openness', value: 5 },
@@ -156,7 +175,13 @@ test.describe('Adaptive Question API Tests', () => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
       tier: 'core',
       assessmentType: 'personality',
-      targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
       previousResponses,
       userProfile: {}
     });
@@ -215,23 +240,25 @@ test.describe('Adaptive Question API Tests', () => {
     expect(personalityResult.assessmentType).toBe('personality');
 
     // Most questions should be personality category
-    const personalityQuestions = personalityResult.questions.filter(q =>
-      q.category === 'personality' || q.trait
+    const personalityQuestions = personalityResult.questions.filter(
+      q => q.category === 'personality' || q.trait
     );
     expect(personalityQuestions.length).toBeGreaterThan(15);
   });
 
   test('Question shuffling provides variety across requests', async ({ request }) => {
     // Make multiple identical requests to test shuffling
-    const requests = Array(3).fill().map(() =>
-      makeApiRequestWithRetry(request, apiUrl, {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness'],
-        previousResponses: [],
-        userProfile: {}
-      })
-    );
+    const requests = Array(3)
+      .fill()
+      .map(() =>
+        makeApiRequestWithRetry(request, apiUrl, {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: ['openness', 'conscientiousness'],
+          previousResponses: [],
+          userProfile: {}
+        })
+      );
 
     const responses = await Promise.all(requests);
     const results = await Promise.all(responses.map(r => r.json()));
@@ -289,7 +316,13 @@ test.describe('Adaptive Question API Tests', () => {
     const response = await makeApiRequestWithRetry(request, apiUrl, {
       tier: 'comprehensive',
       assessmentType: 'personality',
-      targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
+      targetTraits: [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ],
       previousResponses: [],
       userProfile: {}
     });
@@ -352,5 +385,4 @@ test.describe('Adaptive Question API Tests', () => {
       expect(result.tier).toBe(tierTest.tier);
     }
   });
-
 });

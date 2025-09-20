@@ -902,10 +902,10 @@ async function seedCompleteExpandedQuestions() {
       { $group: { _id: '$category', count: { $sum: 1 } } }
     ]);
 
-// console.log('\n📊 Complete Question Bank Summary:');
-// console.log(`   Total Questions: ${totalCount}`);
+    // console.log('\n📊 Complete Question Bank Summary:');
+    // console.log(`   Total Questions: ${totalCount}`);
     summary.forEach(cat => {
-// console.log(`   ├── ${cat._id}: ${cat.count}`);
+      // console.log(`   ├── ${cat._id}: ${cat.count}`);
     });
 
     // Detailed breakdown by subcategory
@@ -917,14 +917,14 @@ async function seedCompleteExpandedQuestions() {
       { $sort: { '_id.category': 1, '_id.subcategory': 1 } }
     ]);
 
-// console.log('\n📋 Detailed Breakdown:');
+    // console.log('\n📋 Detailed Breakdown:');
     let currentCategory = '';
     subcategorySummary.forEach(item => {
       if (item._id.category !== currentCategory) {
         currentCategory = item._id.category;
-// console.log(`\n${currentCategory}:`);
+        // console.log(`\n${currentCategory}:`);
       }
-// console.log(`   - ${item._id.subcategory}: ${item.count} questions`);
+      // console.log(`   - ${item._id.subcategory}: ${item.count} questions`);
     });
 
     await mongoose.disconnect();

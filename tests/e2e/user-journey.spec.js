@@ -7,7 +7,6 @@ import { makeApiRequestWithRetry, addTestDelay } from './test-helpers.js';
  */
 
 test.describe('Complete User Journey Tests', () => {
-
   test.beforeEach(async () => {
     await addTestDelay(500);
   });
@@ -35,8 +34,10 @@ test.describe('Complete User Journey Tests', () => {
     await expect(freeCard).toHaveClass(/active/);
 
     // Step 3: Navigate to assessment page
-    const startButton = page.locator('button:has-text("Start"), .start-button, [href*="assessment"]');
-    if (await startButton.count() > 0) {
+    const startButton = page.locator(
+      'button:has-text("Start"), .start-button, [href*="assessment"]'
+    );
+    if ((await startButton.count()) > 0) {
       await startButton.first().click();
       await page.waitForLoadState('networkidle');
     } else {
@@ -58,13 +59,15 @@ test.describe('Complete User Journey Tests', () => {
 
     // Step 5: Select free assessment if multiple options
     const freeAssessmentCard = page.locator('.assessment-card[data-type="free"]');
-    if (await freeAssessmentCard.count() > 0) {
+    if ((await freeAssessmentCard.count()) > 0) {
       await freeAssessmentCard.click();
     }
 
     // Step 6: Start the actual assessment
-    const beginButton = page.locator('button:has-text("Begin"), button:has-text("Start"), .start-assessment');
-    if (await beginButton.count() > 0) {
+    const beginButton = page.locator(
+      'button:has-text("Begin"), button:has-text("Start"), .start-assessment'
+    );
+    if ((await beginButton.count()) > 0) {
       await beginButton.first().click();
       await page.waitForLoadState('networkidle');
     }
@@ -143,13 +146,23 @@ test.describe('Complete User Journey Tests', () => {
     await page.setViewportSize({ width: 390, height: 844 });
 
     // Test that the frontend can communicate with the API
-    const apiResponse = await makeApiRequestWithRetry(request, 'http://localhost:3002/api/assessments/adaptive-optimized', {
-      tier: 'free',
-      assessmentType: 'personality',
-      targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-      previousResponses: [],
-      userProfile: {}
-    });
+    const apiResponse = await makeApiRequestWithRetry(
+      request,
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        tier: 'free',
+        assessmentType: 'personality',
+        targetTraits: [
+          'openness',
+          'conscientiousness',
+          'extraversion',
+          'agreeableness',
+          'neuroticism'
+        ],
+        previousResponses: [],
+        userProfile: {}
+      }
+    );
 
     expect(apiResponse.status()).toBe(200);
     const result = await apiResponse.json();
@@ -166,7 +179,7 @@ test.describe('Complete User Journey Tests', () => {
 
     // Interact with the page to trigger any JS
     const pricingCard = page.locator('.pricing-card').first();
-    if (await pricingCard.count() > 0) {
+    if ((await pricingCard.count()) > 0) {
       await pricingCard.click();
     }
 
@@ -208,7 +221,9 @@ test.describe('Complete User Journey Tests', () => {
         fullPage: true
       });
 
-      console.log(`✅ ${breakpoint.name} (${breakpoint.width}×${breakpoint.height}) responsive layout working`);
+      console.log(
+        `✅ ${breakpoint.name} (${breakpoint.width}×${breakpoint.height}) responsive layout working`
+      );
     }
   });
 
@@ -232,9 +247,11 @@ test.describe('Complete User Journey Tests', () => {
       const performanceData = await page.evaluate(() => {
         const navigation = performance.getEntriesByType('navigation')[0];
         return {
-          domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+          domContentLoaded:
+            navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
           loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
-          firstContentfulPaint: performance.getEntriesByName('first-contentful-paint')[0]?.startTime || 0
+          firstContentfulPaint:
+            performance.getEntriesByName('first-contentful-paint')[0]?.startTime || 0
         };
       });
 
@@ -264,9 +281,9 @@ test.describe('Complete User Journey Tests', () => {
     // 1. Keyboard navigation
     await page.keyboard.press('Tab');
     const focusedElement = await page.evaluate(() => document.activeElement.tagName);
-    expect(['A', 'BUTTON', 'INPUT', 'TEXTAREA'].some(tag =>
-      focusedElement.includes(tag)
-    )).toBeTruthy();
+    expect(
+      ['A', 'BUTTON', 'INPUT', 'TEXTAREA'].some(tag => focusedElement.includes(tag))
+    ).toBeTruthy();
 
     // 2. Alt text for images (if any)
     const images = page.locator('img');
@@ -283,7 +300,7 @@ test.describe('Complete User Journey Tests', () => {
 
     // 4. Color contrast (basic check)
     const textElements = page.locator('p, span, div').first();
-    if (await textElements.count() > 0) {
+    if ((await textElements.count()) > 0) {
       const styles = await textElements.evaluate(el => {
         const computed = getComputedStyle(el);
         return {
@@ -296,5 +313,4 @@ test.describe('Complete User Journey Tests', () => {
 
     console.log('♿ Basic accessibility features verified');
   });
-
 });

@@ -2,9 +2,9 @@ name: 🚀 Neurlyn CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   # 🔍 Code Quality Analysis

@@ -64,7 +64,7 @@ test.describe('Visual Regression Tests', () => {
     // Try to toggle dark mode
     const darkModeToggle = page.locator('[class*="dark"], [class*="theme"], [aria-label*="theme"]');
 
-    if (await darkModeToggle.count() > 0) {
+    if ((await darkModeToggle.count()) > 0) {
       await darkModeToggle.first().click();
       await page.waitForTimeout(500); // Wait for theme transition
 
@@ -80,14 +80,14 @@ test.describe('Visual Regression Tests', () => {
 
     // Start assessment if needed
     const startButton = page.locator('button').filter({ hasText: /start|begin/i });
-    if (await startButton.count() > 0) {
+    if ((await startButton.count()) > 0) {
       await startButton.first().click();
       await page.waitForTimeout(1000);
     }
 
     const questionCard = page.locator('.question-card, .question, [class*="question"]').first();
 
-    if (await questionCard.count() > 0) {
+    if ((await questionCard.count()) > 0) {
       await expect(questionCard).toHaveScreenshot('question-card.png');
     }
   });

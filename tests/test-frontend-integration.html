@@ -1,339 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neurlyn - Frontend Integration Test</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      }
 
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 2.5em;
-        }
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: 2.5em;
+      }
 
-        .test-controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+      .test-controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
 
-        .control-group {
-            background: #f5f5f5;
-            padding: 15px;
-            border-radius: 10px;
-        }
+      .control-group {
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 10px;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-        }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #555;
+      }
 
-        select, input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            background: white;
-        }
+      select,
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        background: white;
+      }
 
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+      button {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
-        button:hover {
-            background: #5a67d8;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
+      button:hover {
+        background: #5a67d8;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
 
-        .results-section {
-            margin-top: 30px;
-        }
+      .results-section {
+        margin-top: 30px;
+      }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+      }
 
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
+      .stat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+      }
 
-        .stat-value {
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+      .stat-value {
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
 
-        .stat-label {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
+      .stat-label {
+        font-size: 0.9em;
+        opacity: 0.9;
+      }
 
-        .question-card {
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
+      .question-card {
+        background: #f8f9fa;
+        border-left: 4px solid #667eea;
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+      }
 
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 15px;
-        }
+      .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 15px;
+      }
 
-        .question-id {
-            background: #667eea;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
+      .question-id {
+        background: #667eea;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        font-weight: 600;
+      }
 
-        .question-metadata {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+      .question-metadata {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
 
-        .metadata-badge {
-            background: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            color: #666;
-            border: 1px solid #ddd;
-        }
+      .metadata-badge {
+        background: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        color: #666;
+        border: 1px solid #ddd;
+      }
 
-        .question-text {
-            font-size: 1.1em;
-            color: #333;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
+      .question-text {
+        font-size: 1.1em;
+        color: #333;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
 
-        .question-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+      .question-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
-        .option-button {
-            background: white;
-            border: 2px solid #ddd;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+      .option-button {
+        background: white;
+        border: 2px solid #ddd;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
 
-        .option-button:hover {
-            border-color: #667eea;
-            background: #f0f4ff;
-        }
+      .option-button:hover {
+        border-color: #667eea;
+        background: #f0f4ff;
+      }
 
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
+      .loading {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+      }
 
-        .error {
-            background: #fee;
-            color: #c33;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
+      .error {
+        background: #fee;
+        color: #c33;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
 
-        .success {
-            background: #efe;
-            color: #3c3;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
+      .success {
+        background: #efe;
+        color: #3c3;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
 
-        #jsonOutput {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 20px;
-            border-radius: 8px;
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 12px;
-            overflow-x: auto;
-            max-height: 400px;
-            overflow-y: auto;
-            display: none;
-        }
+      #jsonOutput {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 12px;
+        overflow-x: auto;
+        max-height: 400px;
+        overflow-y: auto;
+        display: none;
+      }
 
-        .toggle-json {
-            background: #444;
-            margin-bottom: 10px;
-        }
+      .toggle-json {
+        background: #444;
+        margin-bottom: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>🧠 Neurlyn - Assessment Integration Test</h1>
+      <h1>🧠 Neurlyn - Assessment Integration Test</h1>
 
-        <div class="test-controls">
-            <div class="control-group">
-                <label for="assessmentType">Assessment Type</label>
-                <select id="assessmentType">
-                    <option value="personality">Personality</option>
-                    <option value="neurodiversity">Neurodiversity</option>
-                    <option value="lateral">Lateral Thinking</option>
-                    <option value="cognitive">Cognitive</option>
-                    <option value="comprehensive">Comprehensive</option>
-                </select>
-            </div>
-
-            <div class="control-group">
-                <label for="tier">Tier</label>
-                <select id="tier">
-                    <option value="free">Free</option>
-                    <option value="core">Core</option>
-                    <option value="comprehensive">Comprehensive</option>
-                    <option value="specialized">Specialized</option>
-                </select>
-            </div>
-
-            <div class="control-group">
-                <label for="questionLimit">Question Limit</label>
-                <input type="number" id="questionLimit" placeholder="Leave empty for all" min="1" max="100">
-            </div>
-
-            <div class="control-group">
-                <label for="randomize">
-                    <input type="checkbox" id="randomize" checked> Randomize Questions
-                </label>
-            </div>
+      <div class="test-controls">
+        <div class="control-group">
+          <label for="assessmentType">Assessment Type</label>
+          <select id="assessmentType">
+            <option value="personality">Personality</option>
+            <option value="neurodiversity">Neurodiversity</option>
+            <option value="lateral">Lateral Thinking</option>
+            <option value="cognitive">Cognitive</option>
+            <option value="comprehensive">Comprehensive</option>
+          </select>
         </div>
 
-        <div style="text-align: center; margin: 20px 0;">
-            <button onclick="loadQuestions()">Load Questions</button>
-            <button onclick="testAllVariations()" style="background: #764ba2; margin-left: 10px;">Run All Tests</button>
-            <button onclick="toggleJson()" class="toggle-json" style="margin-left: 10px;">Toggle JSON</button>
+        <div class="control-group">
+          <label for="tier">Tier</label>
+          <select id="tier">
+            <option value="free">Free</option>
+            <option value="core">Core</option>
+            <option value="comprehensive">Comprehensive</option>
+            <option value="specialized">Specialized</option>
+          </select>
         </div>
 
-        <div id="results" class="results-section"></div>
-        <pre id="jsonOutput"></pre>
+        <div class="control-group">
+          <label for="questionLimit">Question Limit</label>
+          <input
+            type="number"
+            id="questionLimit"
+            placeholder="Leave empty for all"
+            min="1"
+            max="100"
+          />
+        </div>
+
+        <div class="control-group">
+          <label for="randomize">
+            <input type="checkbox" id="randomize" checked /> Randomize Questions
+          </label>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 20px 0">
+        <button onclick="loadQuestions()">Load Questions</button>
+        <button onclick="testAllVariations()" style="background: #764ba2; margin-left: 10px">
+          Run All Tests
+        </button>
+        <button onclick="toggleJson()" class="toggle-json" style="margin-left: 10px">
+          Toggle JSON
+        </button>
+      </div>
+
+      <div id="results" class="results-section"></div>
+      <pre id="jsonOutput"></pre>
     </div>
 
     <script>
-        const API_BASE = 'http://localhost:3000/api';
+      const API_BASE = 'http://localhost:3000/api';
 
-        async function loadQuestions() {
-            const type = document.getElementById('assessmentType').value;
-            const tier = document.getElementById('tier').value;
-            const limit = document.getElementById('questionLimit').value;
-            const randomize = document.getElementById('randomize').checked;
+      async function loadQuestions() {
+        const type = document.getElementById('assessmentType').value;
+        const tier = document.getElementById('tier').value;
+        const limit = document.getElementById('questionLimit').value;
+        const randomize = document.getElementById('randomize').checked;
 
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '<div class="loading">Loading questions...</div>';
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '<div class="loading">Loading questions...</div>';
 
-            try {
-                let url = `${API_BASE}/questions/assessment/${type}?tier=${tier}&randomize=${randomize}`;
-                if (limit) url += `&limit=${limit}`;
+        try {
+          let url = `${API_BASE}/questions/assessment/${type}?tier=${tier}&randomize=${randomize}`;
+          if (limit) url += `&limit=${limit}`;
 
-                const response = await fetch(url);
-                const data = await response.json();
+          const response = await fetch(url);
+          const data = await response.json();
 
-                if (!data.success) {
-                    throw new Error(data.error || 'Failed to load questions');
-                }
+          if (!data.success) {
+            throw new Error(data.error || 'Failed to load questions');
+          }
 
-                displayResults(data);
-                document.getElementById('jsonOutput').textContent = JSON.stringify(data, null, 2);
-
-            } catch (error) {
-                resultsDiv.innerHTML = `<div class="error">Error: ${error.message}</div>`;
-                console.error('Error loading questions:', error);
-            }
+          displayResults(data);
+          document.getElementById('jsonOutput').textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          resultsDiv.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+          console.error('Error loading questions:', error);
         }
+      }
 
-        function displayResults(data) {
-            const resultsDiv = document.getElementById('results');
-            let html = '<div class="success">Questions loaded successfully!</div>';
+      function displayResults(data) {
+        const resultsDiv = document.getElementById('results');
+        let html = '<div class="success">Questions loaded successfully!</div>';
 
-            // Stats
-            html += '<div class="stats-grid">';
-            html += `<div class="stat-card">
+        // Stats
+        html += '<div class="stats-grid">';
+        html += `<div class="stat-card">
                 <div class="stat-value">${data.totalQuestions}</div>
                 <div class="stat-label">Total Questions</div>
             </div>`;
 
-            if (data.breakdown) {
-                Object.entries(data.breakdown).forEach(([key, value]) => {
-                    html += `<div class="stat-card">
+        if (data.breakdown) {
+          Object.entries(data.breakdown).forEach(([key, value]) => {
+            html += `<div class="stat-card">
                         <div class="stat-value">${value}</div>
                         <div class="stat-label">${key}</div>
                     </div>`;
-                });
-            }
+          });
+        }
 
-            if (data.traitBreakdown) {
-                Object.entries(data.traitBreakdown).forEach(([trait, count]) => {
-                    html += `<div class="stat-card">
+        if (data.traitBreakdown) {
+          Object.entries(data.traitBreakdown).forEach(([trait, count]) => {
+            html += `<div class="stat-card">
                         <div class="stat-value">${count}</div>
                         <div class="stat-label">${trait}</div>
                     </div>`;
-                });
-            }
-            html += '</div>';
+          });
+        }
+        html += '</div>';
 
-            // Questions
-            html += '<h2 style="margin: 30px 0 20px;">Sample Questions (First 5)</h2>';
-            const questionsToShow = data.questions.slice(0, 5);
+        // Questions
+        html += '<h2 style="margin: 30px 0 20px;">Sample Questions (First 5)</h2>';
+        const questionsToShow = data.questions.slice(0, 5);
 
-            questionsToShow.forEach((q, index) => {
-                html += `<div class="question-card">
+        questionsToShow.forEach((q, index) => {
+          html += `<div class="question-card">
                     <div class="question-header">
                         <span class="question-id">${q.questionId}</span>
                         <div class="question-metadata">
@@ -345,79 +359,81 @@
                     </div>
                     <div class="question-text">${q.text}</div>`;
 
-                if (q.options && q.options.length > 0) {
-                    html += '<div class="question-options">';
-                    q.options.forEach(opt => {
-                        html += `<button class="option-button">${opt.label}</button>`;
-                    });
-                    html += '</div>';
-                }
-
-                html += '</div>';
+          if (q.options && q.options.length > 0) {
+            html += '<div class="question-options">';
+            q.options.forEach(opt => {
+              html += `<button class="option-button">${opt.label}</button>`;
             });
+            html += '</div>';
+          }
 
-            resultsDiv.innerHTML = html;
+          html += '</div>';
+        });
+
+        resultsDiv.innerHTML = html;
+      }
+
+      async function testAllVariations() {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '<div class="loading">Running comprehensive tests...</div>';
+
+        const tests = [
+          { type: 'personality', tier: 'free', name: 'Personality (Free)' },
+          { type: 'personality', tier: 'core', name: 'Personality (Core)' },
+          { type: 'neurodiversity', tier: 'core', name: 'Neurodiversity' },
+          { type: 'lateral', tier: 'comprehensive', name: 'Lateral Thinking' },
+          { type: 'comprehensive', tier: 'comprehensive', name: 'Comprehensive' }
+        ];
+
+        let results = [];
+        for (const test of tests) {
+          try {
+            const response = await fetch(
+              `${API_BASE}/questions/assessment/${test.type}?tier=${test.tier}`
+            );
+            const data = await response.json();
+            results.push({
+              name: test.name,
+              success: data.success,
+              count: data.totalQuestions,
+              data: data
+            });
+          } catch (error) {
+            results.push({
+              name: test.name,
+              success: false,
+              error: error.message
+            });
+          }
         }
 
-        async function testAllVariations() {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '<div class="loading">Running comprehensive tests...</div>';
+        displayTestResults(results);
+      }
 
-            const tests = [
-                { type: 'personality', tier: 'free', name: 'Personality (Free)' },
-                { type: 'personality', tier: 'core', name: 'Personality (Core)' },
-                { type: 'neurodiversity', tier: 'core', name: 'Neurodiversity' },
-                { type: 'lateral', tier: 'comprehensive', name: 'Lateral Thinking' },
-                { type: 'comprehensive', tier: 'comprehensive', name: 'Comprehensive' }
-            ];
+      function displayTestResults(results) {
+        const resultsDiv = document.getElementById('results');
+        let html = '<h2>Test Results</h2>';
 
-            let results = [];
-            for (const test of tests) {
-                try {
-                    const response = await fetch(`${API_BASE}/questions/assessment/${test.type}?tier=${test.tier}`);
-                    const data = await response.json();
-                    results.push({
-                        name: test.name,
-                        success: data.success,
-                        count: data.totalQuestions,
-                        data: data
-                    });
-                } catch (error) {
-                    results.push({
-                        name: test.name,
-                        success: false,
-                        error: error.message
-                    });
-                }
-            }
-
-            displayTestResults(results);
-        }
-
-        function displayTestResults(results) {
-            const resultsDiv = document.getElementById('results');
-            let html = '<h2>Test Results</h2>';
-
-            results.forEach(result => {
-                const statusClass = result.success ? 'success' : 'error';
-                html += `<div class="${statusClass}" style="margin: 10px 0;">
+        results.forEach(result => {
+          const statusClass = result.success ? 'success' : 'error';
+          html += `<div class="${statusClass}" style="margin: 10px 0;">
                     ${result.name}: ${result.success ? `✓ ${result.count} questions` : `✗ ${result.error}`}
                 </div>`;
-            });
+        });
 
-            resultsDiv.innerHTML = html;
+        resultsDiv.innerHTML = html;
 
-            // Show combined JSON
-            document.getElementById('jsonOutput').textContent = JSON.stringify(results, null, 2);
-        }
+        // Show combined JSON
+        document.getElementById('jsonOutput').textContent = JSON.stringify(results, null, 2);
+      }
 
-        function toggleJson() {
-            const jsonOutput = document.getElementById('jsonOutput');
-            jsonOutput.style.display = jsonOutput.style.display === 'none' ? 'block' : 'none';
-        }
+      function toggleJson() {
+        const jsonOutput = document.getElementById('jsonOutput');
+        jsonOutput.style.display = jsonOutput.style.display === 'none' ? 'block' : 'none';
+      }
 
-        // Load personality questions by default on page load
-        window.onload = () => loadQuestions();
+      // Load personality questions by default on page load
+      window.onload = () => loadQuestions();
     </script>
-</body>
+  </body>
 </html>

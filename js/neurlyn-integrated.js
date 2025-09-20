@@ -15,10 +15,10 @@
       navigator.serviceWorker
         .register('/sw.js')
         .then(registration => {
-// console.log('Service Worker registered');
+          // console.log('Service Worker registered');
         })
         .catch(err => {
-// console.log('Service Worker registration skipped:', err.message);
+          // console.log('Service Worker registration skipped:', err.message);
         });
     });
   }
@@ -34,7 +34,7 @@
         script.onload = () => {
           if (window.EnvironmentConfig) {
             window.envConfig = window.EnvironmentConfig();
-// console.log('Environment:', window.envConfig.getEnvironment());
+            // console.log('Environment:', window.envConfig.getEnvironment());
             resolve();
           }
         };
@@ -48,18 +48,18 @@
   async function initializeCoreServices() {
     // Storage Service
     if (window.storageService) {
-// console.log('Storage service initialized');
+      // console.log('Storage service initialized');
     }
 
     // Error Handler
     if (window.errorHandler) {
-// console.log('Error handler initialized');
+      // console.log('Error handler initialized');
     }
 
     // Performance Monitor
     if (window.performanceUtils) {
       window.performanceUtils.initializeMonitoring();
-// console.log('Performance monitoring initialized');
+      // console.log('Performance monitoring initialized');
     }
   }
 
@@ -78,7 +78,7 @@
       this.responses = [];
       this.startTime = Date.now();
 
-// console.log(`Assessment started: ${type}`, options);
+      // console.log(`Assessment started: ${type}`, options);
 
       // Emit custom event
       window.dispatchEvent(
@@ -108,7 +108,7 @@
         completedAt: new Date().toISOString()
       };
 
-// console.log('Assessment completed', results);
+      // console.log('Assessment completed', results);
 
       // Emit custom event
       window.dispatchEvent(
@@ -169,7 +169,7 @@
       this.previousScreen = this.currentScreen;
       this.currentScreen = screen;
 
-// console.log(`Navigating: ${this.previousScreen} -> ${this.currentScreen}`);
+      // console.log(`Navigating: ${this.previousScreen} -> ${this.currentScreen}`);
 
       // Emit navigation event
       window.dispatchEvent(
@@ -196,11 +196,11 @@
   async function initialize() {
     // Prevent double initialization
     if (window.Neurlyn && window.Neurlyn.initialized) {
-// console.log('Neurlyn Core already initialized');
+      // console.log('Neurlyn Core already initialized');
       return;
     }
 
-// console.log('Neurlyn Core Initializing...');
+    // console.log('Neurlyn Core Initializing...');
 
     // Load environment config
     await loadEnvironmentConfig();
@@ -242,7 +242,7 @@
       }
     };
 
-// console.log('Neurlyn Core Initialized');
+    // console.log('Neurlyn Core Initialized');
 
     // Emit ready event
     window.dispatchEvent(new Event('neurlynReady'));

@@ -1,339 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Neurlyn - Intelligent Personality Assessment</title>
-    <meta name="description" content="Learn about Neurlyn's science-based personality and neurodiversity assessment platform">
-    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/neurlyn.css">
-    <link rel="stylesheet" href="styles/neurlyn-navigation.css">
-    <link rel="stylesheet" href="styles/neurlyn-mobile.css">
+    <meta
+      name="description"
+      content="Learn about Neurlyn's science-based personality and neurodiversity assessment platform"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/neurlyn.css" />
+    <link rel="stylesheet" href="styles/neurlyn-navigation.css" />
+    <link rel="stylesheet" href="styles/neurlyn-mobile.css" />
     <style>
-        .about-hero {
-            background: linear-gradient(135deg, #6C9E83 0%, #5A8A70 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-        .about-hero h1 {
-            margin: 0 0 1rem 0;
-            font-size: 2.5rem;
-        }
-        .about-hero p {
-            margin: 0;
-            opacity: 0.9;
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .about-section {
-            padding: 3rem 0;
-        }
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        .about-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            border-top: 4px solid #6C9E83;
-        }
-        .about-card h3 {
-            color: #6C9E83;
-            margin: 0 0 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .about-icon {
-            width: 24px;
-            height: 24px;
-            fill: #6C9E83;
-        }
-        .methodology-section {
-            background: #f9fafb;
-            padding: 3rem 0;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-        .trait-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .trait-item {
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            border-left: 3px solid #6C9E83;
-        }
-        .trait-item strong {
-            color: #374151;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .trait-item p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #6B7280;
-        }
-        .faq-section {
-            margin: 3rem 0;
-        }
-        .faq-item {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #e5e7eb;
-        }
-        .faq-question {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-        }
-        .faq-answer {
-            color: #6B7280;
-            line-height: 1.6;
-        }
-        .cta-section {
-            background: linear-gradient(135deg, rgba(108, 158, 131, 0.1) 0%, rgba(108, 158, 131, 0.05) 100%);
-            border-radius: 12px;
-            padding: 3rem;
-            text-align: center;
-            margin: 3rem 0;
-        }
-        .cta-section h2 {
-            color: #374151;
-            margin-bottom: 1rem;
-        }
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        .cta-button {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-        .cta-primary {
-            background: #6C9E83;
-            color: white;
-        }
-        .cta-primary:hover {
-            background: #5A8A70;
-        }
-        .cta-secondary {
-            background: white;
-            color: #6C9E83;
-            border: 2px solid #6C9E83;
-        }
-        .cta-secondary:hover {
-            background: rgba(108, 158, 131, 0.05);
-        }
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .footer-separator {
-            color: #9CA3AF;
-        }
+      .about-hero {
+        background: linear-gradient(135deg, #6c9e83 0%, #5a8a70 100%);
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+      }
+      .about-hero h1 {
+        margin: 0 0 1rem 0;
+        font-size: 2.5rem;
+      }
+      .about-hero p {
+        margin: 0;
+        opacity: 0.9;
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .about-section {
+        padding: 3rem 0;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      .about-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #6c9e83;
+      }
+      .about-card h3 {
+        color: #6c9e83;
+        margin: 0 0 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .about-icon {
+        width: 24px;
+        height: 24px;
+        fill: #6c9e83;
+      }
+      .methodology-section {
+        background: #f9fafb;
+        padding: 3rem 0;
+        border-radius: 12px;
+        margin: 2rem 0;
+      }
+      .trait-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .trait-item {
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        border-left: 3px solid #6c9e83;
+      }
+      .trait-item strong {
+        color: #374151;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .trait-item p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #6b7280;
+      }
+      .faq-section {
+        margin: 3rem 0;
+      }
+      .faq-item {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+      }
+      .faq-question {
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+      .faq-answer {
+        color: #6b7280;
+        line-height: 1.6;
+      }
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          rgba(108, 158, 131, 0.1) 0%,
+          rgba(108, 158, 131, 0.05) 100%
+        );
+        border-radius: 12px;
+        padding: 3rem;
+        text-align: center;
+        margin: 3rem 0;
+      }
+      .cta-section h2 {
+        color: #374151;
+        margin-bottom: 1rem;
+      }
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      .cta-button {
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+      .cta-primary {
+        background: #6c9e83;
+        color: white;
+      }
+      .cta-primary:hover {
+        background: #5a8a70;
+      }
+      .cta-secondary {
+        background: white;
+        color: #6c9e83;
+        border: 2px solid #6c9e83;
+      }
+      .cta-secondary:hover {
+        background: rgba(108, 158, 131, 0.05);
+      }
+      .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .footer-separator {
+        color: #9ca3af;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Service Worker Cleanup Script -->
     <script>
-    // Unregister any existing service workers to fix navigation
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            for(let registration of registrations) {
-                registration.unregister();
-                console.log('Service worker unregistered');
-            }
+      // Unregister any existing service workers to fix navigation
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+          for (let registration of registrations) {
+            registration.unregister();
+            console.log('Service worker unregistered');
+          }
         });
-    }
-    
-    // Clear caches to ensure fresh content
-    if ('caches' in window) {
-        caches.keys().then(function(names) {
-            for (let name of names) {
-                caches.delete(name);
-                console.log('Cache cleared:', name);
-            }
+      }
+
+      // Clear caches to ensure fresh content
+      if ('caches' in window) {
+        caches.keys().then(function (names) {
+          for (let name of names) {
+            caches.delete(name);
+            console.log('Cache cleared:', name);
+          }
         });
-    }
+      }
     </script>
     <!-- Navigation -->
     <nav class="main-nav">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-brand-group">
-                    <a href="index.html" class="nav-brand">Neurlyn</a>
-                    <span class="nav-tagline">Intelligent Personality Assessment</span>
-                </div>
-                <div class="nav-links">
-                    <a href="index.html" class="nav-link">Assessment</a>
-                    <a href="support.html" class="nav-link">Support</a>
-                    <a href="about.html" class="nav-link active">About</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="nav-content">
+          <div class="nav-brand-group">
+            <a href="index.html" class="nav-brand">Neurlyn</a>
+            <span class="nav-tagline">Intelligent Personality Assessment</span>
+          </div>
+          <div class="nav-links">
+            <a href="index.html" class="nav-link">Assessment</a>
+            <a href="support.html" class="nav-link">Support</a>
+            <a href="about.html" class="nav-link active">About</a>
+          </div>
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="about-hero">
-        <div class="container">
-            <h1>About Neurlyn</h1>
-            <p>Science-based personality assessment combining traditional psychology with neurodiversity insights</p>
-        </div>
+      <div class="container">
+        <h1>About Neurlyn</h1>
+        <p>
+          Science-based personality assessment combining traditional psychology with neurodiversity
+          insights
+        </p>
+      </div>
     </section>
 
     <!-- Main Content -->
     <main class="container">
-        <!-- What We Do -->
-        <section class="about-section">
-            <h2>What Makes Neurlyn Different</h2>
-            
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>
-                        <svg class="about-icon" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                        </svg>
-                        241+ Validated Questions
-                    </h3>
-                    <p>Our comprehensive question bank covers Big Five personality traits, neurodiversity screening (ADHD, Autism), cognitive functions, attachment styles, trauma screening, and more - all scientifically validated.</p>
-                </div>
+      <!-- What We Do -->
+      <section class="about-section">
+        <h2>What Makes Neurlyn Different</h2>
 
-                <div class="about-card">
-                    <h3>
-                        <svg class="about-icon" viewBox="0 0 24 24">
-                            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-                        </svg>
-                        Adaptive Intelligence
-                    </h3>
-                    <p>Our smart assessment engine adapts in real-time, selecting the most relevant questions from our 241+ question bank based on your responses. Choose from Quick (20 questions), Standard (45), or Deep (75) assessments.</p>
-                </div>
-
-                <div class="about-card">
-                    <h3>
-                        <svg class="about-icon" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        Personalized Reports
-                    </h3>
-                    <p>Receive comprehensive 15-section reports with neurodiversity-affirming language, hidden strengths discovery, and personalized daily strategies - all tailored to your unique profile.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Methodology -->
-        <section class="methodology-section">
-            <div class="container">
-                <h2>Our Comprehensive Assessment Coverage</h2>
-                <p style="color: #6B7280; margin: 1rem 0;">With 241+ validated questions across multiple domains, Neurlyn provides the most comprehensive personality and neurodiversity assessment available:</p>
-
-                <div class="trait-list">
-                    <div class="trait-item">
-                        <strong>Big Five Personality (61 questions)</strong>
-                        <p>Complete BFI-2 Extended assessment of Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism</p>
-                    </div>
-                    <div class="trait-item">
-                        <strong>Neurodiversity Screening (90 questions)</strong>
-                        <p>Executive function, sensory processing, masking behaviors, emotional regulation, and special interests</p>
-                    </div>
-                    <div class="trait-item">
-                        <strong>Cognitive Functions (16 questions)</strong>
-                        <p>Jungian cognitive functions including thinking, feeling, sensing, and intuition preferences</p>
-                    </div>
-                    <div class="trait-item">
-                        <strong>Attachment & Trauma (24 questions)</strong>
-                        <p>Attachment styles and trauma-informed screening for comprehensive emotional understanding</p>
-                    </div>
-                    <div class="trait-item">
-                        <strong>Enneagram Types (18 questions)</strong>
-                        <p>Core motivations and fears across all nine Enneagram personality types</p>
-                    </div>
-                    <div class="trait-item">
-                        <strong>Adaptive Intelligence</strong>
-                        <p>Smart branching pathways that adapt based on your responses, detecting patterns like ADHD, Autism, AuDHD, and giftedness</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQs -->
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">Is this a medical diagnosis?</div>
-                <div class="faq-answer">No, Neurlyn provides personality insights and trait indicators for self-discovery purposes only. It is not a diagnostic tool and should not replace professional medical or psychological evaluation.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">How accurate is the assessment?</div>
-                <div class="faq-answer">Our assessments use validated psychological frameworks and behavioral metrics. While highly insightful, results should be viewed as indicators and patterns rather than definitive labels.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Is my data private?</div>
-                <div class="faq-answer">Absolutely. We don't store any personal data or assessment responses. All processing happens locally in your browser, and results are yours alone.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">What's the difference between Free and Premium?</div>
-                <div class="faq-answer">The free assessment provides core Big Five personality insights. The Premium In-Depth Analysis (£1.99) includes comprehensive neurodiversity screening, detailed trait analysis, and a downloadable report.</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">How long does it take?</div>
-                <div class="faq-answer">The free assessment takes about 5 minutes. The in-depth analysis takes 15-20 minutes, including interactive tasks and comprehensive questions.</div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <h2>Ready to Discover Your Unique Profile?</h2>
-            <p style="color: #6B7280; margin-bottom: 2rem;">Join thousands who've gained valuable insights about their personality and cognitive traits</p>
-            <div class="cta-buttons">
-                <a href="index.html" class="cta-button cta-primary">Start Free Assessment</a>
-                <a href="support.html" class="cta-button cta-secondary">View Resources</a>
-            </div>
-        </section>
-
-        <!-- Disclaimer -->
-        <div style="background: #fef3c7; border: 1px solid #fbbf24; border-radius: 8px; padding: 1rem; margin: 2rem 0;">
-            <p style="margin: 0; color: #92400e; font-size: 0.9rem;">
-                <strong>Important:</strong> Neurlyn is a self-assessment tool for personal insights only. If you're experiencing mental health concerns or need professional evaluation for neurodivergent conditions, please consult with qualified healthcare providers.
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>
+              <svg class="about-icon" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+              241+ Validated Questions
+            </h3>
+            <p>
+              Our comprehensive question bank covers Big Five personality traits, neurodiversity
+              screening (ADHD, Autism), cognitive functions, attachment styles, trauma screening,
+              and more - all scientifically validated.
             </p>
+          </div>
+
+          <div class="about-card">
+            <h3>
+              <svg class="about-icon" viewBox="0 0 24 24">
+                <path
+                  d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
+                />
+              </svg>
+              Adaptive Intelligence
+            </h3>
+            <p>
+              Our smart assessment engine adapts in real-time, selecting the most relevant questions
+              from our 241+ question bank based on your responses. Choose from Quick (20 questions),
+              Standard (45), or Deep (75) assessments.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>
+              <svg class="about-icon" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+              </svg>
+              Personalized Reports
+            </h3>
+            <p>
+              Receive comprehensive 15-section reports with neurodiversity-affirming language,
+              hidden strengths discovery, and personalized daily strategies - all tailored to your
+              unique profile.
+            </p>
+          </div>
         </div>
+      </section>
+
+      <!-- Methodology -->
+      <section class="methodology-section">
+        <div class="container">
+          <h2>Our Comprehensive Assessment Coverage</h2>
+          <p style="color: #6b7280; margin: 1rem 0">
+            With 241+ validated questions across multiple domains, Neurlyn provides the most
+            comprehensive personality and neurodiversity assessment available:
+          </p>
+
+          <div class="trait-list">
+            <div class="trait-item">
+              <strong>Big Five Personality (61 questions)</strong>
+              <p>
+                Complete BFI-2 Extended assessment of Openness, Conscientiousness, Extraversion,
+                Agreeableness, and Neuroticism
+              </p>
+            </div>
+            <div class="trait-item">
+              <strong>Neurodiversity Screening (90 questions)</strong>
+              <p>
+                Executive function, sensory processing, masking behaviors, emotional regulation, and
+                special interests
+              </p>
+            </div>
+            <div class="trait-item">
+              <strong>Cognitive Functions (16 questions)</strong>
+              <p>
+                Jungian cognitive functions including thinking, feeling, sensing, and intuition
+                preferences
+              </p>
+            </div>
+            <div class="trait-item">
+              <strong>Attachment & Trauma (24 questions)</strong>
+              <p>
+                Attachment styles and trauma-informed screening for comprehensive emotional
+                understanding
+              </p>
+            </div>
+            <div class="trait-item">
+              <strong>Enneagram Types (18 questions)</strong>
+              <p>Core motivations and fears across all nine Enneagram personality types</p>
+            </div>
+            <div class="trait-item">
+              <strong>Adaptive Intelligence</strong>
+              <p>
+                Smart branching pathways that adapt based on your responses, detecting patterns like
+                ADHD, Autism, AuDHD, and giftedness
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs -->
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">Is this a medical diagnosis?</div>
+          <div class="faq-answer">
+            No, Neurlyn provides personality insights and trait indicators for self-discovery
+            purposes only. It is not a diagnostic tool and should not replace professional medical
+            or psychological evaluation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How accurate is the assessment?</div>
+          <div class="faq-answer">
+            Our assessments use validated psychological frameworks and behavioral metrics. While
+            highly insightful, results should be viewed as indicators and patterns rather than
+            definitive labels.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is my data private?</div>
+          <div class="faq-answer">
+            Absolutely. We don't store any personal data or assessment responses. All processing
+            happens locally in your browser, and results are yours alone.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the difference between Free and Premium?</div>
+          <div class="faq-answer">
+            The free assessment provides core Big Five personality insights. The Premium In-Depth
+            Analysis (£1.99) includes comprehensive neurodiversity screening, detailed trait
+            analysis, and a downloadable report.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How long does it take?</div>
+          <div class="faq-answer">
+            The free assessment takes about 5 minutes. The in-depth analysis takes 15-20 minutes,
+            including interactive tasks and comprehensive questions.
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <h2>Ready to Discover Your Unique Profile?</h2>
+        <p style="color: #6b7280; margin-bottom: 2rem">
+          Join thousands who've gained valuable insights about their personality and cognitive
+          traits
+        </p>
+        <div class="cta-buttons">
+          <a href="index.html" class="cta-button cta-primary">Start Free Assessment</a>
+          <a href="support.html" class="cta-button cta-secondary">View Resources</a>
+        </div>
+      </section>
+
+      <!-- Disclaimer -->
+      <div
+        style="
+          background: #fef3c7;
+          border: 1px solid #fbbf24;
+          border-radius: 8px;
+          padding: 1rem;
+          margin: 2rem 0;
+        "
+      >
+        <p style="margin: 0; color: #92400e; font-size: 0.9rem">
+          <strong>Important:</strong> Neurlyn is a self-assessment tool for personal insights only.
+          If you're experiencing mental health concerns or need professional evaluation for
+          neurodivergent conditions, please consult with qualified healthcare providers.
+        </p>
+      </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer compact">
-        <div class="footer-content">
-            <span>&copy; 2024 Neurlyn. All rights reserved.</span>
-            <span class="footer-separator">|</span>
-            <a href="#privacy">Privacy</a>
-            <span class="footer-separator">|</span>
-            <a href="#terms">Terms</a>
-            <span class="footer-separator">|</span>
-            <a href="#contact">Contact</a>
-        </div>
+      <div class="footer-content">
+        <span>&copy; 2024 Neurlyn. All rights reserved.</span>
+        <span class="footer-separator">|</span>
+        <a href="#privacy">Privacy</a>
+        <span class="footer-separator">|</span>
+        <a href="#terms">Terms</a>
+        <span class="footer-separator">|</span>
+        <a href="#contact">Contact</a>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

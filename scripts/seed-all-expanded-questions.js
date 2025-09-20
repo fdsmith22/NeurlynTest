@@ -241,12 +241,12 @@ async function main() {
     const summary = await seedAllExpandedQuestions();
 
     logger.info('🎉 Expanded questions seeding completed!');
-// console.log('\n📊 Updated Question Bank:');
-// console.log(`   Total Questions: ${summary.total}`);
-// console.log(`   ├── Personality: ${summary.personality}`);
-// console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
-// console.log(`   ├── Psychoanalytic: ${summary.psychoanalytic}`);
-// console.log(`   └── Lateral: ${summary.lateral}`);
+    // console.log('\n📊 Updated Question Bank:');
+    // console.log(`   Total Questions: ${summary.total}`);
+    // console.log(`   ├── Personality: ${summary.personality}`);
+    // console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
+    // console.log(`   ├── Psychoanalytic: ${summary.psychoanalytic}`);
+    // console.log(`   └── Lateral: ${summary.lateral}`);
 
     await mongoose.disconnect();
     process.exit(0);

@@ -768,7 +768,7 @@ const traumaInformedQuestions = [
 async function seedPsychoanalyticQuestions() {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
-// console.log('Connected to MongoDB');
+    // console.log('Connected to MongoDB');
 
     const Question = mongoose.model(
       'Question',
@@ -800,9 +800,9 @@ async function seedPsychoanalyticQuestions() {
       ...traumaInformedQuestions.map(q => ({ ...q, tier: 'screening' }))
     ];
 
-// console.log(
-      `Seeding ${allPsychoanalyticQuestions.length} psychoanalytic assessment questions...`
-    );
+    // console.log(
+    //       `Seeding ${allPsychoanalyticQuestions.length} psychoanalytic assessment questions...`
+    //     );
 
     // Insert questions
     for (const question of allPsychoanalyticQuestions) {
@@ -812,7 +812,7 @@ async function seedPsychoanalyticQuestions() {
       });
     }
 
-// console.log('Successfully seeded psychoanalytic questions!');
+    // console.log('Successfully seeded psychoanalytic questions!');
 
     // Print statistics
     const categories = {};
@@ -821,9 +821,9 @@ async function seedPsychoanalyticQuestions() {
       categories[key] = (categories[key] || 0) + 1;
     });
 
-// console.log('\nQuestion distribution:');
+    // console.log('\nQuestion distribution:');
     Object.entries(categories).forEach(([cat, count]) => {
-// console.log(`  ${cat}: ${count} questions`);
+      // console.log(`  ${cat}: ${count} questions`);
     });
 
     // Count by tier
@@ -832,9 +832,9 @@ async function seedPsychoanalyticQuestions() {
       tiers[q.tier] = (tiers[q.tier] || 0) + 1;
     });
 
-// console.log('\nQuestions by tier:');
+    // console.log('\nQuestions by tier:');
     Object.entries(tiers).forEach(([tier, count]) => {
-// console.log(`  ${tier}: ${count} questions`);
+      // console.log(`  ${tier}: ${count} questions`);
     });
 
     process.exit(0);

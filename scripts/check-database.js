@@ -17,8 +17,8 @@ async function checkDatabase() {
     { $sort: { '_id.category': 1, '_id.subcategory': 1 } }
   ]);
 
-// console.log('\n📊 Complete Question Bank Analysis:');
-// console.log('====================================');
+  // console.log('\n📊 Complete Question Bank Analysis:');
+  // console.log('====================================');
 
   let categoryTotals = {};
   stats.forEach(item => {
@@ -26,21 +26,21 @@ async function checkDatabase() {
     const subcat = item._id.subcategory || 'general';
     if (!categoryTotals[cat]) categoryTotals[cat] = 0;
     categoryTotals[cat] += item.count;
-// console.log(`  ${cat}/${subcat}: ${item.count}`);
+    // console.log(`  ${cat}/${subcat}: ${item.count}`);
   });
 
-// console.log('\n📈 Category Totals:');
-// console.log('-------------------');
+  // console.log('\n📈 Category Totals:');
+  // console.log('-------------------');
   Object.entries(categoryTotals).forEach(([cat, count]) => {
-// console.log(`  ${cat}: ${count}`);
+    // console.log(`  ${cat}: ${count}`);
   });
 
   const total = await QuestionBank.countDocuments();
-// console.log(`\n🎯 Total Questions: ${total}`);
+  // console.log(`\n🎯 Total Questions: ${total}`);
 
   // Check specific subcategories
-// console.log('\n🔍 Detailed Breakdown:');
-// console.log('---------------------');
+  // console.log('\n🔍 Detailed Breakdown:');
+  // console.log('---------------------');
 
   const neurodiversityBreakdown = await QuestionBank.aggregate([
     { $match: { category: 'neurodiversity' } },
@@ -48,9 +48,9 @@ async function checkDatabase() {
     { $sort: { count: -1 } }
   ]);
 
-// console.log('Neurodiversity:');
+  // console.log('Neurodiversity:');
   neurodiversityBreakdown.forEach(item => {
-// console.log(`  - ${item._id || 'general'}: ${item.count}`);
+    // console.log(`  - ${item._id || 'general'}: ${item.count}`);
   });
 
   await mongoose.disconnect();

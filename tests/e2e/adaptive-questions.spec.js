@@ -6,14 +6,15 @@ import { test, expect } from '@playwright/test';
  */
 
 test.describe('Adaptive Question Assignment System', () => {
-
   test.beforeEach(async ({ page }) => {
     // Start from homepage and navigate to assessment
     await page.goto('http://localhost:8080');
     await page.waitForLoadState('networkidle');
   });
 
-  test('Free tier personality assessment should provide 20 balanced questions', async ({ page }) => {
+  test('Free tier personality assessment should provide 20 balanced questions', async ({
+    page
+  }) => {
     // Navigate to assessment
     await page.click('a[href="assessment.html"]');
     await page.waitForLoadState('networkidle');
@@ -27,15 +28,24 @@ test.describe('Adaptive Question Assignment System', () => {
     await page.waitForSelector('#question-text', { timeout: 10000 });
 
     // Test API directly to verify question selection
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: [
+            'openness',
+            'conscientiousness',
+            'extraversion',
+            'agreeableness',
+            'neuroticism'
+          ],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -65,15 +75,24 @@ test.describe('Adaptive Question Assignment System', () => {
     await page.click('a[href="assessment.html"]');
     await page.waitForLoadState('networkidle');
 
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'core',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'core',
+          assessmentType: 'personality',
+          targetTraits: [
+            'openness',
+            'conscientiousness',
+            'extraversion',
+            'agreeableness',
+            'neuroticism'
+          ],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -89,19 +108,30 @@ test.describe('Adaptive Question Assignment System', () => {
     });
   });
 
-  test('Comprehensive tier should provide 75 questions with maximum diversity', async ({ page }) => {
+  test('Comprehensive tier should provide 75 questions with maximum diversity', async ({
+    page
+  }) => {
     await page.click('a[href="assessment.html"]');
     await page.waitForLoadState('networkidle');
 
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'comprehensive',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'comprehensive',
+          assessmentType: 'personality',
+          targetTraits: [
+            'openness',
+            'conscientiousness',
+            'extraversion',
+            'agreeableness',
+            'neuroticism'
+          ],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -118,7 +148,9 @@ test.describe('Adaptive Question Assignment System', () => {
     });
   });
 
-  test('Adaptive selection with previous responses should affect question choice', async ({ page }) => {
+  test('Adaptive selection with previous responses should affect question choice', async ({
+    page
+  }) => {
     await page.click('a[href="assessment.html"]');
     await page.waitForLoadState('networkidle');
 
@@ -130,15 +162,18 @@ test.describe('Adaptive Question Assignment System', () => {
       { questionId: 'test4', trait: 'conscientiousness', value: 1 }
     ];
 
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'core',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness'],
-        previousResponses,
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'core',
+          assessmentType: 'personality',
+          targetTraits: ['openness', 'conscientiousness'],
+          previousResponses,
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -171,15 +206,24 @@ test.describe('Adaptive Question Assignment System', () => {
       { questionId: 'q8', trait: 'neuroticism', value: 5 }
     ];
 
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'core',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses,
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'core',
+          assessmentType: 'personality',
+          targetTraits: [
+            'openness',
+            'conscientiousness',
+            'extraversion',
+            'agreeableness',
+            'neuroticism'
+          ],
+          previousResponses,
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -194,15 +238,18 @@ test.describe('Adaptive Question Assignment System', () => {
     await page.click('a[href="assessment.html"]');
     await page.waitForLoadState('networkidle');
 
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: ['openness'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: ['openness'],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
 
@@ -227,22 +274,27 @@ test.describe('Adaptive Question Assignment System', () => {
     await page.waitForLoadState('networkidle');
 
     // Test personality assessment
-    const personalityResponse = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness'],
-        previousResponses: [],
-        userProfile: {}
+    const personalityResponse = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: ['openness', 'conscientiousness'],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const personalityResult = await personalityResponse.json();
     expect(personalityResult.success).toBe(true);
     expect(personalityResult.assessmentType).toBe('personality');
 
     // All questions should be personality category
-    const personalityQuestions = personalityResult.questions.filter(q => q.category === 'personality');
+    const personalityQuestions = personalityResult.questions.filter(
+      q => q.category === 'personality'
+    );
     expect(personalityQuestions.length).toBeGreaterThan(15); // Most should be personality
   });
 
@@ -251,15 +303,18 @@ test.describe('Adaptive Question Assignment System', () => {
     await page.waitForLoadState('networkidle');
 
     // Test that comprehensive tier can access questions from all lower tiers
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'comprehensive',
-        assessmentType: 'personality',
-        targetTraits: ['openness'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'comprehensive',
+          assessmentType: 'personality',
+          targetTraits: ['openness'],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const result = await response.json();
     expect(result.success).toBe(true);
@@ -280,17 +335,19 @@ test.describe('Adaptive Question Assignment System', () => {
     await page.waitForLoadState('networkidle');
 
     // Make multiple identical requests to test shuffling
-    const requests = Array(3).fill().map(() =>
-      page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-        data: {
-          tier: 'free',
-          assessmentType: 'personality',
-          targetTraits: ['openness', 'conscientiousness'],
-          previousResponses: [],
-          userProfile: {}
-        }
-      })
-    );
+    const requests = Array(3)
+      .fill()
+      .map(() =>
+        page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
+          data: {
+            tier: 'free',
+            assessmentType: 'personality',
+            targetTraits: ['openness', 'conscientiousness'],
+            previousResponses: [],
+            userProfile: {}
+          }
+        })
+      );
 
     const responses = await Promise.all(requests);
     const results = await Promise.all(responses.map(r => r.json()));
@@ -318,30 +375,36 @@ test.describe('Adaptive Question Assignment System', () => {
     await page.waitForLoadState('networkidle');
 
     // Test with invalid tier
-    const invalidTierResponse = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'invalid',
-        assessmentType: 'personality',
-        targetTraits: ['openness'],
-        previousResponses: [],
-        userProfile: {}
+    const invalidTierResponse = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'invalid',
+          assessmentType: 'personality',
+          targetTraits: ['openness'],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const invalidTierResult = await invalidTierResponse.json();
     expect(invalidTierResult.success).toBe(true); // Should fallback gracefully
     expect(invalidTierResult.questions.length).toBe(20); // Default to free tier behavior
 
     // Test with empty target traits
-    const emptyTraitsResponse = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'free',
-        assessmentType: 'personality',
-        targetTraits: [],
-        previousResponses: [],
-        userProfile: {}
+    const emptyTraitsResponse = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'free',
+          assessmentType: 'personality',
+          targetTraits: [],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const emptyTraitsResult = await emptyTraitsResponse.json();
     expect(emptyTraitsResult.success).toBe(true); // Should use default traits
@@ -353,15 +416,24 @@ test.describe('Adaptive Question Assignment System', () => {
 
     const startTime = Date.now();
 
-    const response = await page.request.post('http://localhost:3002/api/assessments/adaptive-optimized', {
-      data: {
-        tier: 'comprehensive',
-        assessmentType: 'personality',
-        targetTraits: ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'],
-        previousResponses: [],
-        userProfile: {}
+    const response = await page.request.post(
+      'http://localhost:3002/api/assessments/adaptive-optimized',
+      {
+        data: {
+          tier: 'comprehensive',
+          assessmentType: 'personality',
+          targetTraits: [
+            'openness',
+            'conscientiousness',
+            'extraversion',
+            'agreeableness',
+            'neuroticism'
+          ],
+          previousResponses: [],
+          userProfile: {}
+        }
       }
-    });
+    );
 
     const endTime = Date.now();
     const responseTime = endTime - startTime;
@@ -372,5 +444,4 @@ test.describe('Adaptive Question Assignment System', () => {
     // Response time should be under 2 seconds for good UX
     expect(responseTime).toBeLessThan(2000);
   });
-
 });

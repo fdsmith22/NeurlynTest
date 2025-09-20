@@ -1028,13 +1028,13 @@ class ReportDisplayComponent {
 
   async exportPDF() {
     // Placeholder for PDF export functionality
-// console.log('Exporting report as PDF...');
+    // console.log('Exporting report as PDF...');
     alert('PDF export will be implemented with a PDF library like jsPDF');
   }
 
   shareReport() {
     // Placeholder for share functionality
-// console.log('Sharing report...');
+    // console.log('Sharing report...');
     if (navigator.share) {
       navigator.share({
         title: 'My Neurlyn Assessment Report',
@@ -1055,7 +1055,7 @@ class ReportDisplayComponent {
   }
 
   compareResults() {
-// console.log('Loading comparison view...');
+    // console.log('Loading comparison view...');
     alert('Comparison with previous results coming soon!');
   }
 

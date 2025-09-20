@@ -3,6 +3,7 @@
 ## 🔐 Security & Environment
 
 ### Environment Variables
+
 - [ ] Update `.env` with production values
 - [ ] Set strong `JWT_SECRET`
 - [ ] Add real Stripe keys (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`)
@@ -11,6 +12,7 @@
 - [ ] Set correct `BASE_URL` for your domain
 
 ### Security Headers
+
 - [ ] Enable HTTPS only
 - [ ] Configure CORS for your domain
 - [ ] Set up rate limiting appropriately
@@ -20,6 +22,7 @@
 ## 🗄️ Database
 
 ### MongoDB Setup
+
 - [ ] Set up MongoDB Atlas or production MongoDB server
 - [ ] Create database indexes: `npm run optimize-mongodb-indexes`
 - [ ] Set up database backups
@@ -27,6 +30,7 @@
 - [ ] Set up monitoring alerts
 
 ### Data Migration
+
 - [ ] Seed initial questions: `npm run seed:all`
 - [ ] Verify question count (should be 295+)
 - [ ] Test database connections
@@ -35,6 +39,7 @@
 ## 🚀 Deployment
 
 ### Server Setup
+
 - [ ] Configure Nginx/Apache reverse proxy
 - [ ] Set up SSL certificate (Let's Encrypt)
 - [ ] Configure firewall rules
@@ -42,6 +47,7 @@
 - [ ] Configure log rotation
 
 ### Deployment Steps
+
 ```bash
 # 1. Clone repository
 git clone https://github.com/yourusername/neurlyn.git
@@ -75,6 +81,7 @@ sudo systemctl reload nginx
 ## 🔍 Monitoring
 
 ### Application Monitoring
+
 - [ ] Set up PM2 monitoring
 - [ ] Configure error tracking (Sentry/Rollbar)
 - [ ] Set up uptime monitoring (UptimeRobot/Pingdom)
@@ -82,6 +89,7 @@ sudo systemctl reload nginx
 - [ ] Set up log aggregation
 
 ### Alerts
+
 - [ ] Database connection failures
 - [ ] High error rates
 - [ ] Payment failures
@@ -91,6 +99,7 @@ sudo systemctl reload nginx
 ## 💳 Payment Integration
 
 ### Stripe Setup
+
 - [ ] Verify Stripe account
 - [ ] Add production API keys
 - [ ] Configure webhook endpoints
@@ -101,6 +110,7 @@ sudo systemctl reload nginx
 ## 🧪 Testing
 
 ### Pre-deployment Tests
+
 - [ ] Run unit tests: `npm test`
 - [ ] Run E2E tests: `npm run e2e`
 - [ ] Test payment flow
@@ -109,6 +119,7 @@ sudo systemctl reload nginx
 - [ ] Load testing with Apache Bench or k6
 
 ### Post-deployment Tests
+
 - [ ] Health check endpoint: `curl https://yourdomain.com/health`
 - [ ] Test SSL certificate
 - [ ] Test API endpoints
@@ -119,6 +130,7 @@ sudo systemctl reload nginx
 ## 📊 Performance
 
 ### Optimization
+
 - [ ] Enable Gzip compression
 - [ ] Set up CDN for static assets
 - [ ] Optimize images
@@ -127,6 +139,7 @@ sudo systemctl reload nginx
 - [ ] Enable HTTP/2
 
 ### Benchmarks
+
 - [ ] Page load time < 3s
 - [ ] API response time < 500ms
 - [ ] Database queries < 100ms
@@ -136,6 +149,7 @@ sudo systemctl reload nginx
 ## 📝 Documentation
 
 ### User Documentation
+
 - [ ] Update README with production URL
 - [ ] Create user guide
 - [ ] Document API endpoints
@@ -144,6 +158,7 @@ sudo systemctl reload nginx
 - [ ] Terms of service
 
 ### Technical Documentation
+
 - [ ] Document deployment process
 - [ ] Create troubleshooting guide
 - [ ] Document backup procedures
@@ -153,6 +168,7 @@ sudo systemctl reload nginx
 ## 🔄 Backup & Recovery
 
 ### Backup Strategy
+
 - [ ] Daily database backups
 - [ ] Weekly full system backups
 - [ ] Store backups offsite (S3/Google Cloud)
@@ -160,6 +176,7 @@ sudo systemctl reload nginx
 - [ ] Document recovery process
 
 ### Disaster Recovery
+
 - [ ] Create disaster recovery plan
 - [ ] Set up staging environment
 - [ ] Document rollback procedure
@@ -169,6 +186,7 @@ sudo systemctl reload nginx
 ## 📈 Post-Launch
 
 ### Monitoring Period (First Week)
+
 - [ ] Monitor error logs closely
 - [ ] Check performance metrics
 - [ ] Monitor database performance
@@ -176,6 +194,7 @@ sudo systemctl reload nginx
 - [ ] Daily health checks
 
 ### Optimization
+
 - [ ] Analyze user behavior
 - [ ] Optimize slow queries
 - [ ] Review error patterns
