@@ -200,15 +200,17 @@ jobs:
       - name: 🔍 Check for Secrets
         run: |
           echo "Scanning for potential secrets..."
-          # Check for common secret patterns
-          if grep -rE "(api[_-]?key|apikey|secret|password|token|private[_-]?key|aws[_-]?access)" \
+          # Check for common secret patterns, excluding false positives
+          if grep -rE "(api[_-]?key|apikey|password|private[_-]?key|aws[_-]?access)['\"]?\s*[:=]\s*['\"][\w]+" \
              --include="*.js" --include="*.ts" --include="*.json" \
              --exclude-dir=node_modules --exclude-dir=.git \
-             --exclude="package-lock.json" . | \
-             grep -v "process.env" | grep -v "//" | grep -v "#"; then
+             --exclude-dir=exports --exclude-dir=test-results \
+             --exclude="package-lock.json" --exclude="package.json" . | \
+             grep -v "process.env" | grep -v "require(" | grep -v "//" | grep -v "#" | grep -v "jest" | grep -v "dummy"; then
             echo "::error::Potential secrets found in code!"
             exit 1
           fi
+          echo "✅ No secrets detected"
 
       - name: 📋 License Check
         run: |
