@@ -11,4 +11,5 @@ logs/
 *.sw?
 .vscode/
 coverage/
-*.local
+*.localtest-results/
+playwright-report/
