@@ -14,7 +14,7 @@ export class TaskController {
       this.validateTaskMappings());
   }
   async validateTaskMappings() {
-// console.log('🔍 Validating task type mappings...');
+    // console.log('🔍 Validating task type mappings...');
     const e = { valid: [], invalid: [], warnings: [] };
     for (const [t, s] of Object.entries(this.taskTypes))
       try {
@@ -36,7 +36,7 @@ export class TaskController {
           (e.warnings.push(`Warning: Common task type '${t}' not in mapping`),
           console.warn(`⚠️  Common task type '${t}' not in mapping`));
       }),
-// console.log(
+      console.log(
         `📊 Validation complete: ${e.valid.length} valid, ${e.invalid.length} invalid, ${e.warnings.length} warnings`
       ),
       e.invalid.length > 0 && console.warn('Some task types may not work correctly:', e.invalid),
