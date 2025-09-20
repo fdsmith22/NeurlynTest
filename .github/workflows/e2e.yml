@@ -40,6 +40,7 @@ jobs:
           echo "PORT=3002" >> .env
           echo "MONGODB_URI=mongodb://localhost:27017/neurlyn-test" >> .env
           echo "JWT_SECRET=test-secret-key" >> .env
+          echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
 
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.10.0
@@ -86,8 +87,24 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
+      - name: Create .env file
+        run: |
+          echo "NODE_ENV=test" >> .env
+          echo "PORT=3002" >> .env
+          echo "MONGODB_URI=mongodb://localhost:27017/neurlyn-test" >> .env
+          echo "JWT_SECRET=test-secret-key" >> .env
+          echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
+          echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.10.0
+        with:
+          mongodb-version: '7.0'
+
       - name: Run visual regression tests
         run: npx playwright test tests/e2e/visual.spec.js
+        env:
+          CI: true
 
       - name: Upload visual diff results
         uses: actions/upload-artifact@v4
