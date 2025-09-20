@@ -10,6 +10,17 @@ jobs:
   pre-deployment-checks:
     runs-on: ubuntu-latest
 
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand({ping: 1})'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -28,6 +39,9 @@ jobs:
 
       - name: 🧪 Run tests
         run: npm test
+        env:
+          NODE_ENV: test
+          MONGODB_URI: mongodb://localhost:27017/neurlyn-test
 
       - name: 🔒 Security audit
         run: npm audit --audit-level=moderate

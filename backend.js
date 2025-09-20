@@ -24,21 +24,21 @@ const express = require('express'),
           "'unsafe-eval'",
           'https://cdn.jsdelivr.net',
           'https://unpkg.com',
-          'https://cdnjs.cloudflare.com',
+          'https://cdnjs.cloudflare.com'
         ],
         scriptSrcAttr: ["'unsafe-inline'"],
         styleSrc: [
           "'self'",
           "'unsafe-inline'",
           'https://cdn.jsdelivr.net',
-          'https://fonts.googleapis.com',
+          'https://fonts.googleapis.com'
         ],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         imgSrc: ["'self'", 'data:', 'https:'],
-        connectSrc: ["'self'", 'http://localhost:*', 'https://api.stripe.com'],
-      },
-    },
-  }),
+        connectSrc: ["'self'", 'http://localhost:*', 'https://api.stripe.com']
+      }
+    }
+  })
 ),
   app.use(cors()),
   app.use(express.json({ limit: '10mb' })),
@@ -55,7 +55,10 @@ const assessmentSchema = new mongoose.Schema(
     userId: { type: String, index: !0 },
     sessionId: { type: String, unique: !0, required: !0 },
     mode: { type: String, enum: ['validated', 'experimental', 'adaptive'], required: !0 },
-    tier: { type: String, enum: ['core', 'comprehensive', 'specialized', 'experimental', 'quick', 'standard', 'deep'] },
+    tier: {
+      type: String,
+      enum: ['core', 'comprehensive', 'specialized', 'experimental', 'quick', 'standard', 'deep']
+    },
     startTime: { type: Date, default: Date.now },
     completionTime: Date,
     responses: [
@@ -65,8 +68,8 @@ const assessmentSchema = new mongoose.Schema(
         responseTime: Number,
         category: String,
         instrument: String,
-        biometrics: { keystrokeMetrics: Object, mouseMetrics: Object, latency: Number },
-      },
+        biometrics: { keystrokeMetrics: Object, mouseMetrics: Object, latency: Number }
+      }
     ],
     results: {
       profile: Object,
@@ -76,14 +79,14 @@ const assessmentSchema = new mongoose.Schema(
       experimentalScores: Object,
       qualityMetrics: Object,
       biasIndicators: Object,
-      matchConfidence: Number,
+      matchConfidence: Number
     },
     payment: {
       status: { type: String, enum: ['pending', 'paid', 'free_preview'], default: 'pending' },
       stripePaymentId: String,
       amount: Number,
       currency: String,
-      paidAt: Date,
+      paidAt: Date
     },
     demographics: {
       age: Number,
@@ -91,7 +94,7 @@ const assessmentSchema = new mongoose.Schema(
       country: String,
       education: String,
       ethnicity: [String],
-      language: String,
+      language: String
     },
     consent: { research: Boolean, dataSharing: Boolean, timestamp: Date },
     metadata: { userAgent: String, ipCountry: String, referrer: String, abTestGroup: String },
@@ -104,9 +107,9 @@ const assessmentSchema = new mongoose.Schema(
       currentPhase: String,
       concerns: [String],
       summary: Object
-    },
+    }
   },
-  { timestamps: !0 },
+  { timestamps: !0 }
 );
 (assessmentSchema.index({ 'payment.status': 1, createdAt: -1 }),
   assessmentSchema.index({ userId: 1, createdAt: -1 }),
@@ -118,9 +121,9 @@ const Assessment = mongoose.model('Assessment', assessmentSchema),
       hashedPassword: String,
       assessments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Assessment' }],
       subscription: { active: Boolean, plan: String, expiresAt: Date },
-      preferences: { theme: String, emailUpdates: Boolean, researchParticipation: Boolean },
+      preferences: { theme: String, emailUpdates: Boolean, researchParticipation: Boolean }
     },
-    { timestamps: !0 },
+    { timestamps: !0 }
   ),
   User = mongoose.model('User', userSchema);
 
@@ -161,7 +164,7 @@ function generatePreviewResults(e) {
       .slice(0, 3)
       .map(([e, t]) => ({ trait: e, percentile: Math.round(t.percentile) })),
     teaser:
-      'Unlock your complete personality analysis including detailed insights, growth recommendations, and career guidance.',
+      'Unlock your complete personality analysis including detailed insights, growth recommendations, and career guidance.'
   };
 }
 function generateCertificate(e) {
@@ -170,76 +173,74 @@ function generateCertificate(e) {
     name: e.demographics?.name || 'Participant',
     mode: e.mode,
     completionDate: e.completionTime,
-    verificationUrl: `/verify/${e._id}`,
+    verificationUrl: `/verify/${e._id}`
   };
 }
 function calculateValidatedResults(e) {
   const t = {},
     n = {},
     s = {},
-    r = e.filter((e) => 'BFI-2' === e.instrument);
+    r = e.filter(e => 'BFI-2' === e.instrument);
   r.length > 0 &&
-    ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'].forEach(
-      (e) => {
-        const s = r.filter((t) => t.category === e);
-        if (s.length > 0) {
-          const r = s.reduce((e, t) => e + t.value, 0) / s.length;
-          ((n[e] = r),
-            (t[e] = {
-              score: r,
-              percentile: calculatePercentile(r, 3.5, 0.8),
-              stanine: Math.min(9, Math.max(1, Math.round(2.25 * (r - 1)))),
-              interpretation: interpretBigFive(e, r),
-            }));
-        }
-      },
-    );
-  const i = e.filter((e) => 'HEXACO-60' === e.instrument);
+    ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'].forEach(e => {
+      const s = r.filter(t => t.category === e);
+      if (s.length > 0) {
+        const r = s.reduce((e, t) => e + t.value, 0) / s.length;
+        ((n[e] = r),
+          (t[e] = {
+            score: r,
+            percentile: calculatePercentile(r, 3.5, 0.8),
+            stanine: Math.min(9, Math.max(1, Math.round(2.25 * (r - 1)))),
+            interpretation: interpretBigFive(e, r)
+          }));
+      }
+    });
+  const i = e.filter(e => 'HEXACO-60' === e.instrument);
   if (i.length > 0) {
-    const e = i.filter((e) => 'honesty-humility' === e.category);
+    const e = i.filter(e => 'honesty-humility' === e.category);
     if (e.length > 0) {
       const n = e.reduce((e, t) => e + t.value, 0) / e.length;
       t['honesty-humility'] = {
         score: n,
         percentile: calculatePercentile(n, 3.3, 0.85),
-        interpretation: n > 4 ? 'High integrity' : n > 2.5 ? 'Moderate' : 'Pragmatic',
+        interpretation: n > 4 ? 'High integrity' : n > 2.5 ? 'Moderate' : 'Pragmatic'
       };
     }
   }
-  const a = e.filter((e) => 'ASRS-5' === e.instrument);
+  const a = e.filter(e => 'ASRS-5' === e.instrument);
   if (a.length >= 4) {
     const e = a.reduce((e, t) => e + t.value, 0);
     s.adhd = {
       score: e,
       risk: e >= 14 ? 'High' : e >= 9 ? 'Moderate' : 'Low',
-      recommendation: e >= 14 ? 'Consider professional evaluation' : 'Within normal range',
+      recommendation: e >= 14 ? 'Consider professional evaluation' : 'Within normal range'
     };
   }
-  const o = e.filter((e) => 'AQ-10' === e.instrument);
+  const o = e.filter(e => 'AQ-10' === e.instrument);
   if (o.length >= 6) {
-    const e = o.filter((e) => e.value >= 3).length;
+    const e = o.filter(e => e.value >= 3).length;
     s.autism = {
       score: e,
       risk: e >= 6 ? 'Elevated' : 'Low',
-      recommendation: e >= 6 ? 'Consider comprehensive assessment' : 'No concerns indicated',
+      recommendation: e >= 6 ? 'Consider comprehensive assessment' : 'No concerns indicated'
     };
   }
-  const c = e.filter((e) => 'PHQ-2' === e.instrument);
+  const c = e.filter(e => 'PHQ-2' === e.instrument);
   if (2 === c.length) {
     const e = c.reduce((e, t) => e + t.value, 0);
     s.depression = {
       score: e,
       risk: e >= 3 ? 'Positive screen' : 'Negative',
-      recommendation: e >= 3 ? 'Follow up with PHQ-9' : 'No current concerns',
+      recommendation: e >= 3 ? 'Follow up with PHQ-9' : 'No current concerns'
     };
   }
-  const l = e.filter((e) => 'GAD-2' === e.instrument);
+  const l = e.filter(e => 'GAD-2' === e.instrument);
   if (2 === l.length) {
     const e = l.reduce((e, t) => e + t.value, 0);
     s.anxiety = {
       score: e,
       risk: e >= 3 ? 'Positive screen' : 'Negative',
-      recommendation: e >= 3 ? 'Consider GAD-7 assessment' : 'No current concerns',
+      recommendation: e >= 3 ? 'Consider GAD-7 assessment' : 'No current concerns'
     };
   }
   const u = calculateQualityMetrics(e),
@@ -253,7 +254,7 @@ function calculateValidatedResults(e) {
     qualityMetrics: u,
     matchConfidence: m,
     timestamp: new Date(),
-    version: '3.0.0-validated',
+    version: '3.0.0-validated'
   };
 }
 function interpretBigFive(e, t) {
@@ -275,14 +276,14 @@ function interpretBigFive(e, t) {
           ? 'Emotionally reactive'
           : t > 3
             ? 'Moderate emotional stability'
-            : 'Emotionally stable',
+            : 'Emotionally stable'
     }[e] || 'Average'
   );
 }
 function calculateQualityMetrics(e) {
-  const t = e.map((e) => e.responseTime).filter(Boolean),
+  const t = e.map(e => e.responseTime).filter(Boolean),
     n = t.length > 0 ? t.reduce((e, t) => e + t, 0) / t.length : 0,
-    s = e.map((e) => e.value),
+    s = e.map(e => e.value),
     r = [...new Set(s)].length / Math.min(s.length, 7);
   let i = 0,
     a = 1;
@@ -295,7 +296,7 @@ function calculateQualityMetrics(e) {
     responseVariability: r,
     straightLining: o,
     carelessResponding: c,
-    dataQuality: r > 0.5 && !o ? 'Good' : 'Review needed',
+    dataQuality: r > 0.5 && !o ? 'Good' : 'Review needed'
   };
 }
 function determinePersonalityProfile(e, t) {
@@ -310,7 +311,7 @@ function determinePersonalityProfile(e, t) {
     {
       primary: n[0] || 'Balanced',
       secondary: n.slice(1, 3),
-      description: generateProfileDescription(n, e),
+      description: generateProfileDescription(n, e)
     }
   );
 }
@@ -344,104 +345,104 @@ function calculateMatchConfidence(e, t, n) {
 }
 function calculateExperimentalResults(e) {
   const t = {},
-    n = e.filter((e) => 'nonattachment' === e.category);
+    n = e.filter(e => 'nonattachment' === e.category);
   if (n.length > 0) {
     const e = n.reduce((e, t) => e + t.value, 0) / n.length;
     t.nonattachment = {
       score: e,
       percentile: calculatePercentile(e, 3.5, 0.8),
-      interpretation: e > 4 ? 'High' : e > 2.5 ? 'Moderate' : 'Low',
+      interpretation: e > 4 ? 'High' : e > 2.5 ? 'Moderate' : 'Low'
     };
   }
-  const s = e.filter((e) => 'gunas' === e.category);
+  const s = e.filter(e => 'gunas' === e.category);
   if (s.length > 0) {
-    const e = s.filter((e) => 'sattva' === e.instrument).reduce((e, t) => e + t.value, 0) / 3,
-      n = s.filter((e) => 'rajas' === e.instrument).reduce((e, t) => e + t.value, 0) / 3,
-      r = s.filter((e) => 'tamas' === e.instrument).reduce((e, t) => e + t.value, 0) / 3;
+    const e = s.filter(e => 'sattva' === e.instrument).reduce((e, t) => e + t.value, 0) / 3,
+      n = s.filter(e => 'rajas' === e.instrument).reduce((e, t) => e + t.value, 0) / 3,
+      r = s.filter(e => 'tamas' === e.instrument).reduce((e, t) => e + t.value, 0) / 3;
     t.gunas = {
       sattva: { score: e, percentile: calculatePercentile(e, 3.5, 0.7) },
       rajas: { score: n, percentile: calculatePercentile(n, 3.2, 0.8) },
       tamas: { score: r, percentile: calculatePercentile(r, 2.8, 0.9) },
-      dominant: e > n && e > r ? 'Sattva' : n > r ? 'Rajas' : 'Tamas',
+      dominant: e > n && e > r ? 'Sattva' : n > r ? 'Rajas' : 'Tamas'
     };
   }
-  const r = e.filter((e) => 'ubuntu' === e.category);
+  const r = e.filter(e => 'ubuntu' === e.category);
   if (r.length > 0) {
     const e = r.reduce((e, t) => e + t.value, 0) / r.length;
     t.ubuntu = {
       score: e,
       percentile: calculatePercentile(e, 4, 0.6),
-      interpretation: e > 4.2 ? 'Strong communal orientation' : 'Moderate interconnectedness',
+      interpretation: e > 4.2 ? 'Strong communal orientation' : 'Moderate interconnectedness'
     };
   }
-  const i = e.filter((e) => 'beauty' === e.category);
+  const i = e.filter(e => 'beauty' === e.category);
   if (i.length > 0) {
     const e = i.reduce((e, t) => e + t.value, 0) / i.length;
     t.beauty = {
       score: e,
       percentile: calculatePercentile(e, 3.8, 0.9),
       domains: {
-        natural: i.filter((e) => 'natural' === e.instrument).reduce((e, t) => e + t.value, 0) / 2,
-        artistic: i.filter((e) => 'artistic' === e.instrument).reduce((e, t) => e + t.value, 0) / 2,
-        moral: i.filter((e) => 'moral' === e.instrument).reduce((e, t) => e + t.value, 0) / 2,
-      },
+        natural: i.filter(e => 'natural' === e.instrument).reduce((e, t) => e + t.value, 0) / 2,
+        artistic: i.filter(e => 'artistic' === e.instrument).reduce((e, t) => e + t.value, 0) / 2,
+        moral: i.filter(e => 'moral' === e.instrument).reduce((e, t) => e + t.value, 0) / 2
+      }
     };
   }
-  const a = e.filter((e) => 'antifragility' === e.category);
+  const a = e.filter(e => 'antifragility' === e.category);
   if (a.length > 0) {
     const e = a.reduce((e, t) => e + t.value, 0) / a.length;
     t.antifragility = {
       score: e,
       percentile: calculatePercentile(e, 3.3, 0.85),
-      level: e > 4 ? 'Antifragile' : e > 3 ? 'Resilient' : 'Fragile',
+      level: e > 4 ? 'Antifragile' : e > 3 ? 'Resilient' : 'Fragile'
     };
   }
-  const o = e.filter((e) => 'flow' === e.category);
+  const o = e.filter(e => 'flow' === e.category);
   if (o.length > 0) {
     const e = o.reduce((e, t) => e + t.value, 0) / o.length;
     t.flowProneness = {
       score: e,
       percentile: calculatePercentile(e, 3.6, 0.75),
-      frequency: e > 4 ? 'Frequent' : e > 3 ? 'Occasional' : 'Rare',
+      frequency: e > 4 ? 'Frequent' : e > 3 ? 'Occasional' : 'Rare'
     };
   }
-  const c = e.filter((e) => 'flexibility' === e.category);
+  const c = e.filter(e => 'flexibility' === e.category);
   if (c.length > 0) {
     const e = c.reduce((e, t) => e + t.value, 0) / c.length;
     t.psychologicalFlexibility = {
       score: e,
       percentile: calculatePercentile(e, 3.4, 0.8),
-      interpretation: e > 4 ? 'Highly flexible' : 'Moderately flexible',
+      interpretation: e > 4 ? 'Highly flexible' : 'Moderately flexible'
     };
   }
-  const l = e.filter((e) => 'dark' === e.category);
+  const l = e.filter(e => 'dark' === e.category);
   if (l.length > 0) {
     const e = l.reduce((e, t) => e + t.value, 0) / l.length;
     t.darkFactor = {
       score: e,
       percentile: calculatePercentile(e, 2.5, 1),
       level: e < 2 ? 'Low' : e < 3.5 ? 'Moderate' : 'High',
-      warning: e > 3.5,
+      warning: e > 3.5
     };
   }
-  const u = e.filter((e) => 'future' === e.category);
+  const u = e.filter(e => 'future' === e.category);
   if (u.length > 0) {
     const e = u.reduce((e, t) => e + t.value, 0) / u.length;
     t.futureSelfContinuity = {
       score: e,
       percentile: calculatePercentile(e, 3.7, 0.85),
-      interpretation: e > 4 ? 'Strong future orientation' : 'Present-focused',
+      interpretation: e > 4 ? 'Strong future orientation' : 'Present-focused'
     };
   }
-  const p = e.filter((e) => e.biometrics).map((e) => e.biometrics);
+  const p = e.filter(e => e.biometrics).map(e => e.biometrics);
   if (p.length > 0) {
     const e = p.reduce((e, t) => e + (t.latency || 0), 0) / p.length,
-      n = calculateVariability(p.map((e) => e.keystrokeMetrics?.dwellTime).filter(Boolean));
+      n = calculateVariability(p.map(e => e.keystrokeMetrics?.dwellTime).filter(Boolean));
     t.biometricAnalysis = {
       responseLatency: e,
       keystrokePattern: n > 100 ? 'Variable' : 'Consistent',
       confidenceLevel: n < 50 ? 'High' : n < 150 ? 'Moderate' : 'Low',
-      authenticityScore: Math.max(0, Math.min(100, 100 - n / 3)),
+      authenticityScore: Math.max(0, Math.min(100, 100 - n / 3))
     };
   }
   const m = determineExperimentalProfile(t),
@@ -453,7 +454,7 @@ function calculateExperimentalResults(e) {
     biometricAnalysis: t.biometricAnalysis || {},
     matchConfidence: d,
     timestamp: new Date(),
-    version: '3.0.0-experimental',
+    version: '3.0.0-experimental'
   };
 }
 function calculatePercentile(e, t, n) {
@@ -488,7 +489,7 @@ function determineExperimentalProfile(e) {
     {
       primary: t[0] || 'Explorer',
       secondary: t.slice(1, 3),
-      description: generateExperimentalDescription(t, e),
+      description: generateExperimentalDescription(t, e)
     }
   );
 }
@@ -511,7 +512,7 @@ function calculateExperimentalConfidence(e, t) {
   (s > 50 && (n += 10),
     s > 70 && (n += 5),
     t.biometricAnalysis?.authenticityScore > 80 && (n += 10));
-  const r = e.map((e) => e.responseTime).filter(Boolean);
+  const r = e.map(e => e.responseTime).filter(Boolean);
   if (r.length > 0) {
     const e = r.reduce((e, t) => e + t, 0) / r.length;
     e > 2e3 && e < 1e4 && (n += 5);
@@ -522,42 +523,42 @@ function calculateExperimentalConfidence(e, t) {
 database.connect().catch(err => {
   logger.error('Failed to connect to database:', err);
 });
-  app.post('/api/assessment/start', async (e, t) => {
-    try {
-      const { mode: n, tier: s, userId: r, demographics: i, consent: a } = e.body,
-        o = generateSessionId(),
-        c = new Assessment({
-          sessionId: o,
-          userId: r || 'anonymous',
-          mode: n,
-          tier: s,
-          demographics: i,
-          consent: a,
-          metadata: {
-            userAgent: e.headers['user-agent'],
-            ipCountry: e.headers['cf-ipcountry'] || 'unknown',
-            referrer: e.headers.referer,
-          },
-        });
-      (await c.save(),
-        t.json({
-          success: !0,
-          sessionId: o,
-          assessmentId: c._id,
-          questionCount: getQuestionCount(n, s),
-        }));
-    } catch (e) {
-      logger.error('Error starting assessment:', e);
-      t.status(500).json({ error: 'Failed to start assessment' });
-    }
-  }),
+(app.post('/api/assessment/start', async (e, t) => {
+  try {
+    const { mode: n, tier: s, userId: r, demographics: i, consent: a } = e.body,
+      o = generateSessionId(),
+      c = new Assessment({
+        sessionId: o,
+        userId: r || 'anonymous',
+        mode: n,
+        tier: s,
+        demographics: i,
+        consent: a,
+        metadata: {
+          userAgent: e.headers['user-agent'],
+          ipCountry: e.headers['cf-ipcountry'] || 'unknown',
+          referrer: e.headers.referer
+        }
+      });
+    (await c.save(),
+      t.json({
+        success: !0,
+        sessionId: o,
+        assessmentId: c._id,
+        questionCount: getQuestionCount(n, s)
+      }));
+  } catch (e) {
+    logger.error('Error starting assessment:', e);
+    t.status(500).json({ error: 'Failed to start assessment' });
+  }
+}),
   app.post('/api/assessment/progress', async (e, t) => {
     try {
       const { sessionId: n, responses: s, currentIndex: r } = e.body,
         i = await Assessment.findOne({ sessionId: n });
       if (!i) return t.status(404).json({ error: 'Assessment not found' });
-      const a = i.responses.map((e) => e.questionId),
-        o = s.filter((e) => !a.includes(e.questionId));
+      const a = i.responses.map(e => e.questionId),
+        o = s.filter(e => !a.includes(e.questionId));
       (i.responses.push(...o),
         await i.save(),
         t.json({ success: !0, saved: o.length, total: i.responses.length }));
@@ -582,7 +583,7 @@ database.connect().catch(err => {
               success: !0,
               needsPayment: !0,
               previewResults: generatePreviewResults(i),
-              paymentUrl: `/payment/${n}`,
+              paymentUrl: `/payment/${n}`
             }))
           : ((r.payment.status = 'free_preview'),
             await r.save(),
@@ -606,17 +607,17 @@ database.connect().catch(err => {
               product_data: {
                 name: 'Neurlyn Complete Assessment Report',
                 description: `Comprehensive ${s.mode} personality assessment results`,
-                images: ['https://neurlyn.com/logo.png'],
+                images: ['https://neurlyn.com/logo.png']
               },
-              unit_amount: 100,
+              unit_amount: 100
             },
-            quantity: 1,
-          },
+            quantity: 1
+          }
         ],
         mode: 'payment',
         success_url: `${process.env.BASE_URL}/results/${n}?payment=success`,
         cancel_url: `${process.env.BASE_URL}/payment/${n}?payment=cancelled`,
-        metadata: { sessionId: n, assessmentId: s._id.toString() },
+        metadata: { sessionId: n, assessmentId: s._id.toString() }
       });
       t.json({ checkoutUrl: r.url, sessionId: r.id });
     } catch (e) {
@@ -640,7 +641,7 @@ database.connect().catch(err => {
         'payment.stripePaymentId': e.payment_intent,
         'payment.amount': e.amount_total,
         'payment.currency': e.currency,
-        'payment.paidAt': new Date(),
+        'payment.paidAt': new Date()
       });
     }
     t.json({ received: !0 });
@@ -681,7 +682,6 @@ database.connect().catch(err => {
       });
     }
   }),
-
   app.get('/api/report/:sessionId', async (e, t) => {
     try {
       const { sessionId: n } = e.params,
@@ -694,7 +694,7 @@ database.connect().catch(err => {
         results: s.results,
         mode: s.mode,
         completionTime: s.completionTime,
-        certificate: generateCertificate(s),
+        certificate: generateCertificate(s)
       });
     } catch (e) {
       logger.error('Error fetching report:', e);
@@ -710,9 +710,9 @@ database.connect().catch(err => {
               _id: '$mode',
               count: { $sum: 1 },
               avgConfidence: { $avg: '$results.matchConfidence' },
-              avgCompletionTime: { $avg: { $subtract: ['$completionTime', '$startTime'] } },
-            },
-          },
+              avgCompletionTime: { $avg: { $subtract: ['$completionTime', '$startTime'] } }
+            }
+          }
         ]),
         n = await Assessment.aggregate([
           { $match: { 'payment.status': { $in: ['paid', 'free_preview'] } } },
@@ -726,28 +726,36 @@ database.connect().catch(err => {
                       { case: { $lt: ['$demographics.age', 35] }, then: '25-34' },
                       { case: { $lt: ['$demographics.age', 45] }, then: '35-44' },
                       { case: { $lt: ['$demographics.age', 55] }, then: '45-54' },
-                      { case: { $gte: ['$demographics.age', 55] }, then: '55+' },
+                      { case: { $gte: ['$demographics.age', 55] }, then: '55+' }
                     ],
-                    default: 'Unknown',
-                  },
+                    default: 'Unknown'
+                  }
                 },
                 gender: '$demographics.gender',
-                country: '$demographics.country',
+                country: '$demographics.country'
               },
-              count: { $sum: 1 },
-            },
-          },
+              count: { $sum: 1 }
+            }
+          }
         ]);
       t.json({ totalAssessments: e.reduce((e, t) => e + t.count, 0), byMode: e, demographics: n });
     } catch (e) {
       logger.error('Error fetching analytics:', e);
       t.status(500).json({ error: 'Failed to fetch analytics' });
     }
-  }),
-app.listen(PORT, () => {
-  logger.info(`Neurlyn Backend running on port ${PORT}`);
-  logger.info('MongoDB connected');
-  logger.info('Stripe integration active');
-});
+  }));
+
+// Only start server if not in test environment
+if (process.env.NODE_ENV !== 'test') {
+  const server = app.listen(PORT, () => {
+    logger.info(`Neurlyn Backend running on port ${PORT}`);
+    logger.info('MongoDB connected');
+    logger.info('Stripe integration active');
+  });
+  app.server = server;
+} else {
+  // In test mode, don't automatically start the server
+  logger.info('Running in test mode - server not started automatically');
+}
 
 module.exports = app;
