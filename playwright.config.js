@@ -34,45 +34,45 @@ export default defineConfig({
     video: 'retain-on-failure',
 
     /* Viewport size */
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: 1280, height: 720 }
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'] }
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { ...devices['Desktop Firefox'] }
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { ...devices['Desktop Safari'] }
     },
 
     /* Test against mobile viewports. */
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
+      use: { ...devices['Pixel 5'] }
     },
     {
       name: 'Mobile Safari',
-      use: { ...devices['iPhone 13'] },
+      use: { ...devices['iPhone 13'] }
     },
 
     /* Test against branded browsers. */
     {
       name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
+      use: { ...devices['Desktop Edge'], channel: 'msedge' }
     },
     {
       name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    },
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' }
+    }
   ],
 
   /* Run your local dev server before starting the tests */
@@ -81,22 +81,24 @@ export default defineConfig({
       command: 'python3 -m http.server 8080',
       port: 8080,
       timeout: 120 * 1000,
-      reuseExistingServer: true,
+      reuseExistingServer: true
     },
     {
-      command: 'PORT=3002 node backend.js',
+      command: process.env.CI
+        ? 'NODE_ENV=test PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key STRIPE_SECRET_KEY=sk_test_dummy node backend.js'
+        : 'PORT=3002 node backend.js',
       port: 3002,
       timeout: 120 * 1000,
-      reuseExistingServer: true,
+      reuseExistingServer: true
     }
   ],
 
   /* Timeout configurations */
   timeout: 30 * 1000,
   expect: {
-    timeout: 10 * 1000,
+    timeout: 10 * 1000
   },
 
   /* Output folder for test artifacts */
-  outputDir: 'test-results/',
+  outputDir: 'test-results/'
 });

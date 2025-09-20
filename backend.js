@@ -1,14 +1,14 @@
 require('dotenv').config();
 const logger = require('./utils/logger');
-const { env, isProduction } = require('./config/env.validation');
+const { env, isProduction: _isProduction } = require('./config/env.validation');
 const database = require('./config/database');
 const healthRoutes = require('./routes/health');
 const express = require('express'),
   cors = require('cors'),
   stripe = require('stripe')(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder'),
   mongoose = require('mongoose'),
-  jwt = require('jsonwebtoken'),
-  bcrypt = require('bcryptjs'),
+  _jwt = require('jsonwebtoken'),
+  _bcrypt = require('bcryptjs'),
   rateLimit = require('express-rate-limit'),
   helmet = require('helmet'),
   app = express(),
@@ -125,7 +125,7 @@ const Assessment = mongoose.model('Assessment', assessmentSchema),
     },
     { timestamps: !0 }
   ),
-  User = mongoose.model('User', userSchema);
+  _User = mongoose.model('User', userSchema);
 
 // Question routes
 const questionsRouter = require('./routes/questions');
