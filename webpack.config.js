@@ -41,7 +41,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
       filename: 'index.html',
-      inject: false  // Don't auto-inject, we'll load our module directly
+      inject: false // Don't auto-inject, we'll load our module directly
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -61,7 +61,7 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'dist')
     },
     compress: true,
     port: 3001,

@@ -32,7 +32,8 @@
    ======================================== */
 
 /* Prevent horizontal scroll on mobile */
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -108,12 +109,7 @@ body.modal-open {
 }
 
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    #f0f0f0 25%,
-    #e0e0e0 50%,
-    #f0f0f0 75%
-  );
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s ease-in-out infinite;
   border-radius: 4px;
@@ -264,7 +260,9 @@ input:not(:placeholder-shown) ~ .form-label {
 
 /* Smoother transitions */
 .screen {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .screen.hidden {
@@ -345,7 +343,6 @@ input:not(:placeholder-shown) ~ .form-label {
   }
 }
 
-
 /* ========================================
    10. Landscape Specific Refinements
    ======================================== */
@@ -406,7 +403,9 @@ input:not(:placeholder-shown) ~ .form-label {
     page-break-inside: avoid;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     page-break-after: avoid;
   }
 }

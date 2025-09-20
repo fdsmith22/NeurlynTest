@@ -7,7 +7,8 @@ function calculatePercentile(score, mean, stdDev) {
   const z = (score - mean) / stdDev;
   const t = 1 / (1 + 0.2316419 * Math.abs(z));
   const d = 0.3989423 * Math.exp((-z * z) / 2);
-  const probability = d * t * (0.3193815 + t * (t * (1.781478 + t * (1.330274 * t - 1.821256)) - 0.3565638));
+  const probability =
+    d * t * (0.3193815 + t * (t * (1.781478 + t * (1.330274 * t - 1.821256)) - 0.3565638));
   const percentile = z > 0 ? 100 * (1 - probability) : 100 * probability;
   return Math.round(percentile);
 }
@@ -27,9 +28,10 @@ function calculateVariability(values) {
  */
 function calculateQualityMetrics(responses) {
   const responseTimes = responses.map(r => r.responseTime).filter(Boolean);
-  const avgResponseTime = responseTimes.length > 0
-    ? responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length
-    : 0;
+  const avgResponseTime =
+    responseTimes.length > 0
+      ? responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length
+      : 0;
 
   const values = responses.map(r => r.value);
   const uniqueValues = [...new Set(values)].length;
@@ -56,7 +58,7 @@ function calculateQualityMetrics(responses) {
     responseVariability,
     straightLining,
     carelessResponding,
-    dataQuality: responseVariability > 0.5 && !straightLining ? 'Good' : 'Review needed',
+    dataQuality: responseVariability > 0.5 && !straightLining ? 'Good' : 'Review needed'
   };
 }
 
@@ -66,25 +68,31 @@ function calculateQualityMetrics(responses) {
 function interpretBigFive(trait, score) {
   const interpretations = {
     openness:
-      score > 4 ? 'Creative and curious'
-      : score > 3 ? 'Balanced'
-      : 'Practical and conventional',
+      score > 4 ? 'Creative and curious' : score > 3 ? 'Balanced' : 'Practical and conventional',
     conscientiousness:
-      score > 4 ? 'Organized and dependable'
-      : score > 3 ? 'Moderately organized'
-      : 'Flexible and spontaneous',
+      score > 4
+        ? 'Organized and dependable'
+        : score > 3
+          ? 'Moderately organized'
+          : 'Flexible and spontaneous',
     extraversion:
-      score > 4 ? 'Outgoing and energetic'
-      : score > 3 ? 'Ambiverted'
-      : 'Reserved and introspective',
+      score > 4
+        ? 'Outgoing and energetic'
+        : score > 3
+          ? 'Ambiverted'
+          : 'Reserved and introspective',
     agreeableness:
-      score > 4 ? 'Compassionate and cooperative'
-      : score > 3 ? 'Balanced'
-      : 'Competitive and skeptical',
+      score > 4
+        ? 'Compassionate and cooperative'
+        : score > 3
+          ? 'Balanced'
+          : 'Competitive and skeptical',
     neuroticism:
-      score > 4 ? 'Emotionally reactive'
-      : score > 3 ? 'Moderate emotional stability'
-      : 'Emotionally stable',
+      score > 4
+        ? 'Emotionally reactive'
+        : score > 3
+          ? 'Moderate emotional stability'
+          : 'Emotionally stable'
   };
 
   return interpretations[trait] || 'Average';

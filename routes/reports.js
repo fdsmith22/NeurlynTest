@@ -22,10 +22,7 @@ router.post('/generate', async (req, res) => {
 
     // Find assessment by sessionId or assessmentId
     const assessment = await Assessment.findOne({
-      $or: [
-        { sessionId: sessionId },
-        { _id: assessmentId }
-      ]
+      $or: [{ sessionId: sessionId }, { _id: assessmentId }]
     });
 
     if (!assessment) {
@@ -74,7 +71,6 @@ router.post('/generate', async (req, res) => {
       assessmentId: assessment._id,
       sessionId: assessment.sessionId
     });
-
   } catch (error) {
     logger.error('Report generation failed:', error);
     res.status(500).json({
@@ -126,7 +122,6 @@ router.get('/:sessionId', async (req, res) => {
       assessmentId: assessment._id,
       sessionId: assessment.sessionId
     });
-
   } catch (error) {
     logger.error('Failed to retrieve report:', error);
     res.status(500).json({
@@ -151,7 +146,6 @@ router.post('/export/pdf', async (req, res) => {
       message: 'PDF export functionality will be implemented soon',
       sessionId: sessionId
     });
-
   } catch (error) {
     logger.error('PDF export failed:', error);
     res.status(500).json({
@@ -171,10 +165,7 @@ router.post('/compare', async (req, res) => {
 
     // Find all assessments for comparison
     const assessments = await Assessment.find({
-      $or: [
-        { sessionId: { $in: sessionIds } },
-        { userId: userId }
-      ]
+      $or: [{ sessionId: { $in: sessionIds } }, { userId: userId }]
     }).sort({ completionTime: -1 });
 
     if (assessments.length < 2) {
@@ -198,7 +189,6 @@ router.post('/compare', async (req, res) => {
       comparison: comparison,
       assessments: comparisonData.length
     });
-
   } catch (error) {
     logger.error('Comparison failed:', error);
     res.status(500).json({
@@ -250,7 +240,13 @@ function generateComparison(assessments) {
 
   // Analyze trends across assessments
   if (assessments[0].results && assessments[0].results.profile) {
-    const traits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+    const traits = [
+      'openness',
+      'conscientiousness',
+      'extraversion',
+      'agreeableness',
+      'neuroticism'
+    ];
 
     traits.forEach(trait => {
       const scores = assessments

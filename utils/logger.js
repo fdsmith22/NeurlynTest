@@ -7,14 +7,14 @@ const logLevels = {
     warn: 1,
     info: 2,
     http: 3,
-    debug: 4,
+    debug: 4
   },
   colors: {
     error: 'red',
     warn: 'yellow',
     info: 'green',
     http: 'magenta',
-    debug: 'white',
+    debug: 'white'
   }
 };
 
@@ -50,30 +50,32 @@ const logger = winston.createLogger({
       filename: 'logs/error.log',
       level: 'error',
       maxsize: 5242880, // 5MB
-      maxFiles: 5,
+      maxFiles: 5
     }),
     // Write all logs with importance level of 'info' or less to combined.log
     new winston.transports.File({
       filename: 'logs/combined.log',
       maxsize: 5242880, // 5MB
-      maxFiles: 5,
-    }),
-  ],
+      maxFiles: 5
+    })
+  ]
 });
 
 // If we're not in production, log to the console too
 if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: consoleFormat,
-    level: 'debug'
-  }));
+  logger.add(
+    new winston.transports.Console({
+      format: consoleFormat,
+      level: 'debug'
+    })
+  );
 }
 
 // Create a stream object for Morgan middleware
 logger.stream = {
-  write: (message) => {
+  write: message => {
     logger.http(message.trim());
-  },
+  }
 };
 
 module.exports = logger;

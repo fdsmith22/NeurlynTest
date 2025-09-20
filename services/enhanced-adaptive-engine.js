@@ -58,7 +58,7 @@ class EnhancedAdaptiveEngine {
     this.behaviorPatterns = {
       responseTime: [],
       changePatterns: [], // How often they change answers
-      skipPatterns: [],   // Which questions they skip
+      skipPatterns: [], // Which questions they skip
       engagementLevel: 'normal',
       confidenceLevel: 'moderate'
     };
@@ -116,8 +116,8 @@ class EnhancedAdaptiveEngine {
       questions,
       userProfile,
       adaptiveMetadata: {
-        pathways: Object.keys(this.branchingPathways).filter(p =>
-          this.branchingPathways[p].weight > 0
+        pathways: Object.keys(this.branchingPathways).filter(
+          p => this.branchingPathways[p].weight > 0
         ),
         primaryConcerns: concerns,
         adaptationStrategy: this.determineStrategy(userProfile)
@@ -161,7 +161,7 @@ class EnhancedAdaptiveEngine {
 
     // Concern-based initialization
     concerns.forEach(concern => {
-      switch(concern.toLowerCase()) {
+      switch (concern.toLowerCase()) {
         case 'adhd':
           this.branchingPathways.adhd.weight += 25;
           break;
@@ -216,8 +216,11 @@ class EnhancedAdaptiveEngine {
     const concernCount = Math.floor(totalQuestions * 0.4);
     for (const [pathway, data] of Object.entries(this.branchingPathways)) {
       if (data.weight > 20) {
-        const pathwayQuestions = await this.getPathwayQuestions(pathway,
-          Math.ceil(concernCount * (data.weight / 100)), usedIds);
+        const pathwayQuestions = await this.getPathwayQuestions(
+          pathway,
+          Math.ceil(concernCount * (data.weight / 100)),
+          usedIds
+        );
 
         pathwayQuestions.forEach(q => {
           q.pathway = pathway;
@@ -231,7 +234,9 @@ class EnhancedAdaptiveEngine {
     // Exploratory questions (20% of total)
     const exploratoryCount = Math.floor(totalQuestions * 0.2);
     const exploratoryQuestions = await this.getExploratoryQuestions(
-      userProfile, exploratoryCount, usedIds
+      userProfile,
+      exploratoryCount,
+      usedIds
     );
 
     exploratoryQuestions.forEach(q => {
@@ -242,7 +247,9 @@ class EnhancedAdaptiveEngine {
     // Fill remaining with adaptive selections
     while (selectedQuestions.length < totalQuestions) {
       const nextQuestion = await this.selectNextAdaptiveQuestion(
-        userProfile, selectedQuestions, usedIds
+        userProfile,
+        selectedQuestions,
+        usedIds
       );
       if (nextQuestion) {
         selectedQuestions.push(nextQuestion);
@@ -262,7 +269,7 @@ class EnhancedAdaptiveEngine {
     const Question = mongoose.model('QuestionBank');
     const queries = [];
 
-    switch(pathway) {
+    switch (pathway) {
       case 'adhd':
         queries.push(
           { category: 'neurodiversity', subcategory: 'executive_function' },
@@ -283,10 +290,7 @@ class EnhancedAdaptiveEngine {
         );
         break;
       case 'giftedness':
-        queries.push(
-          { category: 'cognitive_functions' },
-          { category: 'learning_style' }
-        );
+        queries.push({ category: 'cognitive_functions' }, { category: 'learning_style' });
         break;
       case 'audhd':
         queries.push(
@@ -360,9 +364,9 @@ class EnhancedAdaptiveEngine {
    */
   optimizeQuestionOrder(questions) {
     // Start with engaging, easy questions
-    const easyStarters = questions.filter(q =>
-      q.category === 'personality' && !q.reverseScored
-    ).slice(0, 3);
+    const easyStarters = questions
+      .filter(q => q.category === 'personality' && !q.reverseScored)
+      .slice(0, 3);
 
     // Group by category for better flow
     const grouped = {};
@@ -474,7 +478,7 @@ class EnhancedAdaptiveEngine {
       if (data.weight > 30) {
         analysis.pathwayActivations[pathway] = {
           strength: data.weight,
-          confidence: data.confidence || (data.weight / 100)
+          confidence: data.confidence || data.weight / 100
         };
       }
     }
@@ -530,11 +534,12 @@ class EnhancedAdaptiveEngine {
     const patterns = [];
 
     // Check for twice-exceptional indicators
-    const highCognitive = responses.filter(r =>
-      r.question?.category === 'cognitive_functions' && r.score >= 4
+    const highCognitive = responses.filter(
+      r => r.question?.category === 'cognitive_functions' && r.score >= 4
     ).length;
-    const neurodivergent = analysis.indicators.has('executive_dysfunction') ||
-                          analysis.indicators.has('sensory_sensitivity');
+    const neurodivergent =
+      analysis.indicators.has('executive_dysfunction') ||
+      analysis.indicators.has('sensory_sensitivity');
 
     if (highCognitive > 3 && neurodivergent) {
       patterns.push({
@@ -545,8 +550,10 @@ class EnhancedAdaptiveEngine {
     }
 
     // Check for compensation strategies
-    if (analysis.indicators.has('masking_behaviors') &&
-        analysis.patterns.responseStyle === 'central') {
+    if (
+      analysis.indicators.has('masking_behaviors') &&
+      analysis.patterns.responseStyle === 'central'
+    ) {
       patterns.push({
         type: 'compensation',
         confidence: 0.6,
@@ -555,8 +562,10 @@ class EnhancedAdaptiveEngine {
     }
 
     // Check for internalized struggles
-    if (analysis.behavioralMarkers.includes('careful_consideration') &&
-        analysis.indicators.has('attachment_concerns')) {
+    if (
+      analysis.behavioralMarkers.includes('careful_consideration') &&
+      analysis.indicators.has('attachment_concerns')
+    ) {
       patterns.push({
         type: 'internalized_struggle',
         confidence: 0.65,
@@ -572,8 +581,8 @@ class EnhancedAdaptiveEngine {
    */
   calculateVariance(scores) {
     const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
-    const variance = scores.reduce((sum, score) =>
-      sum + Math.pow(score - mean, 2), 0) / scores.length;
+    const variance =
+      scores.reduce((sum, score) => sum + Math.pow(score - mean, 2), 0) / scores.length;
     return variance;
   }
 
@@ -597,21 +606,19 @@ class EnhancedAdaptiveEngine {
   }
 
   determineLearningStyle(responses) {
-    const learningQuestions = responses.filter(r =>
-      r.question?.category === 'learning_style'
-    );
+    const learningQuestions = responses.filter(r => r.question?.category === 'learning_style');
 
     if (learningQuestions.length === 0) return 'undetermined';
 
     // Analyze learning style responses
-    const visual = learningQuestions.filter(r =>
-      r.question?.trait === 'visual' && r.score >= 4
+    const visual = learningQuestions.filter(
+      r => r.question?.trait === 'visual' && r.score >= 4
     ).length;
-    const auditory = learningQuestions.filter(r =>
-      r.question?.trait === 'auditory' && r.score >= 4
+    const auditory = learningQuestions.filter(
+      r => r.question?.trait === 'auditory' && r.score >= 4
     ).length;
-    const kinesthetic = learningQuestions.filter(r =>
-      r.question?.trait === 'kinesthetic' && r.score >= 4
+    const kinesthetic = learningQuestions.filter(
+      r => r.question?.trait === 'kinesthetic' && r.score >= 4
     ).length;
 
     const max = Math.max(visual, auditory, kinesthetic);
@@ -622,9 +629,10 @@ class EnhancedAdaptiveEngine {
   }
 
   determineDecisionStyle(responses) {
-    const decisionPattern = responses.filter(r =>
-      r.question?.text?.toLowerCase().includes('decision') ||
-      r.question?.text?.toLowerCase().includes('choose')
+    const decisionPattern = responses.filter(
+      r =>
+        r.question?.text?.toLowerCase().includes('decision') ||
+        r.question?.text?.toLowerCase().includes('choose')
     );
 
     if (decisionPattern.length === 0) return 'balanced';
@@ -637,14 +645,14 @@ class EnhancedAdaptiveEngine {
   }
 
   calculateEmotionalAwareness(responses) {
-    const emotionalQuestions = responses.filter(r =>
-      r.question?.subcategory === 'emotional_regulation' ||
-      r.question?.trait === 'neuroticism'
+    const emotionalQuestions = responses.filter(
+      r => r.question?.subcategory === 'emotional_regulation' || r.question?.trait === 'neuroticism'
     );
 
     if (emotionalQuestions.length === 0) return 'moderate';
 
-    const avgScore = emotionalQuestions.reduce((sum, r) => sum + r.score, 0) / emotionalQuestions.length;
+    const avgScore =
+      emotionalQuestions.reduce((sum, r) => sum + r.score, 0) / emotionalQuestions.length;
 
     if (avgScore > 3.5) return 'high';
     if (avgScore < 2.5) return 'low';
@@ -652,13 +660,14 @@ class EnhancedAdaptiveEngine {
   }
 
   calculateRegulationCapacity(responses) {
-    const regulationQuestions = responses.filter(r =>
-      r.question?.subcategory === 'emotional_regulation'
+    const regulationQuestions = responses.filter(
+      r => r.question?.subcategory === 'emotional_regulation'
     );
 
     if (regulationQuestions.length === 0) return 'undetermined';
 
-    const avgScore = regulationQuestions.reduce((sum, r) => sum + r.score, 0) / regulationQuestions.length;
+    const avgScore =
+      regulationQuestions.reduce((sum, r) => sum + r.score, 0) / regulationQuestions.length;
 
     if (avgScore > 3.5) return 'challenged';
     if (avgScore < 2.5) return 'strong';
@@ -666,15 +675,17 @@ class EnhancedAdaptiveEngine {
   }
 
   determineStressResponse(responses) {
-    const stressIndicators = responses.filter(r =>
-      r.question?.text?.toLowerCase().includes('stress') ||
-      r.question?.text?.toLowerCase().includes('pressure') ||
-      r.question?.text?.toLowerCase().includes('overwhelm')
+    const stressIndicators = responses.filter(
+      r =>
+        r.question?.text?.toLowerCase().includes('stress') ||
+        r.question?.text?.toLowerCase().includes('pressure') ||
+        r.question?.text?.toLowerCase().includes('overwhelm')
     );
 
     if (stressIndicators.length === 0) return 'adaptive';
 
-    const avgScore = stressIndicators.reduce((sum, r) => sum + r.score, 0) / stressIndicators.length;
+    const avgScore =
+      stressIndicators.reduce((sum, r) => sum + r.score, 0) / stressIndicators.length;
 
     if (avgScore > 3.5) return 'reactive';
     if (avgScore < 2.5) return 'resilient';
@@ -685,19 +696,21 @@ class EnhancedAdaptiveEngine {
     const factors = [];
 
     // Check for various resilience indicators
-    const socialSupport = responses.find(r =>
-      r.question?.text?.toLowerCase().includes('support') && r.score >= 4
+    const socialSupport = responses.find(
+      r => r.question?.text?.toLowerCase().includes('support') && r.score >= 4
     );
     if (socialSupport) factors.push('social_support');
 
-    const selfCompassion = responses.find(r =>
-      r.question?.text?.toLowerCase().includes('self') &&
-      r.question?.text?.toLowerCase().includes('kind') && r.score >= 4
+    const selfCompassion = responses.find(
+      r =>
+        r.question?.text?.toLowerCase().includes('self') &&
+        r.question?.text?.toLowerCase().includes('kind') &&
+        r.score >= 4
     );
     if (selfCompassion) factors.push('self_compassion');
 
-    const adaptability = responses.find(r =>
-      r.question?.text?.toLowerCase().includes('adapt') && r.score >= 4
+    const adaptability = responses.find(
+      r => r.question?.text?.toLowerCase().includes('adapt') && r.score >= 4
     );
     if (adaptability) factors.push('adaptability');
 
@@ -784,10 +797,10 @@ class EnhancedAdaptiveEngine {
     // Estimate based on question complexity
     const baseTime = 3000; // 3 seconds base
     const complexityFactors = {
-      'likert': 0,
+      likert: 0,
       'multiple-choice': 500,
-      'ranking': 2000,
-      'slider': 1000
+      ranking: 2000,
+      slider: 1000
     };
 
     const textLength = question.text.length;

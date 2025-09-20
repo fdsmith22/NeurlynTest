@@ -4,9 +4,7 @@ const app = require('../../backend');
 describe('API Integration Tests', () => {
   describe('GET /', () => {
     test('should serve the index page', async () => {
-      const response = await request(app)
-        .get('/')
-        .expect('Content-Type', /html/);
+      const response = await request(app).get('/').expect('Content-Type', /html/);
 
       expect(response.status).toBe(200);
     });
@@ -47,9 +45,7 @@ describe('API Integration Tests', () => {
         tier: 'core'
       };
 
-      const response = await request(app)
-        .post('/api/assessment/start')
-        .send(invalidData);
+      const response = await request(app).post('/api/assessment/start').send(invalidData);
 
       expect(response.status).toBe(500);
     });

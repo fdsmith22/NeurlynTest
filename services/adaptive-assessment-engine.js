@@ -119,19 +119,19 @@ class AdaptiveAssessmentEngine {
     // Response pattern detection
     this.patternDetectors = {
       inconsistency: {
-        detect: (responses) => this.detectInconsistency(responses),
+        detect: responses => this.detectInconsistency(responses),
         action: 'add_validity_checks'
       },
       extreme_responding: {
-        detect: (responses) => this.detectExtremeResponding(responses),
+        detect: responses => this.detectExtremeResponding(responses),
         action: 'add_nuanced_questions'
       },
       central_tendency: {
-        detect: (responses) => this.detectCentralTendency(responses),
+        detect: responses => this.detectCentralTendency(responses),
         action: 'add_forced_choice'
       },
       acquiescence: {
-        detect: (responses) => this.detectAcquiescence(responses),
+        detect: responses => this.detectAcquiescence(responses),
         action: 'add_reverse_scored'
       }
     };
@@ -160,7 +160,10 @@ class AdaptiveAssessmentEngine {
 
       // Phase 2: Initial branching based on user profile (if provided)
       if (initialData.demographics || initialData.concerns) {
-        const profileQuestions = await this.selectProfileBasedQuestions(initialData, limit - coreQuestions.length);
+        const profileQuestions = await this.selectProfileBasedQuestions(
+          initialData,
+          limit - coreQuestions.length
+        );
         assessment.questions.push(...profileQuestions);
       }
 
@@ -233,12 +236,12 @@ class AdaptiveAssessmentEngine {
     // If user indicated specific concerns
     if (profileData.concerns) {
       const concernMap = {
-        'attention': ['adhd', 'executive_function'],
-        'social': ['autism', 'social_anxiety', 'masking'],
-        'mood': ['depression', 'anxiety', 'emotional_regulation'],
-        'learning': ['dyslexia', 'learning_style', 'processing'],
-        'sensory': ['sensory_processing', 'sensory_sensitivity'],
-        'relationships': ['attachment', 'relationship_patterns']
+        attention: ['adhd', 'executive_function'],
+        social: ['autism', 'social_anxiety', 'masking'],
+        mood: ['depression', 'anxiety', 'emotional_regulation'],
+        learning: ['dyslexia', 'learning_style', 'processing'],
+        sensory: ['sensory_processing', 'sensory_sensitivity'],
+        relationships: ['attachment', 'relationship_patterns']
       };
 
       for (const concern of profileData.concerns) {
@@ -263,7 +266,10 @@ class AdaptiveAssessmentEngine {
     }
 
     // Gender-specific (if relevant)
-    if (profileData.demographics?.gender === 'female' || profileData.demographics?.gender === 'non-binary') {
+    if (
+      profileData.demographics?.gender === 'female' ||
+      profileData.demographics?.gender === 'non-binary'
+    ) {
       // Add masking questions (higher in females/NB)
       const maskingQuestions = await Question.find({
         subcategory: 'masking',
@@ -328,7 +334,7 @@ class AdaptiveAssessmentEngine {
     responses.forEach(r => {
       if (r.traits) {
         Object.entries(r.traits).forEach(([trait, weight]) => {
-          patterns.traits[trait] = (patterns.traits[trait] || 0) + (r.score * weight);
+          patterns.traits[trait] = (patterns.traits[trait] || 0) + r.score * weight;
         });
       }
 
@@ -376,8 +382,10 @@ class AdaptiveAssessmentEngine {
 
         if (matchCount >= rule.triggers.threshold) {
           // Check score threshold if specified
-          if (!rule.triggers.scoreThreshold ||
-              patterns.traits[rule.id.replace('_pathway', '')] >= rule.triggers.scoreThreshold) {
+          if (
+            !rule.triggers.scoreThreshold ||
+            patterns.traits[rule.id.replace('_pathway', '')] >= rule.triggers.scoreThreshold
+          ) {
             activated = true;
           }
         }
@@ -386,9 +394,7 @@ class AdaptiveAssessmentEngine {
       // Check combined pathway triggers
       if (rule.triggers.combined) {
         const requiredPathways = rule.triggers.combined;
-        const hasAll = requiredPathways.every(p =>
-          activatedPathways.some(ap => ap.id === p)
-        );
+        const hasAll = requiredPathways.every(p => activatedPathways.some(ap => ap.id === p));
         if (hasAll) activated = true;
       }
 
@@ -482,13 +488,12 @@ class AdaptiveAssessmentEngine {
    */
   selectHighestPriority(priorityScores, remainingQuestions) {
     // Sort by priority
-    const sorted = Object.entries(priorityScores)
-      .sort((a, b) => b[1] - a[1]);
+    const sorted = Object.entries(priorityScores).sort((a, b) => b[1] - a[1]);
 
     // Get top priority question
     const topQuestionId = sorted[0][0];
-    return remainingQuestions.find(q =>
-      (q._id && q._id.toString() === topQuestionId) || q === topQuestionId
+    return remainingQuestions.find(
+      q => (q._id && q._id.toString() === topQuestionId) || q === topQuestionId
     );
   }
 
@@ -518,19 +523,19 @@ class AdaptiveAssessmentEngine {
   detectExtremeResponding(responses) {
     const scores = responses.map(r => r.score);
     const extremeCount = scores.filter(s => s === 1 || s === 5).length;
-    return (extremeCount / scores.length) > 0.7;
+    return extremeCount / scores.length > 0.7;
   }
 
   detectCentralTendency(responses) {
     const scores = responses.map(r => r.score);
     const centralCount = scores.filter(s => s === 3).length;
-    return (centralCount / scores.length) > 0.6;
+    return centralCount / scores.length > 0.6;
   }
 
   detectAcquiescence(responses) {
     const scores = responses.map(r => r.score);
     const agreeCount = scores.filter(s => s >= 4).length;
-    return (agreeCount / scores.length) > 0.8;
+    return agreeCount / scores.length > 0.8;
   }
 
   /**

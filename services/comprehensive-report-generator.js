@@ -8,7 +8,8 @@ class ComprehensiveReportGenerator {
 
   async generateComprehensiveReport(assessmentData) {
     try {
-      const { mode, tier, track, duration, responses, results, demographics, metadata } = assessmentData;
+      const { mode, tier, track, duration, responses, results, demographics, metadata } =
+        assessmentData;
 
       // Generate unique report ID
       this.reportId = this.generateReportId();
@@ -27,16 +28,31 @@ class ComprehensiveReportGenerator {
         meta: this.generateMetaData(mode, tier, track, duration, responses),
         executive: this.generateExecutiveSummary(traits, neurodiversityScores, cognitiveMetrics),
         personality: this.generatePersonalityAnalysis(traits),
-        neurodiversity: track === 'neurodiversity' || this.hasNeurodiversityResponses(responses) ?
-          this.generateNeurodiversityAnalysis(neurodiversityScores, responses) : null,
+        neurodiversity:
+          track === 'neurodiversity' || this.hasNeurodiversityResponses(responses)
+            ? this.generateNeurodiversityAnalysis(neurodiversityScores, responses)
+            : null,
         cognitive: this.analyzeCognitivePatterns(responses, cognitiveMetrics, gamifiedMetrics),
         archetype: this.determineComprehensiveArchetype(traits, neurodiversityScores),
-        insights: this.generateComprehensiveInsights(traits, behavioralMetrics, gamifiedMetrics, neurodiversityScores),
-        recommendations: this.generateDetailedRecommendations(traits, neurodiversityScores, cognitiveMetrics),
+        insights: this.generateComprehensiveInsights(
+          traits,
+          behavioralMetrics,
+          gamifiedMetrics,
+          neurodiversityScores
+        ),
+        recommendations: this.generateDetailedRecommendations(
+          traits,
+          neurodiversityScores,
+          cognitiveMetrics
+        ),
         career: this.generateCareerGuidance(traits, neurodiversityScores, cognitiveMetrics),
         relationships: this.generateRelationshipInsights(traits),
         growth: this.generateGrowthPlan(traits, neurodiversityScores, cognitiveMetrics),
-        visualizations: this.prepareVisualizationData(traits, neurodiversityScores, cognitiveMetrics),
+        visualizations: this.prepareVisualizationData(
+          traits,
+          neurodiversityScores,
+          cognitiveMetrics
+        ),
         comparisons: this.generateComparativeAnalysis(traits),
         validity: this.calculateValidityMetrics(responses, behavioralMetrics)
       };
@@ -82,8 +98,8 @@ class ComprehensiveReportGenerator {
   }
 
   calculateTraitScore(responses, trait) {
-    const traitResponses = responses.filter(r =>
-      r.category === 'personality' && this.isTraitRelated(r, trait)
+    const traitResponses = responses.filter(
+      r => r.category === 'personality' && this.isTraitRelated(r, trait)
     );
 
     if (traitResponses.length === 0) return 50; // Default neutral score
@@ -102,23 +118,23 @@ class ComprehensiveReportGenerator {
     // Convert response to numerical score
     const scoreMap = {
       'Strongly Disagree': 20,
-      'Disagree': 40,
-      'Neutral': 60,
-      'Agree': 80,
+      Disagree: 40,
+      Neutral: 60,
+      Agree: 80,
       'Strongly Agree': 100,
-      'Never': 20,
-      'Rarely': 40,
-      'Sometimes': 60,
-      'Often': 80,
-      'Always': 100
+      Never: 20,
+      Rarely: 40,
+      Sometimes: 60,
+      Often: 80,
+      Always: 100
     };
 
     return scoreMap[response.value] || 50;
   }
 
   extractNeurodiversityScores(responses) {
-    const neurodiversityResponses = responses.filter(r =>
-      r.category === 'neurodiversity' || r.instrument === 'ASRS-5' || r.instrument === 'AQ-10'
+    const neurodiversityResponses = responses.filter(
+      r => r.category === 'neurodiversity' || r.instrument === 'ASRS-5' || r.instrument === 'AQ-10'
     );
 
     const scores = {
@@ -175,7 +191,8 @@ class ComprehensiveReportGenerator {
     // Analyze executive function responses
     const execFunctionResponses = responses.filter(r => r.subcategory === 'executive_function');
     if (execFunctionResponses.length > 0) {
-      scores.adhd.subcategories.executiveFunction = this.calculateSubcategoryScore(execFunctionResponses);
+      scores.adhd.subcategories.executiveFunction =
+        this.calculateSubcategoryScore(execFunctionResponses);
       if (scores.adhd.subcategories.executiveFunction > 60) {
         scores.adhd.indicators.push('Executive function challenges');
       }
@@ -184,7 +201,8 @@ class ComprehensiveReportGenerator {
     // Analyze sensory processing responses
     const sensoryResponses = responses.filter(r => r.subcategory === 'sensory_processing');
     if (sensoryResponses.length > 0) {
-      scores.autism.subcategories.sensoryProcessing = this.calculateSubcategoryScore(sensoryResponses);
+      scores.autism.subcategories.sensoryProcessing =
+        this.calculateSubcategoryScore(sensoryResponses);
       scores.sensoryProfile = this.analyzeSensoryProfile(sensoryResponses);
       if (scores.autism.subcategories.sensoryProcessing > 60) {
         scores.autism.indicators.push('Sensory processing differences');
@@ -287,7 +305,8 @@ class ComprehensiveReportGenerator {
       }
       if (r.subcategory === 'thinking_style') {
         if (r.domain === 'visual_thinking') metrics.thinkingStyle.visual = this.scoreResponse(r);
-        if (r.domain === 'systems_thinking') metrics.thinkingStyle.analytical = this.scoreResponse(r);
+        if (r.domain === 'systems_thinking')
+          metrics.thinkingStyle.analytical = this.scoreResponse(r);
       }
       if (r.subcategory === 'creative_thinking') {
         metrics.thinkingStyle.creative = this.scoreResponse(r);
@@ -313,7 +332,8 @@ class ComprehensiveReportGenerator {
 
     // Calculate average response speed
     if (patterns.responseSpeed.length > 0) {
-      patterns.averageSpeed = patterns.responseSpeed.reduce((a, b) => a + b, 0) / patterns.responseSpeed.length;
+      patterns.averageSpeed =
+        patterns.responseSpeed.reduce((a, b) => a + b, 0) / patterns.responseSpeed.length;
     }
 
     // Check for extreme responses
@@ -323,9 +343,7 @@ class ComprehensiveReportGenerator {
     patterns.extremityBias = (extremeResponses.length / responses.length) * 100;
 
     // Check for central tendency
-    const neutralResponses = responses.filter(r =>
-      ['Neutral', 'Sometimes'].includes(r.value)
-    );
+    const neutralResponses = responses.filter(r => ['Neutral', 'Sometimes'].includes(r.value));
     patterns.centralTendency = (neutralResponses.length / responses.length) * 100;
 
     return patterns;
@@ -341,11 +359,12 @@ class ComprehensiveReportGenerator {
   }
 
   hasNeurodiversityResponses(responses) {
-    return responses.some(r =>
-      r.category === 'neurodiversity' ||
-      r.subcategory?.includes('executive_function') ||
-      r.subcategory?.includes('sensory') ||
-      r.subcategory?.includes('masking')
+    return responses.some(
+      r =>
+        r.category === 'neurodiversity' ||
+        r.subcategory?.includes('executive_function') ||
+        r.subcategory?.includes('sensory') ||
+        r.subcategory?.includes('masking')
     );
   }
 
@@ -377,13 +396,17 @@ class ComprehensiveReportGenerator {
 
     // Analyze neurodiversity indicators
     if (neurodiversityScores.adhd.likelihood === 'High') {
-      keyInsights.push('Your responses suggest ADHD traits that could benefit from support strategies');
+      keyInsights.push(
+        'Your responses suggest ADHD traits that could benefit from support strategies'
+      );
     }
     if (neurodiversityScores.autism.likelihood === 'High') {
       keyInsights.push('You show autism spectrum traits that represent a unique cognitive style');
     }
     if (neurodiversityScores.autism.subcategories.masking > 70) {
-      keyInsights.push('High masking behaviors detected - consider strategies for authentic self-expression');
+      keyInsights.push(
+        'High masking behaviors detected - consider strategies for authentic self-expression'
+      );
     }
 
     // Analyze cognitive strengths
@@ -429,18 +452,25 @@ class ComprehensiveReportGenerator {
 
     let narrative = `Your personality profile reveals a ${dominantTrait}-dominant pattern `;
 
-    if (neurodiversityScores.adhd.likelihood === 'High' || neurodiversityScores.autism.likelihood === 'High') {
-      narrative += 'combined with neurodivergent processing styles that offer unique cognitive advantages. ';
+    if (
+      neurodiversityScores.adhd.likelihood === 'High' ||
+      neurodiversityScores.autism.likelihood === 'High'
+    ) {
+      narrative +=
+        'combined with neurodivergent processing styles that offer unique cognitive advantages. ';
     } else {
       narrative += 'with balanced cognitive processing across multiple domains. ';
     }
 
     narrative += 'This combination suggests strong potential for ';
 
-    if (dominantTrait === 'openness') narrative += 'creative innovation and intellectual exploration.';
-    else if (dominantTrait === 'conscientiousness') narrative += 'systematic achievement and reliable execution.';
+    if (dominantTrait === 'openness')
+      narrative += 'creative innovation and intellectual exploration.';
+    else if (dominantTrait === 'conscientiousness')
+      narrative += 'systematic achievement and reliable execution.';
     else if (dominantTrait === 'extraversion') narrative += 'leadership and social influence.';
-    else if (dominantTrait === 'agreeableness') narrative += 'collaborative success and team harmony.';
+    else if (dominantTrait === 'agreeableness')
+      narrative += 'collaborative success and team harmony.';
     else narrative += 'deep emotional intelligence and intuitive understanding.';
 
     return narrative;
@@ -475,27 +505,32 @@ class ComprehensiveReportGenerator {
     const descriptions = {
       openness: {
         high: 'You have a rich imagination, appreciate art and beauty, and enjoy exploring new ideas and experiences.',
-        average: 'You balance practical thinking with creative exploration, open to new experiences when they align with your interests.',
+        average:
+          'You balance practical thinking with creative exploration, open to new experiences when they align with your interests.',
         low: 'You prefer familiar routines and practical solutions, valuing stability and proven methods.'
       },
       conscientiousness: {
         high: 'You are organized, reliable, and goal-oriented, with strong self-discipline and attention to detail.',
-        average: 'You balance structure with flexibility, maintaining organization in priority areas while allowing spontaneity elsewhere.',
+        average:
+          'You balance structure with flexibility, maintaining organization in priority areas while allowing spontaneity elsewhere.',
         low: 'You prefer flexibility and spontaneity, working best with minimal structure and freedom to adapt.'
       },
       extraversion: {
         high: 'You are energized by social interaction, comfortable in groups, and naturally assertive in social situations.',
-        average: 'You enjoy social interaction in moderation, balancing social time with solitary activities.',
+        average:
+          'You enjoy social interaction in moderation, balancing social time with solitary activities.',
         low: 'You prefer quiet environments and deep one-on-one connections, finding large groups draining.'
       },
       agreeableness: {
-        high: 'You are compassionate, trusting, and cooperative, prioritizing harmony and others\' wellbeing.',
-        average: 'You balance concern for others with self-advocacy, cooperative when appropriate but able to disagree.',
+        high: "You are compassionate, trusting, and cooperative, prioritizing harmony and others' wellbeing.",
+        average:
+          'You balance concern for others with self-advocacy, cooperative when appropriate but able to disagree.',
         low: 'You are direct, skeptical, and competitive, prioritizing truth and efficiency over social harmony.'
       },
       neuroticism: {
-        high: 'You experience emotions intensely and are highly sensitive to your environment and others\' moods.',
-        average: 'You experience typical emotional fluctuations, generally managing stress and anxiety effectively.',
+        high: "You experience emotions intensely and are highly sensitive to your environment and others' moods.",
+        average:
+          'You experience typical emotional fluctuations, generally managing stress and anxiety effectively.',
         low: 'You remain calm under pressure, rarely experiencing anxiety or emotional distress.'
       }
     };
@@ -506,11 +541,39 @@ class ComprehensiveReportGenerator {
 
   getTraitFacets(trait, score) {
     const facets = {
-      openness: ['Imagination', 'Artistic Interests', 'Emotionality', 'Adventurousness', 'Intellect', 'Liberalism'],
-      conscientiousness: ['Self-Efficacy', 'Orderliness', 'Dutifulness', 'Achievement-Striving', 'Self-Discipline', 'Cautiousness'],
-      extraversion: ['Friendliness', 'Gregariousness', 'Assertiveness', 'Activity Level', 'Excitement-Seeking', 'Cheerfulness'],
+      openness: [
+        'Imagination',
+        'Artistic Interests',
+        'Emotionality',
+        'Adventurousness',
+        'Intellect',
+        'Liberalism'
+      ],
+      conscientiousness: [
+        'Self-Efficacy',
+        'Orderliness',
+        'Dutifulness',
+        'Achievement-Striving',
+        'Self-Discipline',
+        'Cautiousness'
+      ],
+      extraversion: [
+        'Friendliness',
+        'Gregariousness',
+        'Assertiveness',
+        'Activity Level',
+        'Excitement-Seeking',
+        'Cheerfulness'
+      ],
       agreeableness: ['Trust', 'Morality', 'Altruism', 'Cooperation', 'Modesty', 'Sympathy'],
-      neuroticism: ['Anxiety', 'Anger', 'Depression', 'Self-Consciousness', 'Immoderation', 'Vulnerability']
+      neuroticism: [
+        'Anxiety',
+        'Anger',
+        'Depression',
+        'Self-Consciousness',
+        'Immoderation',
+        'Vulnerability'
+      ]
     };
 
     // Return relevant facets based on score
@@ -647,8 +710,7 @@ class ComprehensiveReportGenerator {
   }
 
   describeCognitiveStyle(metrics) {
-    const dominantStyle = Object.entries(metrics.thinkingStyle)
-      .sort((a, b) => b[1] - a[1])[0];
+    const dominantStyle = Object.entries(metrics.thinkingStyle).sort((a, b) => b[1] - a[1])[0];
 
     if (dominantStyle[0] === 'visual') {
       return 'You process information primarily through visual-spatial reasoning';
@@ -759,17 +821,22 @@ class ComprehensiveReportGenerator {
     if (traits.openness > 70 && traits.conscientiousness < 40) {
       insights.push({
         title: 'Creative Tension',
-        description: 'Your high creativity paired with flexible structure suggests you thrive in dynamic, innovative environments.',
+        description:
+          'Your high creativity paired with flexible structure suggests you thrive in dynamic, innovative environments.',
         impactArea: 'Career',
         suggestedAction: 'Seek roles that balance creative freedom with minimal routine'
       });
     }
 
     // Neurodiversity insights
-    if (neurodiversityScores.adhd.likelihood === 'High' && neurodiversityScores.autism.likelihood === 'High') {
+    if (
+      neurodiversityScores.adhd.likelihood === 'High' &&
+      neurodiversityScores.autism.likelihood === 'High'
+    ) {
       insights.push({
         title: 'AuDHD Profile',
-        description: 'You show traits of both ADHD and autism, creating unique strengths and challenges.',
+        description:
+          'You show traits of both ADHD and autism, creating unique strengths and challenges.',
         impactArea: 'Self-Understanding',
         suggestedAction: 'Explore resources specifically for AuDHD individuals'
       });
@@ -820,7 +887,10 @@ class ComprehensiveReportGenerator {
     }
 
     // Sensory accommodations
-    if (neurodiversityScores.sensoryProfile && neurodiversityScores.sensoryProfile.sensitivity > 70) {
+    if (
+      neurodiversityScores.sensoryProfile &&
+      neurodiversityScores.sensoryProfile.sensitivity > 70
+    ) {
       recommendations.immediate.push({
         title: 'Create Sensory-Friendly Environment',
         description: 'Modify your environment to reduce sensory overwhelm.',
@@ -874,7 +944,11 @@ class ComprehensiveReportGenerator {
         title: 'Data Scientist',
         description: 'Analyzing complex data to derive meaningful insights',
         fitScore: 80,
-        reasons: ['Requires systematic thinking', 'Values precision', 'Involves pattern recognition']
+        reasons: [
+          'Requires systematic thinking',
+          'Values precision',
+          'Involves pattern recognition'
+        ]
       });
     }
 
@@ -1060,11 +1134,7 @@ class ComprehensiveReportGenerator {
             'Mentor others',
             'Regular performance review'
           ],
-          metrics: [
-            'Project success rate improved',
-            'Confidence increased',
-            'Goals achieved'
-          ]
+          metrics: ['Project success rate improved', 'Confidence increased', 'Goals achieved']
         }
       ],
       dailyHabits: [
@@ -1083,7 +1153,7 @@ class ComprehensiveReportGenerator {
         {
           name: 'Evening Reflection',
           icon: 'moon',
-          description: 'Journal accomplishments and tomorrow\'s priorities',
+          description: "Journal accomplishments and tomorrow's priorities",
           timeRequired: '10 minutes'
         }
       ],
@@ -1130,7 +1200,7 @@ class ComprehensiveReportGenerator {
   }
 
   likelihoodToScore(likelihood) {
-    const map = { 'High': 80, 'Moderate': 50, 'Low': 20 };
+    const map = { High: 80, Moderate: 50, Low: 20 };
     return map[likelihood] || 0;
   }
 

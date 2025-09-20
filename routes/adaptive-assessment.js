@@ -75,7 +75,6 @@ router.post('/start', async (req, res) => {
         total: adaptiveEngine.assessmentLimits[tier]
       }
     });
-
   } catch (error) {
     logger.error('Failed to start adaptive assessment:', error);
     res.status(500).json({
@@ -144,11 +143,7 @@ router.post('/next', async (req, res) => {
     });
 
     // Determine next questions to ask
-    const nextQuestions = await selectNextQuestions(
-      assessment,
-      patterns,
-      activatedPathways
-    );
+    const nextQuestions = await selectNextQuestions(assessment, patterns, activatedPathways);
 
     // Update phase
     if (assessment.responses.length < limit * 0.4) {
@@ -176,7 +171,6 @@ router.post('/next', async (req, res) => {
       phase: assessment.adaptiveMetadata.currentPhase,
       complete: isComplete
     });
-
   } catch (error) {
     logger.error('Failed to get next question:', error);
     res.status(500).json({
@@ -245,7 +239,6 @@ router.post('/complete', async (req, res) => {
       },
       reportUrl: `/api/reports/generate`
     });
-
   } catch (error) {
     logger.error('Failed to complete assessment:', error);
     res.status(500).json({
@@ -283,7 +276,6 @@ router.get('/progress/:sessionId', async (req, res) => {
       timeElapsed: Math.round((Date.now() - assessment.startTime) / 1000),
       isComplete: assessment.responses.length >= limit
     });
-
   } catch (error) {
     logger.error('Failed to get progress:', error);
     res.status(500).json({
@@ -386,15 +378,15 @@ async function selectNextQuestions(assessment, patterns, activatedPathways) {
 function convertResponseToScore(value) {
   const scoreMap = {
     'Strongly Disagree': 1,
-    'Disagree': 2,
-    'Neutral': 3,
-    'Agree': 4,
+    Disagree: 2,
+    Neutral: 3,
+    Agree: 4,
     'Strongly Agree': 5,
-    'Never': 1,
-    'Rarely': 2,
-    'Sometimes': 3,
-    'Often': 4,
-    'Always': 5
+    Never: 1,
+    Rarely: 2,
+    Sometimes: 3,
+    Often: 4,
+    Always: 5
   };
 
   return scoreMap[value] || 3;
@@ -454,7 +446,7 @@ function calculateConsistency(responses) {
   const variance = calculateVariance(scores);
 
   // High variance = less consistent
-  return Math.max(0, 1 - (variance / 2));
+  return Math.max(0, 1 - variance / 2);
 }
 
 /**

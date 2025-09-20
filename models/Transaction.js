@@ -67,7 +67,7 @@ const transactionSchema = new mongoose.Schema(
 transactionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 // Static method to anonymize old transactions
-transactionSchema.statics.anonymizeOldTransactions = async function() {
+transactionSchema.statics.anonymizeOldTransactions = async function () {
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
   return this.updateMany(

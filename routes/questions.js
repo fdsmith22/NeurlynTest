@@ -16,17 +16,20 @@ router.get('/assessment/:type', async (req, res) => {
 
     // Map assessment types to database categories
     const typeMapping = {
-      'personality': { category: 'personality' },
-      'neurodiversity': { category: 'neurodiversity' },
-      'lateral': { category: 'lateral' },
-      'cognitive': { category: 'cognitive' },
-      'comprehensive': { category: { $in: ['personality', 'neurodiversity', 'lateral', 'cognitive'] } }
+      personality: { category: 'personality' },
+      neurodiversity: { category: 'neurodiversity' },
+      lateral: { category: 'lateral' },
+      cognitive: { category: 'cognitive' },
+      comprehensive: {
+        category: { $in: ['personality', 'neurodiversity', 'lateral', 'cognitive'] }
+      }
     };
 
     if (!typeMapping[type]) {
       return res.status(400).json({
         success: false,
-        error: 'Invalid assessment type. Valid types: personality, neurodiversity, lateral, cognitive, comprehensive'
+        error:
+          'Invalid assessment type. Valid types: personality, neurodiversity, lateral, cognitive, comprehensive'
       });
     }
 
@@ -38,19 +41,17 @@ router.get('/assessment/:type', async (req, res) => {
 
     // Add tier filtering
     const tierHierarchy = {
-      'free': ['free'],
-      'core': ['free', 'core'],
-      'comprehensive': ['free', 'core', 'comprehensive'],
-      'specialized': ['free', 'core', 'comprehensive', 'specialized']
+      free: ['free'],
+      core: ['free', 'core'],
+      comprehensive: ['free', 'core', 'comprehensive'],
+      specialized: ['free', 'core', 'comprehensive', 'specialized']
     };
 
     if (tierHierarchy[tier]) {
       query.tier = { $in: tierHierarchy[tier] };
     }
 
-    let questions = await QuestionBank.find(query)
-      .select('-__v -createdAt -updatedAt')
-      .lean();
+    let questions = await QuestionBank.find(query).select('-__v -createdAt -updatedAt').lean();
 
     // Randomize if requested
     if (randomize === 'true' && questions.length > 0) {
@@ -91,7 +92,13 @@ router.get('/assessment/:type', async (req, res) => {
 
     // Add trait breakdown for personality assessments
     if (type === 'personality') {
-      const traits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+      const traits = [
+        'openness',
+        'conscientiousness',
+        'extraversion',
+        'agreeableness',
+        'neuroticism'
+      ];
       const traitBreakdown = {};
 
       traits.forEach(trait => {
@@ -102,7 +109,6 @@ router.get('/assessment/:type', async (req, res) => {
     }
 
     res.json(response);
-
   } catch (error) {
     logger.error('Error fetching questions:', error);
     res.status(500).json({
@@ -124,8 +130,8 @@ router.get('/by-instrument/:instrument', async (req, res) => {
       instrument: instrument.toUpperCase(),
       active: true
     })
-    .select('-__v -createdAt -updatedAt')
-    .lean();
+      .select('-__v -createdAt -updatedAt')
+      .lean();
 
     res.json({
       success: true,
@@ -133,7 +139,6 @@ router.get('/by-instrument/:instrument', async (req, res) => {
       totalQuestions: questions.length,
       questions: questions
     });
-
   } catch (error) {
     logger.error('Error fetching questions by instrument:', error);
     res.status(500).json({
@@ -197,7 +202,6 @@ router.get('/stats', async (req, res) => {
       categoryBreakdown: categoryBreakdown,
       instrumentBreakdown: instrumentBreakdown
     });
-
   } catch (error) {
     logger.error('Error fetching question stats:', error);
     res.status(500).json({

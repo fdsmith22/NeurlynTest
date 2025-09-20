@@ -3,7 +3,7 @@
  * Handles lazy loading, debouncing, and mobile-specific enhancements
  */
 
-(function() {
+(function () {
   'use strict';
 
   // ========================================
@@ -24,11 +24,11 @@
 
   function throttle(func, limit) {
     let inThrottle;
-    return function(...args) {
+    return function (...args) {
       if (!inThrottle) {
         func.apply(this, args);
         inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
+        setTimeout(() => (inThrottle = false), limit);
       }
     };
   }
@@ -40,20 +40,23 @@
   function lazyLoadImages() {
     const images = document.querySelectorAll('img[data-src]');
 
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          img.classList.add('loaded');
-          observer.unobserve(img);
-        }
-      });
-    }, {
-      rootMargin: '50px 0px',
-      threshold: 0.01
-    });
+    const imageObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            img.classList.add('loaded');
+            observer.unobserve(img);
+          }
+        });
+      },
+      {
+        rootMargin: '50px 0px',
+        threshold: 0.01
+      }
+    );
 
     images.forEach(img => imageObserver.observe(img));
   }
@@ -70,14 +73,22 @@
     const questionCard = document.querySelector('.question-card');
     if (!questionCard) return;
 
-    questionCard.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+    questionCard.addEventListener(
+      'touchstart',
+      e => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true }
+    );
 
-    questionCard.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, { passive: true });
+    questionCard.addEventListener(
+      'touchend',
+      e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      },
+      { passive: true }
+    );
 
     function handleSwipe() {
       const swipeDistance = touchEndX - touchStartX;
@@ -160,7 +171,8 @@
     }
 
     // Check connection type
-    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const connection =
+      navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     if (connection) {
       const effectiveType = connection.effectiveType;
       if (effectiveType === '2g' || effectiveType === 'slow-2g') {
@@ -271,11 +283,14 @@
 
     // Throttled/debounced events
     window.addEventListener('resize', debounce(setViewportHeight, 100));
-    window.addEventListener('scroll', throttle(() => {
-      // Add scroll-based optimizations here
-      const scrolled = window.pageYOffset > 100;
-      document.body.classList.toggle('scrolled', scrolled);
-    }, 100));
+    window.addEventListener(
+      'scroll',
+      throttle(() => {
+        // Add scroll-based optimizations here
+        const scrolled = window.pageYOffset > 100;
+        document.body.classList.toggle('scrolled', scrolled);
+      }, 100)
+    );
 
     // Question navigation optimizations
     document.addEventListener('questionChanged', () => {
@@ -289,13 +304,17 @@
 
     // Prevent double-tap zoom on buttons
     let lastTouchEnd = 0;
-    document.addEventListener('touchend', (e) => {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) {
-        e.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
+    document.addEventListener(
+      'touchend',
+      e => {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      },
+      false
+    );
 
     // iOS specific fixes
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
@@ -329,5 +348,4 @@
     smoothScrollTo,
     showNotification
   };
-
 })();

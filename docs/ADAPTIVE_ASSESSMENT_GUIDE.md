@@ -1,68 +1,82 @@
 # Neurlyn Adaptive Assessment System Guide
 
 ## Overview
+
 The Adaptive Assessment System intelligently selects questions based on user responses, creating a personalized assessment experience within strict question limits.
 
 ## Assessment Tiers
 
-| Tier | Questions | Duration | Use Case |
-|------|-----------|----------|----------|
-| **Quick** | 20 questions | 5-7 minutes | Basic screening, initial exploration |
-| **Standard** | 45 questions | 15-20 minutes | Comprehensive evaluation for most users |
-| **Deep** | 75 questions | 25-35 minutes | Clinical-grade assessment with psychoanalytic elements |
+| Tier         | Questions    | Duration      | Use Case                                               |
+| ------------ | ------------ | ------------- | ------------------------------------------------------ |
+| **Quick**    | 20 questions | 5-7 minutes   | Basic screening, initial exploration                   |
+| **Standard** | 45 questions | 15-20 minutes | Comprehensive evaluation for most users                |
+| **Deep**     | 75 questions | 25-35 minutes | Clinical-grade assessment with psychoanalytic elements |
 
 ## How It Works
 
 ### 1. Initial Phase (40% of questions)
+
 - Core personality traits (Big Five)
 - Basic neurodiversity screening (ADHD/Autism indicators)
 - Essential mental health screening
 - These questions are asked to everyone
 
 ### 2. Branching Phase (40% of questions)
+
 Based on initial responses, the system activates specific pathways:
 
 #### ADHD Pathway
+
 **Triggered when:** High scores on attention difficulty, time blindness, or impulsivity
 **Adds questions about:**
+
 - Executive function challenges
 - Rejection Sensitive Dysphoria
 - Time management and organization
 - Hyperactivity vs inattentive presentation
 
 #### Autism Pathway
+
 **Triggered when:** High scores on social difficulty, sensory sensitivity, or routine needs
 **Adds questions about:**
+
 - Sensory processing profile
 - Masking and camouflaging behaviors
 - Special interests (monotropism)
 - Social communication patterns
 
 #### AuDHD Pathway
+
 **Triggered when:** Both ADHD and Autism pathways activate
 **Adds questions about:**
+
 - Competing needs between conditions
 - Dual presentation challenges
 - Complex masking patterns
 - Executive function + sensory needs
 
 #### Trauma Pathway
+
 **Triggered when:** Hypervigilance, dissociation, or somatic symptoms detected
 **Adds questions about:**
+
 - Attachment style
 - Defense mechanisms
 - Grounding and safety needs
-**Note:** Questions become gentler in tone
+  **Note:** Questions become gentler in tone
 
 #### High Masking Pathway
+
 **Triggered when:** Social exhaustion + identity suppression patterns
 **Adds questions about:**
+
 - Burnout risk assessment
 - Authenticity struggles
 - Energy management
 - Recovery needs
 
 ### 3. Refinement Phase (20% of questions)
+
 - Clarifies ambiguous areas
 - Uses forced-choice questions for extreme responders
 - Adds nuanced questions for central tendency responders
@@ -71,6 +85,7 @@ Based on initial responses, the system activates specific pathways:
 ## Adaptive Logic Examples
 
 ### Example 1: Quick Assessment (20 questions)
+
 ```
 Questions 1-8: Core screening
 - 3 personality traits
@@ -91,6 +106,7 @@ Questions 16-20: Refinement
 ```
 
 ### Example 2: Standard Assessment with Multiple Pathways (45 questions)
+
 ```
 Questions 1-18: Core + profile-based
 - User indicated "attention" and "sensory" concerns
@@ -114,17 +130,18 @@ Questions 36-45: Refinement + enhancement
 
 Each question receives a priority score based on:
 
-| Factor | Priority Boost | Example |
-|--------|---------------|---------|
-| Activated pathway match | +30 points | ADHD pathway → executive function questions |
-| High trait indicator | +20 points | High anxiety → emotional regulation questions |
-| Profile concern match | +15 points | User selected "attention" → ADHD questions |
-| Response style correction | +15 points | Extreme responder → forced choice questions |
-| Redundancy | -20 points | Already strong signal for trait |
+| Factor                    | Priority Boost | Example                                       |
+| ------------------------- | -------------- | --------------------------------------------- |
+| Activated pathway match   | +30 points     | ADHD pathway → executive function questions   |
+| High trait indicator      | +20 points     | High anxiety → emotional regulation questions |
+| Profile concern match     | +15 points     | User selected "attention" → ADHD questions    |
+| Response style correction | +15 points     | Extreme responder → forced choice questions   |
+| Redundancy                | -20 points     | Already strong signal for trait               |
 
 ## API Endpoints
 
 ### Start Adaptive Assessment
+
 ```javascript
 POST /api/adaptive/start
 {
@@ -147,6 +164,7 @@ Response:
 ```
 
 ### Get Next Questions
+
 ```javascript
 POST /api/adaptive/next
 {
@@ -171,6 +189,7 @@ Response:
 ```
 
 ### Complete Assessment
+
 ```javascript
 POST /api/adaptive/complete
 {
@@ -196,22 +215,24 @@ Response:
 
 The system detects and corrects for:
 
-| Pattern | Detection | Correction |
-|---------|-----------|------------|
-| **Inconsistency** | Contradictory responses | Add validity check questions |
-| **Extreme Responding** | >70% choosing extremes | Add forced-choice questions |
-| **Central Tendency** | >60% choosing middle | Add slider-scale questions |
-| **Acquiescence** | >80% agreeing | Add reverse-scored questions |
+| Pattern                | Detection               | Correction                   |
+| ---------------------- | ----------------------- | ---------------------------- |
+| **Inconsistency**      | Contradictory responses | Add validity check questions |
+| **Extreme Responding** | >70% choosing extremes  | Add forced-choice questions  |
+| **Central Tendency**   | >60% choosing middle    | Add slider-scale questions   |
+| **Acquiescence**       | >80% agreeing           | Add reverse-scored questions |
 
 ## Confidence Calculation
 
 Assessment confidence is calculated based on:
+
 - Number of questions answered (more = higher confidence)
 - Response consistency (consistent = higher confidence)
 - Activated pathways (clear pathways = higher confidence)
 - Response patterns (balanced = higher confidence)
 
 ### Confidence Levels
+
 - **<60%**: Low confidence - suggest retaking with more questions
 - **60-75%**: Moderate confidence - results indicative but not definitive
 - **75-85%**: Good confidence - reliable for self-understanding
@@ -266,6 +287,7 @@ async function submitAnswer(questionId, value) {
 ## Testing the System
 
 ### Test Scenario 1: ADHD Detection
+
 1. Start standard assessment
 2. Answer high on: difficulty focusing, time blindness, impulsivity
 3. System should activate ADHD pathway by question 10
@@ -273,6 +295,7 @@ async function submitAnswer(questionId, value) {
 5. Final report emphasizes ADHD support strategies
 
 ### Test Scenario 2: AuDHD Profile
+
 1. Start deep assessment
 2. Answer high on both ADHD and autism indicators
 3. System should activate AuDHD pathway
@@ -280,6 +303,7 @@ async function submitAnswer(questionId, value) {
 5. Report addresses dual presentation
 
 ### Test Scenario 3: High Masking
+
 1. Start with "social" concern
 2. Answer high on social exhaustion, performance feeling
 3. System activates masking pathway

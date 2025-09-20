@@ -231,4 +231,4 @@ module.exports = function handler(req, res) {
     total: selectedQuestions.length,
     tier: tier
   });
-}
+};

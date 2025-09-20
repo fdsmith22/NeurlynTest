@@ -1,14 +1,17 @@
 # Neurlyn API Documentation
 
 ## Base URL
+
 ```
 http://localhost:3000/api
 ```
 
 ## Authentication
+
 Currently, the API does not require authentication for question retrieval endpoints. Payment and session management endpoints will require JWT tokens (to be implemented).
 
 ## Response Format
+
 All API responses follow this structure:
 
 ```json
@@ -26,9 +29,11 @@ All API responses follow this structure:
 ### 1. Health Checks
 
 #### GET /health
+
 Basic health check endpoint.
 
 **Response:**
+
 ```json
 {
   "status": "healthy",
@@ -37,9 +42,11 @@ Basic health check endpoint.
 ```
 
 #### GET /health/ready
+
 Checks if the service is ready to accept requests (including database connectivity).
 
 **Response:**
+
 ```json
 {
   "status": "ready",
@@ -49,9 +56,11 @@ Checks if the service is ready to accept requests (including database connectivi
 ```
 
 #### GET /health/detailed
+
 Provides detailed system information.
 
 **Response:**
+
 ```json
 {
   "status": "healthy",
@@ -72,9 +81,11 @@ Provides detailed system information.
 ```
 
 #### GET /health/metrics
+
 Prometheus-compatible metrics endpoint.
 
 **Response:**
+
 ```
 # HELP neurlyn_http_requests_total Total number of HTTP requests
 # TYPE neurlyn_http_requests_total counter
@@ -90,9 +101,11 @@ neurlyn_active_connections 5
 ### 2. Questions API
 
 #### GET /api/questions/assessment/:type
+
 Retrieves questions based on assessment type.
 
 **Parameters:**
+
 - `type` (path): Assessment type
   - `personality` - Big Five personality questions
   - `neurodiversity` - ADHD, Autism, Depression, Anxiety screening
@@ -101,6 +114,7 @@ Retrieves questions based on assessment type.
   - `comprehensive` - All categories combined
 
 **Query Parameters:**
+
 - `tier` (optional): Filter by tier
   - `free` - Free tier questions only
   - `core` - Free + Core tier questions
@@ -115,11 +129,13 @@ Retrieves questions based on assessment type.
   - Default: `true`
 
 **Example Request:**
+
 ```bash
 GET /api/questions/assessment/personality?tier=core&limit=20&randomize=true
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -159,9 +175,11 @@ GET /api/questions/assessment/personality?tier=core&limit=20&randomize=true
 ```
 
 #### GET /api/questions/by-instrument/:instrument
+
 Retrieves questions for a specific assessment instrument.
 
 **Parameters:**
+
 - `instrument` (path): Instrument identifier
   - `BFI-2-Extended` - Big Five Inventory Extended
   - `ASRS-5` - ADHD Self-Report Scale
@@ -173,11 +191,13 @@ Retrieves questions for a specific assessment instrument.
   - `WORD_ASSOCIATION` - Word association test
 
 **Example Request:**
+
 ```bash
 GET /api/questions/by-instrument/ASRS-5
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -207,14 +227,17 @@ GET /api/questions/by-instrument/ASRS-5
 ```
 
 #### GET /api/questions/stats
+
 Returns statistics about available questions in the database.
 
 **Example Request:**
+
 ```bash
 GET /api/questions/stats
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -279,6 +302,7 @@ GET /api/questions/stats
 ## Error Responses
 
 ### 400 Bad Request
+
 Returned when the request parameters are invalid.
 
 ```json
@@ -289,6 +313,7 @@ Returned when the request parameters are invalid.
 ```
 
 ### 404 Not Found
+
 Returned when no questions are found for the specified criteria.
 
 ```json
@@ -299,6 +324,7 @@ Returned when no questions are found for the specified criteria.
 ```
 
 ### 500 Internal Server Error
+
 Returned when there's a server error.
 
 ```json
@@ -313,6 +339,7 @@ Returned when there's a server error.
 ## Rate Limiting
 
 API endpoints are rate-limited to:
+
 - 100 requests per 15 minutes per IP address
 - Rate limit headers are included in responses:
   - `X-RateLimit-Limit`: Maximum requests allowed
@@ -325,29 +352,29 @@ API endpoints are rate-limited to:
 
 ```typescript
 interface Question {
-  questionId: string;           // Unique identifier
-  text: string;                 // Question text
+  questionId: string; // Unique identifier
+  text: string; // Question text
   category: 'personality' | 'neurodiversity' | 'lateral' | 'cognitive';
-  instrument: string;           // Assessment instrument name
-  trait?: string;              // Personality trait or condition
+  instrument: string; // Assessment instrument name
+  trait?: string; // Personality trait or condition
   responseType: 'likert' | 'multiple-choice' | 'binary' | 'slider' | 'ranking' | 'word-association';
   options?: Array<{
     value: number | string;
     label: string;
     score: number;
   }>;
-  reverseScored?: boolean;     // If scoring should be reversed
-  weight?: number;              // Question weight in scoring
+  reverseScored?: boolean; // If scoring should be reversed
+  weight?: number; // Question weight in scoring
   tier: 'free' | 'core' | 'comprehensive' | 'specialized';
   interactiveElements?: {
     hasTimer?: boolean;
-    timeLimit?: number;         // Seconds
+    timeLimit?: number; // Seconds
     hasVisual?: boolean;
     visualType?: string;
     gamificationPoints?: number;
   };
-  measures?: string[];          // For lateral thinking questions
-  active: boolean;              // Whether question is active
+  measures?: string[]; // For lateral thinking questions
+  active: boolean; // Whether question is active
 }
 ```
 
@@ -387,6 +414,7 @@ This will run comprehensive tests on all API endpoints and display the results.
 ## WebSocket Support (Future)
 
 WebSocket connections will be available for real-time assessment tracking:
+
 - Endpoint: `ws://localhost:3000/ws`
 - Events: `progress`, `complete`, `timeout`, `save`
 
@@ -406,6 +434,7 @@ WebSocket connections will be available for real-time assessment tracking:
 ## Support
 
 For API issues or questions:
+
 - Check the health endpoints first
 - Review error messages in responses
 - Check server logs for detailed error information

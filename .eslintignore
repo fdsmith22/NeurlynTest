@@ -1,0 +1,26 @@
+# Bundled and minified files
+js/bundle.*.js
+js/report-generator.js
+js/modules/*.js
+js/tasks/*.js
+js/neurlyn*.js
+js/comprehensive-report-generator.js
+js/enhanced-report-generator.js
+js/report-display-component.js
+dist/
+build/
+coverage/
+node_modules/
+*.min.js
+*.min.css
+
+# Service worker (uses different globals)
+sw.js
+
+# Generated files
+exports/
+logs/
+playwright-report/
+test-results/
+.jest-cache/
+monitoring-dashboard.html

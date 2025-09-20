@@ -3,10 +3,10 @@
  * This version fetches questions from the backend API instead of local files
  */
 
-import { ReportGenerator } from "./report-generator.js";
-import { apiClient } from "./api-client.js";
-import { behavioralTracker } from "./modules/behavioral-tracker.js";
-import { emergencyProtocols } from "./modules/emergency-protocols.js";
+import { ReportGenerator } from './report-generator.js';
+import { apiClient } from './api-client.js';
+import { behavioralTracker } from './modules/behavioral-tracker.js';
+import { emergencyProtocols } from './modules/emergency-protocols.js';
 
 let taskController;
 
@@ -20,7 +20,7 @@ const initTaskController = async () => {
       // console.warn('Task controller module not found, using fallback');
       // Create a simple fallback task controller
       taskController = {
-        loadTask: async (taskType) => {
+        loadTask: async taskType => {
           // console.log(`Loading task: ${taskType}`);
           return null;
         }
@@ -102,11 +102,13 @@ class NeurlynAPIIntegratedApp {
 
           const plan = tab.dataset.plan;
           if (plan === 'free') {
-            selectedDescription.textContent = 'Get your basic personality profile with key traits - completely free';
+            selectedDescription.textContent =
+              'Get your basic personality profile with key traits - completely free';
             acceptButton.textContent = 'Start Free Assessment';
             this.state.assessmentPlan = 'free';
           } else if (plan === 'premium') {
-            selectedDescription.textContent = 'Complete neurodiversity screening with detailed analysis and downloadable report';
+            selectedDescription.textContent =
+              'Complete neurodiversity screening with detailed analysis and downloadable report';
             acceptButton.textContent = 'Start In-Depth Analysis - £1.99';
             this.state.assessmentPlan = 'premium';
           }
@@ -190,13 +192,15 @@ class NeurlynAPIIntegratedApp {
         heading.textContent = 'Select Assessment Depth';
         this.updateModeDescriptionsForNeurodiversity();
       } else {
-        heading.textContent = track === 'comprehensive'
-          ? 'Select Comprehensive Assessment'
-          : 'Select Assessment Type';
+        heading.textContent =
+          track === 'comprehensive' ? 'Select Comprehensive Assessment' : 'Select Assessment Type';
       }
     }
 
-    this.showToast(`Selected: ${track.charAt(0).toUpperCase() + track.slice(1)} Assessment`, 'info');
+    this.showToast(
+      `Selected: ${track.charAt(0).toUpperCase() + track.slice(1)} Assessment`,
+      'info'
+    );
 
     // Navigate to mode selection screen
     setTimeout(() => {
@@ -279,7 +283,7 @@ class NeurlynAPIIntegratedApp {
     }
 
     selector.querySelectorAll('input[name="taskType"]').forEach(radio => {
-      radio.addEventListener('change', (e) => {
+      radio.addEventListener('change', e => {
         this.state.taskMode = e.target.value;
         this.showToast(`Assessment style: ${e.target.value}`, 'info');
       });
@@ -318,7 +322,6 @@ class NeurlynAPIIntegratedApp {
       await this.displayQuestion();
       this.startAutoSave();
       this.showToast('Assessment started', 'success');
-
     } catch (error) {
       console.error('Failed to start assessment:', error);
       this.showToast('Failed to load questions. Please try again.', 'error');
@@ -554,7 +557,11 @@ class NeurlynAPIIntegratedApp {
     const gamifiedMetrics = this.analyzeGamifiedTasks(gamifiedResponses);
     const behavioralPatterns = behavioralData.patterns;
 
-    const integratedData = this.integrateAssessmentData(traits, gamifiedMetrics, behavioralPatterns);
+    const integratedData = this.integrateAssessmentData(
+      traits,
+      gamifiedMetrics,
+      behavioralPatterns
+    );
 
     const reportData = await this.reportGenerator.generateComprehensiveReport(
       integratedData.traits,
@@ -620,21 +627,21 @@ class NeurlynAPIIntegratedApp {
     if (behavioralPatterns.engagement) {
       integrated.openness =
         traits.openness * weights.traditional +
-        (behavioralPatterns.engagement.score * 100) * weights.behavioral +
-        ((gamifiedMetrics.learningAbility || 0) * 100) * weights.gamified;
+        behavioralPatterns.engagement.score * 100 * weights.behavioral +
+        (gamifiedMetrics.learningAbility || 0) * 100 * weights.gamified;
     }
 
     if (behavioralPatterns.precision) {
       integrated.conscientiousness =
         traits.conscientiousness * weights.traditional +
-        (behavioralPatterns.precision.score * 100) * weights.behavioral +
-        ((gamifiedMetrics.consistency || 0) * 100) * weights.gamified;
+        behavioralPatterns.precision.score * 100 * weights.behavioral +
+        (gamifiedMetrics.consistency || 0) * 100 * weights.gamified;
     }
 
     if (behavioralPatterns.anxiety) {
       integrated.neuroticism =
         traits.neuroticism * weights.traditional +
-        (behavioralPatterns.anxiety.score * 100) * weights.behavioral;
+        behavioralPatterns.anxiety.score * 100 * weights.behavioral;
     }
 
     return {
@@ -665,7 +672,8 @@ class NeurlynAPIIntegratedApp {
       insights.push({
         type: 'impulsivity',
         title: 'Quick Decision Maker',
-        description: 'Your interaction patterns suggest you make decisions quickly and spontaneously.',
+        description:
+          'Your interaction patterns suggest you make decisions quickly and spontaneously.',
         score: patterns.impulsivity.score
       });
     }
@@ -674,7 +682,8 @@ class NeurlynAPIIntegratedApp {
       insights.push({
         type: 'precision',
         title: 'Detail Oriented',
-        description: 'Your careful movements and low error rate indicate strong attention to detail.',
+        description:
+          'Your careful movements and low error rate indicate strong attention to detail.',
         score: patterns.precision.score
       });
     }
@@ -740,29 +749,45 @@ class NeurlynAPIIntegratedApp {
         ${this.renderTraitResults(results.traits)}
       </div>
 
-      ${results.behavioralInsights?.length > 0 ? `
+      ${
+        results.behavioralInsights?.length > 0
+          ? `
         <div class="behavioral-insights">
           <h4>Behavioral Insights</h4>
-          ${results.behavioralInsights.map(insight => `
+          ${results.behavioralInsights
+            .map(
+              insight => `
             <div class="insight-card">
               <h5>${insight.title}</h5>
               <p>${insight.description}</p>
             </div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
-      ` : ''}
+      `
+          : ''
+      }
 
-      ${results.gamifiedInsights?.length > 0 ? `
+      ${
+        results.gamifiedInsights?.length > 0
+          ? `
         <div class="gamified-insights">
           <h4>Task Performance Insights</h4>
-          ${results.gamifiedInsights.map(insight => `
+          ${results.gamifiedInsights
+            .map(
+              insight => `
             <div class="insight-card">
               <h5>${insight.title}</h5>
               <p>${insight.description}</p>
             </div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
-      ` : ''}
+      `
+          : ''
+      }
 
       <div class="archetype-section">
         <h4>Your Personality Archetype</h4>
@@ -774,11 +799,15 @@ class NeurlynAPIIntegratedApp {
 
       <div class="recommendations-section">
         <h4>Personalized Recommendations</h4>
-        ${results.recommendations.map(rec => `
+        ${results.recommendations
+          .map(
+            rec => `
           <div class="recommendation-card">
             <strong>${rec.area}:</strong> ${rec.suggestion}
           </div>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
     `;
 
@@ -787,7 +816,8 @@ class NeurlynAPIIntegratedApp {
 
   renderTraitResults(traits) {
     return Object.entries(traits)
-      .map(([trait, score]) => `
+      .map(
+        ([trait, score]) => `
         <div class="trait-item">
           <div class="trait-header">
             <span class="trait-name">${trait.charAt(0).toUpperCase() + trait.slice(1)}</span>
@@ -797,7 +827,8 @@ class NeurlynAPIIntegratedApp {
             <div class="trait-fill" style="width: ${score}%; background: ${this.getTraitColor(trait)};"></div>
           </div>
         </div>
-      `)
+      `
+      )
       .join('');
   }
 
@@ -936,7 +967,8 @@ class NeurlynAPIIntegratedApp {
       const saved = localStorage.getItem('neurlyn-assessment');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Date.now() - parsed.timestamp < 86400000) { // 24 hours
+        if (Date.now() - parsed.timestamp < 86400000) {
+          // 24 hours
           return parsed;
         }
       }
@@ -1010,9 +1042,9 @@ class NeurlynAPIIntegratedApp {
   }
 
   setupKeyboardShortcuts() {
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (this.state.currentScreen === 'question') {
-        switch(e.key) {
+        switch (e.key) {
           case 'ArrowLeft':
             this.navigateQuestion(-1);
             break;

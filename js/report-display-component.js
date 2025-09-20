@@ -1,39 +1,51 @@
 import { ComprehensiveReportGenerator } from './comprehensive-report-generator.js';
 
 class ReportDisplayComponent {
-    constructor() {
-        this.reportGenerator = new ComprehensiveReportGenerator();
-        this.currentReport = null;
+  constructor() {
+    this.reportGenerator = new ComprehensiveReportGenerator();
+    this.currentReport = null;
+  }
+
+  async renderReport(assessmentData) {
+    try {
+      // Generate comprehensive report
+      this.currentReport = await this.reportGenerator.generateComprehensiveReport(assessmentData);
+
+      // Create report container
+      const reportContainer = document.createElement('div');
+      reportContainer.className = 'comprehensive-report-container';
+      reportContainer.innerHTML = this.generateReportHTML();
+
+      // Initialize visualizations after DOM is ready
+      setTimeout(() => {
+        this.initializeVisualizations();
+        this.attachEventListeners();
+      }, 100);
+
+      return reportContainer;
+    } catch (error) {
+      console.error('Error rendering report:', error);
+      return this.renderErrorState();
     }
+  }
 
-    async renderReport(assessmentData) {
-        try {
-            // Generate comprehensive report
-            this.currentReport = await this.reportGenerator.generateComprehensiveReport(assessmentData);
+  generateReportHTML() {
+    const {
+      meta,
+      executive,
+      personality,
+      neurodiversity,
+      cognitive,
+      archetype,
+      insights,
+      recommendations,
+      career,
+      relationships,
+      growth,
+      comparisons
+    } = this.currentReport;
 
-            // Create report container
-            const reportContainer = document.createElement('div');
-            reportContainer.className = 'comprehensive-report-container';
-            reportContainer.innerHTML = this.generateReportHTML();
-
-            // Initialize visualizations after DOM is ready
-            setTimeout(() => {
-                this.initializeVisualizations();
-                this.attachEventListeners();
-            }, 100);
-
-            return reportContainer;
-        } catch (error) {
-            console.error('Error rendering report:', error);
-            return this.renderErrorState();
-        }
-    }
-
-    generateReportHTML() {
-        const { meta, executive, personality, neurodiversity, cognitive, archetype,
-                insights, recommendations, career, relationships, growth, comparisons } = this.currentReport;
-
-        return `
+    return `
             <div class="report-header">
                 <div class="header-gradient"></div>
                 <div class="header-content">
@@ -125,10 +137,10 @@ class ReportDisplayComponent {
                 </p>
             </div>
         `;
-    }
+  }
 
-    renderExecutiveSummary(executive) {
-        return `
+  renderExecutiveSummary(executive) {
+    return `
             <section id="executive-summary" class="report-section">
                 <h2 class="section-title">Executive Summary</h2>
                 <div class="executive-content">
@@ -140,44 +152,56 @@ class ReportDisplayComponent {
                         <div class="strengths-card">
                             <h4><i class="icon-star"></i> Top Strengths</h4>
                             <ul class="strength-list">
-                                ${executive.strengths.map(s => `
+                                ${executive.strengths
+                                  .map(
+                                    s => `
                                     <li class="strength-item">
                                         <span class="strength-icon">✓</span>
                                         <span>${s}</span>
                                     </li>
-                                `).join('')}
+                                `
+                                  )
+                                  .join('')}
                             </ul>
                         </div>
                         <div class="areas-card">
                             <h4><i class="icon-growth"></i> Growth Areas</h4>
                             <ul class="area-list">
-                                ${executive.areasForGrowth.map(a => `
+                                ${executive.areasForGrowth
+                                  .map(
+                                    a => `
                                     <li class="area-item">
                                         <span class="area-icon">→</span>
                                         <span>${a}</span>
                                     </li>
-                                `).join('')}
+                                `
+                                  )
+                                  .join('')}
                             </ul>
                         </div>
                     </div>
                     <div class="key-insights">
                         <h4>Primary Insights</h4>
                         <div class="insight-cards">
-                            ${executive.keyInsights.map(insight => `
+                            ${executive.keyInsights
+                              .map(
+                                insight => `
                                 <div class="insight-card">
                                     <i class="icon-lightbulb"></i>
                                     <p>${insight}</p>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderPersonalityAnalysis(personality) {
-        return `
+  renderPersonalityAnalysis(personality) {
+    return `
             <section id="personality-analysis" class="report-section">
                 <h2 class="section-title">Personality Profile</h2>
                 <div class="personality-overview">
@@ -185,7 +209,9 @@ class ReportDisplayComponent {
                         <canvas id="personality-radar" width="400" height="400"></canvas>
                     </div>
                     <div class="trait-details">
-                        ${Object.entries(personality.traits).map(([trait, data]) => `
+                        ${Object.entries(personality.traits)
+                          .map(
+                            ([trait, data]) => `
                             <div class="trait-card ${this.getTraitClass(data.score)}">
                                 <div class="trait-header">
                                     <h3>${this.formatTraitName(trait)}</h3>
@@ -198,25 +224,33 @@ class ReportDisplayComponent {
                                 </div>
                                 <p class="trait-description">${data.description}</p>
                                 <div class="trait-facets">
-                                    ${data.facets.map(facet => `
+                                    ${data.facets
+                                      .map(
+                                        facet => `
                                         <span class="facet-tag">${facet}</span>
-                                    `).join('')}
+                                    `
+                                      )
+                                      .join('')}
                                 </div>
                             </div>
-                        `).join('')}
+                        `
+                          )
+                          .join('')}
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderNeurodiversityAnalysis(neurodiversity) {
-        return `
+  renderNeurodiversityAnalysis(neurodiversity) {
+    return `
             <section id="neurodiversity-analysis" class="report-section">
                 <h2 class="section-title">Neurodiversity Profile</h2>
                 <div class="neurodiversity-content">
                     <div class="screening-results">
-                        ${Object.entries(neurodiversity.screening).map(([condition, data]) => `
+                        ${Object.entries(neurodiversity.screening)
+                          .map(
+                            ([condition, data]) => `
                             <div class="screening-card ${this.getScreeningClass(data.likelihood)}">
                                 <div class="screening-header">
                                     <h3>${condition.toUpperCase()}</h3>
@@ -234,24 +268,30 @@ class ReportDisplayComponent {
                                         ${data.strategies.map(s => `<li>${s}</li>`).join('')}
                                     </ul>
                                 </div>
-                                ${data.resources ? `
+                                ${
+                                  data.resources
+                                    ? `
                                     <div class="resources-section">
                                         <h4>Resources:</h4>
                                         <ul class="resources-list">
                                             ${data.resources.map(r => `<li>${r}</li>`).join('')}
                                         </ul>
                                     </div>
-                                ` : ''}
+                                `
+                                    : ''
+                                }
                             </div>
-                        `).join('')}
+                        `
+                          )
+                          .join('')}
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderCognitivePatterns(cognitive) {
-        return `
+  renderCognitivePatterns(cognitive) {
+    return `
             <section id="cognitive-patterns" class="report-section">
                 <h2 class="section-title">Cognitive & Thinking Patterns</h2>
                 <div class="cognitive-grid">
@@ -262,15 +302,21 @@ class ReportDisplayComponent {
                         </div>
                         <p>${cognitive.thinkingStyle.description}</p>
                         <div class="style-traits">
-                            ${cognitive.thinkingStyle.traits.map(t => `
+                            ${cognitive.thinkingStyle.traits
+                              .map(
+                                t => `
                                 <span class="trait-badge">${t}</span>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                     <div class="problem-solving-card">
                         <h3>Problem-Solving Approach</h3>
                         <div class="approach-metrics">
-                            ${Object.entries(cognitive.problemSolving).map(([key, value]) => `
+                            ${Object.entries(cognitive.problemSolving)
+                              .map(
+                                ([key, value]) => `
                                 <div class="metric-item">
                                     <span class="metric-label">${this.formatLabel(key)}</span>
                                     <div class="metric-bar">
@@ -278,7 +324,9 @@ class ReportDisplayComponent {
                                     </div>
                                     <span class="metric-value">${value}%</span>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                     <div class="lateral-thinking-card">
@@ -293,19 +341,23 @@ class ReportDisplayComponent {
                         <div class="pattern-examples">
                             <h4>Pattern Examples:</h4>
                             <ul>
-                                ${cognitive.lateralThinking.examples.map(e => `
+                                ${cognitive.lateralThinking.examples
+                                  .map(
+                                    e => `
                                     <li>${e}</li>
-                                `).join('')}
+                                `
+                                  )
+                                  .join('')}
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderArchetype(archetype) {
-        return `
+  renderArchetype(archetype) {
+    return `
             <section id="archetype" class="report-section archetype-section">
                 <h2 class="section-title">Your Personality Archetype</h2>
                 <div class="archetype-container">
@@ -323,12 +375,16 @@ class ReportDisplayComponent {
                         <div class="archetype-traits">
                             <h4>Core Characteristics</h4>
                             <div class="traits-grid">
-                                ${archetype.characteristics.map(c => `
+                                ${archetype.characteristics
+                                  .map(
+                                    c => `
                                     <div class="characteristic-item">
                                         <i class="icon-check"></i>
                                         <span>${c}</span>
                                     </div>
-                                `).join('')}
+                                `
+                                  )
+                                  .join('')}
                             </div>
                         </div>
                         <div class="archetype-strengths">
@@ -347,14 +403,16 @@ class ReportDisplayComponent {
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderInsights(insights) {
-        return `
+  renderInsights(insights) {
+    return `
             <section id="insights" class="report-section">
                 <h2 class="section-title">Deep Insights</h2>
                 <div class="insights-grid">
-                    ${insights.map((insight, index) => `
+                    ${insights
+                      .map(
+                        (insight, index) => `
                         <div class="insight-card-detailed">
                             <div class="insight-number">${index + 1}</div>
                             <h3>${insight.title}</h3>
@@ -368,21 +426,25 @@ class ReportDisplayComponent {
                                 <span class="action-value">${insight.suggestedAction}</span>
                             </div>
                         </div>
-                    `).join('')}
+                    `
+                      )
+                      .join('')}
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderRecommendations(recommendations) {
-        return `
+  renderRecommendations(recommendations) {
+    return `
             <section id="recommendations" class="report-section">
                 <h2 class="section-title">Personalized Recommendations</h2>
                 <div class="recommendations-container">
                     <div class="immediate-actions">
                         <h3><i class="icon-lightning"></i> Immediate Actions</h3>
                         <div class="action-cards">
-                            ${recommendations.immediate.map(action => `
+                            ${recommendations.immediate
+                              .map(
+                                action => `
                                 <div class="action-card">
                                     <div class="action-priority high">High Priority</div>
                                     <h4>${action.title}</h4>
@@ -397,13 +459,17 @@ class ReportDisplayComponent {
                                         <strong>Expected Outcome:</strong> ${action.outcome}
                                     </div>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                     <div class="long-term-goals">
                         <h3><i class="icon-target"></i> Long-term Development</h3>
                         <div class="goal-cards">
-                            ${recommendations.longTerm.map(goal => `
+                            ${recommendations.longTerm
+                              .map(
+                                goal => `
                                 <div class="goal-card">
                                     <h4>${goal.title}</h4>
                                     <p>${goal.description}</p>
@@ -418,23 +484,27 @@ class ReportDisplayComponent {
                                         </ul>
                                     </div>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderCareerGuidance(career) {
-        return `
+  renderCareerGuidance(career) {
+    return `
             <section id="career" class="report-section">
                 <h2 class="section-title">Career Guidance</h2>
                 <div class="career-content">
                     <div class="ideal-roles">
                         <h3>Ideal Career Paths</h3>
                         <div class="role-cards">
-                            ${career.idealRoles.map(role => `
+                            ${career.idealRoles
+                              .map(
+                                role => `
                                 <div class="role-card">
                                     <h4>${role.title}</h4>
                                     <p>${role.description}</p>
@@ -452,24 +522,32 @@ class ReportDisplayComponent {
                                         </ul>
                                     </div>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                     <div class="work-environment">
                         <h3>Optimal Work Environment</h3>
                         <div class="environment-factors">
-                            ${Object.entries(career.workEnvironment).map(([factor, value]) => `
+                            ${Object.entries(career.workEnvironment)
+                              .map(
+                                ([factor, value]) => `
                                 <div class="factor-item">
                                     <span class="factor-name">${this.formatLabel(factor)}</span>
                                     <span class="factor-value">${value}</span>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                     <div class="skill-development">
                         <h3>Skills to Develop</h3>
                         <div class="skills-grid">
-                            ${career.skillsToDevelop.map(skill => `
+                            ${career.skillsToDevelop
+                              .map(
+                                skill => `
                                 <div class="skill-card">
                                     <h4>${skill.name}</h4>
                                     <p>${skill.importance}</p>
@@ -480,16 +558,18 @@ class ReportDisplayComponent {
                                         </ul>
                                     </div>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderRelationships(relationships) {
-        return `
+  renderRelationships(relationships) {
+    return `
             <section id="relationships" class="report-section">
                 <h2 class="section-title">Relationship Insights</h2>
                 <div class="relationships-content">
@@ -500,17 +580,25 @@ class ReportDisplayComponent {
                             <div class="style-characteristics">
                                 <h4>Key Characteristics:</h4>
                                 <ul>
-                                    ${relationships.communicationStyle.characteristics.map(c => `
+                                    ${relationships.communicationStyle.characteristics
+                                      .map(
+                                        c => `
                                         <li>${c}</li>
-                                    `).join('')}
+                                    `
+                                      )
+                                      .join('')}
                                 </ul>
                             </div>
                             <div class="improvement-tips">
                                 <h4>Improvement Tips:</h4>
                                 <ul>
-                                    ${relationships.communicationStyle.tips.map(t => `
+                                    ${relationships.communicationStyle.tips
+                                      .map(
+                                        t => `
                                         <li>${t}</li>
-                                    `).join('')}
+                                    `
+                                      )
+                                      .join('')}
                                 </ul>
                             </div>
                         </div>
@@ -518,7 +606,9 @@ class ReportDisplayComponent {
                     <div class="compatibility-insights">
                         <h3>Compatibility Patterns</h3>
                         <div class="compatibility-grid">
-                            ${relationships.compatibility.map(comp => `
+                            ${relationships.compatibility
+                              .map(
+                                comp => `
                                 <div class="compatibility-card">
                                     <h4>With ${comp.type}</h4>
                                     <div class="compatibility-meter">
@@ -532,43 +622,55 @@ class ReportDisplayComponent {
                                         </ul>
                                     </div>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                     <div class="relationship-strengths">
                         <h3>Relationship Strengths</h3>
                         <ul class="strengths-list">
-                            ${relationships.strengths.map(s => `
+                            ${relationships.strengths
+                              .map(
+                                s => `
                                 <li class="strength-item">
                                     <i class="icon-heart"></i>
                                     <span>${s}</span>
                                 </li>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </ul>
                     </div>
                     <div class="growth-areas">
                         <h3>Areas for Growth</h3>
                         <ul class="growth-list">
-                            ${relationships.growthAreas.map(g => `
+                            ${relationships.growthAreas
+                              .map(
+                                g => `
                                 <li class="growth-item">
                                     <i class="icon-growth"></i>
                                     <span>${g}</span>
                                 </li>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </ul>
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderGrowthPlan(growth) {
-        return `
+  renderGrowthPlan(growth) {
+    return `
             <section id="growth-plan" class="report-section">
                 <h2 class="section-title">Personal Growth Plan</h2>
                 <div class="growth-timeline">
                     <div class="timeline-container">
-                        ${growth.phases.map((phase, index) => `
+                        ${growth.phases
+                          .map(
+                            (phase, index) => `
                             <div class="timeline-item ${index === 0 ? 'active' : ''}">
                                 <div class="timeline-marker">${index + 1}</div>
                                 <div class="timeline-content">
@@ -595,55 +697,71 @@ class ReportDisplayComponent {
                                     </div>
                                 </div>
                             </div>
-                        `).join('')}
+                        `
+                          )
+                          .join('')}
                     </div>
                 </div>
                 <div class="habits-section">
                     <h3>Daily Habits to Cultivate</h3>
                     <div class="habits-grid">
-                        ${growth.dailyHabits.map(habit => `
+                        ${growth.dailyHabits
+                          .map(
+                            habit => `
                             <div class="habit-card">
                                 <i class="icon-${habit.icon}"></i>
                                 <h4>${habit.name}</h4>
                                 <p>${habit.description}</p>
                                 <span class="habit-time">${habit.timeRequired}</span>
                             </div>
-                        `).join('')}
+                        `
+                          )
+                          .join('')}
                     </div>
                 </div>
                 <div class="resources-section">
                     <h3>Recommended Resources</h3>
                     <div class="resources-categories">
-                        ${Object.entries(growth.resources).map(([category, items]) => `
+                        ${Object.entries(growth.resources)
+                          .map(
+                            ([category, items]) => `
                             <div class="resource-category">
                                 <h4>${this.formatLabel(category)}</h4>
                                 <ul class="resource-list">
-                                    ${items.map(item => `
+                                    ${items
+                                      .map(
+                                        item => `
                                         <li class="resource-item">
                                             <i class="icon-${this.getResourceIcon(category)}"></i>
                                             <span>${item}</span>
                                         </li>
-                                    `).join('')}
+                                    `
+                                      )
+                                      .join('')}
                                 </ul>
                             </div>
-                        `).join('')}
+                        `
+                          )
+                          .join('')}
                     </div>
                 </div>
             </section>
         `;
-    }
+  }
 
-    renderComparisons(comparisons) {
-        if (!comparisons || !comparisons.populationPercentiles) return '';
+  renderComparisons(comparisons) {
+    if (!comparisons || !comparisons.populationPercentiles) return '';
 
-        return `
+    return `
             <section id="comparisons" class="report-section">
                 <h2 class="section-title">How You Compare</h2>
                 <div class="comparison-content">
                     <div class="percentile-chart">
                         <h3>Population Percentiles</h3>
                         <div class="percentile-bars">
-                            ${Object.entries(comparisons.populationPercentiles).map(([trait, percentile]) => `
+                            ${Object.entries(comparisons.populationPercentiles)
+                              .map(
+                                ([trait, percentile]) => `
                                 <div class="percentile-item">
                                     <span class="trait-label">${this.formatTraitName(trait)}</span>
                                     <div class="percentile-bar">
@@ -653,7 +771,9 @@ class ReportDisplayComponent {
                                     </div>
                                     <span class="percentile-description">${this.getPercentileDescription(percentile)}</span>
                                 </div>
-                            `).join('')}
+                            `
+                              )
+                              .join('')}
                         </div>
                     </div>
                     <div class="comparison-insights">
@@ -663,288 +783,301 @@ class ReportDisplayComponent {
                 </div>
             </section>
         `;
+  }
+
+  // Helper methods
+  formatTraitName(trait) {
+    const names = {
+      openness: 'Openness',
+      conscientiousness: 'Conscientiousness',
+      extraversion: 'Extraversion',
+      agreeableness: 'Agreeableness',
+      neuroticism: 'Emotional Stability'
+    };
+    return names[trait] || trait;
+  }
+
+  formatLabel(key) {
+    return key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+  }
+
+  getTraitClass(score) {
+    if (score >= 70) return 'trait-high';
+    if (score >= 30) return 'trait-medium';
+    return 'trait-low';
+  }
+
+  getScreeningClass(likelihood) {
+    const classes = {
+      High: 'screening-high',
+      Moderate: 'screening-moderate',
+      Low: 'screening-low'
+    };
+    return classes[likelihood] || '';
+  }
+
+  getPercentileDescription(percentile) {
+    if (percentile >= 90) return 'Exceptionally High';
+    if (percentile >= 70) return 'Above Average';
+    if (percentile >= 30) return 'Average Range';
+    if (percentile >= 10) return 'Below Average';
+    return 'Exceptionally Low';
+  }
+
+  getResourceIcon(category) {
+    const icons = {
+      books: 'book',
+      courses: 'graduation',
+      apps: 'mobile',
+      websites: 'globe',
+      podcasts: 'headphones',
+      videos: 'play'
+    };
+    return icons[category.toLowerCase()] || 'resource';
+  }
+
+  initializeVisualizations() {
+    // Initialize radar chart for personality traits
+    this.drawRadarChart();
+
+    // Initialize thinking style chart
+    this.drawThinkingStyleChart();
+
+    // Initialize smooth scrolling for navigation
+    this.initSmoothScroll();
+
+    // Initialize interactive elements
+    this.initInteractiveElements();
+  }
+
+  drawRadarChart() {
+    const canvas = document.getElementById('personality-radar');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = Math.min(centerX, centerY) - 40;
+
+    // Draw radar grid
+    ctx.strokeStyle = '#e0e0e0';
+    ctx.lineWidth = 1;
+
+    for (let i = 1; i <= 5; i++) {
+      ctx.beginPath();
+      for (let j = 0; j < 5; j++) {
+        const angle = (Math.PI * 2 * j) / 5 - Math.PI / 2;
+        const x = centerX + Math.cos(angle) * ((radius * i) / 5);
+        const y = centerY + Math.sin(angle) * ((radius * i) / 5);
+        if (j === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
     }
 
-    // Helper methods
-    formatTraitName(trait) {
-        const names = {
-            openness: 'Openness',
-            conscientiousness: 'Conscientiousness',
-            extraversion: 'Extraversion',
-            agreeableness: 'Agreeableness',
-            neuroticism: 'Emotional Stability'
-        };
-        return names[trait] || trait;
+    // Draw axes
+    const traits = [
+      'openness',
+      'conscientiousness',
+      'extraversion',
+      'agreeableness',
+      'neuroticism'
+    ];
+    traits.forEach((trait, i) => {
+      const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.lineTo(centerX + Math.cos(angle) * radius, centerY + Math.sin(angle) * radius);
+      ctx.stroke();
+
+      // Add labels
+      ctx.font = '14px Inter, sans-serif';
+      ctx.fillStyle = '#333';
+      ctx.textAlign = 'center';
+      const labelX = centerX + Math.cos(angle) * (radius + 25);
+      const labelY = centerY + Math.sin(angle) * (radius + 25);
+      ctx.fillText(this.formatTraitName(trait), labelX, labelY);
+    });
+
+    // Draw data
+    if (this.currentReport && this.currentReport.personality) {
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(99, 102, 241, 0.2)';
+      ctx.strokeStyle = '#6366f1';
+      ctx.lineWidth = 2;
+
+      traits.forEach((trait, i) => {
+        const score = this.currentReport.personality.traits[trait].score / 100;
+        const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
+        const x = centerX + Math.cos(angle) * (radius * score);
+        const y = centerY + Math.sin(angle) * (radius * score);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
     }
+  }
 
-    formatLabel(key) {
-        return key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-    }
+  drawThinkingStyleChart() {
+    const canvas = document.getElementById('thinking-style-chart');
+    if (!canvas || !this.currentReport) return;
 
-    getTraitClass(score) {
-        if (score >= 70) return 'trait-high';
-        if (score >= 30) return 'trait-medium';
-        return 'trait-low';
-    }
+    const ctx = canvas.getContext('2d');
+    const data = this.currentReport.cognitive.thinkingStyle.distribution;
 
-    getScreeningClass(likelihood) {
-        const classes = {
-            'High': 'screening-high',
-            'Moderate': 'screening-moderate',
-            'Low': 'screening-low'
-        };
-        return classes[likelihood] || '';
-    }
+    // Draw bar chart
+    const barWidth = canvas.width / Object.keys(data).length;
+    let x = 0;
 
-    getPercentileDescription(percentile) {
-        if (percentile >= 90) return 'Exceptionally High';
-        if (percentile >= 70) return 'Above Average';
-        if (percentile >= 30) return 'Average Range';
-        if (percentile >= 10) return 'Below Average';
-        return 'Exceptionally Low';
-    }
+    Object.entries(data).forEach(([style, value]) => {
+      const height = (value / 100) * canvas.height * 0.8;
 
-    getResourceIcon(category) {
-        const icons = {
-            books: 'book',
-            courses: 'graduation',
-            apps: 'mobile',
-            websites: 'globe',
-            podcasts: 'headphones',
-            videos: 'play'
-        };
-        return icons[category.toLowerCase()] || 'resource';
-    }
+      // Draw bar
+      ctx.fillStyle = '#6366f1';
+      ctx.fillRect(x + barWidth * 0.1, canvas.height - height, barWidth * 0.8, height);
 
-    initializeVisualizations() {
-        // Initialize radar chart for personality traits
-        this.drawRadarChart();
+      // Draw label
+      ctx.fillStyle = '#333';
+      ctx.font = '12px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(style, x + barWidth / 2, canvas.height - 5);
 
-        // Initialize thinking style chart
-        this.drawThinkingStyleChart();
+      // Draw value
+      ctx.fillText(`${value}%`, x + barWidth / 2, canvas.height - height - 10);
 
-        // Initialize smooth scrolling for navigation
-        this.initSmoothScroll();
+      x += barWidth;
+    });
+  }
 
-        // Initialize interactive elements
-        this.initInteractiveElements();
-    }
+  initSmoothScroll() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    drawRadarChart() {
-        const canvas = document.getElementById('personality-radar');
-        if (!canvas) return;
+          // Update active nav
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+  }
 
-        const ctx = canvas.getContext('2d');
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const radius = Math.min(centerX, centerY) - 40;
+  initInteractiveElements() {
+    // Add hover effects to cards
+    document.querySelectorAll('.trait-card, .insight-card, .action-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-2px)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+      });
+    });
 
-        // Draw radar grid
-        ctx.strokeStyle = '#e0e0e0';
-        ctx.lineWidth = 1;
+    // Initialize tooltips
+    document.querySelectorAll('[data-tooltip]').forEach(element => {
+      element.addEventListener('mouseenter', e => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = e.target.dataset.tooltip;
+        document.body.appendChild(tooltip);
 
-        for (let i = 1; i <= 5; i++) {
-            ctx.beginPath();
-            for (let j = 0; j < 5; j++) {
-                const angle = (Math.PI * 2 * j) / 5 - Math.PI / 2;
-                const x = centerX + Math.cos(angle) * (radius * i / 5);
-                const y = centerY + Math.sin(angle) * (radius * i / 5);
-                if (j === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
+        const rect = e.target.getBoundingClientRect();
+        tooltip.style.left = rect.left + rect.width / 2 - tooltip.offsetWidth / 2 + 'px';
+        tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+      });
+
+      element.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.tooltip').forEach(t => t.remove());
+      });
+    });
+  }
+
+  attachEventListeners() {
+    // Intersection observer for section animations
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+
+            // Update navigation
+            const id = entry.target.id;
+            const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+            if (navLink) {
+              document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+              navLink.classList.add('active');
             }
-            ctx.closePath();
-            ctx.stroke();
-        }
-
-        // Draw axes
-        const traits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
-        traits.forEach((trait, i) => {
-            const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(
-                centerX + Math.cos(angle) * radius,
-                centerY + Math.sin(angle) * radius
-            );
-            ctx.stroke();
-
-            // Add labels
-            ctx.font = '14px Inter, sans-serif';
-            ctx.fillStyle = '#333';
-            ctx.textAlign = 'center';
-            const labelX = centerX + Math.cos(angle) * (radius + 25);
-            const labelY = centerY + Math.sin(angle) * (radius + 25);
-            ctx.fillText(this.formatTraitName(trait), labelX, labelY);
+          }
         });
+      },
+      { threshold: 0.1 }
+    );
 
-        // Draw data
-        if (this.currentReport && this.currentReport.personality) {
-            ctx.beginPath();
-            ctx.fillStyle = 'rgba(99, 102, 241, 0.2)';
-            ctx.strokeStyle = '#6366f1';
-            ctx.lineWidth = 2;
+    document.querySelectorAll('.report-section').forEach(section => {
+      observer.observe(section);
+    });
+  }
 
-            traits.forEach((trait, i) => {
-                const score = this.currentReport.personality.traits[trait].score / 100;
-                const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
-                const x = centerX + Math.cos(angle) * (radius * score);
-                const y = centerY + Math.sin(angle) * (radius * score);
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            });
+  async exportPDF() {
+    // Placeholder for PDF export functionality
+// console.log('Exporting report as PDF...');
+    alert('PDF export will be implemented with a PDF library like jsPDF');
+  }
 
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
-        }
+  shareReport() {
+    // Placeholder for share functionality
+// console.log('Sharing report...');
+    if (navigator.share) {
+      navigator.share({
+        title: 'My Neurlyn Assessment Report',
+        text: 'Check out my personality assessment results',
+        url: window.location.href
+      });
+    } else {
+      alert('Share functionality coming soon!');
     }
+  }
 
-    drawThinkingStyleChart() {
-        const canvas = document.getElementById('thinking-style-chart');
-        if (!canvas || !this.currentReport) return;
-
-        const ctx = canvas.getContext('2d');
-        const data = this.currentReport.cognitive.thinkingStyle.distribution;
-
-        // Draw bar chart
-        const barWidth = canvas.width / Object.keys(data).length;
-        let x = 0;
-
-        Object.entries(data).forEach(([style, value]) => {
-            const height = (value / 100) * canvas.height * 0.8;
-
-            // Draw bar
-            ctx.fillStyle = '#6366f1';
-            ctx.fillRect(x + barWidth * 0.1, canvas.height - height, barWidth * 0.8, height);
-
-            // Draw label
-            ctx.fillStyle = '#333';
-            ctx.font = '12px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText(style, x + barWidth / 2, canvas.height - 5);
-
-            // Draw value
-            ctx.fillText(`${value}%`, x + barWidth / 2, canvas.height - height - 10);
-
-            x += barWidth;
-        });
+  retakeAssessment() {
+    if (
+      confirm('Are you sure you want to retake the assessment? This will start a new assessment.')
+    ) {
+      window.location.href = '/assessment';
     }
+  }
 
-    initSmoothScroll() {
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  compareResults() {
+// console.log('Loading comparison view...');
+    alert('Comparison with previous results coming soon!');
+  }
 
-                    // Update active nav
-                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                }
-            });
-        });
-    }
-
-    initInteractiveElements() {
-        // Add hover effects to cards
-        document.querySelectorAll('.trait-card, .insight-card, .action-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-2px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Initialize tooltips
-        document.querySelectorAll('[data-tooltip]').forEach(element => {
-            element.addEventListener('mouseenter', (e) => {
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                tooltip.textContent = e.target.dataset.tooltip;
-                document.body.appendChild(tooltip);
-
-                const rect = e.target.getBoundingClientRect();
-                tooltip.style.left = rect.left + rect.width / 2 - tooltip.offsetWidth / 2 + 'px';
-                tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
-            });
-
-            element.addEventListener('mouseleave', () => {
-                document.querySelectorAll('.tooltip').forEach(t => t.remove());
-            });
-        });
-    }
-
-    attachEventListeners() {
-        // Intersection observer for section animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-visible');
-
-                    // Update navigation
-                    const id = entry.target.id;
-                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                    if (navLink) {
-                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                        navLink.classList.add('active');
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.report-section').forEach(section => {
-            observer.observe(section);
-        });
-    }
-
-    async exportPDF() {
-        // Placeholder for PDF export functionality
-        console.log('Exporting report as PDF...');
-        alert('PDF export will be implemented with a PDF library like jsPDF');
-    }
-
-    shareReport() {
-        // Placeholder for share functionality
-        console.log('Sharing report...');
-        if (navigator.share) {
-            navigator.share({
-                title: 'My Neurlyn Assessment Report',
-                text: 'Check out my personality assessment results',
-                url: window.location.href
-            });
-        } else {
-            alert('Share functionality coming soon!');
-        }
-    }
-
-    retakeAssessment() {
-        if (confirm('Are you sure you want to retake the assessment? This will start a new assessment.')) {
-            window.location.href = '/assessment';
-        }
-    }
-
-    compareResults() {
-        console.log('Loading comparison view...');
-        alert('Comparison with previous results coming soon!');
-    }
-
-    renderErrorState() {
-        return `
+  renderErrorState() {
+    return `
             <div class="error-container">
                 <h2>Unable to Generate Report</h2>
                 <p>There was an error generating your assessment report. Please try again or contact support.</p>
                 <button onclick="location.reload()">Retry</button>
             </div>
         `;
-    }
+  }
 }
 
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ReportDisplayComponent;
+  module.exports = ReportDisplayComponent;
+}
+
+// Make available globally for non-module scripts
+if (typeof window !== 'undefined') {
+  window.ReportDisplayComponent = ReportDisplayComponent;
 }
 
 // Initialize global instance

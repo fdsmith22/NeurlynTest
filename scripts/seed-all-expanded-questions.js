@@ -36,31 +36,31 @@ async function seedAllExpandedQuestions() {
     // Add executive function questions
     const executiveFunctionQuestions = [
       {
-        text: "I start tasks right away rather than procrastinating",
+        text: 'I start tasks right away rather than procrastinating',
         category: 'neurodiversity',
         subcategory: 'executive_function',
         traits: { conscientiousness: 0.3, adhd_indicators: -0.4 }
       },
       {
-        text: "I lose track of time when engaged in activities I enjoy",
+        text: 'I lose track of time when engaged in activities I enjoy',
         category: 'neurodiversity',
         subcategory: 'executive_function',
         traits: { adhd_indicators: 0.7, hyperfocus: 0.8 }
       },
       {
-        text: "I need multiple alarms to ensure I wake up or remember appointments",
+        text: 'I need multiple alarms to ensure I wake up or remember appointments',
         category: 'neurodiversity',
         subcategory: 'executive_function',
         traits: { adhd_indicators: 0.8, organization_challenges: 0.7 }
       },
       {
-        text: "I can easily switch between different tasks",
+        text: 'I can easily switch between different tasks',
         category: 'neurodiversity',
         subcategory: 'executive_function',
         traits: { cognitive_flexibility: 0.7, adhd_indicators: -0.3 }
       },
       {
-        text: "I often forget where I put things",
+        text: 'I often forget where I put things',
         category: 'neurodiversity',
         subcategory: 'executive_function',
         traits: { adhd_indicators: 0.6, working_memory: -0.5 }
@@ -70,19 +70,19 @@ async function seedAllExpandedQuestions() {
     // Add sensory processing questions
     const sensoryProcessingQuestions = [
       {
-        text: "Certain fabric textures make me extremely uncomfortable",
+        text: 'Certain fabric textures make me extremely uncomfortable',
         category: 'neurodiversity',
         subcategory: 'sensory_processing',
         traits: { autism_indicators: 0.7, sensory_sensitivity: 0.9 }
       },
       {
-        text: "I notice subtle sounds that others miss",
+        text: 'I notice subtle sounds that others miss',
         category: 'neurodiversity',
         subcategory: 'sensory_processing',
         traits: { autism_indicators: 0.5, hypervigilance: 0.4 }
       },
       {
-        text: "Bright lights give me headaches or make me feel overwhelmed",
+        text: 'Bright lights give me headaches or make me feel overwhelmed',
         category: 'neurodiversity',
         subcategory: 'sensory_processing',
         traits: { sensory_sensitivity: 0.8, autism_indicators: 0.6 }
@@ -92,13 +92,13 @@ async function seedAllExpandedQuestions() {
     // Add masking questions
     const maskingQuestions = [
       {
-        text: "I rehearse conversations before having them",
+        text: 'I rehearse conversations before having them',
         category: 'neurodiversity',
         subcategory: 'masking',
         traits: { autism_indicators: 0.8, social_anxiety: 0.6 }
       },
       {
-        text: "I feel exhausted after social interactions",
+        text: 'I feel exhausted after social interactions',
         category: 'neurodiversity',
         subcategory: 'masking',
         traits: { autism_indicators: 0.7, introversion: 0.6 }
@@ -151,13 +151,13 @@ async function seedAllExpandedQuestions() {
     // Add psychoanalytic questions
     const psychoanalyticQuestionSets = [
       {
-        text: "I trust my initial gut feelings about people and situations",
+        text: 'I trust my initial gut feelings about people and situations',
         category: 'cognitive_functions',
         subcategory: 'jungian',
         trait: 'intuition'
       },
       {
-        text: "I prefer to have detailed plans rather than improvising",
+        text: 'I prefer to have detailed plans rather than improvising',
         category: 'cognitive_functions',
         subcategory: 'jungian',
         trait: 'judging'
@@ -169,13 +169,13 @@ async function seedAllExpandedQuestions() {
         trait: 'type_2'
       },
       {
-        text: "I have a strong need to be unique and authentic",
+        text: 'I have a strong need to be unique and authentic',
         category: 'enneagram',
         subcategory: 'core_type',
         trait: 'type_4'
       },
       {
-        text: "I find it difficult to trust that others will be there for me",
+        text: 'I find it difficult to trust that others will be there for me',
         category: 'attachment',
         subcategory: 'attachment_style',
         trait: 'anxious'
@@ -227,7 +227,6 @@ async function seedAllExpandedQuestions() {
     };
 
     return summary;
-
   } catch (error) {
     logger.error('Error seeding expanded questions:', error);
     throw error;
@@ -242,12 +241,12 @@ async function main() {
     const summary = await seedAllExpandedQuestions();
 
     logger.info('🎉 Expanded questions seeding completed!');
-    console.log('\n📊 Updated Question Bank:');
-    console.log(`   Total Questions: ${summary.total}`);
-    console.log(`   ├── Personality: ${summary.personality}`);
-    console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
-    console.log(`   ├── Psychoanalytic: ${summary.psychoanalytic}`);
-    console.log(`   └── Lateral: ${summary.lateral}`);
+// console.log('\n📊 Updated Question Bank:');
+// console.log(`   Total Questions: ${summary.total}`);
+// console.log(`   ├── Personality: ${summary.personality}`);
+// console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
+// console.log(`   ├── Psychoanalytic: ${summary.psychoanalytic}`);
+// console.log(`   └── Lateral: ${summary.lateral}`);
 
     await mongoose.disconnect();
     process.exit(0);

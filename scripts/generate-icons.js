@@ -5,7 +5,7 @@ const path = require('path');
 // Ensure icons directory exists
 const iconsDir = path.join(__dirname, '..', 'assets', 'icons');
 if (!fs.existsSync(iconsDir)) {
-    fs.mkdirSync(iconsDir, { recursive: true });
+  fs.mkdirSync(iconsDir, { recursive: true });
 }
 
 // Icon sizes for PWA
@@ -33,51 +33,48 @@ const svgIcon = `
 
 // Generate icons
 async function generateIcons() {
-    console.log('Generating Neurlyn icons...');
-    
-    // Create base icon from SVG
-    const svgBuffer = Buffer.from(svgIcon);
-    
-    // Generate each size
-    for (const size of sizes) {
-        try {
-            await sharp(svgBuffer)
-                .resize(size, size)
-                .png()
-                .toFile(path.join(iconsDir, `icon-${size}x${size}.png`));
-            console.log(`✓ Generated icon-${size}x${size}.png`);
-        } catch (error) {
-            console.error(`Error generating ${size}x${size} icon:`, error);
-        }
-    }
-    
-    // Generate favicon (32x32)
+// console.log('Generating Neurlyn icons...');
+
+  // Create base icon from SVG
+  const svgBuffer = Buffer.from(svgIcon);
+
+  // Generate each size
+  for (const size of sizes) {
     try {
-        await sharp(svgBuffer)
-            .resize(32, 32)
-            .png()
-            .toFile(path.join(iconsDir, 'favicon.png'));
-        console.log('✓ Generated favicon.png');
+      await sharp(svgBuffer)
+        .resize(size, size)
+        .png()
+        .toFile(path.join(iconsDir, `icon-${size}x${size}.png`));
+// console.log(`✓ Generated icon-${size}x${size}.png`);
     } catch (error) {
-        console.error('Error generating favicon:', error);
+      console.error(`Error generating ${size}x${size} icon:`, error);
     }
-    
-    // Generate apple-touch-icon (180x180)
-    try {
-        await sharp(svgBuffer)
-            .resize(180, 180)
-            .png()
-            .toFile(path.join(iconsDir, 'apple-touch-icon.png'));
-        console.log('✓ Generated apple-touch-icon.png');
-    } catch (error) {
-        console.error('Error generating apple-touch-icon:', error);
-    }
-    
-    // Save the SVG as well
-    fs.writeFileSync(path.join(iconsDir, 'favicon.svg'), svgIcon);
-    console.log('✓ Generated favicon.svg');
-    
-    console.log('\nAll icons generated successfully!');
+  }
+
+  // Generate favicon (32x32)
+  try {
+    await sharp(svgBuffer).resize(32, 32).png().toFile(path.join(iconsDir, 'favicon.png'));
+// console.log('✓ Generated favicon.png');
+  } catch (error) {
+    console.error('Error generating favicon:', error);
+  }
+
+  // Generate apple-touch-icon (180x180)
+  try {
+    await sharp(svgBuffer)
+      .resize(180, 180)
+      .png()
+      .toFile(path.join(iconsDir, 'apple-touch-icon.png'));
+// console.log('✓ Generated apple-touch-icon.png');
+  } catch (error) {
+    console.error('Error generating apple-touch-icon:', error);
+  }
+
+  // Save the SVG as well
+  fs.writeFileSync(path.join(iconsDir, 'favicon.svg'), svgIcon);
+// console.log('✓ Generated favicon.svg');
+
+// console.log('\nAll icons generated successfully!');
 }
 
 generateIcons().catch(console.error);

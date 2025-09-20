@@ -15,25 +15,37 @@ const logger = require('../utils/logger');
 const bigFiveQuestions = [
   // Openness
   { trait: 'openness', text: 'I have a rich vocabulary', reverseScored: false },
-  { trait: 'openness', text: 'I have difficulty understanding abstract ideas', reverseScored: true },
+  {
+    trait: 'openness',
+    text: 'I have difficulty understanding abstract ideas',
+    reverseScored: true
+  },
   { trait: 'openness', text: 'I enjoy thinking about complex problems', reverseScored: false },
   { trait: 'openness', text: 'I prefer routine over variety', reverseScored: true },
 
   // Conscientiousness
   { trait: 'conscientiousness', text: 'I am always prepared', reverseScored: false },
-  { trait: 'conscientiousness', text: 'I often forget to put things back in their place', reverseScored: true },
+  {
+    trait: 'conscientiousness',
+    text: 'I often forget to put things back in their place',
+    reverseScored: true
+  },
   { trait: 'conscientiousness', text: 'I pay attention to details', reverseScored: false },
   { trait: 'conscientiousness', text: 'I make a mess of things', reverseScored: true },
 
   // Extraversion
   { trait: 'extraversion', text: 'I am the life of the party', reverseScored: false },
-  { trait: 'extraversion', text: 'I don\'t talk a lot', reverseScored: true },
+  { trait: 'extraversion', text: "I don't talk a lot", reverseScored: true },
   { trait: 'extraversion', text: 'I feel comfortable around people', reverseScored: false },
   { trait: 'extraversion', text: 'I keep in the background', reverseScored: true },
 
   // Agreeableness
-  { trait: 'agreeableness', text: 'I sympathize with others\' feelings', reverseScored: false },
-  { trait: 'agreeableness', text: 'I am not interested in other people\'s problems', reverseScored: true },
+  { trait: 'agreeableness', text: "I sympathize with others' feelings", reverseScored: false },
+  {
+    trait: 'agreeableness',
+    text: "I am not interested in other people's problems",
+    reverseScored: true
+  },
   { trait: 'agreeableness', text: 'I have a soft heart', reverseScored: false },
   { trait: 'agreeableness', text: 'I am not really interested in others', reverseScored: true },
 
@@ -47,8 +59,12 @@ const bigFiveQuestions = [
 // ADHD screening questions (ASRS-5)
 const adhdQuestions = [
   { text: 'How often do you have difficulty concentrating on what people say to you?' },
-  { text: 'How often do you leave your seat in meetings or situations where remaining seated is expected?' },
-  { text: 'How often do you have difficulty unwinding and relaxing when you have time to yourself?' },
+  {
+    text: 'How often do you leave your seat in meetings or situations where remaining seated is expected?'
+  },
+  {
+    text: 'How often do you have difficulty unwinding and relaxing when you have time to yourself?'
+  },
   { text: 'How often do you find yourself talking too much in social situations?' },
   { text: 'How often do you find yourself finishing sentences of people you are talking to?' }
 ];
@@ -56,10 +72,19 @@ const adhdQuestions = [
 // Autism screening questions (AQ-10)
 const autismQuestions = [
   { text: 'I often notice small sounds when others do not' },
-  { text: 'I usually concentrate more on the whole picture, rather than the small details', reverseScored: true },
+  {
+    text: 'I usually concentrate more on the whole picture, rather than the small details',
+    reverseScored: true
+  },
   { text: 'I find it easy to do more than one thing at once', reverseScored: true },
-  { text: 'If there is an interruption, I can switch back to what I was doing very quickly', reverseScored: true },
-  { text: 'I find it easy to "read between the lines" when someone is talking to me', reverseScored: true },
+  {
+    text: 'If there is an interruption, I can switch back to what I was doing very quickly',
+    reverseScored: true
+  },
+  {
+    text: 'I find it easy to "read between the lines" when someone is talking to me',
+    reverseScored: true
+  },
   { text: 'I know how to tell if someone listening to me is getting bored', reverseScored: true }
 ];
 
@@ -202,7 +227,8 @@ async function seedReportTemplates() {
             title: 'Your Personality Profile',
             order: 1,
             content: {
-              introduction: 'Based on the Big Five personality model, your assessment reveals the following traits:',
+              introduction:
+                'Based on the Big Five personality model, your assessment reveals the following traits:',
               methodology: 'This assessment uses the scientifically validated BFI-2 instrument.'
             }
           }
@@ -211,9 +237,17 @@ async function seedReportTemplates() {
           ranges: [
             {
               trait: 'openness',
-              low: { min: 0, max: 2.5, text: 'You prefer familiar routines and practical approaches.' },
+              low: {
+                min: 0,
+                max: 2.5,
+                text: 'You prefer familiar routines and practical approaches.'
+              },
               medium: { min: 2.5, max: 3.5, text: 'You balance creativity with practicality.' },
-              high: { min: 3.5, max: 5, text: 'You are creative, curious, and open to new experiences.' }
+              high: {
+                min: 3.5,
+                max: 5,
+                text: 'You are creative, curious, and open to new experiences.'
+              }
             }
           ]
         },
@@ -233,7 +267,8 @@ async function seedReportTemplates() {
             title: 'Screening Results',
             order: 1,
             content: {
-              introduction: 'This screening assesses traits associated with neurodivergent conditions.',
+              introduction:
+                'This screening assesses traits associated with neurodivergent conditions.',
               methodology: 'Uses validated screening instruments including ASRS-5 and AQ-10.'
             }
           }
@@ -274,7 +309,6 @@ async function main() {
     await mongoose.disconnect();
     logger.info('Disconnected from MongoDB');
     process.exit(0);
-
   } catch (error) {
     logger.error('Seeding failed:', error);
     process.exit(1);

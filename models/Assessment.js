@@ -4,8 +4,8 @@ const assessmentSchema = new mongoose.Schema(
   {
     userId: { type: String, index: true },
     sessionId: { type: String, unique: true, required: true },
-    mode: { type: String, enum: ['validated', 'experimental'], required: true },
-    tier: { type: String, enum: ['core', 'comprehensive', 'specialized', 'experimental'] },
+    mode: { type: String, enum: ['validated', 'experimental', 'adaptive'], required: true },
+    tier: { type: String, enum: ['core', 'comprehensive', 'specialized', 'experimental', 'quick', 'basic'] },
     startTime: { type: Date, default: Date.now },
     completionTime: Date,
     responses: [
@@ -19,8 +19,8 @@ const assessmentSchema = new mongoose.Schema(
           keystrokeMetrics: Object,
           mouseMetrics: Object,
           latency: Number
-        },
-      },
+        }
+      }
     ],
     results: {
       profile: Object,
@@ -30,7 +30,7 @@ const assessmentSchema = new mongoose.Schema(
       experimentalScores: Object,
       qualityMetrics: Object,
       biasIndicators: Object,
-      matchConfidence: Number,
+      matchConfidence: Number
     },
     payment: {
       status: {
@@ -41,7 +41,7 @@ const assessmentSchema = new mongoose.Schema(
       stripePaymentId: String,
       amount: Number,
       currency: String,
-      paidAt: Date,
+      paidAt: Date
     },
     demographics: {
       age: Number,
@@ -49,7 +49,7 @@ const assessmentSchema = new mongoose.Schema(
       country: String,
       education: String,
       ethnicity: [String],
-      language: String,
+      language: String
     },
     consent: {
       research: Boolean,
@@ -61,7 +61,7 @@ const assessmentSchema = new mongoose.Schema(
       ipCountry: String,
       referrer: String,
       abTestGroup: String
-    },
+    }
   },
   { timestamps: true }
 );

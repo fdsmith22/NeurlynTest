@@ -14,34 +14,34 @@ const logger = require('../utils/logger');
 const executiveFunctionQuestions = [
   // Task Initiation & Procrastination
   {
-    text: "I start tasks right away rather than procrastinating",
+    text: 'I start tasks right away rather than procrastinating',
     subcategory: 'executive_function',
     domain: 'task_initiation'
   },
   {
-    text: "I put off important tasks until the last minute",
+    text: 'I put off important tasks until the last minute',
     subcategory: 'executive_function',
     domain: 'procrastination'
   },
   {
-    text: "I need external deadlines to get things done",
+    text: 'I need external deadlines to get things done',
     subcategory: 'executive_function',
     domain: 'motivation'
   },
 
   // Time Blindness & Management
   {
-    text: "I lose track of time when engaged in activities I enjoy",
+    text: 'I lose track of time when engaged in activities I enjoy',
     subcategory: 'executive_function',
     domain: 'time_blindness'
   },
   {
-    text: "I need multiple alarms to ensure I wake up or remember appointments",
+    text: 'I need multiple alarms to ensure I wake up or remember appointments',
     subcategory: 'executive_function',
     domain: 'time_management'
   },
   {
-    text: "I underestimate how long tasks will take",
+    text: 'I underestimate how long tasks will take',
     subcategory: 'executive_function',
     domain: 'time_estimation'
   },
@@ -53,12 +53,12 @@ const executiveFunctionQuestions = [
 
   // Task Switching & Flexibility
   {
-    text: "I can easily switch between different tasks",
+    text: 'I can easily switch between different tasks',
     subcategory: 'executive_function',
     domain: 'cognitive_flexibility'
   },
   {
-    text: "I struggle to return to a task after being interrupted",
+    text: 'I struggle to return to a task after being interrupted',
     subcategory: 'executive_function',
     domain: 'task_resumption'
   },
@@ -70,12 +70,12 @@ const executiveFunctionQuestions = [
 
   // Working Memory
   {
-    text: "I often forget where I put things",
+    text: 'I often forget where I put things',
     subcategory: 'executive_function',
     domain: 'working_memory'
   },
   {
-    text: "I walk into rooms and forget why I went there",
+    text: 'I walk into rooms and forget why I went there',
     subcategory: 'executive_function',
     domain: 'prospective_memory'
   },
@@ -92,34 +92,34 @@ const executiveFunctionQuestions = [
 
   // Organization & Planning
   {
-    text: "My living space is usually organized and tidy",
+    text: 'My living space is usually organized and tidy',
     subcategory: 'executive_function',
     domain: 'organization'
   },
   {
-    text: "I create detailed plans before starting projects",
+    text: 'I create detailed plans before starting projects',
     subcategory: 'executive_function',
     domain: 'planning'
   },
   {
-    text: "I use organizational tools effectively (calendars, to-do lists)",
+    text: 'I use organizational tools effectively (calendars, to-do lists)',
     subcategory: 'executive_function',
     domain: 'tool_use'
   },
   {
-    text: "I feel overwhelmed when faced with multi-step tasks",
+    text: 'I feel overwhelmed when faced with multi-step tasks',
     subcategory: 'executive_function',
     domain: 'task_breakdown'
   },
 
   // Emotional Regulation
   {
-    text: "I can manage my emotions effectively under stress",
+    text: 'I can manage my emotions effectively under stress',
     subcategory: 'executive_function',
     domain: 'emotional_regulation'
   },
   {
-    text: "Small frustrations can derail my entire day",
+    text: 'Small frustrations can derail my entire day',
     subcategory: 'executive_function',
     domain: 'frustration_tolerance'
   }
@@ -129,78 +129,78 @@ const executiveFunctionQuestions = [
 const sensoryProcessingQuestions = [
   // Tactile Sensitivity
   {
-    text: "Certain fabric textures make me extremely uncomfortable",
+    text: 'Certain fabric textures make me extremely uncomfortable',
     subcategory: 'sensory_processing',
     domain: 'tactile'
   },
   {
-    text: "I cut tags out of clothing because they bother me",
+    text: 'I cut tags out of clothing because they bother me',
     subcategory: 'sensory_processing',
     domain: 'tactile'
   },
   {
-    text: "Light touches feel painful or overwhelming",
+    text: 'Light touches feel painful or overwhelming',
     subcategory: 'sensory_processing',
     domain: 'tactile'
   },
   {
-    text: "I prefer deep pressure hugs over light touches",
+    text: 'I prefer deep pressure hugs over light touches',
     subcategory: 'sensory_processing',
     domain: 'proprioceptive'
   },
 
   // Auditory Processing
   {
-    text: "I notice subtle sounds that others miss",
+    text: 'I notice subtle sounds that others miss',
     subcategory: 'sensory_processing',
     domain: 'auditory'
   },
   {
-    text: "Background noise makes it impossible for me to concentrate",
+    text: 'Background noise makes it impossible for me to concentrate',
     subcategory: 'sensory_processing',
     domain: 'auditory'
   },
   {
-    text: "I use noise-canceling headphones or earplugs regularly",
+    text: 'I use noise-canceling headphones or earplugs regularly',
     subcategory: 'sensory_processing',
     domain: 'auditory_coping'
   },
   {
-    text: "Sudden loud noises cause me physical pain or panic",
+    text: 'Sudden loud noises cause me physical pain or panic',
     subcategory: 'sensory_processing',
     domain: 'auditory_startle'
   },
 
   // Visual Sensitivity
   {
-    text: "Bright lights give me headaches or make me feel overwhelmed",
+    text: 'Bright lights give me headaches or make me feel overwhelmed',
     subcategory: 'sensory_processing',
     domain: 'visual'
   },
   {
-    text: "I prefer dim lighting or natural light",
+    text: 'I prefer dim lighting or natural light',
     subcategory: 'sensory_processing',
     domain: 'visual_preference'
   },
   {
-    text: "Fluorescent lights make me feel sick or anxious",
+    text: 'Fluorescent lights make me feel sick or anxious',
     subcategory: 'sensory_processing',
     domain: 'visual_fluorescent'
   },
   {
-    text: "I notice visual details that others overlook",
+    text: 'I notice visual details that others overlook',
     subcategory: 'sensory_processing',
     domain: 'visual_detail'
   },
 
   // Smell & Taste
   {
-    text: "Strong smells make me feel nauseous or overwhelmed",
+    text: 'Strong smells make me feel nauseous or overwhelmed',
     subcategory: 'sensory_processing',
     domain: 'olfactory'
   },
   {
-    text: "I have a very limited diet due to texture or taste sensitivities",
+    text: 'I have a very limited diet due to texture or taste sensitivities',
     subcategory: 'sensory_processing',
     domain: 'gustatory'
   },
@@ -212,17 +212,17 @@ const sensoryProcessingQuestions = [
 
   // Vestibular & Proprioceptive
   {
-    text: "I feel dizzy or nauseous on swings or rides",
+    text: 'I feel dizzy or nauseous on swings or rides',
     subcategory: 'sensory_processing',
     domain: 'vestibular'
   },
   {
-    text: "I crave movement and physical activity",
+    text: 'I crave movement and physical activity',
     subcategory: 'sensory_processing',
     domain: 'sensory_seeking'
   },
   {
-    text: "I bump into things or misjudge distances frequently",
+    text: 'I bump into things or misjudge distances frequently',
     subcategory: 'sensory_processing',
     domain: 'proprioceptive'
   }
@@ -232,7 +232,7 @@ const sensoryProcessingQuestions = [
 const maskingQuestions = [
   // Social Masking
   {
-    text: "I rehearse conversations before having them",
+    text: 'I rehearse conversations before having them',
     subcategory: 'masking',
     domain: 'social_preparation'
   },
@@ -242,7 +242,7 @@ const maskingQuestions = [
     domain: 'mimicry'
   },
   {
-    text: "I have different personas for different social situations",
+    text: 'I have different personas for different social situations',
     subcategory: 'masking',
     domain: 'persona_switching'
   },
@@ -259,12 +259,12 @@ const maskingQuestions = [
 
   // Energy Cost
   {
-    text: "I feel exhausted after social interactions",
+    text: 'I feel exhausted after social interactions',
     subcategory: 'masking',
     domain: 'social_exhaustion'
   },
   {
-    text: "I need days to recover after social events",
+    text: 'I need days to recover after social events',
     subcategory: 'masking',
     domain: 'recovery_time'
   },
@@ -291,14 +291,14 @@ const maskingQuestions = [
     domain: 'authenticity_loss'
   },
   {
-    text: "People would reject the real me",
+    text: 'People would reject the real me',
     subcategory: 'masking',
     domain: 'rejection_fear'
   },
 
   // Stimming Suppression
   {
-    text: "I hide my need to fidget or move repetitively",
+    text: 'I hide my need to fidget or move repetitively',
     subcategory: 'masking',
     domain: 'stimming_suppression'
   },
@@ -308,7 +308,7 @@ const maskingQuestions = [
     domain: 'emotion_suppression'
   },
   {
-    text: "I suppress my natural body movements in public",
+    text: 'I suppress my natural body movements in public',
     subcategory: 'masking',
     domain: 'movement_suppression'
   }
@@ -323,46 +323,46 @@ const emotionalRegulationQuestions = [
     domain: 'intensity'
   },
   {
-    text: "I experience emotions as physical sensations in my body",
+    text: 'I experience emotions as physical sensations in my body',
     subcategory: 'emotional_regulation',
     domain: 'somatic'
   },
   {
-    text: "Happy moments feel euphoric and overwhelming",
+    text: 'Happy moments feel euphoric and overwhelming',
     subcategory: 'emotional_regulation',
     domain: 'positive_intensity'
   },
 
   // Emotional Volatility
   {
-    text: "My mood can change rapidly throughout the day",
+    text: 'My mood can change rapidly throughout the day',
     subcategory: 'emotional_regulation',
     domain: 'mood_swings'
   },
   {
-    text: "Small triggers cause disproportionate emotional responses",
+    text: 'Small triggers cause disproportionate emotional responses',
     subcategory: 'emotional_regulation',
     domain: 'reactivity'
   },
   {
-    text: "I struggle to return to baseline after emotional upset",
+    text: 'I struggle to return to baseline after emotional upset',
     subcategory: 'emotional_regulation',
     domain: 'recovery'
   },
 
   // Rejection Sensitive Dysphoria
   {
-    text: "Perceived criticism feels like physical pain",
+    text: 'Perceived criticism feels like physical pain',
     subcategory: 'emotional_regulation',
     domain: 'rejection_sensitivity'
   },
   {
-    text: "I assume people are mad at me without evidence",
+    text: 'I assume people are mad at me without evidence',
     subcategory: 'emotional_regulation',
     domain: 'rejection_perception'
   },
   {
-    text: "I avoid situations where I might face rejection",
+    text: 'I avoid situations where I might face rejection',
     subcategory: 'emotional_regulation',
     domain: 'rejection_avoidance'
   },
@@ -379,7 +379,7 @@ const emotionalRegulationQuestions = [
     domain: 'awareness_delay'
   },
   {
-    text: "Others notice my emotions before I do",
+    text: 'Others notice my emotions before I do',
     subcategory: 'emotional_regulation',
     domain: 'external_awareness'
   }
@@ -394,7 +394,7 @@ const traumaInformedQuestions = [
     domain: 'hypervigilance'
   },
   {
-    text: "I startle easily at unexpected sounds or movements",
+    text: 'I startle easily at unexpected sounds or movements',
     subcategory: 'trauma_screening',
     domain: 'startle_response'
   },
@@ -406,12 +406,12 @@ const traumaInformedQuestions = [
 
   // Dissociation
   {
-    text: "I feel disconnected from my body",
+    text: 'I feel disconnected from my body',
     subcategory: 'trauma_screening',
     domain: 'dissociation'
   },
   {
-    text: "Reality sometimes feels unreal or dreamlike",
+    text: 'Reality sometimes feels unreal or dreamlike',
     subcategory: 'trauma_screening',
     domain: 'derealization'
   },
@@ -423,34 +423,34 @@ const traumaInformedQuestions = [
 
   // Trust & Safety
   {
-    text: "I have difficulty trusting others",
+    text: 'I have difficulty trusting others',
     subcategory: 'trauma_screening',
     domain: 'trust'
   },
   {
-    text: "I need to know all exits in a room",
+    text: 'I need to know all exits in a room',
     subcategory: 'trauma_screening',
     domain: 'escape_planning'
   },
   {
-    text: "I feel safer alone than with others",
+    text: 'I feel safer alone than with others',
     subcategory: 'trauma_screening',
     domain: 'isolation_safety'
   },
 
   // Somatic Symptoms
   {
-    text: "My body holds tension even when I try to relax",
+    text: 'My body holds tension even when I try to relax',
     subcategory: 'trauma_screening',
     domain: 'somatic_tension'
   },
   {
-    text: "I experience unexplained physical pain",
+    text: 'I experience unexplained physical pain',
     subcategory: 'trauma_screening',
     domain: 'somatic_pain'
   },
   {
-    text: "My body reacts before my mind processes danger",
+    text: 'My body reacts before my mind processes danger',
     subcategory: 'trauma_screening',
     domain: 'somatic_response'
   }
@@ -460,12 +460,12 @@ const traumaInformedQuestions = [
 const attachmentQuestions = [
   // Anxious Attachment
   {
-    text: "I worry constantly about my relationships ending",
+    text: 'I worry constantly about my relationships ending',
     subcategory: 'attachment_style',
     domain: 'anxious'
   },
   {
-    text: "I need constant reassurance from loved ones",
+    text: 'I need constant reassurance from loved ones',
     subcategory: 'attachment_style',
     domain: 'anxious'
   },
@@ -477,29 +477,29 @@ const attachmentQuestions = [
 
   // Avoidant Attachment
   {
-    text: "I prefer to handle problems alone",
+    text: 'I prefer to handle problems alone',
     subcategory: 'attachment_style',
     domain: 'avoidant'
   },
   {
-    text: "I feel uncomfortable when people get too close emotionally",
+    text: 'I feel uncomfortable when people get too close emotionally',
     subcategory: 'attachment_style',
     domain: 'avoidant'
   },
   {
-    text: "I keep parts of myself hidden even from close friends",
+    text: 'I keep parts of myself hidden even from close friends',
     subcategory: 'attachment_style',
     domain: 'avoidant'
   },
 
   // Disorganized Attachment
   {
-    text: "I both crave and fear close relationships",
+    text: 'I both crave and fear close relationships',
     subcategory: 'attachment_style',
     domain: 'disorganized'
   },
   {
-    text: "My relationship patterns are chaotic and unpredictable",
+    text: 'My relationship patterns are chaotic and unpredictable',
     subcategory: 'attachment_style',
     domain: 'disorganized'
   },
@@ -511,17 +511,17 @@ const attachmentQuestions = [
 
   // Secure Attachment
   {
-    text: "I feel comfortable depending on others and having them depend on me",
+    text: 'I feel comfortable depending on others and having them depend on me',
     subcategory: 'attachment_style',
     domain: 'secure'
   },
   {
-    text: "I can express my needs directly in relationships",
+    text: 'I can express my needs directly in relationships',
     subcategory: 'attachment_style',
     domain: 'secure'
   },
   {
-    text: "I trust that relationships can weather difficulties",
+    text: 'I trust that relationships can weather difficulties',
     subcategory: 'attachment_style',
     domain: 'secure'
   }
@@ -531,43 +531,43 @@ const attachmentQuestions = [
 const enneagramQuestions = [
   // Type 1 - Perfectionist
   {
-    text: "I have a strong inner critic that never stops",
+    text: 'I have a strong inner critic that never stops',
     subcategory: 'enneagram',
     domain: 'type_1'
   },
   {
-    text: "I notice mistakes and imperfections immediately",
+    text: 'I notice mistakes and imperfections immediately',
     subcategory: 'enneagram',
     domain: 'type_1'
   },
 
   // Type 2 - Helper
   {
-    text: "I often know what others need before they do",
+    text: 'I often know what others need before they do',
     subcategory: 'enneagram',
     domain: 'type_2'
   },
   {
-    text: "I feel guilty when I prioritize my own needs",
+    text: 'I feel guilty when I prioritize my own needs',
     subcategory: 'enneagram',
     domain: 'type_2'
   },
 
   // Type 3 - Achiever
   {
-    text: "My worth is tied to my achievements",
+    text: 'My worth is tied to my achievements',
     subcategory: 'enneagram',
     domain: 'type_3'
   },
   {
-    text: "I adapt my personality to succeed in different situations",
+    text: 'I adapt my personality to succeed in different situations',
     subcategory: 'enneagram',
     domain: 'type_3'
   },
 
   // Type 4 - Individualist
   {
-    text: "I feel fundamentally different from everyone else",
+    text: 'I feel fundamentally different from everyone else',
     subcategory: 'enneagram',
     domain: 'type_4'
   },
@@ -579,19 +579,19 @@ const enneagramQuestions = [
 
   // Type 5 - Investigator
   {
-    text: "I need to understand everything before I can act",
+    text: 'I need to understand everything before I can act',
     subcategory: 'enneagram',
     domain: 'type_5'
   },
   {
-    text: "I hoard knowledge and resources for future needs",
+    text: 'I hoard knowledge and resources for future needs',
     subcategory: 'enneagram',
     domain: 'type_5'
   },
 
   // Type 6 - Loyalist
   {
-    text: "I constantly plan for worst-case scenarios",
+    text: 'I constantly plan for worst-case scenarios',
     subcategory: 'enneagram',
     domain: 'type_6'
   },
@@ -603,24 +603,24 @@ const enneagramQuestions = [
 
   // Type 7 - Enthusiast
   {
-    text: "I avoid negative emotions by staying busy",
+    text: 'I avoid negative emotions by staying busy',
     subcategory: 'enneagram',
     domain: 'type_7'
   },
   {
-    text: "I always have multiple backup plans for fun",
+    text: 'I always have multiple backup plans for fun',
     subcategory: 'enneagram',
     domain: 'type_7'
   },
 
   // Type 8 - Challenger
   {
-    text: "I automatically take charge in group situations",
+    text: 'I automatically take charge in group situations',
     subcategory: 'enneagram',
     domain: 'type_8'
   },
   {
-    text: "Showing vulnerability feels like weakness",
+    text: 'Showing vulnerability feels like weakness',
     subcategory: 'enneagram',
     domain: 'type_8'
   },
@@ -632,7 +632,7 @@ const enneagramQuestions = [
     domain: 'type_9'
   },
   {
-    text: "I struggle to identify my own wants and needs",
+    text: 'I struggle to identify my own wants and needs',
     subcategory: 'enneagram',
     domain: 'type_9'
   }
@@ -642,84 +642,84 @@ const enneagramQuestions = [
 const jungianQuestions = [
   // Introverted Intuition (Ni)
   {
-    text: "I see patterns and connections others miss",
+    text: 'I see patterns and connections others miss',
     subcategory: 'cognitive_functions',
     domain: 'Ni'
   },
   {
-    text: "I have sudden insights that prove to be accurate",
+    text: 'I have sudden insights that prove to be accurate',
     subcategory: 'cognitive_functions',
     domain: 'Ni'
   },
 
   // Extroverted Intuition (Ne)
   {
-    text: "I see endless possibilities in every situation",
+    text: 'I see endless possibilities in every situation',
     subcategory: 'cognitive_functions',
     domain: 'Ne'
   },
   {
-    text: "I make unexpected connections between ideas",
+    text: 'I make unexpected connections between ideas',
     subcategory: 'cognitive_functions',
     domain: 'Ne'
   },
 
   // Introverted Thinking (Ti)
   {
-    text: "I need to understand how things work at a fundamental level",
+    text: 'I need to understand how things work at a fundamental level',
     subcategory: 'cognitive_functions',
     domain: 'Ti'
   },
   {
-    text: "I create my own logical frameworks",
+    text: 'I create my own logical frameworks',
     subcategory: 'cognitive_functions',
     domain: 'Ti'
   },
 
   // Extroverted Thinking (Te)
   {
-    text: "I focus on efficiency and measurable results",
+    text: 'I focus on efficiency and measurable results',
     subcategory: 'cognitive_functions',
     domain: 'Te'
   },
   {
-    text: "I organize the external world to achieve goals",
+    text: 'I organize the external world to achieve goals',
     subcategory: 'cognitive_functions',
     domain: 'Te'
   },
 
   // Introverted Feeling (Fi)
   {
-    text: "I have a strong internal sense of right and wrong",
+    text: 'I have a strong internal sense of right and wrong',
     subcategory: 'cognitive_functions',
     domain: 'Fi'
   },
   {
-    text: "My values are deeply personal and non-negotiable",
+    text: 'My values are deeply personal and non-negotiable',
     subcategory: 'cognitive_functions',
     domain: 'Fi'
   },
 
   // Extroverted Feeling (Fe)
   {
-    text: "I naturally harmonize with the emotional atmosphere",
+    text: 'I naturally harmonize with the emotional atmosphere',
     subcategory: 'cognitive_functions',
     domain: 'Fe'
   },
   {
-    text: "I prioritize group harmony over personal preferences",
+    text: 'I prioritize group harmony over personal preferences',
     subcategory: 'cognitive_functions',
     domain: 'Fe'
   },
 
   // Introverted Sensing (Si)
   {
-    text: "I compare present experiences to past memories",
+    text: 'I compare present experiences to past memories',
     subcategory: 'cognitive_functions',
     domain: 'Si'
   },
   {
-    text: "I value tradition and proven methods",
+    text: 'I value tradition and proven methods',
     subcategory: 'cognitive_functions',
     domain: 'Si'
   },
@@ -731,7 +731,7 @@ const jungianQuestions = [
     domain: 'Se'
   },
   {
-    text: "I live fully in the present moment",
+    text: 'I live fully in the present moment',
     subcategory: 'cognitive_functions',
     domain: 'Se'
   }
@@ -740,42 +740,42 @@ const jungianQuestions = [
 // Learning Style Questions
 const learningStyleQuestions = [
   {
-    text: "I learn best by doing rather than reading",
+    text: 'I learn best by doing rather than reading',
     subcategory: 'learning_style',
     domain: 'kinesthetic'
   },
   {
-    text: "I need visual aids to understand concepts",
+    text: 'I need visual aids to understand concepts',
     subcategory: 'learning_style',
     domain: 'visual'
   },
   {
-    text: "I remember things better when I hear them explained",
+    text: 'I remember things better when I hear them explained',
     subcategory: 'learning_style',
     domain: 'auditory'
   },
   {
-    text: "I need to understand the big picture before details",
+    text: 'I need to understand the big picture before details',
     subcategory: 'learning_style',
     domain: 'global'
   },
   {
-    text: "I prefer step-by-step sequential instructions",
+    text: 'I prefer step-by-step sequential instructions',
     subcategory: 'learning_style',
     domain: 'sequential'
   },
   {
-    text: "I learn through trial and error",
+    text: 'I learn through trial and error',
     subcategory: 'learning_style',
     domain: 'experimental'
   },
   {
-    text: "I need to teach others to truly understand something",
+    text: 'I need to teach others to truly understand something',
     subcategory: 'learning_style',
     domain: 'teaching'
   },
   {
-    text: "I learn best in complete silence",
+    text: 'I learn best in complete silence',
     subcategory: 'learning_style',
     domain: 'environmental'
   }
@@ -784,32 +784,32 @@ const learningStyleQuestions = [
 // Special Interests & Monotropism
 const specialInterestQuestions = [
   {
-    text: "I have intense interests that consume most of my thoughts",
+    text: 'I have intense interests that consume most of my thoughts',
     subcategory: 'special_interests',
     domain: 'intensity'
   },
   {
-    text: "I can talk about my interests for hours without noticing time",
+    text: 'I can talk about my interests for hours without noticing time',
     subcategory: 'special_interests',
     domain: 'hyperfocus'
   },
   {
-    text: "I collect detailed information about specific topics",
+    text: 'I collect detailed information about specific topics',
     subcategory: 'special_interests',
     domain: 'information_gathering'
   },
   {
-    text: "My interests bring me more joy than social activities",
+    text: 'My interests bring me more joy than social activities',
     subcategory: 'special_interests',
     domain: 'priority'
   },
   {
-    text: "I struggle to engage with topics outside my interests",
+    text: 'I struggle to engage with topics outside my interests',
     subcategory: 'special_interests',
     domain: 'narrow_focus'
   },
   {
-    text: "My interests have remained consistent for years",
+    text: 'My interests have remained consistent for years',
     subcategory: 'special_interests',
     domain: 'persistence'
   }
@@ -857,14 +857,24 @@ async function seedCompleteExpandedQuestions() {
     };
 
     // Add all neurodiversity questions
-    questions.push(...formatQuestions(executiveFunctionQuestions, 'neurodiversity', 'NEURLYN_EXECUTIVE'));
-    questions.push(...formatQuestions(sensoryProcessingQuestions, 'neurodiversity', 'NEURLYN_SENSORY'));
+    questions.push(
+      ...formatQuestions(executiveFunctionQuestions, 'neurodiversity', 'NEURLYN_EXECUTIVE')
+    );
+    questions.push(
+      ...formatQuestions(sensoryProcessingQuestions, 'neurodiversity', 'NEURLYN_SENSORY')
+    );
     questions.push(...formatQuestions(maskingQuestions, 'neurodiversity', 'NEURLYN_MASKING'));
-    questions.push(...formatQuestions(emotionalRegulationQuestions, 'neurodiversity', 'NEURLYN_EMOTIONAL'));
-    questions.push(...formatQuestions(specialInterestQuestions, 'neurodiversity', 'NEURLYN_INTERESTS'));
+    questions.push(
+      ...formatQuestions(emotionalRegulationQuestions, 'neurodiversity', 'NEURLYN_EMOTIONAL')
+    );
+    questions.push(
+      ...formatQuestions(specialInterestQuestions, 'neurodiversity', 'NEURLYN_INTERESTS')
+    );
 
     // Add trauma-informed questions
-    questions.push(...formatQuestions(traumaInformedQuestions, 'trauma_screening', 'NEURLYN_TRAUMA'));
+    questions.push(
+      ...formatQuestions(traumaInformedQuestions, 'trauma_screening', 'NEURLYN_TRAUMA')
+    );
 
     // Add attachment questions
     questions.push(...formatQuestions(attachmentQuestions, 'attachment', 'NEURLYN_ATTACHMENT'));
@@ -876,7 +886,9 @@ async function seedCompleteExpandedQuestions() {
     questions.push(...formatQuestions(jungianQuestions, 'cognitive_functions', 'NEURLYN_JUNGIAN'));
 
     // Add learning style questions
-    questions.push(...formatQuestions(learningStyleQuestions, 'learning_style', 'NEURLYN_LEARNING'));
+    questions.push(
+      ...formatQuestions(learningStyleQuestions, 'learning_style', 'NEURLYN_LEARNING')
+    );
 
     // Insert all questions
     if (questions.length > 0) {
@@ -890,27 +902,29 @@ async function seedCompleteExpandedQuestions() {
       { $group: { _id: '$category', count: { $sum: 1 } } }
     ]);
 
-    console.log('\n📊 Complete Question Bank Summary:');
-    console.log(`   Total Questions: ${totalCount}`);
+// console.log('\n📊 Complete Question Bank Summary:');
+// console.log(`   Total Questions: ${totalCount}`);
     summary.forEach(cat => {
-      console.log(`   ├── ${cat._id}: ${cat.count}`);
+// console.log(`   ├── ${cat._id}: ${cat.count}`);
     });
 
     // Detailed breakdown by subcategory
     const subcategorySummary = await QuestionBank.aggregate([
       { $match: { subcategory: { $exists: true } } },
-      { $group: { _id: { category: '$category', subcategory: '$subcategory' }, count: { $sum: 1 } } },
+      {
+        $group: { _id: { category: '$category', subcategory: '$subcategory' }, count: { $sum: 1 } }
+      },
       { $sort: { '_id.category': 1, '_id.subcategory': 1 } }
     ]);
 
-    console.log('\n📋 Detailed Breakdown:');
+// console.log('\n📋 Detailed Breakdown:');
     let currentCategory = '';
     subcategorySummary.forEach(item => {
       if (item._id.category !== currentCategory) {
         currentCategory = item._id.category;
-        console.log(`\n${currentCategory}:`);
+// console.log(`\n${currentCategory}:`);
       }
-      console.log(`   - ${item._id.subcategory}: ${item.count} questions`);
+// console.log(`   - ${item._id.subcategory}: ${item.count} questions`);
     });
 
     await mongoose.disconnect();

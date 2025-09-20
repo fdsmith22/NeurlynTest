@@ -28,7 +28,13 @@ module.exports = async function handler(req, res) {
 
     // Create sample adaptive questions
     const questions = [];
-    const categories = ['self-awareness', 'emotional-regulation', 'social-dynamics', 'cognitive-patterns', 'behavioral-traits'];
+    const categories = [
+      'self-awareness',
+      'emotional-regulation',
+      'social-dynamics',
+      'cognitive-patterns',
+      'behavioral-traits'
+    ];
 
     for (let i = 0; i < totalQuestions; i++) {
       const category = categories[i % categories.length];
@@ -68,7 +74,7 @@ module.exports = async function handler(req, res) {
       message: error.message
     });
   }
-}
+};
 
 function generateAdaptiveQuestion(category, index) {
   const questionBank = {

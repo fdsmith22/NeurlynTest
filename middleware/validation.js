@@ -7,17 +7,9 @@ const { ApiError } = require('./errorHandler');
 const schemas = {
   // Assessment start validation
   startAssessment: Joi.object({
-    mode: Joi.string()
-      .valid('validated', 'experimental')
-      .required(),
-    tier: Joi.string()
-      .valid('core', 'comprehensive', 'specialized', 'experimental')
-      .optional(),
-    userId: Joi.string()
-      .alphanum()
-      .min(3)
-      .max(50)
-      .optional(),
+    mode: Joi.string().valid('validated', 'experimental').required(),
+    tier: Joi.string().valid('core', 'comprehensive', 'specialized', 'experimental').optional(),
+    userId: Joi.string().alphanum().min(3).max(50).optional(),
     demographics: Joi.object({
       age: Joi.number().min(13).max(120).optional(),
       gender: Joi.string().optional(),
@@ -51,10 +43,7 @@ const schemas = {
       )
       .min(1)
       .required(),
-    currentIndex: Joi.number()
-      .integer()
-      .min(0)
-      .optional()
+    currentIndex: Joi.number().integer().min(0).optional()
   }),
 
   // Complete assessment validation
@@ -95,7 +84,7 @@ const schemas = {
 /**
  * Validation middleware factory
  */
-const validate = (schemaName) => {
+const validate = schemaName => {
   return (req, res, next) => {
     const schema = schemas[schemaName];
     if (!schema) {
@@ -103,9 +92,7 @@ const validate = (schemaName) => {
     }
 
     // Determine what to validate
-    const toValidate = req.body && Object.keys(req.body).length > 0
-      ? req.body
-      : req.params;
+    const toValidate = req.body && Object.keys(req.body).length > 0 ? req.body : req.params;
 
     const { error, value } = schema.validate(toValidate, {
       abortEarly: false,
@@ -114,9 +101,7 @@ const validate = (schemaName) => {
     });
 
     if (error) {
-      const errorMessage = error.details
-        .map(detail => detail.message)
-        .join(', ');
+      const errorMessage = error.details.map(detail => detail.message).join(', ');
       return next(new ApiError(400, `Validation error: ${errorMessage}`));
     }
 
@@ -136,7 +121,7 @@ const validate = (schemaName) => {
  */
 const sanitizeInput = (req, res, next) => {
   // Recursively sanitize strings in request body
-  const sanitize = (obj) => {
+  const sanitize = obj => {
     if (typeof obj === 'string') {
       // Remove script tags and other dangerous patterns
       return obj

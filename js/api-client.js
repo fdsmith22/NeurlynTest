@@ -5,9 +5,7 @@
 
 class APIClient {
   constructor() {
-    this.baseURL = window.location.hostname === 'localhost'
-      ? 'http://localhost:3000/api'
-      : '/api';
+    this.baseURL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : '/api';
     this.cache = new Map();
     this.cacheTimeout = 5 * 60 * 1000; // 5 minutes
   }
@@ -40,7 +38,9 @@ class APIClient {
     }
 
     try {
-      const response = await fetch(`${this.baseURL}/questions/assessment/${assessmentType}?${params}`);
+      const response = await fetch(
+        `${this.baseURL}/questions/assessment/${assessmentType}?${params}`
+      );
 
       if (!response.ok) {
         throw new Error(`API Error: ${response.status} ${response.statusText}`);
@@ -61,7 +61,6 @@ class APIClient {
       // console.log(`✅ Fetched ${data.totalQuestions} questions for ${assessmentType}`);
 
       return data.questions;
-
     } catch (error) {
       console.error('Failed to fetch questions:', error);
       throw error;
@@ -97,7 +96,6 @@ class APIClient {
       });
 
       return data.questions;
-
     } catch (error) {
       console.error(`Failed to fetch ${instrument} questions:`, error);
       throw error;
@@ -140,7 +138,7 @@ class APIClient {
   /**
    * Get questions based on assessment mode and type
    */
-  async getQuestionsForAssessment(mode, track, taskMode = 'hybrid') {
+  async getQuestionsForAssessment(mode, track, _taskMode = 'hybrid') {
     const questionCounts = {
       quick: { total: 7, gamified: 1 },
       standard: { total: 15, gamified: 3 },
@@ -156,19 +154,19 @@ class APIClient {
 
       // Map track to API assessment type
       const trackMapping = {
-        'validated': 'personality',
-        'experimental': 'lateral',
-        'neurodiversity': 'neurodiversity',
-        'comprehensive': 'comprehensive'
+        validated: 'personality',
+        experimental: 'lateral',
+        neurodiversity: 'neurodiversity',
+        comprehensive: 'comprehensive'
       };
 
       assessmentType = trackMapping[track] || track;
 
       // Determine tier based on mode
       const tierMapping = {
-        'quick': 'free',
-        'standard': 'core',
-        'deep': 'comprehensive'
+        quick: 'free',
+        standard: 'core',
+        deep: 'comprehensive'
       };
 
       const tier = tierMapping[mode] || 'free';
@@ -181,13 +179,13 @@ class APIClient {
       });
 
       // Transform API questions to frontend format
-      questions = apiQuestions.map(q => this.transformQuestion(q, taskMode));
+      questions = apiQuestions.map(q => this.transformQuestion(q, _taskMode));
 
       // Add gamified tasks if in hybrid or gamified mode
-      if (taskMode === 'hybrid' || taskMode === 'gamified') {
+      if (_taskMode === 'hybrid' || _taskMode === 'gamified') {
         const gamifiedTasks = this.createGamifiedTasks(config.gamified);
 
-        if (taskMode === 'gamified') {
+        if (_taskMode === 'gamified') {
           // All gamified
           questions = gamifiedTasks;
         } else {
@@ -197,7 +195,6 @@ class APIClient {
       }
 
       return questions;
-
     } catch (error) {
       console.error('Error getting assessment questions:', error);
       // Fallback to empty array

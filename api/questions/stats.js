@@ -37,4 +37,4 @@ module.exports = function handler(req, res) {
     ],
     lastUpdated: new Date().toISOString()
   });
-}
+};

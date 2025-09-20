@@ -17,8 +17,8 @@ async function testAdaptiveSystem() {
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
     logger.info('Connected to MongoDB for testing');
 
-    console.log('\n🧪 Testing Enhanced Adaptive Assessment System\n');
-    console.log('=' .repeat(50));
+// console.log('\n🧪 Testing Enhanced Adaptive Assessment System\n');
+// console.log('='.repeat(50));
 
     // Test different user profiles
     const testProfiles = [
@@ -49,25 +49,24 @@ async function testAdaptiveSystem() {
     ];
 
     for (const profile of testProfiles) {
-      console.log(`\n📋 Testing Profile: ${profile.name}`);
-      console.log('-'.repeat(40));
+// console.log(`\n📋 Testing Profile: ${profile.name}`);
+// console.log('-'.repeat(40));
 
       // Initialize engine
       const engine = new EnhancedAdaptiveEngine();
 
       // Generate adaptive assessment
-      const assessment = await engine.generatePersonalizedAssessment(
-        profile.tier,
-        {
-          concerns: profile.concerns,
-          demographics: profile.demographics
-        }
-      );
+      const assessment = await engine.generatePersonalizedAssessment(profile.tier, {
+        concerns: profile.concerns,
+        demographics: profile.demographics
+      });
 
       // Display results
-      console.log(`✅ Generated ${assessment.totalQuestions} questions for ${profile.tier} tier`);
-      console.log(`📊 Adaptation Strategy: ${assessment.adaptiveMetadata.adaptationStrategy}`);
-      console.log(`🎯 Active Pathways: ${assessment.adaptiveMetadata.pathways.join(', ') || 'None'}`);
+// console.log(`✅ Generated ${assessment.totalQuestions} questions for ${profile.tier} tier`);
+// console.log(`📊 Adaptation Strategy: ${assessment.adaptiveMetadata.adaptationStrategy}`);
+// console.log(
+        `🎯 Active Pathways: ${assessment.adaptiveMetadata.pathways.join(', ') || 'None'}`
+      );
 
       // Analyze question distribution
       const categories = {};
@@ -80,24 +79,24 @@ async function testAdaptiveSystem() {
         }
       });
 
-      console.log('\n📈 Question Distribution:');
+// console.log('\n📈 Question Distribution:');
       Object.entries(categories).forEach(([cat, count]) => {
         const percentage = Math.round((count / assessment.totalQuestions) * 100);
-        console.log(`   ${cat}: ${count} (${percentage}%)`);
+// console.log(`   ${cat}: ${count} (${percentage}%)`);
       });
 
       if (Object.keys(subcategories).length > 0) {
-        console.log('\n🔍 Subcategory Focus:');
+// console.log('\n🔍 Subcategory Focus:');
         Object.entries(subcategories)
           .sort((a, b) => b[1] - a[1])
           .slice(0, 5)
           .forEach(([subcat, count]) => {
-            console.log(`   ${subcat}: ${count}`);
+// console.log(`   ${subcat}: ${count}`);
           });
       }
 
       // Simulate user responses for report generation
-      console.log('\n🎭 Simulating User Responses...');
+// console.log('\n🎭 Simulating User Responses...');
       const simulatedResponses = simulateResponses(assessment.questions, profile);
 
       // Analyze response patterns
@@ -106,11 +105,13 @@ async function testAdaptiveSystem() {
         simulatedResponses.timings
       );
 
-      console.log('\n🧠 Response Pattern Analysis:');
-      console.log(`   Response Style: ${responseAnalysis.patterns.responseStyle}`);
-      console.log(`   Engagement: ${responseAnalysis.patterns.engagement}`);
-      console.log(`   Confidence: ${responseAnalysis.patterns.confidence}`);
-      console.log(`   Activated Pathways: ${Object.keys(responseAnalysis.pathwayActivations).join(', ') || 'None'}`);
+// console.log('\n🧠 Response Pattern Analysis:');
+// console.log(`   Response Style: ${responseAnalysis.patterns.responseStyle}`);
+// console.log(`   Engagement: ${responseAnalysis.patterns.engagement}`);
+// console.log(`   Confidence: ${responseAnalysis.patterns.confidence}`);
+// console.log(
+        `   Activated Pathways: ${Object.keys(responseAnalysis.pathwayActivations).join(', ') || 'None'}`
+      );
 
       // Generate personalization profile
       const personalizationProfile = engine.generatePersonalizationProfile(
@@ -118,22 +119,24 @@ async function testAdaptiveSystem() {
         responseAnalysis
       );
 
-      console.log('\n💡 Personalization Insights:');
-      console.log(`   Cognitive Style: ${personalizationProfile.cognitiveProfile.processingStyle}`);
-      console.log(`   Learning Style: ${personalizationProfile.cognitiveProfile.learningStyle}`);
-      console.log(`   Emotional Awareness: ${personalizationProfile.emotionalProfile.emotionalAwareness}`);
-      console.log(`   Stress Response: ${personalizationProfile.emotionalProfile.stressResponse}`);
+// console.log('\n💡 Personalization Insights:');
+// console.log(`   Cognitive Style: ${personalizationProfile.cognitiveProfile.processingStyle}`);
+// console.log(`   Learning Style: ${personalizationProfile.cognitiveProfile.learningStyle}`);
+// console.log(
+        `   Emotional Awareness: ${personalizationProfile.emotionalProfile.emotionalAwareness}`
+      );
+// console.log(`   Stress Response: ${personalizationProfile.emotionalProfile.stressResponse}`);
 
       if (personalizationProfile.hiddenPatterns.length > 0) {
-        console.log('\n🔮 Hidden Patterns Detected:');
+// console.log('\n🔮 Hidden Patterns Detected:');
         personalizationProfile.hiddenPatterns.forEach(pattern => {
-          console.log(`   - ${pattern.type}: ${pattern.description}`);
-          console.log(`     Confidence: ${Math.round(pattern.confidence * 100)}%`);
+// console.log(`   - ${pattern.type}: ${pattern.description}`);
+// console.log(`     Confidence: ${Math.round(pattern.confidence * 100)}%`);
         });
       }
 
       // Test report generation
-      console.log('\n📝 Generating Personalized Report...');
+// console.log('\n📝 Generating Personalized Report...');
       const reportGenerator = new EnhancedReportGenerator();
       const reportData = {
         responses: simulatedResponses.responses,
@@ -147,38 +150,41 @@ async function testAdaptiveSystem() {
 
       const report = await reportGenerator.generatePersonalizedReport(reportData);
 
-      console.log('\n📊 Report Generated Successfully:');
-      console.log(`   Headline: ${report.executiveSummary.headline}`);
-      console.log(`   Engagement Level: ${report.meta.engagementLevel}`);
-      console.log(`   Confidence Level: ${report.meta.confidenceLevel}`);
-      console.log(`   Response Consistency: ${report.meta.responseConsistency}`);
+// console.log('\n📊 Report Generated Successfully:');
+// console.log(`   Headline: ${report.executiveSummary.headline}`);
+// console.log(`   Engagement Level: ${report.meta.engagementLevel}`);
+// console.log(`   Confidence Level: ${report.meta.confidenceLevel}`);
+// console.log(`   Response Consistency: ${report.meta.responseConsistency}`);
 
       // Display key insights
       if (report.neurodiversityInsights.profile.adhd) {
-        console.log(`\n   ADHD Presence: ${Math.round(report.neurodiversityInsights.profile.adhd.presence * 100)}%`);
+// console.log(
+          `\n   ADHD Presence: ${Math.round(report.neurodiversityInsights.profile.adhd.presence * 100)}%`
+        );
       }
       if (report.neurodiversityInsights.profile.autism) {
-        console.log(`   Autism Presence: ${Math.round(report.neurodiversityInsights.profile.autism.presence * 100)}%`);
+// console.log(
+          `   Autism Presence: ${Math.round(report.neurodiversityInsights.profile.autism.presence * 100)}%`
+        );
       }
       if (report.hiddenStrengths.discovered.length > 0) {
-        console.log('\n   Hidden Strengths Discovered:');
+// console.log('\n   Hidden Strengths Discovered:');
         report.hiddenStrengths.discovered.forEach(strength => {
-          console.log(`   - ${strength.strength}`);
+// console.log(`   - ${strength.strength}`);
         });
       }
     }
 
-    console.log('\n' + '='.repeat(50));
-    console.log('✨ All tests completed successfully!');
-    console.log('='.repeat(50));
+// console.log('\n' + '='.repeat(50));
+// console.log('✨ All tests completed successfully!');
+// console.log('='.repeat(50));
 
     // Test pathway effectiveness
-    console.log('\n🔄 Testing Pathway Branching Effectiveness:');
+// console.log('\n🔄 Testing Pathway Branching Effectiveness:');
     await testPathwayBranching();
 
     await mongoose.disconnect();
     process.exit(0);
-
   } catch (error) {
     logger.error('Test failed:', error);
     process.exit(1);
@@ -215,8 +221,12 @@ function simulateResponses(questions, profile) {
         responseTime = 5000 + Math.random() * 5000; // Slower, more deliberate
       }
       if (question.subcategory === 'masking') {
-        score = profile.demographics.gender === 'female' ?
-          (Math.random() > 0.2 ? 4 + Math.floor(Math.random() * 2) : 3) : 3;
+        score =
+          profile.demographics.gender === 'female'
+            ? Math.random() > 0.2
+              ? 4 + Math.floor(Math.random() * 2)
+              : 3
+            : 3;
       }
       if (question.subcategory === 'special_interests') {
         score = Math.random() > 0.4 ? 5 : 3;
@@ -271,8 +281,8 @@ async function testPathwayBranching() {
   ];
 
   const adhdAnalysis = engine.analyzeResponsePatterns(adhdResponses);
-  console.log('\n   ADHD Pathway Test:');
-  console.log(`   - Activated: ${adhdAnalysis.pathwayActivations.adhd ? 'Yes ✅' : 'No ❌'}`);
+// console.log('\n   ADHD Pathway Test:');
+// console.log(`   - Activated: ${adhdAnalysis.pathwayActivations.adhd ? 'Yes ✅' : 'No ❌'}`);
 
   // Test Autism pathway activation
   const autismResponses = [
@@ -282,15 +292,15 @@ async function testPathwayBranching() {
   ];
 
   const autismAnalysis = engine.analyzeResponsePatterns(autismResponses);
-  console.log('\n   Autism Pathway Test:');
-  console.log(`   - Activated: ${autismAnalysis.pathwayActivations.autism ? 'Yes ✅' : 'No ❌'}`);
+// console.log('\n   Autism Pathway Test:');
+// console.log(`   - Activated: ${autismAnalysis.pathwayActivations.autism ? 'Yes ✅' : 'No ❌'}`);
 
   // Test AuDHD (combined) pathway
   const audhdResponses = [...adhdResponses, ...autismResponses];
   const audhdAnalysis = engine.analyzeResponsePatterns(audhdResponses);
-  console.log('\n   AuDHD Combined Pathway Test:');
-  console.log(`   - ADHD: ${audhdAnalysis.pathwayActivations.adhd ? 'Yes ✅' : 'No ❌'}`);
-  console.log(`   - Autism: ${audhdAnalysis.pathwayActivations.autism ? 'Yes ✅' : 'No ❌'}`);
+// console.log('\n   AuDHD Combined Pathway Test:');
+// console.log(`   - ADHD: ${audhdAnalysis.pathwayActivations.adhd ? 'Yes ✅' : 'No ❌'}`);
+// console.log(`   - Autism: ${audhdAnalysis.pathwayActivations.autism ? 'Yes ✅' : 'No ❌'}`);
 
   // Test hidden pattern detection
   const complexResponses = [
@@ -305,13 +315,13 @@ async function testPathwayBranching() {
     engine.analyzeResponsePatterns(complexResponses)
   );
 
-  console.log('\n   Hidden Pattern Detection:');
+// console.log('\n   Hidden Pattern Detection:');
   if (complexProfile.hiddenPatterns.length > 0) {
     complexProfile.hiddenPatterns.forEach(pattern => {
-      console.log(`   - ${pattern.type}: Detected ✅`);
+// console.log(`   - ${pattern.type}: Detected ✅`);
     });
   } else {
-    console.log('   - No hidden patterns detected');
+// console.log('   - No hidden patterns detected');
   }
 }
 

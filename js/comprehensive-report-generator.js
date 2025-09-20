@@ -37,12 +37,21 @@ export class ComprehensiveReportGenerator {
             'Risk of being too idealistic'
           ],
           careers: [
-            'Research Scientist', 'Artist/Designer', 'Writer/Journalist',
-            'Entrepreneur', 'Professor', 'Architect', 'Film Director',
-            'Marketing Creative', 'Philosopher', 'Innovation Consultant'
+            'Research Scientist',
+            'Artist/Designer',
+            'Writer/Journalist',
+            'Entrepreneur',
+            'Professor',
+            'Architect',
+            'Film Director',
+            'Marketing Creative',
+            'Philosopher',
+            'Innovation Consultant'
           ],
-          relationships: 'Values intellectual stimulation and deep conversations. Seeks partners who share curiosity and love of learning.',
-          growth: 'Focus on completing projects, developing practical skills, and balancing innovation with execution.'
+          relationships:
+            'Values intellectual stimulation and deep conversations. Seeks partners who share curiosity and love of learning.',
+          growth:
+            'Focus on completing projects, developing practical skills, and balancing innovation with execution.'
         },
         medium: {
           title: 'The Balanced Explorer',
@@ -107,12 +116,21 @@ export class ComprehensiveReportGenerator {
             'Can be overly critical'
           ],
           careers: [
-            'Executive/CEO', 'Project Manager', 'Accountant', 'Engineer',
-            'Surgeon', 'Financial Analyst', 'Quality Assurance Manager',
-            'Operations Director', 'Military Officer', 'Judge'
+            'Executive/CEO',
+            'Project Manager',
+            'Accountant',
+            'Engineer',
+            'Surgeon',
+            'Financial Analyst',
+            'Quality Assurance Manager',
+            'Operations Director',
+            'Military Officer',
+            'Judge'
           ],
-          relationships: 'Values commitment, reliability, and shared goals. Appreciates partners who are responsible and have clear life direction.',
-          growth: 'Practice flexibility, embrace imperfection when appropriate, and remember to celebrate progress not just completion.'
+          relationships:
+            'Values commitment, reliability, and shared goals. Appreciates partners who are responsible and have clear life direction.',
+          growth:
+            'Practice flexibility, embrace imperfection when appropriate, and remember to celebrate progress not just completion.'
         }
       },
       extraversion: {
@@ -141,12 +159,21 @@ export class ComprehensiveReportGenerator {
             'Difficulty with deep focus'
           ],
           careers: [
-            'Sales Director', 'Public Relations Manager', 'Event Coordinator',
-            'Teacher/Professor', 'Marketing Manager', 'TV Host/Presenter',
-            'Politician', 'Recruiter', 'Customer Success Manager', 'Tour Guide'
+            'Sales Director',
+            'Public Relations Manager',
+            'Event Coordinator',
+            'Teacher/Professor',
+            'Marketing Manager',
+            'TV Host/Presenter',
+            'Politician',
+            'Recruiter',
+            'Customer Success Manager',
+            'Tour Guide'
           ],
-          relationships: 'Seeks active, social partnerships with shared activities. Values open communication and social connections.',
-          growth: 'Develop active listening skills, practice mindful solitude, and create space for others to contribute.'
+          relationships:
+            'Seeks active, social partnerships with shared activities. Values open communication and social connections.',
+          growth:
+            'Develop active listening skills, practice mindful solitude, and create space for others to contribute.'
         }
       },
       agreeableness: {
@@ -175,12 +202,21 @@ export class ComprehensiveReportGenerator {
             'Struggle with tough decisions'
           ],
           careers: [
-            'Counselor/Therapist', 'Human Resources Manager', 'Social Worker',
-            'Nurse', 'Teacher', 'Non-profit Director', 'Mediator',
-            'Customer Service Manager', 'Team Coach', 'Chaplain'
+            'Counselor/Therapist',
+            'Human Resources Manager',
+            'Social Worker',
+            'Nurse',
+            'Teacher',
+            'Non-profit Director',
+            'Mediator',
+            'Customer Service Manager',
+            'Team Coach',
+            'Chaplain'
           ],
-          relationships: 'Creates warm, supportive partnerships based on mutual care and understanding. Values emotional connection and kindness.',
-          growth: 'Practice assertiveness, set healthy boundaries, and remember that self-care enables you to care for others.'
+          relationships:
+            'Creates warm, supportive partnerships based on mutual care and understanding. Values emotional connection and kindness.',
+          growth:
+            'Practice assertiveness, set healthy boundaries, and remember that self-care enables you to care for others.'
         }
       },
       neuroticism: {
@@ -202,8 +238,13 @@ export class ComprehensiveReportGenerator {
             'Emotional stability'
           ],
           careers: [
-            'Emergency Room Doctor', 'Air Traffic Controller', 'Military Leader',
-            'Crisis Manager', 'Pilot', 'Police Officer', 'Firefighter'
+            'Emergency Room Doctor',
+            'Air Traffic Controller',
+            'Military Leader',
+            'Crisis Manager',
+            'Pilot',
+            'Police Officer',
+            'Firefighter'
           ]
         },
         high: {
@@ -230,7 +271,8 @@ export class ComprehensiveReportGenerator {
             'Anxiety proneness',
             'Emotional overwhelm'
           ],
-          growth: 'Develop stress management techniques, practice self-compassion, and build emotional regulation skills.'
+          growth:
+            'Develop stress management techniques, practice self-compassion, and build emotional regulation skills.'
         }
       }
     };
@@ -315,7 +357,8 @@ export class ComprehensiveReportGenerator {
     this.archetypes = {
       VISIONARY_LEADER: {
         name: 'The Visionary Leader',
-        description: 'Natural born leaders who inspire others with compelling visions of the future',
+        description:
+          'Natural born leaders who inspire others with compelling visions of the future',
         traits: ['High Extraversion', 'High Openness', 'High Conscientiousness'],
         strengths: 'Strategic thinking, Inspiration, Innovation, Team building, Goal achievement',
         challenges: 'May overlook details, Risk of burnout, Can be demanding',
@@ -333,7 +376,8 @@ export class ComprehensiveReportGenerator {
       },
       ANALYTICAL_MASTERMIND: {
         name: 'The Analytical Mastermind',
-        description: 'Systematic thinkers who excel at understanding and optimizing complex systems',
+        description:
+          'Systematic thinkers who excel at understanding and optimizing complex systems',
         traits: ['High Conscientiousness', 'Low Extraversion', 'High Openness'],
         strengths: 'Analysis, Planning, Problem-solving, Focus, Objectivity',
         challenges: 'May seem detached, Perfectionism, Difficulty delegating',
@@ -396,8 +440,10 @@ export class ComprehensiveReportGenerator {
       personality: this.generatePersonalityAnalysis(traits),
 
       // Neurodiversity insights if applicable
-      neurodiversity: track === 'neurodiversity' ?
-        this.generateNeurodiversityAnalysis(neurodiversityScores) : null,
+      neurodiversity:
+        track === 'neurodiversity'
+          ? this.generateNeurodiversityAnalysis(neurodiversityScores)
+          : null,
 
       // Lateral thinking analysis
       cognitive: this.analyzeCognitivePatterns(responses, gamifiedMetrics),
@@ -457,7 +503,7 @@ export class ComprehensiveReportGenerator {
     };
   }
 
-  generateExecutiveSummary(traits, neurodiversityScores) {
+  generateExecutiveSummary(traits, _neurodiversityScores) {
     const topTraits = this.identifyTopTraits(traits);
     const keyStrengths = this.identifyKeyStrengths(traits);
     const growthAreas = this.identifyGrowthAreas(traits);
@@ -569,7 +615,7 @@ export class ComprehensiveReportGenerator {
     };
   }
 
-  determineComprehensiveArchetype(traits, neurodiversityScores) {
+  determineComprehensiveArchetype(traits, _neurodiversityScores) {
     let bestMatch = null;
     let highestScore = 0;
 
@@ -620,9 +666,9 @@ export class ComprehensiveReportGenerator {
     };
   }
 
-  generateDetailedRecommendations(traits, neurodiversityScores) {
+  generateDetailedRecommendations(traits, _neurodiversityScores) {
     return {
-      immediate: this.generateImmediateActions(traits, neurodiversityScores),
+      immediate: this.generateImmediateActions(traits, _neurodiversityScores),
       shortTerm: this.generateShortTermGoals(traits),
       longTerm: this.generateLongTermGoals(traits),
       books: this.recommendBooks(traits),
@@ -631,11 +677,11 @@ export class ComprehensiveReportGenerator {
       mindfulness: this.recommendMindfulnessPractices(traits),
       skills: this.recommendSkillDevelopment(traits),
       habits: this.recommendHabits(traits),
-      tools: this.recommendTools(traits, neurodiversityScores)
+      tools: this.recommendTools(traits, _neurodiversityScores)
     };
   }
 
-  generateCareerGuidance(traits, neurodiversityScores) {
+  generateCareerGuidance(traits, _neurodiversityScores) {
     const careerMatches = this.calculateCareerMatches(traits);
 
     return {
@@ -667,7 +713,7 @@ export class ComprehensiveReportGenerator {
     };
   }
 
-  generateGrowthPlan(traits, neurodiversityScores) {
+  generateGrowthPlan(traits, _neurodiversityScores) {
     return {
       priorities: this.identifyGrowthPriorities(traits),
       goals: {
@@ -679,31 +725,33 @@ export class ComprehensiveReportGenerator {
       exercises: this.generateGrowthExercises(traits),
       milestones: this.defineMilestones(traits),
       accountability: this.generateAccountabilityPlan(traits),
-      resources: this.compileGrowthResources(traits, neurodiversityScores),
+      resources: this.compileGrowthResources(traits, _neurodiversityScores),
       tracking: this.generateProgressTracking(traits)
     };
   }
 
-  prepareVisualizationData(traits, neurodiversityScores) {
+  prepareVisualizationData(traits, _neurodiversityScores) {
     return {
       radarChart: {
         labels: Object.keys(traits),
-        datasets: [{
-          label: 'Your Profile',
-          data: Object.values(traits),
-          borderColor: '#667eea',
-          backgroundColor: 'rgba(102, 126, 234, 0.2)'
-        }]
+        datasets: [
+          {
+            label: 'Your Profile',
+            data: Object.values(traits),
+            borderColor: '#667eea',
+            backgroundColor: 'rgba(102, 126, 234, 0.2)'
+          }
+        ]
       },
       barChart: {
         labels: Object.keys(traits),
-        datasets: [{
-          label: 'Trait Scores',
-          data: Object.values(traits),
-          backgroundColor: [
-            '#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe'
-          ]
-        }]
+        datasets: [
+          {
+            label: 'Trait Scores',
+            data: Object.values(traits),
+            backgroundColor: ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe']
+          }
+        ]
       },
       pieChart: this.generatePieChartData(traits),
       lineChart: this.generateProgressionData(traits),
@@ -846,14 +894,13 @@ export class ComprehensiveReportGenerator {
   }
 
   generatePersonalitySummary(traits) {
-    const topTrait = Object.entries(traits).sort(([,a], [,b]) => b - a)[0];
-    const summary = `Your personality assessment reveals a distinctive profile characterized by ${
-      topTrait[0].toLowerCase()
-    } (${Math.round(topTrait[1])}%). This suggests you are someone who ${
-      this.getTraitDescription(topTrait[0], topTrait[1])
-    }. Your unique combination of traits makes you well-suited for ${
-      this.getSuitableEnvironments(traits)
-    }.`;
+    const topTrait = Object.entries(traits).sort(([, a], [, b]) => b - a)[0];
+    const summary = `Your personality assessment reveals a distinctive profile characterized by ${topTrait[0].toLowerCase()} (${Math.round(topTrait[1])}%). This suggests you are someone who ${this.getTraitDescription(
+      topTrait[0],
+      topTrait[1]
+    )}. Your unique combination of traits makes you well-suited for ${this.getSuitableEnvironments(
+      traits
+    )}.`;
 
     return summary;
   }
@@ -912,7 +959,7 @@ export class ComprehensiveReportGenerator {
     const completionRate = this.calculateCompletionRate(responses);
     const consistency = this.assessResponseConsistency(responses);
 
-    const reliability = (completionRate * 0.6 + consistency * 0.4);
+    const reliability = completionRate * 0.6 + consistency * 0.4;
 
     if (reliability >= 90) return 'Excellent';
     if (reliability >= 75) return 'Good';
@@ -1003,9 +1050,9 @@ export class ComprehensiveReportGenerator {
         totalWeight += weight;
 
         if (level === 'High' && traitScore >= 60) {
-          matchScore += weight * (traitScore - 50) / 50;
+          matchScore += (weight * (traitScore - 50)) / 50;
         } else if (level === 'Low' && traitScore <= 40) {
-          matchScore += weight * (50 - traitScore) / 50;
+          matchScore += (weight * (50 - traitScore)) / 50;
         } else if (level === 'Medium' && traitScore >= 35 && traitScore <= 65) {
           matchScore += weight * (1 - Math.abs(50 - traitScore) / 50);
         }
@@ -1066,3 +1113,8 @@ export class ComprehensiveReportGenerator {
 }
 
 export default ComprehensiveReportGenerator;
+
+// Make available globally for non-module scripts
+if (typeof window !== 'undefined') {
+  window.ComprehensiveReportGenerator = ComprehensiveReportGenerator;
+}

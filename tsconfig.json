@@ -23,20 +23,8 @@
     "experimentalDecorators": true,
     "types": ["node", "express", "jest"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "coverage",
-    "logs",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "exclude": ["node_modules", "dist", "coverage", "logs", "**/*.spec.ts", "**/*.test.ts"],
   "ts-node": {
     "files": true
   }

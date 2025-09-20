@@ -4,7 +4,7 @@ require('dotenv').config();
 // Executive Function Assessment Questions
 const executiveFunctionQuestions = [
   {
-    text: "I start tasks right away rather than procrastinating",
+    text: 'I start tasks right away rather than procrastinating',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'task_initiation',
@@ -16,7 +16,7 @@ const executiveFunctionQuestions = [
     validatedInstrument: 'BRIEF-A'
   },
   {
-    text: "I lose track of time when engaged in activities I enjoy",
+    text: 'I lose track of time when engaged in activities I enjoy',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'time_blindness',
@@ -27,7 +27,7 @@ const executiveFunctionQuestions = [
     personalizationMarkers: ['hyperfocus_tendency', 'time_awareness']
   },
   {
-    text: "I need multiple alarms to ensure I wake up or remember appointments",
+    text: 'I need multiple alarms to ensure I wake up or remember appointments',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'working_memory',
@@ -38,7 +38,7 @@ const executiveFunctionQuestions = [
     personalizationMarkers: ['external_support_needs', 'memory_strategies']
   },
   {
-    text: "I can easily switch between different tasks without losing focus",
+    text: 'I can easily switch between different tasks without losing focus',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'cognitive_flexibility',
@@ -55,12 +55,12 @@ const executiveFunctionQuestions = [
     domain: 'organization',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { adhd_indicators: 0.5, visual_organization: 0.7 },
     personalizationMarkers: ['environmental_preferences', 'visual_organization']
   },
   {
-    text: "I use color-coding, lists, or apps extensively to manage daily life",
+    text: 'I use color-coding, lists, or apps extensively to manage daily life',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'compensatory_strategies',
@@ -82,7 +82,7 @@ const executiveFunctionQuestions = [
     personalizationMarkers: ['memory_challenges', 'visual_reminders']
   },
   {
-    text: "I struggle to estimate how long tasks will take",
+    text: 'I struggle to estimate how long tasks will take',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'time_estimation',
@@ -93,13 +93,13 @@ const executiveFunctionQuestions = [
     personalizationMarkers: ['planning_difficulties', 'time_management']
   },
   {
-    text: "I work better under pressure of deadlines",
+    text: 'I work better under pressure of deadlines',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'urgency_motivation',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { adhd_indicators: 0.7, urgency_driven: 0.9 },
     personalizationMarkers: ['motivation_style', 'pressure_response']
   },
@@ -115,18 +115,18 @@ const executiveFunctionQuestions = [
     personalizationMarkers: ['interest_sustainability', 'project_patterns']
   },
   {
-    text: "I need complete silence to concentrate",
+    text: 'I need complete silence to concentrate',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'attention_regulation',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { attention_sensitivity: 0.8, environmental_needs: 0.7 },
     personalizationMarkers: ['focus_requirements', 'environmental_control']
   },
   {
-    text: "I can juggle multiple thoughts simultaneously",
+    text: 'I can juggle multiple thoughts simultaneously',
     category: 'neurodiversity',
     subcategory: 'executive_function',
     domain: 'cognitive_load',
@@ -141,7 +141,7 @@ const executiveFunctionQuestions = [
 // Sensory Processing Profile Questions
 const sensoryProcessingQuestions = [
   {
-    text: "Clothing tags, seams, or certain fabrics cause me significant discomfort",
+    text: 'Clothing tags, seams, or certain fabrics cause me significant discomfort',
     category: 'neurodiversity',
     subcategory: 'sensory_processing',
     domain: 'tactile_sensitivity',
@@ -175,7 +175,7 @@ const sensoryProcessingQuestions = [
     personalizationMarkers: ['noise_sensitivity', 'concentration_needs']
   },
   {
-    text: "I seek out intense physical sensations (deep pressure, strong flavors, loud music)",
+    text: 'I seek out intense physical sensations (deep pressure, strong flavors, loud music)',
     category: 'neurodiversity',
     subcategory: 'sensory_processing',
     domain: 'sensory_seeking',
@@ -186,7 +186,7 @@ const sensoryProcessingQuestions = [
     personalizationMarkers: ['regulation_strategies', 'sensory_diet_needs']
   },
   {
-    text: "Unexpected light touches make me jump or feel irritated",
+    text: 'Unexpected light touches make me jump or feel irritated',
     category: 'neurodiversity',
     subcategory: 'sensory_processing',
     domain: 'tactile_defensiveness',
@@ -197,7 +197,7 @@ const sensoryProcessingQuestions = [
     personalizationMarkers: ['personal_space_needs', 'touch_preferences']
   },
   {
-    text: "Certain food textures make eating difficult for me",
+    text: 'Certain food textures make eating difficult for me',
     category: 'neurodiversity',
     subcategory: 'sensory_processing',
     domain: 'oral_sensitivity',
@@ -208,7 +208,7 @@ const sensoryProcessingQuestions = [
     personalizationMarkers: ['food_preferences', 'texture_sensitivity']
   },
   {
-    text: "I become overwhelmed in busy stores or crowded spaces",
+    text: 'I become overwhelmed in busy stores or crowded spaces',
     category: 'neurodiversity',
     subcategory: 'sensory_processing',
     domain: 'sensory_overload',
@@ -219,7 +219,7 @@ const sensoryProcessingQuestions = [
     personalizationMarkers: ['environmental_tolerance', 'crowd_sensitivity']
   },
   {
-    text: "I need weighted blankets or tight clothing to feel calm",
+    text: 'I need weighted blankets or tight clothing to feel calm',
     category: 'neurodiversity',
     subcategory: 'sensory_processing',
     domain: 'proprioceptive_seeking',
@@ -241,7 +241,7 @@ const sensoryProcessingQuestions = [
     personalizationMarkers: ['sound_sensitivity', 'environmental_awareness']
   },
   {
-    text: "Strong smells (perfumes, cleaning products) give me headaches or nausea",
+    text: 'Strong smells (perfumes, cleaning products) give me headaches or nausea',
     category: 'neurodiversity',
     subcategory: 'sensory_processing',
     domain: 'olfactory_sensitivity',
@@ -256,7 +256,7 @@ const sensoryProcessingQuestions = [
 // Masking and Camouflaging Assessment
 const maskingQuestions = [
   {
-    text: "I rehearse conversations in my head before social interactions",
+    text: 'I rehearse conversations in my head before social interactions',
     category: 'neurodiversity',
     subcategory: 'masking',
     domain: 'social_preparation',
@@ -301,7 +301,7 @@ const maskingQuestions = [
     personalizationMarkers: ['social_strategies', 'identity_suppression']
   },
   {
-    text: "People are surprised when I tell them I struggle socially",
+    text: 'People are surprised when I tell them I struggle socially',
     category: 'neurodiversity',
     subcategory: 'masking',
     domain: 'masking_success',
@@ -312,7 +312,7 @@ const maskingQuestions = [
     personalizationMarkers: ['invisible_struggles', 'support_needs']
   },
   {
-    text: "I have different personas for different social situations",
+    text: 'I have different personas for different social situations',
     category: 'neurodiversity',
     subcategory: 'masking',
     domain: 'social_switching',
@@ -340,7 +340,7 @@ const maskingQuestions = [
     domain: 'social_learning',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { autism_indicators: 0.8, analytical_social: 0.9 },
     personalizationMarkers: ['social_learning_style', 'rule_based_social']
   },
@@ -356,7 +356,7 @@ const maskingQuestions = [
     personalizationMarkers: ['social_performance', 'authenticity_cost']
   },
   {
-    text: "I need recovery time alone after masking in social situations",
+    text: 'I need recovery time alone after masking in social situations',
     category: 'neurodiversity',
     subcategory: 'masking',
     domain: 'recovery_needs',
@@ -371,7 +371,7 @@ const maskingQuestions = [
 // Emotional Regulation and Alexithymia
 const emotionalRegulationQuestions = [
   {
-    text: "I can identify and name my emotions as I experience them",
+    text: 'I can identify and name my emotions as I experience them',
     category: 'neurodiversity',
     subcategory: 'emotional_regulation',
     domain: 'emotional_awareness',
@@ -394,7 +394,7 @@ const emotionalRegulationQuestions = [
     personalizationMarkers: ['body_awareness', 'need_recognition']
   },
   {
-    text: "My emotional reactions feel too big for the situation",
+    text: 'My emotional reactions feel too big for the situation',
     category: 'neurodiversity',
     subcategory: 'emotional_regulation',
     domain: 'emotional_intensity',
@@ -405,7 +405,7 @@ const emotionalRegulationQuestions = [
     personalizationMarkers: ['regulation_difficulty', 'dysregulation_risk']
   },
   {
-    text: "I need time alone to process emotional experiences",
+    text: 'I need time alone to process emotional experiences',
     category: 'neurodiversity',
     subcategory: 'emotional_regulation',
     domain: 'processing_style',
@@ -427,7 +427,7 @@ const emotionalRegulationQuestions = [
     personalizationMarkers: ['expression_differences', 'communication_style']
   },
   {
-    text: "I experience emotions as physical sensations in my body",
+    text: 'I experience emotions as physical sensations in my body',
     category: 'neurodiversity',
     subcategory: 'emotional_regulation',
     domain: 'somatic_experience',
@@ -438,7 +438,7 @@ const emotionalRegulationQuestions = [
     personalizationMarkers: ['somatic_processing', 'body_emotion_connection']
   },
   {
-    text: "I struggle to describe my feelings to others",
+    text: 'I struggle to describe my feelings to others',
     category: 'neurodiversity',
     subcategory: 'emotional_regulation',
     domain: 'emotional_communication',
@@ -449,7 +449,7 @@ const emotionalRegulationQuestions = [
     personalizationMarkers: ['emotional_vocabulary', 'expression_challenges']
   },
   {
-    text: "My mood can shift rapidly without clear triggers",
+    text: 'My mood can shift rapidly without clear triggers',
     category: 'neurodiversity',
     subcategory: 'emotional_regulation',
     domain: 'mood_stability',
@@ -460,7 +460,7 @@ const emotionalRegulationQuestions = [
     personalizationMarkers: ['mood_patterns', 'stability_needs']
   },
   {
-    text: "I use logic to understand emotions rather than feeling them directly",
+    text: 'I use logic to understand emotions rather than feeling them directly',
     category: 'neurodiversity',
     subcategory: 'emotional_regulation',
     domain: 'cognitive_processing',
@@ -486,7 +486,7 @@ const emotionalRegulationQuestions = [
 // Cognitive Flexibility and Learning Style
 const cognitiveFlexibilityQuestions = [
   {
-    text: "I see patterns and connections others miss",
+    text: 'I see patterns and connections others miss',
     category: 'cognitive',
     subcategory: 'pattern_recognition',
     domain: 'cognitive_strength',
@@ -497,18 +497,18 @@ const cognitiveFlexibilityQuestions = [
     personalizationMarkers: ['cognitive_strengths', 'thinking_style']
   },
   {
-    text: "I learn best through hands-on experimentation rather than instruction",
+    text: 'I learn best through hands-on experimentation rather than instruction',
     category: 'cognitive',
     subcategory: 'learning_style',
     domain: 'kinesthetic_learning',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { kinesthetic_learning: 0.9, experiential_learning: 0.8 },
     personalizationMarkers: ['educational_needs', 'skill_acquisition']
   },
   {
-    text: "I can hyperfocus for hours on topics that interest me",
+    text: 'I can hyperfocus for hours on topics that interest me',
     category: 'cognitive',
     subcategory: 'attention_regulation',
     domain: 'hyperfocus',
@@ -519,7 +519,7 @@ const cognitiveFlexibilityQuestions = [
     personalizationMarkers: ['focus_patterns', 'interest_intensity']
   },
   {
-    text: "I think in pictures rather than words",
+    text: 'I think in pictures rather than words',
     category: 'cognitive',
     subcategory: 'thinking_style',
     domain: 'visual_thinking',
@@ -547,12 +547,12 @@ const cognitiveFlexibilityQuestions = [
     domain: 'conceptual_learning',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { deep_learning: 0.8, conceptual_thinking: 0.9 },
     personalizationMarkers: ['learning_approach', 'understanding_needs']
   },
   {
-    text: "I process information better when I can move or fidget",
+    text: 'I process information better when I can move or fidget',
     category: 'cognitive',
     subcategory: 'processing_style',
     domain: 'movement_processing',
@@ -563,7 +563,7 @@ const cognitiveFlexibilityQuestions = [
     personalizationMarkers: ['movement_needs', 'processing_aids']
   },
   {
-    text: "I remember conversations word-for-word but struggle with the overall meaning",
+    text: 'I remember conversations word-for-word but struggle with the overall meaning',
     category: 'cognitive',
     subcategory: 'memory_style',
     domain: 'detail_memory',
@@ -574,18 +574,18 @@ const cognitiveFlexibilityQuestions = [
     personalizationMarkers: ['memory_style', 'processing_differences']
   },
   {
-    text: "I think in systems and frameworks rather than isolated facts",
+    text: 'I think in systems and frameworks rather than isolated facts',
     category: 'cognitive',
     subcategory: 'thinking_style',
     domain: 'systems_thinking',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { systems_thinking: 0.9, analytical_mind: 0.8 },
     personalizationMarkers: ['cognitive_approach', 'problem_solving_style']
   },
   {
-    text: "I need complete information before making decisions",
+    text: 'I need complete information before making decisions',
     category: 'cognitive',
     subcategory: 'decision_making',
     domain: 'information_processing',
@@ -596,7 +596,7 @@ const cognitiveFlexibilityQuestions = [
     personalizationMarkers: ['decision_style', 'information_needs']
   },
   {
-    text: "My mind makes unusual connections between unrelated concepts",
+    text: 'My mind makes unusual connections between unrelated concepts',
     category: 'cognitive',
     subcategory: 'creative_thinking',
     domain: 'divergent_thinking',
@@ -607,7 +607,7 @@ const cognitiveFlexibilityQuestions = [
     personalizationMarkers: ['creative_style', 'innovation_potential']
   },
   {
-    text: "I struggle with open-ended tasks but excel with clear parameters",
+    text: 'I struggle with open-ended tasks but excel with clear parameters',
     category: 'cognitive',
     subcategory: 'task_approach',
     domain: 'structure_needs',
@@ -622,7 +622,7 @@ const cognitiveFlexibilityQuestions = [
 // Rejection Sensitivity and Social Processing
 const socialProcessingQuestions = [
   {
-    text: "Criticism feels physically painful to me",
+    text: 'Criticism feels physically painful to me',
     category: 'neurodiversity',
     subcategory: 'social_processing',
     domain: 'rejection_sensitivity',
@@ -633,7 +633,7 @@ const socialProcessingQuestions = [
     personalizationMarkers: ['emotional_vulnerability', 'feedback_sensitivity']
   },
   {
-    text: "I analyze social interactions for days afterward, looking for mistakes",
+    text: 'I analyze social interactions for days afterward, looking for mistakes',
     category: 'neurodiversity',
     subcategory: 'social_processing',
     domain: 'social_rumination',
@@ -666,7 +666,7 @@ const socialProcessingQuestions = [
     personalizationMarkers: ['cognitive_load', 'social_capacity']
   },
   {
-    text: "I avoid situations where I might be rejected or embarrassed",
+    text: 'I avoid situations where I might be rejected or embarrassed',
     category: 'neurodiversity',
     subcategory: 'social_processing',
     domain: 'avoidance',
@@ -677,7 +677,7 @@ const socialProcessingQuestions = [
     personalizationMarkers: ['risk_aversion', 'safety_behaviors']
   },
   {
-    text: "I interpret neutral expressions as negative",
+    text: 'I interpret neutral expressions as negative',
     category: 'neurodiversity',
     subcategory: 'social_processing',
     domain: 'interpretation_bias',
@@ -688,7 +688,7 @@ const socialProcessingQuestions = [
     personalizationMarkers: ['cognitive_bias', 'threat_perception']
   },
   {
-    text: "I need explicit confirmation that people like me",
+    text: 'I need explicit confirmation that people like me',
     category: 'neurodiversity',
     subcategory: 'social_processing',
     domain: 'reassurance_seeking',
@@ -699,7 +699,7 @@ const socialProcessingQuestions = [
     personalizationMarkers: ['validation_needs', 'relationship_anxiety']
   },
   {
-    text: "Small social mistakes feel catastrophic to me",
+    text: 'Small social mistakes feel catastrophic to me',
     category: 'neurodiversity',
     subcategory: 'social_processing',
     domain: 'catastrophizing',
@@ -714,7 +714,7 @@ const socialProcessingQuestions = [
 // Special Interests and Monotropism
 const specialInterestsQuestions = [
   {
-    text: "I have topics I could discuss for hours without getting bored",
+    text: 'I have topics I could discuss for hours without getting bored',
     category: 'neurodiversity',
     subcategory: 'special_interests',
     domain: 'interest_intensity',
@@ -725,7 +725,7 @@ const specialInterestsQuestions = [
     personalizationMarkers: ['passion_areas', 'expertise_domains']
   },
   {
-    text: "When interested in something, I need to know EVERYTHING about it",
+    text: 'When interested in something, I need to know EVERYTHING about it',
     category: 'neurodiversity',
     subcategory: 'special_interests',
     domain: 'information_seeking',
@@ -753,12 +753,12 @@ const specialInterestsQuestions = [
     domain: 'intensity',
     type: 'likert',
     options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
-    scoring: { 'Strongly Disagree': 1, 'Disagree': 2, 'Neutral': 3, 'Agree': 4, 'Strongly Agree': 5 },
+    scoring: { 'Strongly Disagree': 1, Disagree: 2, Neutral: 3, Agree: 4, 'Strongly Agree': 5 },
     traits: { autism_indicators: 0.8, passion_intensity: 0.9 },
     personalizationMarkers: ['interest_depth', 'engagement_level']
   },
   {
-    text: "I collect information about my interests compulsively",
+    text: 'I collect information about my interests compulsively',
     category: 'neurodiversity',
     subcategory: 'special_interests',
     domain: 'information_collecting',
@@ -769,7 +769,7 @@ const specialInterestsQuestions = [
     personalizationMarkers: ['information_gathering', 'systematic_learning']
   },
   {
-    text: "I lose track of basic needs when engaged in my interests",
+    text: 'I lose track of basic needs when engaged in my interests',
     category: 'neurodiversity',
     subcategory: 'special_interests',
     domain: 'hyperfocus_cost',
@@ -785,23 +785,26 @@ const specialInterestsQuestions = [
 async function seedExpandedQuestions() {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log('Connected to MongoDB');
+// console.log('Connected to MongoDB');
 
-    const Question = mongoose.model('Question', new mongoose.Schema({
-      text: String,
-      category: String,
-      subcategory: String,
-      domain: String,
-      type: String,
-      options: [String],
-      scoring: mongoose.Schema.Types.Mixed,
-      traits: mongoose.Schema.Types.Mixed,
-      personalizationMarkers: [String],
-      validatedInstrument: String,
-      reverseScored: Boolean,
-      createdAt: { type: Date, default: Date.now },
-      updatedAt: { type: Date, default: Date.now }
-    }));
+    const Question = mongoose.model(
+      'Question',
+      new mongoose.Schema({
+        text: String,
+        category: String,
+        subcategory: String,
+        domain: String,
+        type: String,
+        options: [String],
+        scoring: mongoose.Schema.Types.Mixed,
+        traits: mongoose.Schema.Types.Mixed,
+        personalizationMarkers: [String],
+        validatedInstrument: String,
+        reverseScored: Boolean,
+        createdAt: { type: Date, default: Date.now },
+        updatedAt: { type: Date, default: Date.now }
+      })
+    );
 
     // Combine all new questions
     const allNewQuestions = [
@@ -814,18 +817,17 @@ async function seedExpandedQuestions() {
       ...specialInterestsQuestions
     ];
 
-    console.log(`Seeding ${allNewQuestions.length} expanded assessment questions...`);
+// console.log(`Seeding ${allNewQuestions.length} expanded assessment questions...`);
 
     // Insert questions
     for (const question of allNewQuestions) {
-      await Question.findOneAndUpdate(
-        { text: question.text },
-        question,
-        { upsert: true, new: true }
-      );
+      await Question.findOneAndUpdate({ text: question.text }, question, {
+        upsert: true,
+        new: true
+      });
     }
 
-    console.log('Successfully seeded expanded questions!');
+// console.log('Successfully seeded expanded questions!');
 
     // Print statistics
     const categories = {};
@@ -834,9 +836,9 @@ async function seedExpandedQuestions() {
       categories[key] = (categories[key] || 0) + 1;
     });
 
-    console.log('\nQuestion distribution:');
+// console.log('\nQuestion distribution:');
     Object.entries(categories).forEach(([cat, count]) => {
-      console.log(`  ${cat}: ${count} questions`);
+// console.log(`  ${cat}: ${count} questions`);
     });
 
     process.exit(0);

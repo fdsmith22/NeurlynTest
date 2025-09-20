@@ -3,4 +3,4 @@ module.exports = function handler(req, res) {
     status: 'healthy',
     timestamp: new Date().toISOString()
   });
-}
+};

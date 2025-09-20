@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment - Neurlyn</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/neurlyn-navigation.css">
+    <link rel="stylesheet" href="styles/neurlyn-assessment.css">
+    <link rel="stylesheet" href="styles/neurlyn-personality.css">
+    <style>
+        .assessment-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .assessment-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .assessment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .assessment-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .assessment-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .assessment-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .assessment-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .start-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        .start-button:hover {
+            background: #45a049;
+        }
+        #assessment-content {
+            display: none;
+        }
+        .question-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .progress-bar {
+            background: #f0f0f0;
+            border-radius: 8px;
+            height: 8px;
+            margin-bottom: 2rem;
+        }
+        .progress-fill {
+            background: #4CAF50;
+            height: 100%;
+            border-radius: 8px;
+            transition: width 0.3s;
+        }
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .answer-options {
+            display: grid;
+            gap: 1rem;
+        }
+        .answer-option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .answer-option:hover {
+            border-color: #4CAF50;
+            background: #f5fff5;
+        }
+        .answer-option.selected {
+            border-color: #4CAF50;
+            background: #e8f5e9;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .prev-button {
+            background: #9e9e9e;
+            color: white;
+        }
+        .next-button {
+            background: #4CAF50;
+            color: white;
+        }
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">Neurlyn</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="assessment.html" class="nav-link active">Assessment</a>
+                <a href="support.html" class="nav-link">Support</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="assessment-container">
+        <!-- Assessment Selection -->
+        <div id="assessment-selection">
+            <div class="assessment-header">
+                <h1>Choose Your Assessment</h1>
+                <p>Select the assessment type that best fits your needs</p>
+            </div>
+
+            <div class="assessment-options">
+                <div class="assessment-card" data-type="free">
+                    <h3>Free Assessment</h3>
+                    <p>Smart 20-question adaptive assessment with core personality insights</p>
+                    <ul>
+                        <li>Adaptive question selection</li>
+                        <li>Big Five personality traits</li>
+                        <li>Instant personalized report</li>
+                    </ul>
+                    <button class="start-button" onclick="startAssessment('free')">Start Free Assessment</button>
+                </div>
+
+                <div class="assessment-card" data-type="complete">
+                    <h3>Complete Analysis</h3>
+                    <p>Complete 75-question adaptive assessment with comprehensive analysis</p>
+                    <ul>
+                        <li>Full neurodiversity screening</li>
+                        <li>Hidden strengths discovery</li>
+                        <li>15-section detailed report</li>
+                        <li>Personalized strategies</li>
+                    </ul>
+                    <button class="start-button" onclick="startAssessment('complete')">Start Complete Analysis</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Content -->
+        <div id="assessment-content">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div class="question-container">
+                <h2 class="question-text" id="question-text">Loading question...</h2>
+
+                <div class="answer-options" id="answer-options">
+                    <!-- Options will be dynamically added -->
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-button prev-button" id="prev-button" onclick="previousQuestion()" disabled>Previous</button>
+                    <button class="nav-button next-button" id="next-button" onclick="nextQuestion()" disabled>Next</button>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <p id="question-counter">Question 1 of 20</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/neurlyn-api-integrated.js"></script>
+    <script src="js/neurlyn-enhanced.js"></script>
+    <script>
+        let currentQuestion = 0;
+        let assessmentType = '';
+        let totalQuestions = 20;
+        let responses = [];
+
+        function startAssessment(type) {
+            assessmentType = type;
+            totalQuestions = type === 'free' ? 20 : 75;
+            currentQuestion = 0;
+            responses = [];
+
+            // Hide selection, show assessment
+            document.getElementById('assessment-selection').style.display = 'none';
+            document.getElementById('assessment-content').style.display = 'block';
+
+            // Load first question
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            // Sample questions for demo
+            const sampleQuestions = [
+                {
+                    text: "I enjoy large social gatherings and meeting new people.",
+                    options: [
+                        "Strongly Disagree",
+                        "Disagree",
+                        "Neutral",
+                        "Agree",
+                        "Strongly Agree"
+                    ]
+                },
+                {
+                    text: "I prefer to plan things out in detail before starting.",
+                    options: [
+                        "Strongly Disagree",
+                        "Disagree",
+                        "Neutral",
+                        "Agree",
+                        "Strongly Agree"
+                    ]
+                },
+                {
+                    text: "I find it easy to empathize with others' emotions.",
+                    options: [
+                        "Strongly Disagree",
+                        "Disagree",
+                        "Neutral",
+                        "Agree",
+                        "Strongly Agree"
+                    ]
+                }
+            ];
+
+            const question = sampleQuestions[currentQuestion % sampleQuestions.length];
+
+            document.getElementById('question-text').textContent = question.text;
+            document.getElementById('question-counter').textContent = `Question ${currentQuestion + 1} of ${totalQuestions}`;
+
+            // Update progress
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+
+            // Clear and populate options
+            const optionsContainer = document.getElementById('answer-options');
+            optionsContainer.innerHTML = '';
+
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'answer-option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => selectAnswer(index, optionDiv);
+                optionsContainer.appendChild(optionDiv);
+            });
+
+            // Update navigation buttons
+            document.getElementById('prev-button').disabled = currentQuestion === 0;
+            document.getElementById('next-button').disabled = true;
+
+            if (currentQuestion === totalQuestions - 1) {
+                document.getElementById('next-button').textContent = 'Complete';
+            }
+        }
+
+        function selectAnswer(index, element) {
+            // Clear previous selection
+            document.querySelectorAll('.answer-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Mark selected
+            element.classList.add('selected');
+
+            // Store response
+            responses[currentQuestion] = index;
+
+            // Enable next button
+            document.getElementById('next-button').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                completeAssessment();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+
+                // Restore previous selection if exists
+                if (responses[currentQuestion] !== undefined) {
+                    const options = document.querySelectorAll('.answer-option');
+                    options[responses[currentQuestion]].classList.add('selected');
+                    document.getElementById('next-button').disabled = false;
+                }
+            }
+        }
+
+        function completeAssessment() {
+            // Show completion message
+            document.getElementById('assessment-content').innerHTML = `
+                <div style="text-align: center; padding: 3rem;">
+                    <h2>Assessment Complete!</h2>
+                    <p>Thank you for completing the ${assessmentType} assessment.</p>
+                    <p>Your personalized report is being generated...</p>
+                    <div style="margin-top: 2rem;">
+                        <button class="start-button" onclick="location.href='index.html'">Return to Home</button>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

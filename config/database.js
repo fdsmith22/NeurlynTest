@@ -28,7 +28,7 @@ class Database {
 
       // Retry logic
       retryWrites: true,
-      retryReads: true,
+      retryReads: true
     };
 
     // Connection event handlers
@@ -37,7 +37,7 @@ class Database {
       this.isConnected = true;
     });
 
-    mongoose.connection.on('error', (err) => {
+    mongoose.connection.on('error', err => {
       logger.error('MongoDB connection error:', err);
       this.isConnected = false;
     });
@@ -70,7 +70,6 @@ class Database {
 
       logger.info('Database connection established');
       this.isConnected = true;
-
     } catch (error) {
       logger.error(`Database connection attempt ${attempt} failed:`, error.message);
 

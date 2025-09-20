@@ -65,14 +65,15 @@ class StorageService {
    */
   setItem(key, value, stringify = true) {
     const prefixedKey = this.prefix + key;
+    const dataToStore = stringify
+      ? JSON.stringify({
+          data: value,
+          _version: this.version,
+          _timestamp: Date.now()
+        })
+      : value;
 
     try {
-      const dataToStore = stringify ? JSON.stringify({
-        data: value,
-        _version: this.version,
-        _timestamp: Date.now()
-      }) : value;
-
       if (this.isStorageAvailable) {
         localStorage.setItem(prefixedKey, dataToStore);
       } else {
@@ -192,7 +193,7 @@ class StorageService {
             try {
               const item = localStorage.getItem(key);
               const parsed = JSON.parse(item);
-              if (parsed._timestamp && (now - parsed._timestamp) > maxAge) {
+              if (parsed._timestamp && now - parsed._timestamp > maxAge) {
                 localStorage.removeItem(key);
                 cleaned++;
               }
@@ -207,7 +208,7 @@ class StorageService {
           if (key.startsWith(this.prefix)) {
             try {
               const parsed = JSON.parse(value);
-              if (parsed._timestamp && (now - parsed._timestamp) > maxAge) {
+              if (parsed._timestamp && now - parsed._timestamp > maxAge) {
                 keysToDelete.push(key);
                 cleaned++;
               }
@@ -229,7 +230,7 @@ class StorageService {
    * Session storage operations
    */
   session = {
-    getItem: (key) => {
+    getItem: key => {
       const prefixedKey = this.prefix + key;
       try {
         return sessionStorage.getItem(prefixedKey);
@@ -247,7 +248,7 @@ class StorageService {
       }
     },
 
-    removeItem: (key) => {
+    removeItem: key => {
       const prefixedKey = this.prefix + key;
       try {
         sessionStorage.removeItem(prefixedKey);
@@ -272,10 +273,7 @@ class StorageService {
   handleError(operation, error) {
     // In production, send to error tracking service
     if (window.performanceUtils && window.performanceUtils.showNotification) {
-      window.performanceUtils.showNotification(
-        `Storage operation failed: ${operation}`,
-        'error'
-      );
+      window.performanceUtils.showNotification(`Storage operation failed: ${operation}`, 'error');
     }
   }
 

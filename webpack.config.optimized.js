@@ -36,11 +36,14 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', {
-                useBuiltIns: 'entry',
-                corejs: 3,
-                modules: false
-              }],
+              [
+                '@babel/preset-env',
+                {
+                  useBuiltIns: 'entry',
+                  corejs: 3,
+                  modules: false
+                }
+              ],
               '@babel/preset-typescript'
             ],
             cacheDirectory: true
@@ -114,20 +117,22 @@ module.exports = {
     }),
 
     // Compression in production
-    !isDevelopment && new CompressionPlugin({
-      filename: '[path][base].gz',
-      algorithm: 'gzip',
-      test: /\.(js|css|html|svg)$/,
-      threshold: 10240, // 10kb
-      minRatio: 0.8
-    }),
+    !isDevelopment &&
+      new CompressionPlugin({
+        filename: '[path][base].gz',
+        algorithm: 'gzip',
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240, // 10kb
+        minRatio: 0.8
+      }),
 
     // Bundle analyzer
-    isAnalyze && new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: true,
-      reportFilename: '../bundle-report.html'
-    })
+    isAnalyze &&
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        openAnalyzer: true,
+        reportFilename: '../bundle-report.html'
+      })
   ].filter(Boolean),
 
   optimization: {

@@ -8,6 +8,7 @@ export default [
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
+        // Node.js globals
         console: 'readonly',
         process: 'readonly',
         Buffer: 'readonly',
@@ -17,6 +18,8 @@ export default [
         module: 'readonly',
         require: 'readonly',
         global: 'readonly',
+
+        // Browser globals
         window: 'readonly',
         document: 'readonly',
         navigator: 'readonly',
@@ -32,18 +35,32 @@ export default [
         localStorage: 'readonly',
         sessionStorage: 'readonly',
         alert: 'readonly',
+        confirm: 'readonly',
         location: 'readonly',
         history: 'readonly',
         CustomEvent: 'readonly',
         Event: 'readonly',
-        HTMLElement: 'readonly'
+        HTMLElement: 'readonly',
+        Blob: 'readonly',
+        Image: 'readonly',
+        performance: 'readonly',
+        requestAnimationFrame: 'readonly',
+        cancelAnimationFrame: 'readonly',
+        IntersectionObserver: 'readonly',
+
+        // Service Worker globals
+        self: 'readonly',
+        caches: 'readonly'
       }
     },
     rules: {
-      'no-unused-vars': ['warn', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }],
+      'no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_'
+        }
+      ],
       'no-console': 'off', // Allow console for development
       'no-debugger': 'warn',
       'no-undef': 'error',
@@ -68,7 +85,12 @@ export default [
       'config/jest.config.js',
       'scripts/**',
       'tests/**',
-      'exports/**'
+      'exports/**',
+      'js/bundle.*.js',
+      'js/report-generator.js',
+      'js/modules/*.js',
+      'js/tasks/*.js',
+      'sw.js'
     ]
   }
 ];

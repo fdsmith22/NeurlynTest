@@ -11,17 +11,17 @@
     box-shadow: none !important;
     text-shadow: none !important;
   }
-  
+
   /* Page setup */
   @page {
     margin: 2cm;
     size: A4;
   }
-  
+
   @page :first {
     margin-top: 3cm;
   }
-  
+
   /* Hide non-printable elements */
   .theme-toggle,
   .skip-link,
@@ -38,7 +38,7 @@
   #question-screen {
     display: none !important;
   }
-  
+
   /* Body and container */
   body {
     font-family: 'Georgia', 'Times New Roman', serif;
@@ -46,16 +46,16 @@
     line-height: 1.6;
     background: white;
   }
-  
+
   body::before {
     display: none;
   }
-  
+
   .container {
     max-width: 100%;
     padding: 0;
   }
-  
+
   /* Header styling */
   .header {
     text-align: center;
@@ -63,7 +63,7 @@
     border-bottom: 2pt solid #000;
     margin-bottom: 20pt;
   }
-  
+
   .brand {
     font-size: 24pt;
     font-weight: bold;
@@ -71,18 +71,18 @@
     background: none !important;
     -webkit-text-fill-color: #000 !important;
   }
-  
+
   .tagline {
     font-size: 12pt;
     font-style: italic;
   }
-  
+
   /* Results Screen - Always visible in print */
   #results-screen {
     display: block !important;
     page-break-before: avoid;
   }
-  
+
   /* Results header */
   #results-screen h2 {
     font-size: 18pt;
@@ -91,31 +91,31 @@
     text-align: center;
     page-break-after: avoid;
   }
-  
+
   /* Results grid */
   .results-grid {
     display: block;
   }
-  
+
   .result-item {
     margin-bottom: 15pt;
     page-break-inside: avoid;
     border: 1pt solid #ddd;
     padding: 10pt;
   }
-  
+
   .result-item h4 {
     font-size: 14pt;
     font-weight: bold;
     margin-bottom: 8pt;
     page-break-after: avoid;
   }
-  
+
   /* Result visualization for print */
   .result-visualization {
     margin: 10pt 0;
   }
-  
+
   .result-bar {
     height: 20pt;
     border: 1pt solid #000;
@@ -123,36 +123,30 @@
     position: relative;
     margin-bottom: 5pt;
   }
-  
+
   .result-fill {
-    background: repeating-linear-gradient(
-      45deg,
-      #000,
-      #000 2pt,
-      #fff 2pt,
-      #fff 4pt
-    ) !important;
+    background: repeating-linear-gradient(45deg, #000, #000 2pt, #fff 2pt, #fff 4pt) !important;
     height: 100%;
     transition: none !important;
   }
-  
+
   .result-details {
     display: flex;
     justify-content: space-between;
     font-size: 10pt;
   }
-  
+
   .result-percentage {
     font-weight: bold;
   }
-  
+
   .result-interpretation {
     font-size: 10pt;
     line-height: 1.4;
     margin-top: 8pt;
     font-style: italic;
   }
-  
+
   /* Summary section */
   .results-summary {
     margin-top: 20pt;
@@ -160,17 +154,17 @@
     border-top: 1pt solid #000;
     page-break-inside: avoid;
   }
-  
+
   .results-summary h3 {
     font-size: 14pt;
     margin-bottom: 10pt;
   }
-  
+
   .results-summary p {
     font-size: 10pt;
     margin-bottom: 5pt;
   }
-  
+
   /* Footer for print */
   .footer {
     position: fixed;
@@ -182,26 +176,26 @@
     padding: 10pt 0;
     border-top: 1pt solid #000;
   }
-  
+
   /* Page numbers */
   .footer::after {
-    content: "Page " counter(page);
+    content: 'Page ' counter(page);
     position: absolute;
     right: 20pt;
   }
-  
+
   /* Links in print */
   a {
     text-decoration: none;
     color: #000 !important;
   }
-  
+
   a[href]::after {
-    content: " (" attr(href) ")";
+    content: ' (' attr(href) ')';
     font-size: 8pt;
     font-style: italic;
   }
-  
+
   /* Ensure cards print well */
   .card {
     border: 1pt solid #000;
@@ -209,57 +203,58 @@
     background: white !important;
     page-break-inside: avoid;
   }
-  
+
   /* Tables for structured data */
   table {
     width: 100%;
     border-collapse: collapse;
     margin: 10pt 0;
   }
-  
-  th, td {
+
+  th,
+  td {
     border: 1pt solid #000;
     padding: 5pt;
     text-align: left;
   }
-  
+
   th {
     background: #f0f0f0 !important;
     font-weight: bold;
   }
-  
+
   /* Force page breaks where needed */
   .page-break {
     page-break-after: always;
   }
-  
+
   .no-break {
     page-break-inside: avoid;
   }
-  
+
   /* Print-specific report header */
   .print-header {
     display: block;
     text-align: center;
     margin-bottom: 20pt;
   }
-  
+
   .print-header h1 {
     font-size: 20pt;
     margin-bottom: 10pt;
   }
-  
+
   .print-date {
     font-size: 10pt;
     font-style: italic;
   }
-  
+
   /* Charts and graphs print optimization */
   .chart-container {
     page-break-inside: avoid;
     margin: 15pt 0;
   }
-  
+
   /* Professional watermark */
   .watermark {
     position: fixed;

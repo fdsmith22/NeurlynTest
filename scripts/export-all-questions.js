@@ -15,11 +15,11 @@ async function exportAllQuestions() {
   try {
     // Connect to MongoDB
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
-    console.log('Connected to MongoDB');
+// console.log('Connected to MongoDB');
 
     // Fetch all questions
     const questions = await QuestionBank.find({}).lean();
-    console.log(`Found ${questions.length} questions`);
+// console.log(`Found ${questions.length} questions`);
 
     // Group questions by category
     const grouped = {
@@ -53,12 +53,12 @@ async function exportAllQuestions() {
     // Save as JSON
     const jsonPath = path.join(exportDir, 'all-questions.json');
     fs.writeFileSync(jsonPath, JSON.stringify(questions, null, 2));
-    console.log(`✅ Full JSON saved to: ${jsonPath}`);
+// console.log(`✅ Full JSON saved to: ${jsonPath}`);
 
     // Save grouped JSON
     const groupedPath = path.join(exportDir, 'questions-grouped.json');
     fs.writeFileSync(groupedPath, JSON.stringify(grouped, null, 2));
-    console.log(`✅ Grouped JSON saved to: ${groupedPath}`);
+// console.log(`✅ Grouped JSON saved to: ${groupedPath}`);
 
     // Save as CSV
     const csvPath = path.join(exportDir, 'questions.csv');
@@ -71,7 +71,7 @@ async function exportAllQuestions() {
     });
 
     fs.writeFileSync(csvPath, csv);
-    console.log(`✅ CSV saved to: ${csvPath}`);
+// console.log(`✅ CSV saved to: ${csvPath}`);
 
     // Save as Markdown
     const mdPath = path.join(exportDir, 'questions.md');
@@ -111,13 +111,13 @@ async function exportAllQuestions() {
     });
 
     fs.writeFileSync(mdPath, markdown);
-    console.log(`✅ Markdown saved to: ${mdPath}`);
+// console.log(`✅ Markdown saved to: ${mdPath}`);
 
     // Print summary to console
-    console.log('\n📊 Question Bank Summary:');
-    console.log('========================');
+// console.log('\n📊 Question Bank Summary:');
+// console.log('========================');
     Object.entries(grouped).forEach(([category, items]) => {
-      console.log(`${category.toUpperCase()}: ${items.length} questions`);
+// console.log(`${category.toUpperCase()}: ${items.length} questions`);
 
       // Count by instrument
       const instruments = {};
@@ -126,13 +126,12 @@ async function exportAllQuestions() {
       });
 
       Object.entries(instruments).forEach(([inst, count]) => {
-        console.log(`  - ${inst}: ${count}`);
+// console.log(`  - ${inst}: ${count}`);
       });
     });
 
     await mongoose.disconnect();
-    console.log('\n✨ Export complete! Check the exports/ directory for files.');
-
+// console.log('\n✨ Export complete! Check the exports/ directory for files.');
   } catch (error) {
     console.error('Error exporting questions:', error);
     process.exit(1);

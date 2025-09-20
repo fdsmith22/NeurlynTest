@@ -26,34 +26,34 @@ const checks = [];
 function addCheck(name, status, details = '') {
   const icon = status ? '✓' : '✗';
   const color = status ? colors.green : colors.red;
-  console.log(`${color}${icon} ${name}${colors.reset} ${details}`);
+// console.log(`${color}${icon} ${name}${colors.reset} ${details}`);
   checks.push({ name, status, details });
 }
 
 async function checkEnvironment() {
-  console.log(`\n${colors.cyan}1. Environment Configuration${colors.reset}`);
+// console.log(`\n${colors.cyan}1. Environment Configuration${colors.reset}`);
 
   // Check .env file
   const envExists = fs.existsSync(path.join(__dirname, '../.env'));
   addCheck('.env file exists', envExists);
 
   // Check required environment variables
-  const requiredEnvVars = [
-    'PORT',
-    'MONGODB_URI',
-    'NODE_ENV'
-  ];
+  const requiredEnvVars = ['PORT', 'MONGODB_URI', 'NODE_ENV'];
 
   requiredEnvVars.forEach(varName => {
     const exists = process.env[varName] !== undefined;
-    addCheck(`${varName} configured`, exists, exists ? `(${process.env[varName]?.substring(0, 20)}...)` : '');
+    addCheck(
+      `${varName} configured`,
+      exists,
+      exists ? `(${process.env[varName]?.substring(0, 20)}...)` : ''
+    );
   });
 
   return envExists;
 }
 
 async function checkDependencies() {
-  console.log(`\n${colors.cyan}2. Dependencies${colors.reset}`);
+// console.log(`\n${colors.cyan}2. Dependencies${colors.reset}`);
 
   const packageJson = require('../package.json');
   const criticalDeps = [
@@ -80,7 +80,7 @@ async function checkDependencies() {
 }
 
 async function checkDatabase() {
-  console.log(`\n${colors.cyan}3. Database Connection${colors.reset}`);
+// console.log(`\n${colors.cyan}3. Database Connection${colors.reset}`);
 
   try {
     // Connect to MongoDB
@@ -91,7 +91,12 @@ async function checkDatabase() {
     const collections = await mongoose.connection.db.listCollections().toArray();
     const collectionNames = collections.map(c => c.name);
 
-    const requiredCollections = ['questionbanks', 'reporttemplates', 'temporarysessions', 'transactions'];
+    const requiredCollections = [
+      'questionbanks',
+      'reporttemplates',
+      'temporarysessions',
+      'transactions'
+    ];
     requiredCollections.forEach(collection => {
       const exists = collectionNames.includes(collection);
       addCheck(`Collection: ${collection}`, exists);
@@ -117,14 +122,18 @@ async function checkDatabase() {
 }
 
 async function checkServer() {
-  console.log(`\n${colors.cyan}4. Server Status${colors.reset}`);
+// console.log(`\n${colors.cyan}4. Server Status${colors.reset}`);
 
   const baseUrl = `http://localhost:${process.env.PORT || 3000}`;
 
   // Check health endpoint
   try {
     const healthResponse = await axios.get(`${baseUrl}/health`);
-    addCheck('Health endpoint', healthResponse.data.status === 'healthy', healthResponse.data.status);
+    addCheck(
+      'Health endpoint',
+      healthResponse.data.status === 'healthy',
+      healthResponse.data.status
+    );
   } catch (error) {
     addCheck('Health endpoint', false, 'Server may not be running');
   }
@@ -149,7 +158,7 @@ async function checkServer() {
 }
 
 async function checkFileStructure() {
-  console.log(`\n${colors.cyan}5. File Structure${colors.reset}`);
+// console.log(`\n${colors.cyan}5. File Structure${colors.reset}`);
 
   const requiredDirs = [
     'models',
@@ -184,7 +193,7 @@ async function checkFileStructure() {
 }
 
 async function checkQuestionData() {
-  console.log(`\n${colors.cyan}6. Question Data Integrity${colors.reset}`);
+// console.log(`\n${colors.cyan}6. Question Data Integrity${colors.reset}`);
 
   try {
     const QuestionBank = require('../models/QuestionBank');
@@ -195,9 +204,9 @@ async function checkQuestionData() {
       { $sort: { count: -1 } }
     ]);
 
-    console.log(`\n  ${colors.magenta}Questions by Category:${colors.reset}`);
+// console.log(`\n  ${colors.magenta}Questions by Category:${colors.reset}`);
     categoryStats.forEach(stat => {
-      console.log(`    ${stat._id}: ${stat.count}`);
+// console.log(`    ${stat._id}: ${stat.count}`);
     });
 
     // Check tier distribution
@@ -206,9 +215,9 @@ async function checkQuestionData() {
       { $sort: { count: -1 } }
     ]);
 
-    console.log(`\n  ${colors.magenta}Questions by Tier:${colors.reset}`);
+// console.log(`\n  ${colors.magenta}Questions by Tier:${colors.reset}`);
     tierStats.forEach(stat => {
-      console.log(`    ${stat._id}: ${stat.count}`);
+// console.log(`    ${stat._id}: ${stat.count}`);
     });
 
     // Check for required fields
@@ -228,24 +237,26 @@ async function checkQuestionData() {
 }
 
 async function generateReport() {
-  console.log(`\n${colors.bright}${colors.yellow}===========================================`);
-  console.log(`             VERIFICATION SUMMARY`);
-  console.log(`===========================================${colors.reset}\n`);
+// console.log(`\n${colors.bright}${colors.yellow}===========================================`);
+// console.log(`             VERIFICATION SUMMARY`);
+// console.log(`===========================================${colors.reset}\n`);
 
   const passed = checks.filter(c => c.status).length;
   const failed = checks.filter(c => !c.status).length;
   const passRate = Math.round((passed / checks.length) * 100);
 
-  console.log(`${colors.green}Passed: ${passed}${colors.reset}`);
-  console.log(`${colors.red}Failed: ${failed}${colors.reset}`);
-  console.log(`Total: ${checks.length}`);
-  console.log(`Pass Rate: ${passRate}%`);
+// console.log(`${colors.green}Passed: ${passed}${colors.reset}`);
+// console.log(`${colors.red}Failed: ${failed}${colors.reset}`);
+// console.log(`Total: ${checks.length}`);
+// console.log(`Pass Rate: ${passRate}%`);
 
   if (failed > 0) {
-    console.log(`\n${colors.red}Failed Checks:${colors.reset}`);
-    checks.filter(c => !c.status).forEach(check => {
-      console.log(`  - ${check.name}: ${check.details}`);
-    });
+// console.log(`\n${colors.red}Failed Checks:${colors.reset}`);
+    checks
+      .filter(c => !c.status)
+      .forEach(check => {
+// console.log(`  - ${check.name}: ${check.details}`);
+      });
   }
 
   // Generate report file
@@ -266,20 +277,17 @@ async function generateReport() {
     }
   };
 
-  fs.writeFileSync(
-    path.join(__dirname, '../setup-report.json'),
-    JSON.stringify(report, null, 2)
-  );
+  fs.writeFileSync(path.join(__dirname, '../setup-report.json'), JSON.stringify(report, null, 2));
 
-  console.log(`\n${colors.cyan}Report saved to setup-report.json${colors.reset}`);
+// console.log(`\n${colors.cyan}Report saved to setup-report.json${colors.reset}`);
 
   return passRate === 100;
 }
 
 async function main() {
-  console.log(`${colors.bright}${colors.cyan}===========================================`);
-  console.log(`    NEURLYN SETUP VERIFICATION SCRIPT`);
-  console.log(`===========================================${colors.reset}`);
+// console.log(`${colors.bright}${colors.cyan}===========================================`);
+// console.log(`    NEURLYN SETUP VERIFICATION SCRIPT`);
+// console.log(`===========================================${colors.reset}`);
 
   try {
     await checkEnvironment();
@@ -292,13 +300,16 @@ async function main() {
     const allPassed = await generateReport();
 
     if (allPassed) {
-      console.log(`\n${colors.green}${colors.bright}✨ All checks passed! System is ready.${colors.reset}`);
+// console.log(
+        `\n${colors.green}${colors.bright}✨ All checks passed! System is ready.${colors.reset}`
+      );
       process.exit(0);
     } else {
-      console.log(`\n${colors.yellow}⚠️  Some checks failed. Please review the report.${colors.reset}`);
+// console.log(
+        `\n${colors.yellow}⚠️  Some checks failed. Please review the report.${colors.reset}`
+      );
       process.exit(1);
     }
-
   } catch (error) {
     console.error(`\n${colors.red}Fatal error during verification:${colors.reset}`, error);
     process.exit(1);

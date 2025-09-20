@@ -138,6 +138,7 @@ npm run typecheck
 ### Pre-commit Checks
 
 All quality checks run automatically before commit:
+
 ```bash
 npm run precommit
 ```
@@ -241,6 +242,7 @@ npm run deploy
 ### Environment Variables
 
 Required environment variables (see `.env.example`):
+
 - `NODE_ENV`: development/staging/production
 - `PORT`: Server port (default: 3002)
 - `MONGODB_URI`: MongoDB connection string
@@ -263,6 +265,7 @@ Required environment variables (see `.env.example`):
 ## Support
 
 For issues or questions:
+
 - Check existing [GitHub Issues](https://github.com/yourusername/neurlyn/issues)
 - Review this documentation
 - Contact the development team

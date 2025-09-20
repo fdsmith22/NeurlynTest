@@ -1,10 +1,12 @@
 # Neurlyn API Documentation
 
 ## Base URL
+
 - Development: `http://localhost:3002/api`
 - Production: `https://api.neurlyn.com/api`
 
 ## Authentication
+
 Currently using session-based authentication. JWT implementation available.
 
 ## Endpoints
@@ -12,6 +14,7 @@ Currently using session-based authentication. JWT implementation available.
 ### 1. Adaptive Assessment
 
 #### Generate Adaptive Assessment
+
 ```
 POST /api/assessments/adaptive
 ```
@@ -19,21 +22,23 @@ POST /api/assessments/adaptive
 Creates a personalized adaptive assessment based on user profile.
 
 **Request Body:**
+
 ```json
 {
-  "tier": "standard",        // "quick" | "standard" | "deep"
-  "concerns": ["adhd", "autism"],  // Array of concerns
+  "tier": "standard", // "quick" | "standard" | "deep"
+  "concerns": ["adhd", "autism"], // Array of concerns
   "demographics": {
     "age": 28,
-    "gender": "female",     // "male" | "female" | "non-binary" | "other"
+    "gender": "female", // "male" | "female" | "non-binary" | "other"
     "culture": "western",
     "education": "graduate"
   },
-  "previousAssessments": []  // Optional: previous assessment IDs
+  "previousAssessments": [] // Optional: previous assessment IDs
 }
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -78,11 +83,13 @@ Creates a personalized adaptive assessment based on user profile.
 ### 2. Assessment Management
 
 #### Start Assessment Session
+
 ```
 POST /api/assessment/start
 ```
 
 **Request Body:**
+
 ```json
 {
   "mode": "adaptive",
@@ -91,6 +98,7 @@ POST /api/assessment/start
 ```
 
 **Response:**
+
 ```json
 {
   "sessionId": "unique-session-id",
@@ -102,11 +110,13 @@ POST /api/assessment/start
 ---
 
 #### Submit Response
+
 ```
 POST /api/assessment/response
 ```
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "unique-session-id",
@@ -120,10 +130,13 @@ POST /api/assessment/response
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
-  "nextQuestion": { /* question object */ },
+  "nextQuestion": {
+    /* question object */
+  },
   "progress": {
     "answered": 15,
     "total": 45,
@@ -135,11 +148,13 @@ POST /api/assessment/response
 ---
 
 #### Get Assessment Status
+
 ```
 GET /api/assessment/:sessionId
 ```
 
 **Response:**
+
 ```json
 {
   "sessionId": "unique-session-id",
@@ -157,11 +172,13 @@ GET /api/assessment/:sessionId
 ---
 
 #### Complete Assessment
+
 ```
 POST /api/assessment/complete
 ```
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "unique-session-id"
@@ -169,6 +186,7 @@ POST /api/assessment/complete
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -183,11 +201,13 @@ POST /api/assessment/complete
 ### 3. Report Generation
 
 #### Get Assessment Report
+
 ```
 GET /api/report/:sessionId
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -262,11 +282,13 @@ GET /api/report/:sessionId
 ### 4. Analytics
 
 #### Get Population Analytics
+
 ```
 GET /api/analytics/population
 ```
 
 **Response:**
+
 ```json
 {
   "totalAssessments": 1542,
@@ -296,11 +318,13 @@ GET /api/analytics/population
 ### 5. Payment Integration
 
 #### Create Payment Session
+
 ```
 POST /api/payment/session
 ```
 
 **Request Body:**
+
 ```json
 {
   "sessionId": "assessment-session-id"
@@ -308,6 +332,7 @@ POST /api/payment/session
 ```
 
 **Response:**
+
 ```json
 {
   "checkoutUrl": "https://checkout.stripe.com/...",
@@ -318,6 +343,7 @@ POST /api/payment/session
 ---
 
 #### Stripe Webhook
+
 ```
 POST /api/webhook/stripe
 ```
@@ -339,6 +365,7 @@ All endpoints may return error responses in the following format:
 ```
 
 Common error codes:
+
 - `SESSION_NOT_FOUND` - Invalid or expired session
 - `VALIDATION_ERROR` - Invalid request parameters
 - `DATABASE_ERROR` - Database operation failed
@@ -353,6 +380,7 @@ Common error codes:
 ## Response Headers
 
 All responses include:
+
 ```
 Content-Type: application/json
 X-Request-ID: unique-request-id
@@ -362,6 +390,7 @@ X-Response-Time: 123ms
 ## WebSocket Events (Future)
 
 Planned real-time events:
+
 - `assessment.progress` - Progress updates
 - `assessment.complete` - Assessment completed
 - `report.ready` - Report generation complete

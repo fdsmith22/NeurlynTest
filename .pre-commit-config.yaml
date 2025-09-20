@@ -1,0 +1,59 @@
+# Pre-commit hooks configuration for Neurlyn
+# Ensures code quality and consistency before commits
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        description: Trim trailing whitespace
+      - id: end-of-file-fixer
+        description: Ensure files end with newline
+      - id: check-yaml
+        description: Check YAML syntax
+      - id: check-json
+        description: Check JSON syntax
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+        description: Prevent large files from being committed
+      - id: check-merge-conflict
+        description: Check for merge conflict strings
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+        description: Fix mixed line endings
+
+  # JavaScript/Node.js specific
+  - repo: local
+    hooks:
+      # ESLint
+      - id: eslint
+        name: ESLint
+        entry: npx eslint
+        language: system
+        files: \.(js|jsx)$
+        exclude: ^(node_modules|dist|build|coverage)/
+        description: Run ESLint on JavaScript files
+
+      # Prettier
+      - id: prettier
+        name: Prettier
+        entry: npx prettier --check
+        language: system
+        files: \.(js|jsx|json|css|md)$
+        exclude: ^(node_modules|dist|build|coverage)/
+        description: Check code formatting with Prettier
+
+      # Test runner (only on JS files)
+      - id: jest-tests
+        name: Run Tests
+        entry: npm test
+        language: system
+        pass_filenames: false
+        stages: [push]
+        description: Run Jest tests before push
+
+# Configuration
+default_stages: [commit]
+fail_fast: false
+minimum_pre_commit_version: 3.0.0

@@ -19,20 +19,33 @@ const questionBankSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ['personality', 'neurodiversity', 'cognitive', 'lateral', 'interactive', 'psychoanalytic', 'cognitive_functions', 'enneagram', 'attachment', 'defense_mechanisms', 'learning_style', 'trauma_screening'],
+      enum: [
+        'personality',
+        'neurodiversity',
+        'cognitive',
+        'lateral',
+        'interactive',
+        'psychoanalytic',
+        'cognitive_functions',
+        'enneagram',
+        'attachment',
+        'defense_mechanisms',
+        'learning_style',
+        'trauma_screening'
+      ],
       index: true
     },
     instrument: {
       type: String,
-      required: true,
+      required: true
       // BFI-2, HEXACO-60, ASRS-5, AQ-10, PHQ-2, GAD-2, etc.
     },
     subcategory: {
-      type: String,
+      type: String
       // executive_function, sensory_processing, masking, jungian, etc.
     },
     trait: {
-      type: String,
+      type: String
       // openness, conscientiousness, extraversion, agreeableness, neuroticism, etc.
     },
     responseType: {
@@ -57,7 +70,16 @@ const questionBankSchema = new mongoose.Schema(
     },
     tier: {
       type: String,
-      enum: ['free', 'core', 'comprehensive', 'specialized', 'quick', 'standard', 'deep', 'screening'],
+      enum: [
+        'free',
+        'core',
+        'comprehensive',
+        'specialized',
+        'quick',
+        'standard',
+        'deep',
+        'screening'
+      ],
       default: 'core'
     },
     variations: [
@@ -100,7 +122,7 @@ questionBankSchema.index({ instrument: 1, trait: 1 });
 questionBankSchema.index({ active: 1, category: 1 });
 
 // Static method to get questions by category and tier
-questionBankSchema.statics.getQuestionsByTier = async function(category, tier) {
+questionBankSchema.statics.getQuestionsByTier = async function (category, tier) {
   return this.find({
     category,
     tier: { $in: ['free', tier] },
@@ -109,11 +131,8 @@ questionBankSchema.statics.getQuestionsByTier = async function(category, tier) {
 };
 
 // Static method to get randomized questions
-questionBankSchema.statics.getRandomizedSet = async function(category, count = 50) {
-  return this.aggregate([
-    { $match: { category, active: true } },
-    { $sample: { size: count } }
-  ]);
+questionBankSchema.statics.getRandomizedSet = async function (category, count = 50) {
+  return this.aggregate([{ $match: { category, active: true } }, { $sample: { size: count } }]);
 };
 
 const QuestionBank = mongoose.model('QuestionBank', questionBankSchema);

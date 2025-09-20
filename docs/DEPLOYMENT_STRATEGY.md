@@ -3,6 +3,7 @@
 ## 🚀 Deployment Options
 
 ### 1. **Vercel/Netlify (Quick Start)**
+
 ```bash
 # Frontend only deployment
 git init
@@ -12,20 +13,24 @@ vercel --prod
 # or
 netlify deploy --prod
 ```
+
 **Pros:** Free tier, instant deployment, automatic SSL
 **Cons:** Frontend only, needs separate backend
 
 ### 2. **Full-Stack on Railway/Render**
+
 ```bash
 # Complete solution with backend
 railway up
 # or
 render deploy
 ```
+
 **Cost:** ~$5-7/month
 **Includes:** Database, backend API, SSL, auto-scaling
 
 ### 3. **AWS/Google Cloud (Production)**
+
 ```yaml
 # docker-compose.yml
 version: '3.8'
@@ -35,16 +40,16 @@ services:
     volumes:
       - ./index.html:/usr/share/nginx/html/index.html
     ports:
-      - "80:80"
-  
+      - '80:80'
+
   backend:
     build: .
     environment:
       - MONGODB_URI=${MONGODB_URI}
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
     ports:
-      - "3000:3000"
-  
+      - '3000:3000'
+
   mongodb:
     image: mongo:latest
     volumes:
@@ -56,6 +61,7 @@ services:
 ### **Tiered Pricing Structure**
 
 #### 1. **Freemium Model** (Recommended)
+
 - **Free Tier:**
   - Basic personality overview (Big Five summary)
   - 3 main traits
@@ -79,6 +85,7 @@ services:
   - API access for developers
 
 #### 2. **Subscription Model**
+
 - **Monthly (£2.99/month)**
   - Unlimited assessments
   - Track personality changes
@@ -138,12 +145,14 @@ const projections = {
    - Engage authentically
 
 ### **Content Marketing**
+
 - Blog posts on personality science
 - Comparison with MBTI, Enneagram
 - Guest posts on psychology blogs
 - YouTube personality breakdowns
 
 ### **Partnerships**
+
 - Mental health apps
 - Career counseling services
 - Dating apps (personality matching)
@@ -157,17 +166,19 @@ const projections = {
 // Simple Stripe checkout
 const handlePayment = async () => {
   const stripe = Stripe('pk_live_YOUR_KEY');
-  
+
   const { error } = await stripe.redirectToCheckout({
-    lineItems: [{
-      price: 'price_1234', // Your price ID
-      quantity: 1
-    }],
+    lineItems: [
+      {
+        price: 'price_1234', // Your price ID
+        quantity: 1
+      }
+    ],
     mode: 'payment',
     successUrl: window.location.origin + '/success',
-    cancelUrl: window.location.origin + '/cancel',
+    cancelUrl: window.location.origin + '/cancel'
   });
-  
+
   if (error) console.error(error);
 };
 ```
@@ -196,6 +207,7 @@ const handlePayment = async () => {
 ## 📊 Analytics & Optimization
 
 ### **Key Metrics to Track**
+
 1. **Conversion Funnel**
    - Landing → Start Assessment: 30% target
    - Start → Complete: 70% target
@@ -212,6 +224,7 @@ const handlePayment = async () => {
    - Monthly Recurring Revenue (MRR)
 
 ### **A/B Testing Ideas**
+
 - Price points (£0.99 vs £1.99 vs £2.99)
 - Free questions (5 vs 10 vs 20)
 - Payment timing (before vs after assessment)
@@ -220,11 +233,13 @@ const handlePayment = async () => {
 ## 🌐 International Expansion
 
 ### **Localization Priority**
+
 1. **English-speaking:** US, UK, Australia, Canada
 2. **European:** Germany, France, Netherlands
 3. **Asian:** Japan, South Korea, Singapore
 
 ### **Cultural Adaptations**
+
 - Adjust payment methods (PayPal, Alipay, etc.)
 - Cultural norms in questions
 - Local psychology frameworks
@@ -233,12 +248,14 @@ const handlePayment = async () => {
 ## 🔒 Legal & Compliance
 
 ### **Required Policies**
+
 1. Privacy Policy (GDPR compliant)
 2. Terms of Service
 3. Cookie Policy
 4. Medical Disclaimer
 
 ### **Data Protection**
+
 - Encrypt sensitive data
 - Anonymous option available
 - Right to deletion (GDPR)
@@ -247,18 +264,21 @@ const handlePayment = async () => {
 ## 📈 6-Month Roadmap
 
 ### **Month 1-2: Launch & Stabilize**
+
 - Deploy MVP
 - Fix critical bugs
 - Gather user feedback
 - Implement basic analytics
 
 ### **Month 3-4: Optimize & Expand**
+
 - A/B test pricing
 - Add subscription model
 - Implement referral program
 - Launch affiliate program
 
 ### **Month 5-6: Scale & Innovate**
+
 - Mobile app development
 - API for B2B clients
 - AI-powered insights
@@ -268,8 +288,8 @@ const handlePayment = async () => {
 
 ```bash
 # Clone and setup
-git clone https://github.com/yourusername/patricia
-cd patricia
+git clone https://github.com/yourusername/neurlyn
+cd neurlyn
 npm install
 
 # Environment variables
@@ -284,25 +304,28 @@ npm run build
 npm run deploy
 
 # With Docker
-docker build -t patricia .
-docker run -p 3000:3000 patricia
+docker build -t neurlyn .
+docker run -p 3000:3000 neurlyn
 ```
 
 ## 🎨 Engagement Enhancements
 
 ### **Gamification Elements**
+
 - Progress badges
 - Personality achievements
 - Comparison with celebrities
 - Share cards for social media
 
 ### **Interactive Features**
+
 - Real-time personality radar chart
 - Animated transitions between questions
 - Sound effects (optional)
 - Personality match with friends
 
 ### **Retention Features**
+
 - Email personality tips
 - Monthly personality tracking
 - Seasonal assessments
@@ -310,7 +333,7 @@ docker run -p 3000:3000 patricia
 
 ## 🚦 Go-to-Market Checklist
 
-- [ ] Domain registered (patricia.ai, patricia.io)
+- [ ] Domain registered (neurlyn.ai, neurlyn.io)
 - [ ] SSL certificate configured
 - [ ] Stripe account verified
 - [ ] Privacy policy published
@@ -339,7 +362,7 @@ const calculateRevenue = (
   const monthlyCustomers = monthlyVisitors * conversionRate;
   const monthlyRevenue = monthlyCustomers * pricePoint;
   const yearlyRevenue = monthlyRevenue * 12 * (1 - churnRate);
-  
+
   return {
     monthlyCustomers,
     monthlyRevenue,

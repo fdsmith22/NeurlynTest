@@ -85,7 +85,7 @@ router.get('/detailed', async (req, res) => {
         system: {
           total: os.totalmem(),
           free: os.freemem(),
-          usage: ((os.totalmem() - os.freemem()) / os.totalmem() * 100).toFixed(2) + '%'
+          usage: (((os.totalmem() - os.freemem()) / os.totalmem()) * 100).toFixed(2) + '%'
         }
       },
       cpu: {
@@ -108,7 +108,6 @@ router.get('/detailed', async (req, res) => {
 
     const statusCode = dbHealth.healthy ? 200 : 503;
     res.status(statusCode).json(health);
-
   } catch (error) {
     logger.error('Detailed health check failed:', error);
     res.status(503).json({
@@ -155,7 +154,6 @@ router.get('/metrics', async (req, res) => {
 
     res.set('Content-Type', 'text/plain');
     res.send(metrics);
-
   } catch (error) {
     logger.error('Metrics generation failed:', error);
     res.status(500).send('Error generating metrics');

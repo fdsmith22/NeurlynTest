@@ -7,12 +7,14 @@ Neurlyn is a comprehensive, scientifically-grounded assessment platform that pro
 ## ✨ Key Features
 
 ### 🎯 Adaptive Assessment Engine
+
 - **Smart Question Selection**: Dynamically selects from 241+ validated questions
 - **Three-Tier System**: Quick (20 questions), Standard (45 questions), Deep (75 questions)
 - **Intelligent Branching**: ADHD, Autism, AuDHD, Trauma, Giftedness pathways
 - **Real-time Adaptation**: Questions adjust based on response patterns
 
 ### 🧩 Comprehensive Assessment Coverage (241 Total Questions)
+
 - **Personality (Big Five)**: 61 validated BFI-2 Extended questions
 - **Neurodiversity**: 90 specialized questions
   - Executive Function (20)
@@ -28,12 +30,14 @@ Neurlyn is a comprehensive, scientifically-grounded assessment platform that pro
 - **Lateral Thinking**: 22 creative problem-solving questions
 
 ### 📊 Deep Personalization & Analysis
+
 - **Behavioral Pattern Analysis**: Response time, consistency, engagement tracking
 - **Hidden Pattern Detection**: Identifies compensation strategies and masking
 - **Cognitive Style Profiling**: Processing style, learning preferences
 - **Emotional Landscape Mapping**: Awareness, regulation, stress response
 
 ### 📈 Comprehensive Report Generation
+
 - **15 Report Sections**: Executive summary through actionable next steps
 - **Neurodiversity-Affirming Language**: Celebrates differences as strengths
 - **Personalized Narratives**: Unique, compassionate summaries
@@ -41,12 +45,14 @@ Neurlyn is a comprehensive, scientifically-grounded assessment platform that pro
 - **Actionable Strategies**: Daily, environmental, relational recommendations
 
 ### Privacy First
+
 - **No User Data Storage**: Zero PII collection
 - **Temporary Sessions**: Auto-delete after 24 hours
 - **Anonymous Processing**: All assessments processed without accounts
 - **Auto-Cleanup**: Transaction records auto-delete after 30 days
 
 ### Technical Excellence
+
 - **Production-Ready**: Environment validation, structured logging, health checks
 - **Type-Safe**: TypeScript configuration with strict type checking
 - **Quality Assured**: ESLint, Prettier, and comprehensive test suite
@@ -64,18 +70,22 @@ Neurlyn is a comprehensive, scientifically-grounded assessment platform that pro
 ## 🚀 Quick Start
 
 ### 1. Clone the Repository
+
 ```bash
 git clone <repository-url>
-cd p.a.t.r.i.c.i.a
+cd neurlyn
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Environment Setup
+
 Create a `.env` file:
+
 ```env
 PORT=3000
 NODE_ENV=development
@@ -85,6 +95,7 @@ STRIPE_SECRET_KEY=your-stripe-secret-key
 ```
 
 ### 4. Start MongoDB (Docker)
+
 ```bash
 docker run -d --name neurlyn-mongo \
   -p 27017:27017 \
@@ -93,11 +104,13 @@ docker run -d --name neurlyn-mongo \
 ```
 
 ### 5. Seed Database
+
 ```bash
 npm run seed:all
 ```
 
 ### 6. Start Development Server
+
 ```bash
 npm run dev
 ```
@@ -137,12 +150,14 @@ neurlyn/
 ## 📡 API Endpoints
 
 ### Health Checks
+
 - `GET /health` - Basic health status
 - `GET /health/ready` - Readiness check with DB status
 - `GET /health/detailed` - Comprehensive system info
 - `GET /health/metrics` - Prometheus-compatible metrics
 
 ### Questions API
+
 - `GET /api/questions/assessment/:type` - Get questions by assessment type
   - Types: `personality`, `neurodiversity`, `lateral`, `cognitive`, `comprehensive`
   - Query params: `tier`, `limit`, `randomize`
@@ -151,6 +166,7 @@ neurlyn/
 - `GET /api/questions/stats` - Get question statistics
 
 ### Example API Calls
+
 ```bash
 # Get personality questions (free tier)
 curl http://localhost:3000/api/questions/assessment/personality?tier=free
@@ -168,7 +184,9 @@ curl http://localhost:3000/api/questions/stats
 ## 📊 Database Schema
 
 ### QuestionBank
+
 Stores all assessment questions without any user data:
+
 - Question text, ID, and metadata
 - Category (personality, neurodiversity, lateral, cognitive)
 - Instrument (BFI-2, ASRS-5, AQ-10, etc.)
@@ -176,13 +194,17 @@ Stores all assessment questions without any user data:
 - Tier (free, core, comprehensive, specialized)
 
 ### TemporarySession
+
 Auto-deletes after 24 hours:
+
 - Session progress tracking
 - No personal data storage
 - Automatic cleanup
 
 ### Transaction
+
 Anonymous payment records, auto-delete after 30 days:
+
 - Transaction ID and amount
 - No customer PII
 - Automatic anonymization
@@ -190,6 +212,7 @@ Anonymous payment records, auto-delete after 30 days:
 ## 🧪 Testing
 
 ### Run All Tests
+
 ```bash
 # Verify setup
 node scripts/verify-setup.js
@@ -202,6 +225,7 @@ open test-frontend-integration.html
 ```
 
 ### Test Coverage
+
 - ✅ 13/13 API endpoint tests passing
 - ✅ 104 questions properly categorized
 - ✅ All assessment variations working

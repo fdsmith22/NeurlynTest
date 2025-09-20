@@ -667,6 +667,20 @@ database.connect().catch(err => {
       t.status(500).json({ error: 'Failed to generate adaptive assessment' });
     }
   }),
+  // Optimized Adaptive Assessment Route
+  app.post('/api/assessments/adaptive-optimized', async (req, res) => {
+    try {
+      const adaptiveHandler = require('./api/assessments/adaptive-optimized');
+      await adaptiveHandler(req, res);
+    } catch (error) {
+      logger.error('Optimized adaptive assessment error:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Failed to generate optimized adaptive assessment',
+        message: error.message
+      });
+    }
+  }),
 
   app.get('/api/report/:sessionId', async (e, t) => {
     try {

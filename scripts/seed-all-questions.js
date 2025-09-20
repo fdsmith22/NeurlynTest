@@ -25,9 +25,14 @@ async function seedAllQuestions() {
 
     // Process improved questions (standard personality questions)
     const improvedCategories = [
-      'openness', 'conscientiousness', 'extraversion',
-      'agreeableness', 'neuroticism', 'behavioral',
-      'situational', 'preferences'
+      'openness',
+      'conscientiousness',
+      'extraversion',
+      'agreeableness',
+      'neuroticism',
+      'behavioral',
+      'situational',
+      'preferences'
     ];
 
     improvedCategories.forEach(category => {
@@ -35,7 +40,11 @@ async function seedAllQuestions() {
         improvedQuestions[category].forEach((q, index) => {
           // Determine the trait from category name
           let trait = q.category.toLowerCase();
-          if (category === 'behavioral' || category === 'situational' || category === 'preferences') {
+          if (
+            category === 'behavioral' ||
+            category === 'situational' ||
+            category === 'preferences'
+          ) {
             // These are mixed categories, use the question's category field
             trait = q.category.toLowerCase();
           }
@@ -78,13 +87,18 @@ async function seedAllQuestions() {
 
     // Process lateral thinking questions
     const lateralCategories = [
-      'openness', 'conscientiousness', 'extraversion',
-      'agreeableness', 'neuroticism', 'mixed', 'projective'
+      'openness',
+      'conscientiousness',
+      'extraversion',
+      'agreeableness',
+      'neuroticism',
+      'mixed',
+      'projective'
     ];
 
     lateralCategories.forEach(category => {
       if (lateralQuestions[category]) {
-        lateralQuestions[category].forEach((q) => {
+        lateralQuestions[category].forEach(q => {
           questions.push({
             questionId: q.id.toUpperCase(),
             text: q.text,
@@ -92,11 +106,13 @@ async function seedAllQuestions() {
             instrument: 'LATERAL_THINKING',
             trait: category === 'mixed' || category === 'projective' ? 'mixed' : category,
             responseType: q.type === 'choice' ? 'multiple-choice' : 'open-ended',
-            options: q.options ? q.options.map((opt, idx) => ({
-              value: idx,
-              label: opt,
-              score: idx // Scoring will be handled by measures
-            })) : [],
+            options: q.options
+              ? q.options.map((opt, idx) => ({
+                  value: idx,
+                  label: opt,
+                  score: idx // Scoring will be handled by measures
+                }))
+              : [],
             measures: q.measures || [],
             weight: 1.2, // Lateral questions weighted slightly higher
             tier: 'comprehensive',
@@ -214,7 +230,7 @@ async function seedAllQuestions() {
       },
       {
         questionId: 'AQ_7',
-        text: 'When I\'m reading a story, I find it difficult to work out the characters\' intentions',
+        text: "When I'm reading a story, I find it difficult to work out the characters' intentions",
         instrument: 'AQ-10',
         trait: 'autism',
         category: 'neurodiversity',
@@ -238,7 +254,7 @@ async function seedAllQuestions() {
       },
       {
         questionId: 'AQ_10',
-        text: 'I find it difficult to work out people\'s intentions',
+        text: "I find it difficult to work out people's intentions",
         instrument: 'AQ-10',
         trait: 'autism',
         category: 'neurodiversity',
@@ -378,7 +394,6 @@ async function seedAllQuestions() {
 
     logger.info('Question summary:', summary);
     return summary;
-
   } catch (error) {
     logger.error('Error seeding questions:', error);
     throw error;
@@ -393,13 +408,13 @@ async function main() {
     const summary = await seedAllQuestions();
 
     logger.info('🎉 Database seeding completed successfully!');
-    console.log('\n📊 Question Bank Summary:');
-    console.log(`   Total Questions: ${summary.total}`);
-    console.log(`   ├── Personality: ${summary.personality}`);
-    console.log(`   ├── Lateral Thinking: ${summary.lateral}`);
-    console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
-    console.log(`   ├── Cognitive: ${summary.cognitive}`);
-    console.log(`   └── Interactive: ${summary.interactive}`);
+// console.log('\n📊 Question Bank Summary:');
+// console.log(`   Total Questions: ${summary.total}`);
+// console.log(`   ├── Personality: ${summary.personality}`);
+// console.log(`   ├── Lateral Thinking: ${summary.lateral}`);
+// console.log(`   ├── Neurodiversity: ${summary.neurodiversity}`);
+// console.log(`   ├── Cognitive: ${summary.cognitive}`);
+// console.log(`   └── Interactive: ${summary.interactive}`);
 
     await mongoose.disconnect();
     process.exit(0);
