@@ -40,7 +40,6 @@
     "monitor:errors": "node monitoring/error-tracker.js",
     "monitor:dashboard": "open monitoring-dashboard.html || xdg-open monitoring-dashboard.html || start monitoring-dashboard.html",
     "monitor:all": "npm run monitor & npm run monitor:errors",
-    "prepare": "husky install",
     "deploy": "npm run build && pm2 start ecosystem.config.js",
     "seed:all": "node scripts/seed-all-questions.js",
     "seed:basic": "node scripts/seed-database.js",
