@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+
+# Testing
+tests/
+test-results/
+playwright-report/
+coverage/
+*.test.js
+*.spec.js
+
+# Development
+.github/
+.git/
+.husky/
+scripts/
+docs/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build tools
+.eslintrc*
+.prettierrc*
+.babelrc
+webpack.config.js
+jest.config.js
+playwright.config.js
+
+# Documentation
+*.md
+LICENSE
+
+# Temporary files
+tmp/
+temp/
+.cache/
+.jest-cache/
+
+# Monitoring (not needed in production)
+monitoring/
+monitoring-dashboard.html

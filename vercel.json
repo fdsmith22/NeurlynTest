@@ -1,5 +1,46 @@
 {
+  "version": 2,
+  "name": "neurlyn",
+  "builds": [
+    {
+      "src": "backend.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend.js"
+    },
+    {
+      "src": "/health",
+      "dest": "/backend.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "installCommand": "npm install",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "regions": ["iad1"],
+  "functions": {
+    "backend.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  }
 }
