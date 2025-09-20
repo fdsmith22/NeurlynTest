@@ -221,8 +221,8 @@ export class EmergencyProtocols {
       action: e.action,
       shown: !0
     };
-    (sessionStorage.setItem('intervention_log', JSON.stringify(s)),
-// console.log('[Safety] Intervention shown:', s));
+    sessionStorage.setItem('intervention_log', JSON.stringify(s));
+    // console.log('[Safety] Intervention shown:', s);
   }
   checkFollowUp() {
     const e = sessionStorage.getItem('intervention_log');
