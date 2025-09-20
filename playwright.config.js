@@ -80,14 +80,16 @@ export default defineConfig({
     {
       command: 'python3 -m http.server 8080',
       port: 8080,
-      timeout: 120 * 1000,
+      timeout: 180 * 1000,
       reuseExistingServer: true
     },
     {
       command: 'node scripts/start-test-backend.js',
       port: 3002,
-      timeout: 120 * 1000,
-      reuseExistingServer: true
+      timeout: 180 * 1000,
+      reuseExistingServer: true,
+      stdout: 'pipe',
+      stderr: 'pipe'
     }
   ],
 

@@ -28,10 +28,28 @@ try {
   const PORT = process.env.PORT || 3002;
   const server = app.listen(PORT, () => {
     console.log(`Test backend server started on port ${PORT}`);
+    console.log('Server is ready to accept connections');
   });
 
   // Store server reference for cleanup
   app.server = server;
+
+  // Handle graceful shutdown
+  process.on('SIGTERM', () => {
+    console.log('SIGTERM received, shutting down gracefully');
+    server.close(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  });
+
+  process.on('SIGINT', () => {
+    console.log('SIGINT received, shutting down gracefully');
+    server.close(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  });
 } catch (error) {
   console.error('Failed to start backend:', error);
   process.exit(1);
