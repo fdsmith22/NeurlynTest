@@ -13,3 +13,4 @@ logs/
 coverage/
 *.localtest-results/
 playwright-report/
+test-results/
