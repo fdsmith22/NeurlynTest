@@ -12,8 +12,8 @@ const QuestionBank = require('../models/QuestionBank');
 const ReportTemplate = require('../models/ReportTemplate');
 const logger = require('../utils/logger');
 
-// Import the improved questions (220 personality questions)
-const improvedQuestionsData = require('../js/questions/improved-questions.js');
+// Import the improved questions (220 personality questions) - using CommonJS version
+const improvedQuestionsData = require('../js/questions/improved-questions-commonjs.js');
 
 // Convert improved questions to database format
 function convertImprovedQuestions() {
