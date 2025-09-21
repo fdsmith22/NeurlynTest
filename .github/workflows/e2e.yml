@@ -57,15 +57,13 @@ jobs:
 
       - name: Start Frontend Server
         run: |
-          # Start simple HTTP server for frontend
-          cd ${{ github.workspace }}
-          python3 -m http.server 8080 &
-          sleep 2
+          # Start HTTP server for frontend using npx
+          npx http-server -p 8080 --no-dotfiles &
+          sleep 3
 
       - name: Start Backend Server
         run: |
-          # Start backend server
-          cd ${{ github.workspace }}
+          # Start backend server in development mode
           NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           sleep 5
 
@@ -141,15 +139,13 @@ jobs:
 
       - name: Start Frontend Server
         run: |
-          # Start simple HTTP server for frontend
-          cd ${{ github.workspace }}
-          python3 -m http.server 8080 &
-          sleep 2
+          # Start HTTP server for frontend using npx
+          npx http-server -p 8080 --no-dotfiles &
+          sleep 3
 
       - name: Start Backend Server
         run: |
-          # Start backend server
-          cd ${{ github.workspace }}
+          # Start backend server in development mode
           NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           sleep 5
 
