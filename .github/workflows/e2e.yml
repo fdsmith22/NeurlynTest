@@ -57,12 +57,30 @@ jobs:
 
       - name: Start servers
         run: |
-          # Start HTTP server for frontend (explicitly with nohup to ensure it runs in background)
-          nohup python3 -m http.server 8080 > /dev/null 2>&1 &
-          # Start backend server in development mode (which starts the server)
-          nohup NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js > /dev/null 2>&1 &
-          # Give servers a moment to start
-          sleep 2
+          # Start HTTP server for frontend
+          python3 -m http.server 8080 2>&1 | tee frontend.log &
+          FRONTEND_PID=$!
+
+          # Start backend server in development mode
+          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js 2>&1 | tee backend.log &
+          BACKEND_PID=$!
+
+          # Give servers time to start
+          sleep 5
+
+          # Check if processes are running
+          if ! ps -p $FRONTEND_PID > /dev/null; then
+            echo "Frontend server failed to start"
+            cat frontend.log
+            exit 1
+          fi
+
+          if ! ps -p $BACKEND_PID > /dev/null; then
+            echo "Backend server failed to start"
+            cat backend.log
+            exit 1
+          fi
+
           # Wait for servers to be ready
           npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
@@ -135,12 +153,30 @@ jobs:
 
       - name: Start servers
         run: |
-          # Start HTTP server for frontend (explicitly with nohup to ensure it runs in background)
-          nohup python3 -m http.server 8080 > /dev/null 2>&1 &
-          # Start backend server in development mode (which starts the server)
-          nohup NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js > /dev/null 2>&1 &
-          # Give servers a moment to start
-          sleep 2
+          # Start HTTP server for frontend
+          python3 -m http.server 8080 2>&1 | tee frontend.log &
+          FRONTEND_PID=$!
+
+          # Start backend server in development mode
+          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js 2>&1 | tee backend.log &
+          BACKEND_PID=$!
+
+          # Give servers time to start
+          sleep 5
+
+          # Check if processes are running
+          if ! ps -p $FRONTEND_PID > /dev/null; then
+            echo "Frontend server failed to start"
+            cat frontend.log
+            exit 1
+          fi
+
+          if ! ps -p $BACKEND_PID > /dev/null; then
+            echo "Backend server failed to start"
+            cat backend.log
+            exit 1
+          fi
+
           # Wait for servers to be ready
           npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
