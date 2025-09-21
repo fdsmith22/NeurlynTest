@@ -55,34 +55,22 @@ jobs:
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
           echo "Database seeded successfully with 218+ questions"
 
-      - name: Start servers
+      - name: Start Frontend Server
         run: |
-          # Start HTTP server for frontend
-          python3 -m http.server 8080 2>&1 | tee frontend.log &
-          FRONTEND_PID=$!
+          # Start simple HTTP server for frontend
+          cd ${{ github.workspace }}
+          python3 -m http.server 8080 &
+          sleep 2
 
-          # Start backend server in development mode
-          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js 2>&1 | tee backend.log &
-          BACKEND_PID=$!
-
-          # Give servers time to start
+      - name: Start Backend Server
+        run: |
+          # Start backend server
+          cd ${{ github.workspace }}
+          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           sleep 5
 
-          # Check if processes are running
-          if ! ps -p $FRONTEND_PID > /dev/null; then
-            echo "Frontend server failed to start"
-            cat frontend.log
-            exit 1
-          fi
-
-          if ! ps -p $BACKEND_PID > /dev/null; then
-            echo "Backend server failed to start"
-            cat backend.log
-            exit 1
-          fi
-
-          # Wait for servers to be ready
-          npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
+      - name: Wait for servers
+        run: npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
       - name: Run E2E tests - ${{ matrix.browser }}
         run: npx playwright test --config=playwright.config.ci.js --project=${{ matrix.browser }}
@@ -151,34 +139,22 @@ jobs:
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
           echo "Database seeded successfully with 218+ questions"
 
-      - name: Start servers
+      - name: Start Frontend Server
         run: |
-          # Start HTTP server for frontend
-          python3 -m http.server 8080 2>&1 | tee frontend.log &
-          FRONTEND_PID=$!
+          # Start simple HTTP server for frontend
+          cd ${{ github.workspace }}
+          python3 -m http.server 8080 &
+          sleep 2
 
-          # Start backend server in development mode
-          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js 2>&1 | tee backend.log &
-          BACKEND_PID=$!
-
-          # Give servers time to start
+      - name: Start Backend Server
+        run: |
+          # Start backend server
+          cd ${{ github.workspace }}
+          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           sleep 5
 
-          # Check if processes are running
-          if ! ps -p $FRONTEND_PID > /dev/null; then
-            echo "Frontend server failed to start"
-            cat frontend.log
-            exit 1
-          fi
-
-          if ! ps -p $BACKEND_PID > /dev/null; then
-            echo "Backend server failed to start"
-            cat backend.log
-            exit 1
-          fi
-
-          # Wait for servers to be ready
-          npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
+      - name: Wait for servers
+        run: npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
       - name: Run visual regression tests
         run: npx playwright test --config=playwright.config.ci.js tests/e2e/visual.spec.js
