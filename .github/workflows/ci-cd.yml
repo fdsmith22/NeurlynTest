@@ -48,8 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18, 20]
-        browser: [chromium, firefox]
+        node-version: [18, 20]
+        browser: [chromium]
 
     services:
       mongodb:

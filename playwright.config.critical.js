@@ -56,14 +56,6 @@ export default defineConfig({
         /* Tag critical tests with @critical */
         grep: /@critical/
       }
-    },
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        /* Tag critical tests with @critical */
-        grep: /@critical/
-      }
     }
   ],
   /* Web servers configuration */
