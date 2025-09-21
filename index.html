@@ -95,6 +95,34 @@
         position: relative;
       }
 
+      .hero {
+        text-align: center;
+        padding: 4rem 2rem 2rem;
+        background: linear-gradient(135deg, rgba(124, 152, 133, 0.05) 0%, rgba(124, 152, 133, 0.02) 100%);
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #2c2c2c 0%, #4a6b56 50%, #6a8a73 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
       #disclaimer-screen {
         display: flex;
         align-items: center;
@@ -691,6 +719,18 @@
 
     <!-- Main Container -->
     <div class="container" id="main-content" style="flex: 1">
+      <!-- Hero Section -->
+      <section class="hero" id="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Intelligent Personality Assessment
+          </h1>
+          <p class="hero-subtitle">
+            Discover your unique personality profile through scientifically-validated assessments
+          </p>
+        </div>
+      </section>
+
       <!-- Disclaimer Screen -->
       <section id="disclaimer-screen" class="screen active">
         <div class="disclaimer-card">

@@ -56,7 +56,7 @@ export const SELECTORS = {
 
 // API endpoints configuration
 export const API_ENDPOINTS = {
-  baseUrl: process.env.API_BASE_URL || 'http://localhost:3002',
+  baseUrl: process.env.API_BASE_URL || 'http://localhost:3000',
   adaptive: '/api/assessments/adaptive-optimized',
   questions: '/api/questions',
   health: '/health',
