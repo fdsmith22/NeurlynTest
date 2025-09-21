@@ -136,7 +136,8 @@ neurlyn/
 │   ├── health.js         # Health check endpoints
 │   └── questions.js      # Question retrieval endpoints
 ├── scripts/               # Utility scripts
-│   ├── seed-all-questions.js     # Database seeder
+│   ├── seed-master-questions.js  # Main database seeder (81 questions)
+│   ├── seed-complete-expanded-questions.js # Expanded questions (137 more)
 │   ├── test-assessment-variations.js # API tests
 │   └── verify-setup.js   # Setup verification
 ├── utils/                 # Utility functions
@@ -241,7 +242,7 @@ npm run start        # Start production server
 npm run test         # Run test suite
 npm run lint         # Run ESLint
 npm run format       # Format code with Prettier
-npm run seed:all     # Seed database with all questions
+npm run seed         # Seed database with all 218+ questions
 npm run verify       # Verify system setup
 ```
 
