@@ -62,16 +62,16 @@ export default defineConfig({
       command: 'npx http-server -p 8080 --no-dotfiles',
       port: 8080,
       timeout: 120 * 1000,
-      reuseExistingServer: !process.env.CI
+      reuseExistingServer: true
     },
     {
       command: 'node backend.js',
-      port: 3002,
+      port: 3000,
       timeout: 120 * 1000,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: true,
       env: {
         NODE_ENV: 'development',
-        PORT: '3002',
+        PORT: '3000',
         MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test',
         JWT_SECRET: process.env.JWT_SECRET || 'test-secret-key-for-ci-testing-purposes-only-32chars'
       }

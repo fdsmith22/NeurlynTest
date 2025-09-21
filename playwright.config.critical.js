@@ -64,13 +64,13 @@ export default defineConfig({
       command: 'npx http-server -p 8080 --no-dotfiles',
       port: 8080,
       timeout: 60 * 1000,
-      reuseExistingServer: !process.env.CI
+      reuseExistingServer: true
     },
     {
       command: 'node backend.js',
       port: 3000,
       timeout: 60 * 1000,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: true,
       env: {
         NODE_ENV: 'development',
         PORT: '3000',
