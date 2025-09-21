@@ -1,0 +1,133 @@
+/* ============================================
+   Mobile Final Fixes - Based on Playwright Analysis
+   Addresses remaining font size and text issues
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+  /* Fix hero description font size (was 11.2px, too small) */
+  .hero p,
+  p[style*='Inter'],
+  .hero-description {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #5a7a6a !important;
+  }
+
+  /* Ensure minimum font size of 12px for all text */
+  p,
+  span,
+  li,
+  div,
+  td,
+  th {
+    font-size: max(12px, 0.75rem) !important;
+  }
+
+  /* Fix small text in feature items */
+  .feature-item p,
+  .feature-item span {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .feature-item strong,
+  .feature-item b {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Fix pricing card text sizes */
+  .pricing-card-description {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  .pricing-card-features li {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Prevent text truncation */
+  * {
+    text-overflow: clip !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+
+  /* Specific fixes for very small screens (iPhone 12 Mini, etc.) */
+  @media screen and (max-width: 360px) {
+    .pricing-card {
+      padding: 0.875rem !important;
+    }
+
+    .feature-item {
+      padding: 0.5rem !important;
+    }
+
+    .hero h1 {
+      font-size: 1.75rem !important;
+    }
+  }
+}
+
+/* Additional responsive font sizing with clamp */
+@media screen and (max-width: 768px) {
+  /* Hero title with responsive sizing */
+  .hero h1,
+  h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+  }
+
+  /* Hero description with responsive sizing */
+  .hero p {
+    font-size: clamp(14px, 3.5vw, 16px) !important;
+  }
+
+  /* Pricing card title */
+  .pricing-card-title {
+    font-size: clamp(1rem, 4vw, 1.125rem) !important;
+  }
+
+  /* Body text */
+  p,
+  li {
+    font-size: clamp(13px, 3vw, 15px) !important;
+  }
+}
+
+/* Ensure touch targets are properly sized */
+@media screen and (max-width: 768px) {
+  button,
+  a,
+  .pricing-card-select,
+  input[type='checkbox'],
+  input[type='radio'],
+  .clickable,
+  [role='button'] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  /* Exception for inline links */
+  p a,
+  li a,
+  span a {
+    min-height: auto !important;
+    min-width: auto !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+}
+
+/* Fix for elements with truncated text */
+@media screen and (max-width: 768px) {
+  .pricing-card-title,
+  .pricing-card-description,
+  .feature-item p,
+  .feature-item strong {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    display: block !important;
+  }
+}
