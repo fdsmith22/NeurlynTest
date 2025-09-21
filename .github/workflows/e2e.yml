@@ -57,10 +57,12 @@ jobs:
 
       - name: Start servers
         run: |
-          # Start HTTP server for frontend
-          python3 -m http.server 8080 &
+          # Start HTTP server for frontend (explicitly with nohup to ensure it runs in background)
+          nohup python3 -m http.server 8080 > /dev/null 2>&1 &
           # Start backend server in development mode (which starts the server)
-          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
+          nohup NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js > /dev/null 2>&1 &
+          # Give servers a moment to start
+          sleep 2
           # Wait for servers to be ready
           npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
@@ -133,10 +135,12 @@ jobs:
 
       - name: Start servers
         run: |
-          # Start HTTP server for frontend
-          python3 -m http.server 8080 &
+          # Start HTTP server for frontend (explicitly with nohup to ensure it runs in background)
+          nohup python3 -m http.server 8080 > /dev/null 2>&1 &
           # Start backend server in development mode (which starts the server)
-          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
+          nohup NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js > /dev/null 2>&1 &
+          # Give servers a moment to start
+          sleep 2
           # Wait for servers to be ready
           npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
