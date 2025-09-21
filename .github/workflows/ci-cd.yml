@@ -90,6 +90,7 @@ jobs:
         run: |
           echo "Seeding test database with complete question set..."
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
+          sleep 2
           echo "Database seeded successfully with questions"
 
       - name: 🏃‍♂️ Start Backend Server
@@ -105,6 +106,26 @@ jobs:
           python3 -m http.server 8080 &
           sleep 2
           echo "Frontend server started"
+
+      - name: 🔍 Verify API and Database State
+        run: |
+          echo "Verifying database has questions..."
+          curl -X POST http://localhost:3000/api/assessments/adaptive-optimized \
+            -H "Content-Type: application/json" \
+            -d '{"tier": "free", "assessmentType": "personality", "targetTraits": ["openness", "conscientiousness", "extraversion", "agreeableness", "neuroticism"], "previousResponses": [], "userProfile": {}}' \
+            | jq '.totalQuestions' > question_count.txt
+          QUESTION_COUNT=$(cat question_count.txt)
+          echo "API returned $QUESTION_COUNT questions"
+          if [ "$QUESTION_COUNT" -eq "20" ]; then
+            echo "✅ API verification successful - database is properly seeded"
+          else
+            echo "❌ API verification failed - expected 20 questions, got $QUESTION_COUNT"
+            echo "Database state debug:"
+            curl -X POST http://localhost:3000/api/assessments/adaptive-optimized \
+              -H "Content-Type: application/json" \
+              -d '{"tier": "free", "assessmentType": "personality", "targetTraits": ["openness"], "previousResponses": [], "userProfile": {}}' | jq '.'
+            exit 1
+          fi
 
       - name: 🧪 Run E2E Tests
         run: |
