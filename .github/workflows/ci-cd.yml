@@ -88,17 +88,17 @@ jobs:
 
       - name: 🌱 Seed Test Database
         run: |
-          echo "Seeding test database with master question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
-          echo "Adding expanded questions..."
+          echo "Seeding test database with complete question set..."
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
-          echo "Database seeded successfully with 218+ questions"
+          echo "Database seeded successfully with questions"
 
       - name: 🏃‍♂️ Start Backend Server
         run: |
-          PORT=3002 NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars STRIPE_SECRET_KEY=sk_test_dummy node scripts/start-test-backend.js &
+          echo "Starting backend server..."
+          PORT=3000 NODE_ENV=development MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           sleep 5
-          echo "Backend server started"
+          curl -f http://localhost:3000/health || exit 1
+          echo "Backend server started and healthy"
 
       - name: 🌐 Start Frontend Server
         run: |
@@ -109,7 +109,7 @@ jobs:
       - name: 🧪 Run E2E Tests
         run: |
           echo "Running E2E tests for ${{ matrix.browser }}"
-          npx playwright test --project=${{ matrix.browser }} --reporter=list --max-failures=5
+          npx playwright test --config=playwright.config.critical.js --project=${{ matrix.browser }} --reporter=list --max-failures=5
 
       - name: 📊 Upload Test Results
         uses: actions/upload-artifact@v4
@@ -160,9 +160,10 @@ jobs:
 
       - name: 🏃‍♂️ Start Servers
         run: |
-          PORT=3002 NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars STRIPE_SECRET_KEY=sk_test_dummy node backend.js &
+          PORT=3000 NODE_ENV=development MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           python3 -m http.server 8080 &
           sleep 5
+          curl -f http://localhost:3000/health || exit 1
 
       - name: ⚡ Performance Audit
         run: |

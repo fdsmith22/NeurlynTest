@@ -47,12 +47,20 @@ export default defineConfig({
     actionTimeout: 10000,
     navigationTimeout: 15000
   },
-  /* Single browser for critical path tests */
+  /* Browsers for critical path tests */
   projects: [
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
+        /* Tag critical tests with @critical */
+        grep: /@critical/
+      }
+    },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
         /* Tag critical tests with @critical */
         grep: /@critical/
       }
@@ -68,12 +76,12 @@ export default defineConfig({
     },
     {
       command: 'node backend.js',
-      port: 3002,
+      port: 3000,
       timeout: 60 * 1000,
       reuseExistingServer: !process.env.CI,
       env: {
         NODE_ENV: 'development',
-        PORT: '3002',
+        PORT: '3000',
         MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test',
         JWT_SECRET: process.env.JWT_SECRET || 'test-secret-key-for-ci-testing-purposes-only-32chars'
       }

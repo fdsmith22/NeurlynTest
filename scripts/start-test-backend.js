@@ -5,7 +5,7 @@
 
 // Set test environment variables if not already set
 process.env.NODE_ENV = process.env.NODE_ENV || 'test';
-process.env.PORT = process.env.PORT || '3002';
+process.env.PORT = process.env.PORT || '3000';
 process.env.MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test';
 process.env.JWT_SECRET =
   process.env.JWT_SECRET || 'test-secret-key-for-ci-testing-purposes-only-32chars';
@@ -25,7 +25,7 @@ try {
   const app = require('../backend.js');
 
   // In test mode, the server doesn't start automatically, so start it here
-  const PORT = process.env.PORT || 3002;
+  const PORT = process.env.PORT || 3000;
   const server = app.listen(PORT, () => {
     console.log(`Test backend server started on port ${PORT}`);
     console.log('Server is ready to accept connections');
