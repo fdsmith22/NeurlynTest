@@ -51,11 +51,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-        /* Tag critical tests with @critical */
-        grep: /@critical/
-      }
+      use: { ...devices['Desktop Chrome'] }
     }
   ],
   /* Web servers configuration */
