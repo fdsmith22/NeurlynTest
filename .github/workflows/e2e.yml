@@ -59,8 +59,8 @@ jobs:
         run: |
           # Start HTTP server for frontend
           python3 -m http.server 8080 &
-          # Start backend server using CI script
-          PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node scripts/start-ci-backend.js &
+          # Start backend server in development mode (which starts the server)
+          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           # Wait for servers to be ready
           npx wait-on http://localhost:8080 http://localhost:3002/api/health --timeout 30000
 
@@ -135,8 +135,8 @@ jobs:
         run: |
           # Start HTTP server for frontend
           python3 -m http.server 8080 &
-          # Start backend server using CI script
-          PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node scripts/start-ci-backend.js &
+          # Start backend server in development mode (which starts the server)
+          NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           # Wait for servers to be ready
           npx wait-on http://localhost:8080 http://localhost:3002/api/health --timeout 30000
 
