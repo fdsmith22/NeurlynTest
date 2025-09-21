@@ -307,3 +307,8 @@ export const scoringGuide = {
     Neuroticism: { low: [0, 2.5], medium: [2.5, 3.5], high: [3.5, 5] }
   }
 };
+
+// CommonJS export for Node.js compatibility (for seed scripts)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { improvedQuestions, getBalancedQuestions, scoringGuide };
+}
