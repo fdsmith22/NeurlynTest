@@ -18,6 +18,8 @@
     "serve": "webpack serve --config webpack.config.optimized.js --mode development",
     "test": "jest tests/unit tests/integration",
     "test:e2e": "playwright test",
+    "test:e2e:critical": "playwright test --config=playwright.config.critical.js",
+    "test:e2e:ci": "playwright test --config=playwright.config.ci.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx --ignore-pattern 'playwright-report/**' --ignore-pattern 'test-results/**' --ignore-pattern 'coverage/**'",

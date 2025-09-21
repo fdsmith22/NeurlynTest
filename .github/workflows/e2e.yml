@@ -1,5 +1,7 @@
 name: E2E Tests
 
+# Runs critical tests on push/PR, full suite on schedule
+
 on:
   push:
     branches: [main, develop]
@@ -10,7 +12,77 @@ on:
     - cron: '0 2 * * *'
 
 jobs:
-  e2e-tests:
+  # Critical path tests - run on every push/PR for fast feedback
+  critical-tests:
+    if: github.event_name != 'schedule'
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Create .env file
+        run: |
+          echo "NODE_ENV=test" >> .env
+          echo "PORT=3002" >> .env
+          echo "MONGODB_URI=mongodb://localhost:27017/neurlyn-test" >> .env
+          echo "JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars" >> .env
+          echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.10.0
+        with:
+          mongodb-version: '7.0'
+
+      - name: Seed Test Database
+        run: |
+          echo "Seeding test database with master question set..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
+          echo "Adding expanded questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
+          echo "Database seeded successfully with 218+ questions"
+
+      - name: Run Critical E2E tests
+        run: npx playwright test --config=playwright.config.critical.js
+        env:
+          CI: true
+          NODE_ENV: test
+          PORT: 3002
+          MONGODB_URI: mongodb://localhost:27017/neurlyn-test
+          JWT_SECRET: test-secret-key-for-ci-testing-purposes-only-32chars
+          STRIPE_SECRET_KEY: sk_test_dummy
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-critical
+          path: playwright-report/
+          retention-days: 7
+
+      - name: Upload test videos
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-videos-critical
+          path: test-results/
+          retention-days: 3
+
+  # Full test suite - run on schedule or manual trigger
+  full-suite:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
@@ -55,7 +127,7 @@ jobs:
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
           echo "Database seeded successfully with 218+ questions"
 
-      - name: Run E2E tests - ${{ matrix.browser }}
+      - name: Run Full E2E test suite - ${{ matrix.browser }}
         run: npx playwright test --config=playwright.config.ci.js --project=${{ matrix.browser }}
         env:
           CI: true
@@ -69,7 +141,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report-${{ matrix.browser }}
+          name: playwright-report-full-${{ matrix.browser }}
           path: playwright-report/
           retention-days: 30
 
@@ -77,7 +149,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: test-videos-${{ matrix.browser }}
+          name: test-videos-full-${{ matrix.browser }}
           path: test-results/
           retention-days: 7
 

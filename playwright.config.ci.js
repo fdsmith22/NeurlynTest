@@ -6,14 +6,14 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests/e2e',
-  /* Reduce parallelism to avoid rate limiting */
-  fullyParallel: false,
+  /* Enable parallel execution for independent tests */
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: true,
   /* Add retries for rate limiting issues */
   retries: 2,
-  /* Limit workers to reduce API load */
-  workers: 1,
+  /* Optimize workers for CI environment */
+  workers: process.env.CI ? 2 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html', { open: 'never' }],
