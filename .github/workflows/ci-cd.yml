@@ -86,6 +86,14 @@ jobs:
           echo "JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars" >> .env
           echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
 
+      - name: 🌱 Seed Test Database
+        run: |
+          echo "Seeding test database with master question set..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
+          echo "Adding expanded questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
+          echo "Database seeded successfully with 218+ questions"
+
       - name: 🏃‍♂️ Start Backend Server
         run: |
           PORT=3002 NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars STRIPE_SECRET_KEY=sk_test_dummy node scripts/start-test-backend.js &

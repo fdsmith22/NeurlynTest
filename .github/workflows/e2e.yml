@@ -47,6 +47,14 @@ jobs:
         with:
           mongodb-version: '7.0'
 
+      - name: Seed Test Database
+        run: |
+          echo "Seeding test database with master question set..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
+          echo "Adding expanded questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
+          echo "Database seeded successfully with 218+ questions"
+
       - name: Run E2E tests - ${{ matrix.browser }}
         run: npx playwright test --project=${{ matrix.browser }}
         env:
@@ -105,6 +113,14 @@ jobs:
         uses: supercharge/mongodb-github-action@1.10.0
         with:
           mongodb-version: '7.0'
+
+      - name: Seed Test Database
+        run: |
+          echo "Seeding test database with master question set..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
+          echo "Adding expanded questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
+          echo "Database seeded successfully with 218+ questions"
 
       - name: Run visual regression tests
         run: npx playwright test tests/e2e/visual.spec.js
