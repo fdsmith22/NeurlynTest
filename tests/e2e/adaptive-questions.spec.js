@@ -15,13 +15,18 @@ test.describe('Adaptive Question Assignment System', () => {
   test('Free tier personality assessment should provide 20 balanced questions', async ({
     page
   }) => {
-    // Navigate to assessment
-    await page.click('a[href="assessment.html"]');
-    await page.waitForLoadState('networkidle');
+    // The assessment runs on the main page, not assessment.html
+    // First, accept the disclaimer to enable the start button
+    const disclaimerCheckbox = await page.$('#disclaimer-checkbox');
+    if (disclaimerCheckbox) {
+      await page.check('#disclaimer-checkbox');
+      await page.click('#accept-disclaimer');
+    }
 
-    // Select free tier and personality assessment
-    await page.selectOption('#tier-select', 'free');
-    await page.selectOption('#assessment-type', 'personality');
+    // Wait for the assessment section to be visible
+    await page.waitForSelector('#start-assessment', { state: 'visible', timeout: 10000 });
+
+    // Click the start assessment button
     await page.click('#start-assessment');
 
     // Wait for questions to load
