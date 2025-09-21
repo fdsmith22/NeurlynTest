@@ -62,7 +62,7 @@ jobs:
           # Start backend server in development mode (which starts the server)
           NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           # Wait for servers to be ready
-          npx wait-on http://localhost:8080 http://localhost:3002/api/health --timeout 30000
+          npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
       - name: Run E2E tests - ${{ matrix.browser }}
         run: npx playwright test --config=playwright.config.ci.js --project=${{ matrix.browser }}
@@ -138,7 +138,7 @@ jobs:
           # Start backend server in development mode (which starts the server)
           NODE_ENV=development PORT=3002 MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
           # Wait for servers to be ready
-          npx wait-on http://localhost:8080 http://localhost:3002/api/health --timeout 30000
+          npx wait-on http://localhost:8080 http://localhost:3002/health --timeout 30000
 
       - name: Run visual regression tests
         run: npx playwright test --config=playwright.config.ci.js tests/e2e/visual.spec.js
