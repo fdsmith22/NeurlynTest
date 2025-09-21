@@ -5,7 +5,7 @@
  * This script starts the backend server even in test mode
  */
 
-process.env.NODE_ENV = 'ci-test'; // Use a different env to bypass test mode check
+process.env.NODE_ENV = 'development'; // Use development to bypass test mode check
 const app = require('../backend');
 const PORT = process.env.PORT || 3002;
 
