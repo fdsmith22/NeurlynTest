@@ -56,8 +56,27 @@ export default defineConfig({
     }
   ],
 
-  /* CI starts its own servers, so we don't need webServer config */
-  /* The workflow starts servers separately before running tests */
+  /* Web servers configuration - Playwright will manage these automatically */
+  webServer: [
+    {
+      command: 'npx http-server -p 8080 --no-dotfiles',
+      port: 8080,
+      timeout: 120 * 1000,
+      reuseExistingServer: !process.env.CI
+    },
+    {
+      command: 'node backend.js',
+      port: 3002,
+      timeout: 120 * 1000,
+      reuseExistingServer: !process.env.CI,
+      env: {
+        NODE_ENV: 'development',
+        PORT: '3002',
+        MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test',
+        JWT_SECRET: process.env.JWT_SECRET || 'test-secret-key-for-ci-testing-purposes-only-32chars'
+      }
+    }
+  ],
 
   /* Timeout configurations */
   timeout: 30 * 1000,
