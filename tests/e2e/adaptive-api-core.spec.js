@@ -396,6 +396,7 @@ test.describe('Adaptive API Core Tests', () => {
 
       // Verify subcategories are valid
       const validSubcategories = [
+        // Standard subcategories
         'imagination',
         'artistic-interests',
         'emotionality',
@@ -425,7 +426,13 @@ test.describe('Adaptive API Core Tests', () => {
         'depression',
         'self-consciousness',
         'immoderation',
-        'vulnerability'
+        'vulnerability',
+        // Alternative format from seed script
+        'openness_detail',
+        'conscientiousness_detail',
+        'extraversion_detail',
+        'agreeableness_detail',
+        'neuroticism_detail'
       ];
 
       subcategoryQuestions.forEach(q => {
