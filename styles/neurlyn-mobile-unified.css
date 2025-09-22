@@ -20,8 +20,8 @@
     gap: 1.5rem !important;
     padding: 1rem !important;
     margin: 1rem auto !important;
-    width: calc(100% - 2rem) !important;
-    max-width: calc(100vw - 2rem) !important;
+    width: 100% !important;
+    max-width: 100vw !important;
     align-items: stretch !important;
     box-sizing: border-box !important;
   }
@@ -279,7 +279,7 @@
   .disclaimer-card {
     padding: 1.5rem !important;
     margin: 1rem !important;
-    max-width: calc(100% - 2rem) !important;
+    max-width: 100% !important;
   }
 
   /* Navigation */
