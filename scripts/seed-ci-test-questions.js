@@ -82,8 +82,10 @@ async function seedQuestions() {
               { value: 4, label: 'Agree', score: 4 },
               { value: 5, label: 'Strongly Agree', score: 5 }
             ],
-            weight: tier === 'comprehensive' ? 2.0 : tier === 'core' ? 1.5 : 1.0,
-            subcategory: tier === 'comprehensive' ? `${trait}_detail` : undefined,
+            // Mix weights within each tier for more realistic testing
+            weight: index === 0 ? 2.0 : index === 1 ? 1.5 : 1.0,
+            // Add subcategories for core and comprehensive tiers
+            subcategory: tier !== 'free' ? `${trait}_detail` : undefined,
             metadata: {
               addedDate: new Date(),
               version: 'CI_TEST',
