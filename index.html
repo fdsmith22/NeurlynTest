@@ -681,15 +681,20 @@
         /* Optimize pricing cards for mobile */
         .pricing-section {
           flex-direction: column;
-          gap: 0.75rem;
-          padding: 0.5rem;
-          margin: 0.5rem 0;
+          gap: 1rem;
+          padding: 0;
+          margin: 0.5rem auto;
+          max-width: 100%;  /* Use full width on mobile */
+          width: 100%;
         }
 
         .pricing-card {
           min-height: auto;
-          max-height: 200px;
-          padding: 0.875rem !important;
+          max-height: none;  /* Remove height restriction */
+          padding: 1rem 1.25rem !important;  /* More horizontal padding */
+          width: 100%;  /* Full width */
+          max-width: 500px;  /* But not too wide on larger phones */
+          margin: 0 auto;  /* Center the cards */
         }
 
         .pricing-card-header {
@@ -788,12 +793,21 @@
         }
 
         /* Optimize pricing cards for mobile content visibility */
+        .pricing-section {
+          width: calc(100% + 1rem);  /* Extend beyond normal container */
+          margin-left: -0.5rem;
+          margin-right: -0.5rem;
+        }
+
         .pricing-card {
-          min-height: 280px; /* Increased to show all content */
-          max-height: none; /* Remove height restriction */
-          padding: 1rem !important;
+          min-height: auto;  /* Let content determine height */
+          max-height: none;  /* Remove height restriction */
+          padding: 1.25rem 1.5rem !important;  /* Good horizontal padding */
           display: flex;
           flex-direction: column;
+          width: calc(100% - 1rem);  /* Full width minus margins */
+          max-width: none;  /* Use all available space */
+          margin: 0 0.5rem;  /* Small side margins */
         }
 
         /* Fix header layout to prevent overlapping */
