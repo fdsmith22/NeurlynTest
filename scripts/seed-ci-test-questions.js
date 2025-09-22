@@ -82,7 +82,8 @@ async function seedQuestions() {
               { value: 4, label: 'Agree', score: 4 },
               { value: 5, label: 'Strongly Agree', score: 5 }
             ],
-            weight: 1.0,
+            weight: tier === 'comprehensive' ? 2.0 : tier === 'core' ? 1.5 : 1.0,
+            subcategory: tier === 'comprehensive' ? `${trait}_detail` : undefined,
             metadata: {
               addedDate: new Date(),
               version: 'CI_TEST',
