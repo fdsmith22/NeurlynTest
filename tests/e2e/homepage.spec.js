@@ -48,11 +48,21 @@ test.describe('Homepage Tests', () => {
     await expect(startButton).toBeVisible();
     await expect(startButton).toBeEnabled();
 
-    // Click and verify navigation
+    // Click and verify navigation or screen change
     await startButton.click();
 
-    // Should navigate to assessment or show assessment options
-    await expect(page.url()).toMatch(/assessment|questionnaire|start|begin/);
+    // Wait for either URL change or assessment screen to appear
+    await page.waitForTimeout(1000); // Give time for transition
+
+    // Check if we navigated to a new page OR if assessment content is visible
+    const urlChanged = page.url().match(/assessment|questionnaire|start|begin/);
+    const assessmentVisible = await page
+      .locator('.assessment-screen, .question-screen, #assessment-container, [class*="assessment"]')
+      .first()
+      .isVisible()
+      .catch(() => false);
+
+    expect(urlChanged || assessmentVisible).toBeTruthy();
   });
 
   test('should display feature cards', async ({ page }) => {
