@@ -63,6 +63,8 @@
     <link rel="stylesheet" href="styles/neurlyn-refinements.css" />
     <!-- Unified Mobile Styles - Replaces all mobile override files -->
     <link rel="stylesheet" href="styles/neurlyn-mobile-unified.css" />
+    <!-- Responsive Design Utilities for better mobile compatibility -->
+    <link rel="stylesheet" href="styles/responsive-utilities.css" />
     <link rel="stylesheet" href="styles/z-index-architecture.css" />
     <link rel="stylesheet" href="styles/neurlyn-print.css" media="print" />
 
@@ -75,6 +77,106 @@
         --nordic-white: #fafafa;
         --nordic-gray: #e8e8e8;
         --nordic-charcoal: #2c2c2c;
+      }
+
+      /* Mobile Layout Overhaul - No separate scrolls, better UX */
+      @media (max-width: 768px) {
+        /* Remove all viewport height restrictions to prevent separate scrolling */
+        html, body {
+          overflow-x: hidden;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Main container should flow naturally */
+        #main-content {
+          min-height: auto;
+          flex: none;
+        }
+
+        /* Screen sections should expand naturally */
+        .screen {
+          min-height: auto;
+          height: auto;
+        }
+
+        /* CRITICAL FIX: Remove scroll container from disclaimer card */
+        .disclaimer-card {
+          max-height: none !important; /* Remove height restriction */
+          overflow-y: visible !important; /* No separate scroll */
+          overflow-x: hidden;
+          padding: 1.5rem 1rem;
+          padding-left: max(1rem, env(safe-area-inset-left));
+          padding-right: max(1rem, env(safe-area-inset-right));
+        }
+
+        /* Use auto-grid for pricing cards on mobile */
+        .pricing-section.auto-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          padding: 1rem;
+        }
+
+        /* Full-width cards on mobile */
+        .pricing-card {
+          width: 100% !important;
+          min-height: auto;
+          max-height: none !important;
+          padding: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        /* Responsive text sizing */
+        .pricing-card-title {
+          font-size: clamp(1.125rem, 3vw, 1.5rem);
+        }
+
+        .pricing-card-price {
+          font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .pricing-card-description {
+          font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        .pricing-card-features li {
+          font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        /* Touch-optimized interactive elements */
+        .pricing-card-select {
+          min-width: 44px;
+          min-height: 44px;
+        }
+
+        /* Fix container hierarchy */
+        .container.container-responsive {
+          padding: 0;
+          max-width: 100%;
+        }
+
+        .disclaimer-ultra-compact {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        /* Ensure buttons are touch-friendly */
+        button, .btn {
+          min-height: 44px;
+          touch-action: manipulation;
+        }
+      }
+
+      /* Tablet-specific adjustments */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .pricing-section.auto-grid {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+        }
+
+        .disclaimer-card {
+          max-height: none;
+          overflow-y: visible;
+        }
       }
 
       body {
@@ -718,8 +820,8 @@
 
         .disclaimer-card {
           padding: 1.5rem 1rem;
-          max-height: 90vh;
-          overflow-y: auto;
+          max-height: none; /* Remove height restriction */
+          overflow-y: visible; /* No separate scroll */
         }
 
         /* Optimize pricing cards for mobile */
@@ -815,6 +917,8 @@
           width: 100%;
           max-width: 100%;
           box-sizing: border-box;
+          max-height: none !important; /* Ensure no scroll */
+          overflow-y: visible !important;
         }
 
         .disclaimer-ultra-compact {
@@ -961,7 +1065,7 @@
     </nav>
 
     <!-- Main Container -->
-    <div class="container" id="main-content" style="flex: 1">
+    <div class="container container-responsive" id="main-content" style="flex: 1">
       <!-- Hero Section -->
       <section class="hero" id="hero">
         <div class="hero-content">
@@ -976,7 +1080,7 @@
 
       <!-- Disclaimer Screen -->
       <section id="disclaimer-screen" class="screen active">
-        <div class="disclaimer-card">
+        <div class="disclaimer-card responsive-padding">
           <h2
             style="
               font-family: 'Space Grotesk', sans-serif;
@@ -1007,7 +1111,7 @@
             Discover your unique personality profile through science-based assessments
           </p>
 
-          <div class="disclaimer-ultra-compact">
+          <div class="disclaimer-ultra-compact responsive-padding-x">
             <!-- Features Row -->
             <div class="feature-row">
               <div class="feature-item">
@@ -1051,8 +1155,8 @@
             </div>
 
             <!-- Pricing Cards -->
-            <div class="pricing-section">
-              <div class="pricing-card free active" data-plan="free">
+            <div class="pricing-section auto-grid">
+              <div class="pricing-card free active touch-target-extended" data-plan="free">
                 <div class="pricing-card-header">
                   <h3 class="pricing-card-title">Free Assessment</h3>
                   <div class="pricing-card-select"></div>
@@ -1102,7 +1206,7 @@
                 </ul>
               </div>
 
-              <div class="pricing-card premium" data-plan="premium">
+              <div class="pricing-card premium touch-target-extended" data-plan="premium">
                 <div class="pricing-card-header">
                   <h3 class="pricing-card-title">In-Depth Analysis</h3>
                   <div class="pricing-card-select"></div>
@@ -1175,7 +1279,7 @@
                 <input type="checkbox" id="age-check" />
                 <span>I am 16+ years old or have parent/guardian permission</span>
               </label>
-              <button id="accept-disclaimer" disabled>Start Free Assessment</button>
+              <button id="accept-disclaimer" class="touch-target" disabled>Start Free Assessment</button>
             </div>
           </div>
         </div>
@@ -1581,6 +1685,9 @@
 
     <!-- Load Neurlyn Integrated App -->
     <!-- Use API-integrated version for backend connection -->
+    <!-- Mobile Compatibility Script (load first for immediate fixes) -->
+    <script src="js/modules/mobile-compatibility.js"></script>
+
     <!-- Performance optimizations (load first for early initialization) -->
     <script src="js/performance-optimizations.js" defer></script>
 

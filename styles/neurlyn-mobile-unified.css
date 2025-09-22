@@ -339,15 +339,15 @@
    LANDSCAPE ORIENTATION ON MOBILE
    ============================================ */
 @media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
-  /* Keep cards vertical in landscape if height is limited */
+  /* Remove scroll containers - let content flow naturally */
   .pricing-section {
-    max-height: 80vh !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: auto !important;
   }
 
   .disclaimer-card {
-    max-height: 90vh !important;
-    overflow-y: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
   }
 }

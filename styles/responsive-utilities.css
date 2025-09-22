@@ -1,0 +1,285 @@
+/* ============================================
+   Responsive Design Utilities
+   Version: 1.0.0
+
+   Helper classes for mobile-first responsive design
+   ============================================ */
+
+/* ============================================
+   VIEWPORT FIXES
+   ============================================ */
+
+/* Fix viewport height on mobile browsers */
+:root {
+  --vh: 1vh; /* Fallback for browsers that don't support JS solution */
+}
+
+.vh-100 {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Prevent horizontal scroll */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Safe area padding for notched devices */
+.safe-padding {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.safe-padding-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ============================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================ */
+
+/* Fluid typography that scales with viewport */
+.fluid-text-sm {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.fluid-text-base {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+.fluid-text-lg {
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+}
+
+.fluid-text-xl {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.fluid-text-2xl {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+/* ============================================
+   RESPONSIVE SPACING
+   ============================================ */
+
+/* Dynamic padding that adjusts to screen size */
+.responsive-padding {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.responsive-padding-x {
+  padding-left: clamp(1rem, 3vw, 2rem);
+  padding-right: clamp(1rem, 3vw, 2rem);
+}
+
+.responsive-padding-y {
+  padding-top: clamp(1rem, 3vw, 2rem);
+  padding-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+/* Dynamic margins */
+.responsive-margin {
+  margin: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+/* ============================================
+   RESPONSIVE CONTAINERS
+   ============================================ */
+
+/* Container that respects device width */
+.container-responsive {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    padding: 0 2rem;
+  }
+}
+
+/* Full-bleed container that breaks out of parent */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* ============================================
+   RESPONSIVE GRID
+   ============================================ */
+
+/* Auto-fit grid that adjusts columns based on available space */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.auto-grid-sm {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.auto-grid-lg {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* ============================================
+   TOUCH TARGET OPTIMIZATION
+   ============================================ */
+
+/* Ensure adequate touch target size */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Increase tap area without affecting visual size */
+.touch-target-extended::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+}
+
+/* ============================================
+   RESPONSIVE VISIBILITY
+   ============================================ */
+
+/* Show/hide elements based on screen size */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .show-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE IMAGES
+   ============================================ */
+
+/* Responsive images that maintain aspect ratio */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Object-fit utilities for different scenarios */
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   FLEXBOX UTILITIES
+   ============================================ */
+
+/* Responsive flex direction */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+  }
+}
+
+/* Responsive gap */
+.gap-responsive {
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+/* ============================================
+   SCROLL BEHAVIOR
+   ============================================ */
+
+/* Smooth scroll with accessibility consideration */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Horizontal scroll container for mobile */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.scroll-x > * {
+  scroll-snap-align: start;
+}
+
+/* Hide scrollbar but keep functionality */
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-x {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================
+   ASPECT RATIOS
+   ============================================ */
+
+/* Maintain aspect ratios across devices */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+/* Fallback for older browsers */
+@supports not (aspect-ratio: 1 / 1) {
+  .aspect-square::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+}
