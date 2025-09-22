@@ -48,10 +48,10 @@ jobs:
 
       - name: Seed Test Database
         run: |
-          echo "Seeding test database with complete question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
-          sleep 3
-          echo "Database seeded successfully with questions"
+          echo "Seeding test database with CI test questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-ci-test-questions.js
+          sleep 2
+          echo "Database seeded successfully with personality questions"
 
       - name: Verify API and Database State
         run: |
@@ -141,10 +141,10 @@ jobs:
 
       - name: Seed Test Database
         run: |
-          echo "Seeding test database with complete question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
-          sleep 3
-          echo "Database seeded successfully with questions"
+          echo "Seeding test database with CI test questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-ci-test-questions.js
+          sleep 2
+          echo "Database seeded successfully with personality questions"
 
       - name: Run Full E2E test suite - ${{ matrix.browser }}
         run: npx playwright test --config=playwright.config.ci.js --project=${{ matrix.browser }}
@@ -206,10 +206,10 @@ jobs:
 
       - name: Seed Test Database
         run: |
-          echo "Seeding test database with complete question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
-          sleep 3
-          echo "Database seeded successfully with questions"
+          echo "Seeding test database with CI test questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-ci-test-questions.js
+          sleep 2
+          echo "Database seeded successfully with personality questions"
 
       - name: Run visual regression tests
         run: npx playwright test --config=playwright.config.ci.js tests/e2e/visual.spec.js

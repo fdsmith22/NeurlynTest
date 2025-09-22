@@ -88,10 +88,10 @@ jobs:
 
       - name: 🌱 Seed Test Database
         run: |
-          echo "Seeding test database with complete question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
+          echo "Seeding test database with CI test questions..."
+          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-ci-test-questions.js
           sleep 2
-          echo "Database seeded successfully with questions"
+          echo "Database seeded successfully with personality questions"
 
       - name: 🏃‍♂️ Start Backend Server
         run: |
