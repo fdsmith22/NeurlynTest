@@ -48,11 +48,31 @@ jobs:
 
       - name: Seed Test Database
         run: |
-          echo "Seeding test database with master question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
-          echo "Adding expanded questions..."
+          echo "Seeding test database with complete question set..."
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
-          echo "Database seeded successfully with 218+ questions"
+          sleep 3
+          echo "Database seeded successfully with questions"
+
+      - name: Verify API and Database State
+        run: |
+          echo "Starting backend server for API verification..."
+          PORT=3000 NODE_ENV=development MONGODB_URI=mongodb://localhost:27017/neurlyn-test JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars node backend.js &
+          sleep 5
+          echo "Verifying database has questions..."
+          RESPONSE=$(curl -s -X POST http://localhost:3000/api/assessments/adaptive-optimized \
+            -H "Content-Type: application/json" \
+            -d '{"tier": "free", "assessmentType": "personality", "targetTraits": ["openness", "conscientiousness", "extraversion", "agreeableness", "neuroticism"], "previousResponses": [], "userProfile": {}}')
+          QUESTION_COUNT=$(echo "$RESPONSE" | jq -r '.totalQuestions // 0')
+          echo "API returned $QUESTION_COUNT questions"
+          if [ "$QUESTION_COUNT" -eq "20" ]; then
+            echo "✅ API verification successful - database is properly seeded"
+          else
+            echo "❌ API verification failed - expected 20 questions, got $QUESTION_COUNT"
+            echo "Full API response:"
+            echo "$RESPONSE" | jq '.'
+            exit 1
+          fi
+          pkill -f "node backend.js" || true
 
       - name: Run Critical E2E tests
         run: npx playwright test --config=playwright.config.critical.js
@@ -121,11 +141,10 @@ jobs:
 
       - name: Seed Test Database
         run: |
-          echo "Seeding test database with master question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
-          echo "Adding expanded questions..."
+          echo "Seeding test database with complete question set..."
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
-          echo "Database seeded successfully with 218+ questions"
+          sleep 3
+          echo "Database seeded successfully with questions"
 
       - name: Run Full E2E test suite - ${{ matrix.browser }}
         run: npx playwright test --config=playwright.config.ci.js --project=${{ matrix.browser }}
@@ -179,7 +198,6 @@ jobs:
           echo "MONGODB_URI=mongodb://localhost:27017/neurlyn-test" >> .env
           echo "JWT_SECRET=test-secret-key-for-ci-testing-purposes-only-32chars" >> .env
           echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
-          echo "STRIPE_SECRET_KEY=sk_test_dummy" >> .env
 
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.10.0
@@ -188,11 +206,10 @@ jobs:
 
       - name: Seed Test Database
         run: |
-          echo "Seeding test database with master question set..."
-          NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-master-questions.js
-          echo "Adding expanded questions..."
+          echo "Seeding test database with complete question set..."
           NODE_ENV=test MONGODB_URI=mongodb://localhost:27017/neurlyn-test node scripts/seed-complete-expanded-questions.js
-          echo "Database seeded successfully with 218+ questions"
+          sleep 3
+          echo "Database seeded successfully with questions"
 
       - name: Run visual regression tests
         run: npx playwright test --config=playwright.config.ci.js tests/e2e/visual.spec.js
