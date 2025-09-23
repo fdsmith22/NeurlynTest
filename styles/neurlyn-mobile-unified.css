@@ -71,30 +71,26 @@
     word-break: break-word !important;
   }
 
-  /* Badge positioning - attached to top border */
+  /* Badge positioning - floating above card */
   .pricing-card-badge {
     position: absolute !important;
-    top: 0 !important;
-    right: 15px !important;
+    top: -8px !important;
+    right: 12px !important;
     background: #7c9885 !important;
     color: white !important;
-    padding: 0.3rem 0.6rem !important;
-    padding-top: 0.15rem !important;
-    border-radius: 0 0 6px 6px !important;
-    font-size: 0.55rem !important;
+    padding: 0.2rem 0.5rem !important;
+    border-radius: 3px !important;
+    font-size: 0.5rem !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.06em !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    letter-spacing: 0.05em !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15) !important;
     white-space: nowrap !important;
     z-index: 10 !important;
-    border: 1px solid #7c9885 !important;
-    border-top: none !important;
   }
 
   .pricing-card.premium .pricing-card-badge {
     background: #5a7a6a !important;
-    border-color: #5a7a6a !important;
   }
 
   /* Checkbox/Select button */
