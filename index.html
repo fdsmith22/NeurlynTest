@@ -363,6 +363,8 @@
         margin: 1rem auto;
         width: 100%;
         max-width: 90vw;
+        padding-top: 0.5rem;
+        overflow: visible;
       }
 
       .pricing-card {
@@ -445,11 +447,12 @@
 
       .pricing-card-badge {
         position: absolute;
-        top: -1px;
+        top: 0;
         right: 20px;
         background: #7c9885;
         color: white;
-        padding: 0.3rem 0.8rem;
+        padding: 0.4rem 0.8rem;
+        padding-top: 0.2rem;
         border-radius: 0 0 8px 8px;
         font-size: 0.65rem;
         font-weight: 600;
@@ -458,11 +461,14 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         white-space: nowrap;
         z-index: 10;
+        border: 1px solid #7c9885;
+        border-top: none;
       }
 
       .pricing-card.premium .pricing-card-badge {
         background: #5a7a6a;
         color: white;
+        border-color: #5a7a6a;
       }
 
       .pricing-card-price {

@@ -19,11 +19,13 @@
     flex-direction: column !important; /* Stack vertically */
     gap: 1.5rem !important;
     padding: 1rem !important;
+    padding-top: 0.5rem !important;
     margin: 1rem auto !important;
     width: 100% !important;
     max-width: 100vw !important;
     align-items: stretch !important;
     box-sizing: border-box !important;
+    overflow: visible !important;
   }
 
   /* Individual pricing card */
@@ -72,11 +74,12 @@
   /* Badge positioning - attached to top border */
   .pricing-card-badge {
     position: absolute !important;
-    top: -1px !important;
+    top: 0 !important;
     right: 15px !important;
     background: #7c9885 !important;
     color: white !important;
-    padding: 0.25rem 0.6rem !important;
+    padding: 0.3rem 0.6rem !important;
+    padding-top: 0.15rem !important;
     border-radius: 0 0 6px 6px !important;
     font-size: 0.55rem !important;
     font-weight: 600 !important;
@@ -85,10 +88,13 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
     white-space: nowrap !important;
     z-index: 10 !important;
+    border: 1px solid #7c9885 !important;
+    border-top: none !important;
   }
 
   .pricing-card.premium .pricing-card-badge {
     background: #5a7a6a !important;
+    border-color: #5a7a6a !important;
   }
 
   /* Checkbox/Select button */
