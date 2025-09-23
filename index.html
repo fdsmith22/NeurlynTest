@@ -377,7 +377,7 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         flex: 1;
         max-width: 650px;
         display: flex;
@@ -432,6 +432,7 @@
         gap: 0.75rem;
         margin-bottom: 0.5rem;
         flex-wrap: nowrap;
+        margin-top: 0.5rem;
       }
 
       .pricing-card-title {
@@ -443,29 +444,25 @@
       }
 
       .pricing-card-badge {
-        background: linear-gradient(
-          135deg,
-          rgba(124, 152, 133, 0.1) 0%,
-          rgba(124, 152, 133, 0.15) 100%
-        );
-        color: #6a8a73;
-        padding: 0.2rem 0.6rem;
-        border: 1px solid rgba(124, 152, 133, 0.25);
-        border-radius: 10px;
+        position: absolute;
+        top: -1px;
+        right: 20px;
+        background: #7c9885;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 0 0 8px 8px;
         font-size: 0.65rem;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin-left: auto;
-        box-shadow: 0 2px 4px rgba(124, 152, 133, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         white-space: nowrap;
-        flex-shrink: 0;
+        z-index: 10;
       }
 
       .pricing-card.premium .pricing-card-badge {
-        background: rgba(90, 122, 106, 0.1);
-        color: #4a6b56;
-        border-color: rgba(90, 122, 106, 0.3);
+        background: #5a7a6a;
+        color: white;
       }
 
       .pricing-card-price {

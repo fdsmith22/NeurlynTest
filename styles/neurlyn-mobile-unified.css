@@ -35,10 +35,13 @@
     flex-shrink: unset !important;
     margin: 0 !important;
     padding: 1.25rem !important;
+    padding-top: 1.5rem !important; /* Extra space for badge */
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
     border-radius: 12px !important;
+    position: relative !important;
+    overflow: visible !important;
   }
 
   /* Card header with checkbox */
@@ -66,15 +69,26 @@
     word-break: break-word !important;
   }
 
-  /* Badge positioning */
+  /* Badge positioning - attached to top border */
   .pricing-card-badge {
-    order: 3 !important;
-    margin-left: 0.25rem !important;
-    font-size: 0.5rem !important;
-    padding: 0.1rem 0.3rem !important;
+    position: absolute !important;
+    top: -1px !important;
+    right: 15px !important;
+    background: #7c9885 !important;
+    color: white !important;
+    padding: 0.25rem 0.6rem !important;
+    border-radius: 0 0 6px 6px !important;
+    font-size: 0.55rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
     white-space: nowrap !important;
-    flex-shrink: 0 !important;
-    align-self: center !important;
+    z-index: 10 !important;
+  }
+
+  .pricing-card.premium .pricing-card-badge {
+    background: #5a7a6a !important;
   }
 
   /* Checkbox/Select button */
