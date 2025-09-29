@@ -803,7 +803,7 @@ class EnhancedAdaptiveEngine {
       slider: 1000
     };
 
-    const textLength = question.text.length;
+    const textLength = (question.text || question.questionText || '').length;
     const readingTime = textLength * 30; // 30ms per character
 
     return baseTime + readingTime + (complexityFactors[question.responseType] || 0);

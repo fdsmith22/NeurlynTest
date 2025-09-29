@@ -55,8 +55,8 @@ router.post('/start', async (req, res) => {
 
     await assessment.save();
 
-    // Get first batch of questions (core questions)
-    const initialQuestions = adaptiveAssessment.questions.slice(0, 5);
+    // Get first batch of questions (baseline questions first)
+    const initialQuestions = adaptiveAssessment.baselineQuestions || [];
 
     logger.info('Started adaptive assessment', {
       sessionId,

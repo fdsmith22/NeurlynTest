@@ -1,1 +1,47 @@
-const CACHE_NAME="neurlyn-v1757966617",urlsToCache=["./","./index.html","./styles/neurlyn.css","./styles/neurlyn-dark.css","./styles/neurlyn-enhancements.css","./styles/neurlyn-navigation.css","./styles/neurlyn-gamified.css","./js/neurlyn-integrated.js","./js/report-generator.js","./js/modules/task-controller.js","./js/modules/behavioral-tracker.js","./js/tasks/base-task.js","./js/tasks/likert.js","./js/tasks/risk-balloon.js","./assets/icons/icons.svg","./manifest.json"];self.addEventListener("install",s=>{s.waitUntil(caches.open(CACHE_NAME).then(s=>s.addAll(urlsToCache)))}),self.addEventListener("fetch",s=>{s.respondWith(caches.match(s.request).then(e=>e||fetch(s.request)))}),self.addEventListener("activate",s=>{s.waitUntil(caches.keys().then(s=>Promise.all(s.filter(s=>s!==CACHE_NAME).map(s=>caches.delete(s)))))});
+// Service Worker for Neurlyn
+const CACHE_NAME = 'neurlyn-v1';
+const urlsToCache = [
+  '/',
+  '/js/neurlyn-adaptive-integration.js'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return Promise.allSettled(
+        urlsToCache.map(url =>
+          cache.add(url).catch(err => {
+            console.warn(`Failed to cache ${url}:`, err);
+          })
+        )
+      );
+    })
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      // Cache hit - return response
+      if (response) {
+        return response;
+      }
+      return fetch(event.request);
+    })
+  );
+});
+
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});

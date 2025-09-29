@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Suite Runner</title>
+</head>
+<body>
+    <h1>Running Comprehensive Test Suite...</h1>
+    <div id="status"></div>
+    <div id="results"></div>
+
+    <!-- Load all required modules -->
+    <script src="js/api-client.js?v=14"></script>
+    <script src="js/insight-tracker.js?v=14"></script>
+    <script src="js/enhanced-trait-analyzer.js?v=14"></script>
+    <script src="js/explanation-engine.js?v=14"></script>
+    <script src="js/response-quality-assessor.js?v=14"></script>
+    <script src="js/advanced-report-generator.js?v=14"></script>
+
+    <script>
+        // Function to generate targeted responses
+        function generateTargetedResponses(pattern, count = 30) {
+            const responses = [];
+            const traits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+
+            for (let i = 0; i < count; i++) {
+                const trait = traits[i % 5];
+                let value, responseTime = 2000 + Math.random() * 3000;
+
+                switch(pattern) {
+                    case 'high-openness':
+                        value = trait === 'openness' ?
+                            4 + Math.round(Math.random()) : // 4-5 for openness
+                            2 + Math.floor(Math.random() * 2); // 2-3 for others
+                        break;
+
+                    case 'low-conscientiousness':
+                        value = trait === 'conscientiousness' ?
+                            1 + Math.round(Math.random()) : // 1-2 for conscientiousness
+                            2 + Math.floor(Math.random() * 2); // 2-3 for others
+                        break;
+
+                    case 'high-extraversion':
+                        value = trait === 'extraversion' ?
+                            4 + Math.round(Math.random()) : // 4-5 for extraversion
+                            2 + Math.floor(Math.random() * 2); // 2-3 for others
+                        break;
+
+                    case 'balanced':
+                        value = 3; // All moderate responses
+                        break;
+
+                    case 'extreme-mixed':
+                        value = i % 2 === 0 ? 5 : 1;
+                        break;
+
+                    default:
+                        value = Math.floor(Math.random() * 5) + 1;
+                }
+
+                responses.push({
+                    questionId: `q${i + 1}`,
+                    trait: trait,
+                    value: value,
+                    score: value,  // Add score field for compatibility
+                    responseTime: responseTime,
+                    timestamp: Date.now() - (count - i) * 5000
+                });
+            }
+
+            return responses;
+        }
+
+        // Run tests when page loads
+        window.addEventListener('DOMContentLoaded', async () => {
+            const statusEl = document.getElementById('status');
+            const resultsEl = document.getElementById('results');
+
+            statusEl.innerHTML = '<h2>Testing Report Generation...</h2>';
+
+            // Check if modules are loaded
+            if (typeof AdvancedReportGenerator === 'undefined') {
+                resultsEl.innerHTML = '<p style="color: red;">❌ AdvancedReportGenerator not loaded!</p>';
+                return;
+            }
+
+            const generator = new AdvancedReportGenerator();
+            const testPatterns = [
+                { name: 'High Openness', pattern: 'high-openness' },
+                { name: 'Low Conscientiousness', pattern: 'low-conscientiousness' },
+                { name: 'High Extraversion', pattern: 'high-extraversion' },
+                { name: 'Balanced', pattern: 'balanced' },
+                { name: 'Extreme Mixed', pattern: 'extreme-mixed' }
+            ];
+
+            let resultsHTML = '<h2>Test Results:</h2>';
+            let allPassed = true;
+
+            for (const test of testPatterns) {
+                try {
+                    const responses = generateTargetedResponses(test.pattern);
+                    const report = generator.generateReport(responses);
+
+                    const traits = report.traits || {};
+
+                    // Check if pattern matches expectations
+                    let passed = false;
+                    let message = '';
+
+                    switch(test.pattern) {
+                        case 'high-openness':
+                            passed = traits.openness > 70;
+                            message = `Openness: ${Math.round(traits.openness)}%`;
+                            break;
+                        case 'low-conscientiousness':
+                            passed = traits.conscientiousness < 40;
+                            message = `Conscientiousness: ${Math.round(traits.conscientiousness)}%`;
+                            break;
+                        case 'high-extraversion':
+                            passed = traits.extraversion > 70;
+                            message = `Extraversion: ${Math.round(traits.extraversion)}%`;
+                            break;
+                        case 'balanced':
+                            passed = Object.values(traits).every(t => t >= 40 && t <= 65);
+                            message = `All traits: ${Object.values(traits).map(t => Math.round(t) + '%').join(', ')}`;
+                            break;
+                        case 'extreme-mixed':
+                            // This pattern averages out, so we just check it calculated
+                            passed = Object.keys(traits).length === 5;
+                            message = `Traits calculated: ${Object.keys(traits).length}/5`;
+                            break;
+                    }
+
+                    resultsHTML += `
+                        <div style="padding: 10px; margin: 10px 0; border-left: 4px solid ${passed ? 'green' : 'red'}; background: ${passed ? '#e8f5e9' : '#ffebee'};">
+                            <strong>${test.name}:</strong> ${passed ? '✅ PASSED' : '❌ FAILED'}<br>
+                            ${message}<br>
+                            <small>All traits: O:${Math.round(traits.openness)}% C:${Math.round(traits.conscientiousness)}% E:${Math.round(traits.extraversion)}% A:${Math.round(traits.agreeableness)}% N:${Math.round(traits.neuroticism)}%</small>
+                        </div>
+                    `;
+
+                    if (!passed) allPassed = false;
+
+                } catch (error) {
+                    resultsHTML += `
+                        <div style="padding: 10px; margin: 10px 0; border-left: 4px solid red; background: #ffebee;">
+                            <strong>${test.name}:</strong> ❌ ERROR<br>
+                            ${error.message}
+                        </div>
+                    `;
+                    allPassed = false;
+                }
+            }
+
+            // Summary
+            resultsHTML += `
+                <div style="margin-top: 20px; padding: 15px; background: ${allPassed ? '#4CAF50' : '#f44336'}; color: white; border-radius: 5px;">
+                    <h3>Overall Result: ${allPassed ? '✅ ALL TESTS PASSED' : '❌ SOME TESTS FAILED'}</h3>
+                </div>
+            `;
+
+            resultsEl.innerHTML = resultsHTML;
+            statusEl.innerHTML = '<h2>Test Complete!</h2>';
+        });
+    </script>
+</body>
+</html>

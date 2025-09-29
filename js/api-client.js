@@ -5,7 +5,7 @@
 
 class APIClient {
   constructor() {
-    this.baseURL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : '/api';
+    this.baseURL = window.location.hostname === 'localhost' ? 'http://localhost:3008' : '';
     this.cache = new Map();
     this.cacheTimeout = 5 * 60 * 1000; // 5 minutes
   }
@@ -32,14 +32,14 @@ class APIClient {
     if (this.cache.has(cacheKey)) {
       const cached = this.cache.get(cacheKey);
       if (Date.now() - cached.timestamp < this.cacheTimeout) {
-        // console.log('📦 Using cached questions');
+        // Using cached questions
         return cached.data;
       }
     }
 
     try {
       const response = await fetch(
-        `${this.baseURL}/questions/assessment/${assessmentType}?${params}`
+        `${this.baseURL}/api/questions/assessment/${assessmentType}?${params}`
       );
 
       if (!response.ok) {
@@ -58,7 +58,7 @@ class APIClient {
         timestamp: Date.now()
       });
 
-      // console.log(`✅ Fetched ${data.totalQuestions} questions for ${assessmentType}`);
+      // Questions fetched successfully
 
       return data.questions;
     } catch (error) {
@@ -82,7 +82,7 @@ class APIClient {
     }
 
     try {
-      const response = await fetch(`${this.baseURL}/questions/by-instrument/${instrument}`);
+      const response = await fetch(`${this.baseURL}/api/questions/by-instrument/${instrument}`);
       const data = await response.json();
 
       if (!data.success) {
@@ -332,7 +332,7 @@ class APIClient {
   }
 
   /**
-   * Submit assessment results
+   * Submit assessment results (legacy method)
    */
   async submitResults(results) {
     try {
@@ -358,14 +358,257 @@ class APIClient {
     }
   }
 
+  // === ENHANCED ADAPTIVE ASSESSMENT METHODS ===
+
+  /**
+   * Start a new adaptive assessment
+   */
+  async startAdaptiveAssessment(options = {}) {
+    const { tier = 'standard', concerns = [], demographics = {}, sessionId = null } = options;
+
+    try {
+      const response = await fetch(`${this.baseURL}/api/assessments/free/start`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          tier,
+          concerns,
+          demographics,
+          sessionId
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to start adaptive assessment');
+      }
+
+      // Store session ID for subsequent requests
+      this.currentSessionId = data.sessionId;
+
+      console.log('Adaptive assessment started:', data.sessionId);
+      return data;
+    } catch (error) {
+      console.error('Failed to start adaptive assessment:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Complete baseline phase and get adaptive questions
+   */
+  async completeBaseline(sessionId, baselineResponses) {
+    try {
+      const response = await fetch(`${this.baseURL}/api/assessments/free/baseline-complete`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          sessionId,
+          baselineResponses,
+          tier: this.currentTier || 'standard'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to complete baseline');
+      }
+
+      console.log('Baseline completed, moving to adaptive phase');
+      return data;
+    } catch (error) {
+      console.error('Failed to complete baseline:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get next adaptive question
+   */
+  async getNextQuestion(sessionId, currentResponse = null) {
+    try {
+      const response = await fetch(`${this.baseURL}/api/assessments/free/next-question`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          sessionId,
+          currentResponse
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to get next question');
+      }
+
+      return data;
+    } catch (error) {
+      console.error('Failed to get next question:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Complete enhanced adaptive assessment
+   */
+  async completeAdaptiveAssessment(sessionId) {
+    try {
+      const response = await fetch(`${this.baseURL}/api/assessment/adaptive/complete`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sessionId })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to complete assessment');
+      }
+
+      console.log('Enhanced assessment completed');
+      return data;
+    } catch (error) {
+      console.error('Failed to complete enhanced assessment:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get enhanced assessment report
+   */
+  async getEnhancedReport(sessionId) {
+    try {
+      const response = await fetch(`${this.baseURL}/api/report/${sessionId}`);
+
+      if (!response.ok) {
+        if (response.status === 402) {
+          // Payment required
+          const data = await response.json();
+          return { paymentRequired: true, paymentUrl: data.paymentUrl };
+        }
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to get report');
+      }
+
+      return data;
+    } catch (error) {
+      console.error('Failed to get enhanced report:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Utility method to handle adaptive assessment flow
+   */
+  async runAdaptiveAssessment(config, progressCallback = null) {
+    const { tier, concerns, demographics } = config;
+
+    try {
+      // Step 1: Start assessment
+      if (progressCallback) progressCallback({ phase: 'starting', progress: 0 });
+      const startResult = await this.startAdaptiveAssessment({ tier, concerns, demographics });
+
+      const sessionId = startResult.sessionId;
+      const baselineQuestions = startResult.questions;
+      const totalQuestions = startResult.totalQuestions;
+
+      // Step 2: Present baseline questions and collect responses
+      if (progressCallback) {
+        progressCallback({
+          phase: 'baseline',
+          progress: 10,
+          questions: baselineQuestions,
+          totalQuestions,
+          sessionId
+        });
+      }
+
+      // Return control to UI for baseline questions
+      return {
+        phase: 'baseline',
+        sessionId,
+        questions: baselineQuestions,
+        totalQuestions,
+        metadata: startResult.adaptiveMetadata
+      };
+    } catch (error) {
+      console.error('Error in adaptive assessment flow:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Continue adaptive assessment after baseline
+   */
+  async continueAdaptiveAssessment(sessionId, baselineResponses, progressCallback = null) {
+    try {
+      // Complete baseline and get adaptive questions
+      if (progressCallback) progressCallback({ phase: 'processing-baseline', progress: 40 });
+
+      const baselineResult = await this.completeBaseline(sessionId, baselineResponses);
+
+      if (progressCallback) {
+        progressCallback({
+          phase: 'adaptive',
+          progress: 50,
+          profile: baselineResult.profile,
+          adaptiveQuestions: baselineResult.adaptiveQuestions
+        });
+      }
+
+      return {
+        phase: 'adaptive',
+        profile: baselineResult.profile,
+        adaptiveQuestions: baselineResult.adaptiveQuestions,
+        questionsRemaining: baselineResult.questionsRemaining,
+        analysis: baselineResult.analysis
+      };
+    } catch (error) {
+      console.error('Error continuing adaptive assessment:', error);
+      throw error;
+    }
+  }
+
   /**
    * Clear cache
    */
   clearCache() {
     this.cache.clear();
-    // console.log('API cache cleared');
+    // API cache cleared
   }
 }
 
-// Export for use in other modules
-export const apiClient = new APIClient();
+// Make available globally for browser use
+window.apiClient = new APIClient();

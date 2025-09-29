@@ -1,0 +1,528 @@
+/**
+ * Neurlyn Mobile Consolidated CSS
+ * Consolidates: neurlyn-mobile.css, neurlyn-mobile-unified.css, mobile-*.css files
+ * Mobile-specific styles and responsive enhancements
+ */
+
+/* === MOBILE-FIRST RESPONSIVE DESIGN === */
+
+/* Base mobile styles (320px+) */
+@media screen and (max-width: 767px) {
+  /* === LAYOUT ADJUSTMENTS === */
+  .container {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+
+  .section {
+    padding: 2rem 0;
+  }
+
+  /* === HERO SECTION === */
+  .hero {
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* === NAVIGATION === */
+  .nav-mobile {
+    display: block;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--background-primary);
+    z-index: 1000;
+    transition: left var(--transition-normal);
+    overflow-y: auto;
+  }
+
+  .mobile-menu.active {
+    left: 0;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+  }
+
+  .mobile-menu-content {
+    padding: 2rem 1rem;
+  }
+
+  .mobile-menu-item {
+    display: block;
+    padding: 1rem 0;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.1rem;
+  }
+
+  .mobile-menu-item:hover {
+    color: var(--sage-primary);
+  }
+
+  /* === ASSESSMENT CARDS === */
+  .assessment-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .assessment-card {
+    padding: 1.5rem;
+  }
+
+  .assessment-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .assessment-card .price {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  /* === PRICING SECTION === */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--sage-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .pricing-header {
+    padding-top: 2rem;
+  }
+
+  .pricing-features {
+    margin: 1.5rem 0;
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .pricing-feature::before {
+    content: '✓';
+    color: var(--sage-primary);
+    font-weight: 600;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* === FORMS === */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--sage-primary);
+  }
+
+  /* === TOUCH-FRIENDLY ELEMENTS === */
+  .btn {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .likert-option,
+  .mc-option {
+    min-height: 44px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .likert-option:hover,
+  .mc-option:hover {
+    border-color: var(--sage-light);
+    background: var(--background-secondary);
+  }
+
+  .likert-option:has(input:checked),
+  .mc-option:has(input:checked) {
+    border-color: var(--sage-primary);
+    background: var(--sage-lightest);
+    color: var(--sage-dark);
+  }
+
+  /* === QUESTION LAYOUT === */
+  .question-container {
+    padding: 0;
+  }
+
+  .question-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .question-text {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .response-options {
+    margin: 1.5rem 0;
+  }
+
+  /* === NAVIGATION CONTROLS === */
+  .navigation-controls {
+    position: sticky;
+    bottom: 1rem;
+    background: var(--background-primary);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    margin-top: 2rem;
+  }
+
+  .navigation-controls .btn {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  /* === PROGRESS INDICATORS === */
+  .progress-container {
+    position: sticky;
+    top: 0;
+    background: var(--background-primary);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
+    margin-bottom: 1rem;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--background-accent);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+
+  .progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  /* === REPORT DISPLAY === */
+  .report-container {
+    padding: 1rem;
+  }
+
+  .report-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--background-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .trait-chart {
+    margin: 1rem 0;
+  }
+
+  .trait-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: var(--background-secondary);
+    border-radius: var(--border-radius);
+  }
+
+  .trait-name {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .trait-value {
+    font-weight: 600;
+    color: var(--sage-primary);
+  }
+
+  /* === MODAL ADAPTATIONS === */
+  .modal {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: var(--border-radius);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .modal-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .modal-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  /* === ACCESSIBILITY === */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--sage-primary);
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* === ERROR STATES === */
+  .error-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--background-primary);
+    border-radius: var(--border-radius);
+    margin: 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .loading-state {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--sage-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* === SMALL MOBILE (up to 480px) === */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .question-card,
+  .assessment-card,
+  .pricing-card {
+    padding: 1rem;
+  }
+
+  .btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .navigation-controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .progress-container {
+    padding: 0.75rem;
+  }
+
+  .modal-content {
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+}
+
+/* === LANDSCAPE PHONE === */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .progress-container {
+    position: relative;
+    padding: 0.5rem 1rem;
+  }
+
+  .question-card {
+    padding: 1rem 1.5rem;
+  }
+
+  .navigation-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 1rem;
+    background: var(--background-primary);
+    border-top: 1px solid var(--border-color);
+    border-radius: 0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* === TABLET ADAPTATIONS === */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .assessment-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .likert-scale {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+  }
+
+  .question-card {
+    padding: 2rem;
+  }
+}
+
+/* === TOUCH DEVICE ENHANCEMENTS === */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover {
+    transform: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .likert-option:hover,
+  .mc-option:hover {
+    background: var(--background-secondary);
+  }
+
+  /* Increase touch targets */
+  .btn,
+  .likert-option,
+  .mc-option,
+  .form-input,
+  .form-select {
+    min-height: 48px;
+  }
+}
+
+/* === DARK MODE SUPPORT DISABLED === */
+/* Dark mode has been intentionally disabled for consistent light theme */
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .spinner {
+    animation: none;
+  }
+}

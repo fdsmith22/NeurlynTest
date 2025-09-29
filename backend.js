@@ -115,6 +115,7 @@ const assessmentSchema = new mongoose.Schema(
   assessmentSchema.index({ userId: 1, createdAt: -1 }),
   assessmentSchema.index({ mode: 1, 'results.matchConfidence': -1 }));
 const Assessment = mongoose.model('Assessment', assessmentSchema),
+  AssessmentSession = require('./models/AssessmentSession'),
   userSchema = new mongoose.Schema(
     {
       email: { type: String, unique: !0, sparse: !0 },
@@ -567,6 +568,97 @@ database.connect().catch(err => {
       t.status(500).json({ error: 'Failed to save progress' });
     }
   }),
+  // Enhanced completion endpoint for adaptive assessments
+  app.post('/api/assessment/adaptive/complete', async (req, res) => {
+    try {
+      const { sessionId } = req.body;
+      const assessment = await Assessment.findOne({ sessionId });
+
+      if (!assessment) {
+        return res.status(404).json({ error: 'Assessment not found' });
+      }
+
+      assessment.completionTime = new Date();
+
+      // Use enhanced report generation with new services
+      const StatisticalAnalyzer = require('./services/statistical-analyzer');
+      const NarrativeGenerator = require('./services/narrative-generator');
+      const NeurodivergentScreener = require('./services/neurodivergent-screener');
+
+      const statisticalAnalyzer = new StatisticalAnalyzer();
+      const narrativeGenerator = new NarrativeGenerator();
+      const neurodivergentScreener = new NeurodivergentScreener();
+
+      // Extract traits from responses
+      const traits = calculateTraitsFromResponses(assessment.responses);
+
+      // Run enhanced analysis
+      const statisticalAnalysis = statisticalAnalyzer.analyzeProfile({
+        traits,
+        responses: assessment.responses,
+        metadata: assessment.metadata
+      });
+
+      const neurodivergentScreening = neurodivergentScreener.screenProfile({
+        responses: assessment.responses,
+        traits,
+        metadata: assessment.metadata
+      });
+
+      const narrativeContent = narrativeGenerator.generateNarrative({
+        traits,
+        analysis: statisticalAnalysis,
+        neurodivergentScreening,
+        tier: assessment.tier
+      });
+
+      // Combine results
+      const enhancedResults = {
+        profile: assessment.metadata.userProfile || {},
+        traits,
+        statisticalAnalysis,
+        neurodivergentScreening,
+        narrative: narrativeContent,
+        mode: 'adaptive-enhanced',
+        version: '2.0',
+        timestamp: new Date()
+      };
+
+      assessment.results = enhancedResults;
+
+      // Determine payment requirement
+      const needsPayment = determinePaymentRequired(assessment);
+
+      if (needsPayment) {
+        assessment.payment.status = 'pending';
+        await assessment.save();
+
+        res.json({
+          success: true,
+          needsPayment: true,
+          previewResults: generateEnhancedPreviewResults(enhancedResults),
+          paymentUrl: `/payment/${sessionId}`,
+          enhancedFeatures: true
+        });
+      } else {
+        assessment.payment.status = 'free_preview';
+        await assessment.save();
+
+        res.json({
+          success: true,
+          results: enhancedResults,
+          reportUrl: `/api/report/${sessionId}`,
+          enhancedFeatures: true
+        });
+      }
+    } catch (error) {
+      logger.error('Error completing enhanced assessment:', error);
+      res
+        .status(500)
+        .json({ error: 'Failed to complete enhanced assessment', message: error.message });
+    }
+  }),
+  // Original completion endpoint (legacy support)
   app.post('/api/assessment/complete', async (e, t) => {
     try {
       const { sessionId: n, responses: s } = e.body,
@@ -647,6 +739,367 @@ database.connect().catch(err => {
     t.json({ received: !0 });
   }),
   // Adaptive Assessment Route
+  // Enhanced Adaptive Assessment - Baseline Phase
+  app.post('/api/assessments/adaptive/start', async (req, res) => {
+    try {
+      const AdaptiveAssessmentEngine = require('./services/adaptive-assessment-engine');
+      const engine = new AdaptiveAssessmentEngine();
+
+      const { tier = 'standard', concerns = [], demographics = {} } = req.body;
+      const sessionId =
+        req.body.sessionId || `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+      // Generate initial adaptive assessment structure with baseline questions
+      const assessment = await engine.generateAdaptiveAssessment(tier, { concerns, demographics });
+
+      // Create assessment session record for temporary storage
+      const assessmentSession = new AssessmentSession({
+        sessionId,
+        tier,
+        phase: 'baseline',
+        concerns,
+        demographics,
+        totalQuestions: assessment.totalQuestions,
+        baselineCount: assessment.baselineQuestions.length,
+        questionsRemaining: assessment.totalQuestions,
+        userAgent: req.get('User-Agent'),
+        ipAddress: req.ip
+      });
+
+      await assessmentSession.save();
+
+      // Also create the main Assessment record for compatibility
+      const newAssessment = new Assessment({
+        sessionId,
+        mode: 'adaptive',
+        tier,
+        responses: [],
+        metadata: {
+          userAgent: req.get('User-Agent'),
+          abTestGroup: 'adaptive-v2',
+          adaptivePhase: 'baseline'
+        },
+        demographics
+      });
+
+      await newAssessment.save();
+
+      res.json({
+        success: true,
+        sessionId,
+        phase: 'baseline',
+        questions: assessment.baselineQuestions,
+        totalQuestions: assessment.totalQuestions,
+        baselineCount: assessment.baselineQuestions.length,
+        adaptiveSlots: assessment.adaptiveSlots,
+        tier,
+        adaptiveMetadata: assessment.adaptiveMetadata
+      });
+    } catch (error) {
+      logger.error('Adaptive assessment start error:', error);
+      res
+        .status(500)
+        .json({ error: 'Failed to start adaptive assessment', message: error.message });
+    }
+  }),
+  // Process Baseline Responses and Get Adaptive Questions
+  app.post('/api/assessments/adaptive/baseline-complete', async (req, res) => {
+    try {
+      const AdaptiveAssessmentEngine = require('./services/adaptive-assessment-engine');
+      const engine = new AdaptiveAssessmentEngine();
+
+      const { sessionId, baselineResponses, tier = 'standard' } = req.body;
+
+      if (!sessionId || !baselineResponses || baselineResponses.length === 0) {
+        return res
+          .status(400)
+          .json({ error: 'Missing required fields: sessionId, baselineResponses' });
+      }
+
+      // Find the assessment session
+      const assessmentSession = await AssessmentSession.findOne({ sessionId });
+      if (!assessmentSession) {
+        return res.status(404).json({ error: 'Assessment session not found' });
+      }
+
+      // Store baseline responses in the session
+      for (const response of baselineResponses) {
+        assessmentSession.addBaselineResponse(
+          response.questionId,
+          response.response,
+          response.responseTime
+        );
+      }
+
+      // Process baseline responses to create user profile
+      const baselineAnalysis = await engine.processBaselineResponses(baselineResponses, tier);
+
+      // Update session with baseline profile and move to adaptive phase
+      assessmentSession.updateBaselineProfile({
+        traits: baselineAnalysis.profile.traits,
+        patterns: baselineAnalysis.profile.patterns,
+        indicators: baselineAnalysis.profile.indicators,
+        archetype: baselineAnalysis.profile.archetype
+      });
+
+      assessmentSession.phase = 'adaptive';
+      assessmentSession.questionsRemaining =
+        assessmentSession.totalQuestions - assessmentSession.questionsAnswered;
+
+      await assessmentSession.save();
+
+      // Also update main Assessment record for compatibility
+      const assessment = await Assessment.findOne({ sessionId });
+      if (assessment) {
+        assessment.responses.push(
+          ...baselineResponses.map(r => ({
+            ...r,
+            phase: 'baseline'
+          }))
+        );
+        assessment.metadata.adaptivePhase = 'adaptive';
+        assessment.metadata.userProfile = baselineAnalysis.profile;
+        assessment.metadata.baselineAnalysis = baselineAnalysis.analysis;
+        await assessment.save();
+      }
+
+      res.json({
+        success: true,
+        sessionId,
+        phase: 'adaptive',
+        profile: baselineAnalysis.profile,
+        adaptiveQuestions: baselineAnalysis.adaptiveQuestions,
+        questionsRemaining: baselineAnalysis.adaptiveQuestions.length,
+        analysis: baselineAnalysis.analysis,
+        confidence: baselineAnalysis.profile.confidence,
+        completionPercentage: assessmentSession.completionPercentage
+      });
+    } catch (error) {
+      logger.error('Baseline completion error:', error);
+      res
+        .status(500)
+        .json({ error: 'Failed to process baseline responses', message: error.message });
+    }
+  }),
+  // Complete Adaptive Assessment
+  app.post('/api/assessments/adaptive/complete', async (req, res) => {
+    try {
+      const { sessionId, adaptiveResponses } = req.body;
+
+      if (!sessionId || !adaptiveResponses) {
+        return res
+          .status(400)
+          .json({ error: 'Missing required fields: sessionId, adaptiveResponses' });
+      }
+
+      // Find the assessment session
+      let session = await AssessmentSession.findOne({ sessionId });
+      if (!session) {
+        return res.status(404).json({ error: 'Assessment session not found' });
+      }
+
+      // Add adaptive responses to session
+      for (const response of adaptiveResponses) {
+        session.adaptiveResponses.push({
+          questionId: response.questionId,
+          response: response.response,
+          responseTime: response.responseTime || 5000,
+          timestamp: new Date()
+        });
+      }
+
+      session.phase = 'completed';
+      session.completedAt = new Date();
+
+      // Initialize services
+      const AdaptiveAssessmentEngine = require('./services/adaptive-assessment-engine');
+      const NarrativeGenerator = require('./services/narrative-generator');
+
+      const engine = new AdaptiveAssessmentEngine();
+      const narrativeGenerator = new NarrativeGenerator();
+
+      // Combine all responses for final analysis
+      const allResponses = [
+        ...session.baselineResponses.map(r => ({ ...r, phase: 'baseline' })),
+        ...session.adaptiveResponses.map(r => ({ ...r, phase: 'adaptive' }))
+      ];
+
+      // Generate final report
+      const reportData = {
+        sessionId,
+        userProfile: session.userProfile,
+        allResponses,
+        baselineAnalysis: session.metadata?.baselineAnalysis,
+        tier: session.tier
+      };
+
+      // Generate enhanced narrative
+      const narrative = await narrativeGenerator.generateNarrative(
+        reportData.userProfile,
+        reportData.baselineAnalysis,
+        reportData.tier
+      );
+
+      // Save to permanent Assessment record
+      const assessment = new Assessment({
+        sessionId,
+        tier: session.tier,
+        phase: 'completed',
+        responses: allResponses,
+        userProfile: session.userProfile,
+        metadata: {
+          baselineAnalysis: session.metadata?.baselineAnalysis,
+          completionTime: new Date(),
+          totalResponseTime: allResponses.reduce((sum, r) => sum + (r.responseTime || 0), 0)
+        },
+        narrative
+      });
+
+      await assessment.save();
+      await session.save();
+
+      logger.info('Adaptive assessment completed', {
+        sessionId,
+        totalResponses: allResponses.length,
+        completionTime: new Date()
+      });
+
+      res.json({
+        success: true,
+        sessionId,
+        assessment: {
+          profile: session.userProfile,
+          narrative,
+          analysis: session.metadata?.baselineAnalysis,
+          completionTime: new Date(),
+          totalResponses: allResponses.length
+        }
+      });
+    } catch (error) {
+      logger.error('Adaptive assessment completion error:', error);
+      res
+        .status(500)
+        .json({ error: 'Failed to complete adaptive assessment', message: error.message });
+    }
+  }),
+  // Get Next Adaptive Question
+  app.post('/api/assessments/adaptive/next-question', async (req, res) => {
+    try {
+      const AdaptiveAssessmentEngine = require('./services/adaptive-assessment-engine');
+      const engine = new AdaptiveAssessmentEngine();
+
+      const { sessionId, currentResponse } = req.body;
+
+      if (!sessionId) {
+        return res.status(400).json({ error: 'Missing sessionId' });
+      }
+
+      // Find assessment and update with current response if provided
+      const assessment = await Assessment.findOne({ sessionId });
+      if (!assessment) {
+        return res.status(404).json({ error: 'Assessment session not found' });
+      }
+
+      if (currentResponse) {
+        assessment.responses.push({
+          ...currentResponse,
+          phase: 'adaptive',
+          timestamp: new Date()
+        });
+        await assessment.save();
+      }
+
+      // Get all responses for this session
+      const allResponses = assessment.responses;
+      const userProfile = assessment.metadata.userProfile;
+
+      // Check if we have remaining questions to ask
+      const totalQuestions = assessment.tier === 'comprehensive' ? 50 : 30;
+      const questionsAnswered = allResponses.length;
+
+      if (questionsAnswered >= totalQuestions) {
+        return res.json({
+          success: true,
+          completed: true,
+          message: 'Assessment completed',
+          totalQuestions: questionsAnswered
+        });
+      }
+
+      // Select next adaptive question based on responses and profile
+      const remainingQuestions = []; // Would be populated from question bank
+      const nextQuestionResult = await engine.selectNextAdaptiveQuestion(
+        sessionId,
+        allResponses,
+        remainingQuestions,
+        userProfile
+      );
+
+      res.json({
+        success: true,
+        question: nextQuestionResult.question,
+        questionsRemaining: totalQuestions - questionsAnswered - 1,
+        totalQuestions,
+        progress: Math.round((questionsAnswered / totalQuestions) * 100),
+        updatedProfile: nextQuestionResult.updatedProfile,
+        pathways: nextQuestionResult.pathways
+      });
+    } catch (error) {
+      logger.error('Next question selection error:', error);
+      res.status(500).json({ error: 'Failed to get next question', message: error.message });
+    }
+  }),
+  // FREE ASSESSMENT ENDPOINTS (replicate adaptive for free tier)
+  app.post('/api/assessments/free/start', async (req, res) => {
+    // Use the same logic as adaptive/start but clearly for free tier
+    req.body.tier = 'standard'; // Ensure free assessments use standard tier
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/start')
+      .route.stack[0].handle(req, res);
+  }),
+  app.post('/api/assessments/free/baseline-complete', async (req, res) => {
+    req.body.tier = 'standard';
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/baseline-complete')
+      .route.stack[0].handle(req, res);
+  }),
+  app.post('/api/assessments/free/complete', async (req, res) => {
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/complete')
+      .route.stack[0].handle(req, res);
+  }),
+  app.post('/api/assessments/free/next-question', async (req, res) => {
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/next-question')
+      .route.stack[0].handle(req, res);
+  }),
+  // PAID ASSESSMENT ENDPOINTS (replicate adaptive for paid tier)
+  app.post('/api/assessments/paid/start', async (req, res) => {
+    // Use the same logic as adaptive/start but for paid tier
+    req.body.tier = 'comprehensive'; // Ensure paid assessments use comprehensive tier
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/start')
+      .route.stack[0].handle(req, res);
+  }),
+  app.post('/api/assessments/paid/baseline-complete', async (req, res) => {
+    req.body.tier = 'comprehensive';
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/baseline-complete')
+      .route.stack[0].handle(req, res);
+  }),
+  app.post('/api/assessments/paid/complete', async (req, res) => {
+    req.body.tier = 'comprehensive';
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/complete')
+      .route.stack[0].handle(req, res);
+  }),
+  app.post('/api/assessments/paid/next-question', async (req, res) => {
+    req.body.tier = 'comprehensive';
+    return app._router.stack
+      .find(r => r.route && r.route.path === '/api/assessments/adaptive/next-question')
+      .route.stack[0].handle(req, res);
+  }),
+  // Legacy adaptive endpoint (maintained for backward compatibility)
   app.post('/api/assessments/adaptive', async (e, t) => {
     try {
       const EnhancedAdaptiveEngine = require('./services/enhanced-adaptive-engine');
@@ -744,6 +1197,80 @@ database.connect().catch(err => {
       t.status(500).json({ error: 'Failed to fetch analytics' });
     }
   }));
+
+// === ENHANCED HELPER FUNCTIONS ===
+
+/**
+ * Calculate traits from responses for enhanced analysis
+ */
+function calculateTraitsFromResponses(responses) {
+  const traitScores = {
+    openness: { scores: [], weights: [] },
+    conscientiousness: { scores: [], weights: [] },
+    extraversion: { scores: [], weights: [] },
+    agreeableness: { scores: [], weights: [] },
+    neuroticism: { scores: [], weights: [] }
+  };
+
+  // Process responses with weighting
+  responses.forEach(response => {
+    const trait = (response.trait || response.category || '').toLowerCase();
+    const score = parseInt(response.value) || parseInt(response.score) || 3;
+    const weight = response.weight || 1;
+
+    if (trait && traitScores[trait]) {
+      // Reverse score if question is reverse-coded
+      const adjustedScore = response.reverse ? 6 - score : score;
+      traitScores[trait].scores.push(adjustedScore);
+      traitScores[trait].weights.push(weight);
+    }
+  });
+
+  // Calculate weighted averages and convert to percentiles
+  const traits = {};
+  Object.keys(traitScores).forEach(trait => {
+    const data = traitScores[trait];
+    if (data.scores.length > 0) {
+      const weightedSum = data.scores.reduce((sum, score, i) => sum + score * data.weights[i], 0);
+      const totalWeight = data.weights.reduce((sum, w) => sum + w, 0);
+      const avg = weightedSum / totalWeight;
+      // Convert 1-5 scale to 0-100 percentile
+      traits[trait] = Math.round((avg - 1) * 25);
+    } else {
+      traits[trait] = 50; // Default neutral value
+    }
+  });
+
+  return traits;
+}
+
+/**
+ * Generate enhanced preview results for payment flow
+ */
+function generateEnhancedPreviewResults(results) {
+  return {
+    previewSummary:
+      'Your enhanced personality assessment reveals unique insights about your cognitive patterns and potential neurodivergent traits.',
+    topTraits: Object.entries(results.traits)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([trait, score]) => ({ trait, score, percentile: score })),
+    archetype: results.statisticalAnalysis?.archetype?.name || 'Unique Individual',
+    neurodivergentIndicators:
+      results.neurodivergentScreening?.summary || 'Screening analysis available in full report',
+    narrativePreview:
+      results.narrative?.executiveSummary?.substring(0, 200) + '...' ||
+      'Personalized narrative available in full report',
+    confidence: results.statisticalAnalysis?.confidence || 0.8,
+    enhancedFeatures: [
+      'Advanced statistical analysis with personality archetypes',
+      'Comprehensive neurodivergent screening (ADHD, Autism, HSP)',
+      'AI-generated personalized narrative (2500+ words)',
+      'Trait interaction patterns and insights',
+      'Customized growth recommendations'
+    ]
+  };
+}
 
 // Only start server if not in test environment
 if (process.env.NODE_ENV !== 'test') {

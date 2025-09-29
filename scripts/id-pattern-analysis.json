@@ -1,0 +1,341 @@
+{
+  "totalQuestions": 218,
+  "uniquePatterns": 116,
+  "patternsPerCategory": [
+    {
+      "category": "personality",
+      "patternCount": 8,
+      "patterns": [
+        "BFI_OPENNESS_#",
+        "BFI_CONSCIENTI_#",
+        "BFI_EXTRAVERSI_#",
+        "BFI_AGREEABLEN_#",
+        "BFI_NEUROTICIS_#",
+        "BFI_BEHAVIORAL_#",
+        "BFI_SITUATIONA_#",
+        "BFI_PREFERENCE_#"
+      ]
+    },
+    {
+      "category": "neurodiversity",
+      "patternCount": 70,
+      "patterns": [
+        "NEURO_ADHD_#",
+        "NEURO_AUTISM_#",
+        "NEURO_SENSORY_#",
+        "NEURO_EXECUTIVEF_#",
+        "NEURO_TASKINITIA_#",
+        "NEURO_PROCRASTIN_#",
+        "NEURO_MOTIVATION_#",
+        "NEURO_TIMEBLINDN_#",
+        "NEURO_TIMEMANAGE_#",
+        "NEURO_TIMEESTIMA_#",
+        "NEURO_PUNCTUALIT_#",
+        "NEURO_COGNITIVEF_#",
+        "NEURO_TASKRESUMP_#",
+        "NEURO_PERSEVERAT_#",
+        "NEURO_WORKINGMEM_#",
+        "NEURO_PROSPECTIV_#",
+        "NEURO_MEMORYCOMP_#",
+        "NEURO_APPOINTMEN_#",
+        "NEURO_ORGANIZATI_#",
+        "NEURO_PLANNING_#",
+        "NEURO_TOOLUSE_#",
+        "NEURO_TASKBREAKD_#",
+        "NEURO_EMOTIONALR_#",
+        "NEURO_FRUSTRATIO_#",
+        "NEURO_TACTILE_#",
+        "NEURO_PROPRIOCEP_#",
+        "NEURO_AUDITORY_#",
+        "NEURO_AUDITORYCO_#",
+        "NEURO_AUDITORYST_#",
+        "NEURO_VISUAL_#",
+        "NEURO_VISUALPREF_#",
+        "NEURO_VISUALFLUO_#",
+        "NEURO_VISUALDETA_#",
+        "NEURO_OLFACTORY_#",
+        "NEURO_GUSTATORY_#",
+        "NEURO_OLFACTORYS_#",
+        "NEURO_VESTIBULAR_#",
+        "NEURO_SENSORYSEE_#",
+        "NEURO_SOCIALPREP_#",
+        "NEURO_MIMICRY_#",
+        "NEURO_PERSONASWI_#",
+        "NEURO_EYECONTACT_#",
+        "NEURO_SUPPRESSIO_#",
+        "NEURO_SOCIALEXHA_#",
+        "NEURO_RECOVERYTI_#",
+        "NEURO_EFFORT_#",
+        "NEURO_IDENTITYCO_#",
+        "NEURO_PERFORMANC_#",
+        "NEURO_AUTHENTICI_#",
+        "NEURO_REJECTIONF_#",
+        "NEURO_STIMMINGSU_#",
+        "NEURO_EMOTIONSUP_#",
+        "NEURO_MOVEMENTSU_#",
+        "NEURO_INTENSITY_#",
+        "NEURO_SOMATIC_#",
+        "NEURO_POSITIVEIN_#",
+        "NEURO_MOODSWINGS_#",
+        "NEURO_REACTIVITY_#",
+        "NEURO_RECOVERY_#",
+        "NEURO_REJECTIONS_#",
+        "NEURO_REJECTIONP_#",
+        "NEURO_REJECTIONA_#",
+        "NEURO_ALEXITHYMI_#",
+        "NEURO_AWARENESSD_#",
+        "NEURO_EXTERNALAW_#",
+        "NEURO_HYPERFOCUS_#",
+        "NEURO_INFORMATIO_#",
+        "NEURO_PRIORITY_#",
+        "NEURO_NARROWFOCU_#",
+        "NEURO_PERSISTENC_#"
+      ]
+    },
+    {
+      "category": "cognitive",
+      "patternCount": 5,
+      "patterns": [
+        "COG_ANALYTICAL_#",
+        "COG_KINESTHETI_#",
+        "COG_SPATIAL_#",
+        "COG_VISUAL_#",
+        "COG_HOLISTIC_#"
+      ]
+    },
+    {
+      "category": "trauma_screening",
+      "patternCount": 12,
+      "patterns": [
+        "TRAUMA_HYPERVIGIL_#",
+        "TRAUMA_STARTLERES_#",
+        "TRAUMA_CHRONICTEN_#",
+        "TRAUMA_DISSOCIATI_#",
+        "TRAUMA_DEREALIZAT_#",
+        "TRAUMA_TIMELOSS_#",
+        "TRAUMA_TRUST_#",
+        "TRAUMA_ESCAPEPLAN_#",
+        "TRAUMA_ISOLATIONS_#",
+        "TRAUMA_SOMATICTEN_#",
+        "TRAUMA_SOMATICPAI_#",
+        "TRAUMA_SOMATICRES_#"
+      ]
+    },
+    {
+      "category": "attachment",
+      "patternCount": 4,
+      "patterns": [
+        "ATTACH_ANXIOUS_#",
+        "ATTACH_AVOIDANT_#",
+        "ATTACH_DISORGANIZ_#",
+        "ATTACH_SECURE_#"
+      ]
+    },
+    {
+      "category": "enneagram",
+      "patternCount": 1,
+      "patterns": ["ENNEA_TYPE#_#"]
+    },
+    {
+      "category": "cognitive_functions",
+      "patternCount": 8,
+      "patterns": [
+        "JUNG_NI_#",
+        "JUNG_NE_#",
+        "JUNG_TI_#",
+        "JUNG_TE_#",
+        "JUNG_FI_#",
+        "JUNG_FE_#",
+        "JUNG_SI_#",
+        "JUNG_SE_#"
+      ]
+    },
+    {
+      "category": "learning_style",
+      "patternCount": 8,
+      "patterns": [
+        "LEARN_KINESTHETI_#",
+        "LEARN_VISUAL_#",
+        "LEARN_AUDITORY_#",
+        "LEARN_GLOBAL_#",
+        "LEARN_SEQUENTIAL_#",
+        "LEARN_EXPERIMENT_#",
+        "LEARN_TEACHING_#",
+        "LEARN_ENVIRONMEN_#"
+      ]
+    }
+  ],
+  "mostCommonPatterns": [
+    {
+      "pattern": "ENNEA_TYPE#_#",
+      "count": 18,
+      "examples": [
+        "ENNEA_TYPE1_001",
+        "ENNEA_TYPE1_002",
+        "ENNEA_TYPE2_003",
+        "ENNEA_TYPE2_004",
+        "ENNEA_TYPE3_005"
+      ]
+    },
+    {
+      "pattern": "BFI_OPENNESS_#",
+      "count": 8,
+      "examples": [
+        "BFI_OPENNESS_001",
+        "BFI_OPENNESS_002",
+        "BFI_OPENNESS_003",
+        "BFI_OPENNESS_004",
+        "BFI_OPENNESS_005"
+      ]
+    },
+    {
+      "pattern": "BFI_CONSCIENTI_#",
+      "count": 8,
+      "examples": [
+        "BFI_CONSCIENTI_009",
+        "BFI_CONSCIENTI_010",
+        "BFI_CONSCIENTI_011",
+        "BFI_CONSCIENTI_012",
+        "BFI_CONSCIENTI_013"
+      ]
+    },
+    {
+      "pattern": "BFI_EXTRAVERSI_#",
+      "count": 8,
+      "examples": [
+        "BFI_EXTRAVERSI_017",
+        "BFI_EXTRAVERSI_018",
+        "BFI_EXTRAVERSI_019",
+        "BFI_EXTRAVERSI_020",
+        "BFI_EXTRAVERSI_021"
+      ]
+    },
+    {
+      "pattern": "BFI_AGREEABLEN_#",
+      "count": 8,
+      "examples": [
+        "BFI_AGREEABLEN_025",
+        "BFI_AGREEABLEN_026",
+        "BFI_AGREEABLEN_027",
+        "BFI_AGREEABLEN_028",
+        "BFI_AGREEABLEN_029"
+      ]
+    },
+    {
+      "pattern": "BFI_NEUROTICIS_#",
+      "count": 8,
+      "examples": [
+        "BFI_NEUROTICIS_033",
+        "BFI_NEUROTICIS_034",
+        "BFI_NEUROTICIS_035",
+        "BFI_NEUROTICIS_036",
+        "BFI_NEUROTICIS_037"
+      ]
+    },
+    {
+      "pattern": "BFI_BEHAVIORAL_#",
+      "count": 8,
+      "examples": [
+        "BFI_BEHAVIORAL_041",
+        "BFI_BEHAVIORAL_042",
+        "BFI_BEHAVIORAL_043",
+        "BFI_BEHAVIORAL_044",
+        "BFI_BEHAVIORAL_045"
+      ]
+    },
+    {
+      "pattern": "BFI_SITUATIONA_#",
+      "count": 8,
+      "examples": [
+        "BFI_SITUATIONA_049",
+        "BFI_SITUATIONA_050",
+        "BFI_SITUATIONA_051",
+        "BFI_SITUATIONA_052",
+        "BFI_SITUATIONA_053"
+      ]
+    },
+    {
+      "pattern": "BFI_PREFERENCE_#",
+      "count": 5,
+      "examples": [
+        "BFI_PREFERENCE_057",
+        "BFI_PREFERENCE_058",
+        "BFI_PREFERENCE_059",
+        "BFI_PREFERENCE_060",
+        "BFI_PREFERENCE_061"
+      ]
+    },
+    {
+      "pattern": "NEURO_ADHD_#",
+      "count": 5,
+      "examples": [
+        "NEURO_ADHD_001",
+        "NEURO_ADHD_002",
+        "NEURO_ADHD_003",
+        "NEURO_ADHD_004",
+        "NEURO_ADHD_005"
+      ]
+    },
+    {
+      "pattern": "NEURO_AUTISM_#",
+      "count": 5,
+      "examples": [
+        "NEURO_AUTISM_006",
+        "NEURO_AUTISM_007",
+        "NEURO_AUTISM_008",
+        "NEURO_AUTISM_009",
+        "NEURO_AUTISM_010"
+      ]
+    },
+    {
+      "pattern": "NEURO_EXECUTIVEF_#",
+      "count": 3,
+      "examples": ["NEURO_EXECUTIVEF_013", "NEURO_EXECUTIVEF_014", "NEURO_EXECUTIVEF_015"]
+    },
+    {
+      "pattern": "NEURO_TACTILE_#",
+      "count": 3,
+      "examples": ["NEURO_TACTILE_036", "NEURO_TACTILE_037", "NEURO_TACTILE_038"]
+    },
+    {
+      "pattern": "ATTACH_ANXIOUS_#",
+      "count": 3,
+      "examples": ["ATTACH_ANXIOUS_001", "ATTACH_ANXIOUS_002", "ATTACH_ANXIOUS_003"]
+    },
+    {
+      "pattern": "ATTACH_AVOIDANT_#",
+      "count": 3,
+      "examples": ["ATTACH_AVOIDANT_004", "ATTACH_AVOIDANT_005", "ATTACH_AVOIDANT_006"]
+    },
+    {
+      "pattern": "ATTACH_DISORGANIZ_#",
+      "count": 3,
+      "examples": ["ATTACH_DISORGANIZ_007", "ATTACH_DISORGANIZ_008", "ATTACH_DISORGANIZ_009"]
+    },
+    {
+      "pattern": "ATTACH_SECURE_#",
+      "count": 3,
+      "examples": ["ATTACH_SECURE_010", "ATTACH_SECURE_011", "ATTACH_SECURE_012"]
+    },
+    {
+      "pattern": "NEURO_SENSORY_#",
+      "count": 2,
+      "examples": ["NEURO_SENSORY_011", "NEURO_SENSORY_012"]
+    },
+    {
+      "pattern": "NEURO_PROPRIOCEP_#",
+      "count": 2,
+      "examples": ["NEURO_PROPRIOCEP_039", "NEURO_PROPRIOCEP_040"]
+    },
+    {
+      "pattern": "NEURO_AUDITORY_#",
+      "count": 2,
+      "examples": ["NEURO_AUDITORY_041", "NEURO_AUDITORY_042"]
+    }
+  ],
+  "singleUsePatterns": 87,
+  "compliance": {
+    "count": 200,
+    "percent": 92
+  }
+}

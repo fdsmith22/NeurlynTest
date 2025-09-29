@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Changes</title>
+</head>
+<body>
+    <h1>Testing Report Changes</h1>
+    <button onclick="testChanges()">Test Report Display</button>
+    <div id="test-output"></div>
+
+    <script src="js/neurlyn-adaptive-integration.js"></script>
+    <script>
+        function testChanges() {
+            const output = document.getElementById('test-output');
+
+            // Check if our new methods exist
+            const assessment = new NeurlynAdaptiveIntegration();
+
+            // Create a test report
+            const testReport = {
+                tier: 'comprehensive',
+                personality: {
+                    bigFive: {
+                        openness: 60,
+                        conscientiousness: 70,
+                        extraversion: 40,
+                        agreeableness: 65,
+                        neuroticism: 35
+                    }
+                },
+                detailed: {
+                    profiles: {
+                        cognitive: {
+                            processingStyle: 'Test Processing Style',
+                            decisionMaking: 'Test Decision Making',
+                            strengths: ['Test Strength 1', 'Test Strength 2']
+                        },
+                        emotional: {
+                            regulation: 'Test Regulation',
+                            description: 'Test Emotional Description'
+                        }
+                    },
+                    behavioralFingerprint: {
+                        tendencies: {
+                            stressResponse: 'Test Stress Response',
+                            socialBehavior: 'Test Social Behavior',
+                            problemSolving: 'Test Problem Solving',
+                            motivationalDrivers: ['Test Driver 1', 'Test Driver 2'],
+                            learningPreferences: ['Visual', 'Hands-on']
+                        }
+                    },
+                    careerInsights: {
+                        workStyle: 'Test Work Style Description',
+                        teamDynamics: 'Test Team Dynamics'
+                    }
+                }
+            };
+
+            output.innerHTML = '<h2>Testing Enhanced Report Display</h2><div id="report-container"></div>';
+            const container = document.getElementById('report-container');
+
+            try {
+                assessment.displayEnhancedReport(testReport, container);
+                console.log('Report displayed successfully');
+            } catch (error) {
+                output.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+                console.error('Display error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -827,33 +827,205 @@ async function seedCompleteExpandedQuestions() {
     const questions = [];
     let questionId = existingCount + 1;
 
+    // Helper function to determine adaptive criteria based on question content
+    const getAdaptiveCriteria = (category, subcategory, domain, text, index) => {
+      const criteria = {
+        isBaseline: false,
+        baselinePriority: null,
+        adaptiveCriteria: {
+          triggerTraits: [],
+          triggerPatterns: [],
+          followUpTo: []
+        }
+      };
+
+      // Mark key questions as baseline based on category and index
+      if (category === 'neurodiversity') {
+        // Select key neurodiversity baseline questions
+        const baselineSubcategories = ['executive_function', 'sensory_processing', 'masking'];
+        if (baselineSubcategories.includes(subcategory) && index < 2) {
+          criteria.isBaseline = true;
+          criteria.baselinePriority = index + 1;
+        } else {
+          // Add adaptive criteria for non-baseline questions
+          if (subcategory === 'executive_function') {
+            criteria.adaptiveCriteria.triggerTraits.push(
+              { trait: 'adhd', threshold: 3.5 },
+              { trait: 'executive_dysfunction', threshold: 3.0 }
+            );
+            criteria.adaptiveCriteria.triggerPatterns.push(
+              'high_adhd_indicators',
+              'executive_challenges'
+            );
+          } else if (subcategory === 'sensory_processing') {
+            criteria.adaptiveCriteria.triggerTraits.push(
+              { trait: 'autism', threshold: 3.5 },
+              { trait: 'sensory_sensitivity', threshold: 3.0 }
+            );
+            criteria.adaptiveCriteria.triggerPatterns.push(
+              'sensory_overwhelm',
+              'autism_indicators'
+            );
+          } else if (subcategory === 'masking') {
+            criteria.adaptiveCriteria.triggerTraits.push(
+              { trait: 'masking_behavior', threshold: 3.0 },
+              { trait: 'social_anxiety', threshold: 3.5 }
+            );
+            criteria.adaptiveCriteria.triggerPatterns.push(
+              'masking_behaviors',
+              'social_camouflaging'
+            );
+          } else if (subcategory === 'emotional_regulation') {
+            criteria.adaptiveCriteria.triggerTraits.push(
+              { trait: 'neuroticism', threshold: 3.5 },
+              { trait: 'emotional_intensity', threshold: 3.0 }
+            );
+            criteria.adaptiveCriteria.triggerPatterns.push(
+              'emotional_dysregulation',
+              'high_sensitivity'
+            );
+          } else if (subcategory === 'special_interests') {
+            criteria.adaptiveCriteria.triggerTraits.push(
+              { trait: 'autism', threshold: 3.0 },
+              { trait: 'openness', threshold: 4.0 }
+            );
+            criteria.adaptiveCriteria.triggerPatterns.push(
+              'intense_interests',
+              'autism_indicators'
+            );
+          }
+        }
+      } else if (category === 'trauma_screening') {
+        // Select key trauma baseline questions
+        if (index < 1 && subcategory === 'hypervigilance') {
+          criteria.isBaseline = true;
+          criteria.baselinePriority = 8;
+        } else {
+          // Add adaptive criteria for trauma-related questions
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'trauma_indicators', threshold: 3.0 },
+            { trait: 'neuroticism', threshold: 4.0 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push(
+            'trauma_responses',
+            'hypervigilance_indicators'
+          );
+        }
+      } else if (category === 'attachment') {
+        if (index < 1) {
+          criteria.isBaseline = true;
+          criteria.baselinePriority = 9;
+        } else {
+          // Add adaptive criteria based on attachment style
+          if (domain === 'anxious') {
+            criteria.adaptiveCriteria.triggerTraits.push(
+              { trait: 'neuroticism', threshold: 3.5 },
+              { trait: 'attachment_anxiety', threshold: 3.0 }
+            );
+            criteria.adaptiveCriteria.triggerPatterns.push(
+              'anxious_attachment',
+              'relationship_anxiety'
+            );
+          } else if (domain === 'avoidant') {
+            criteria.adaptiveCriteria.triggerTraits.push(
+              { trait: 'introversion', threshold: 3.5 },
+              { trait: 'independence', threshold: 4.0 }
+            );
+            criteria.adaptiveCriteria.triggerPatterns.push(
+              'avoidant_attachment',
+              'emotional_distance'
+            );
+          }
+        }
+      } else if (category === 'enneagram') {
+        // Enneagram questions are adaptive follow-ups to personality traits
+        if (domain === 'type_1') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'conscientiousness', threshold: 4.0 },
+            { trait: 'perfectionism', threshold: 3.5 }
+          );
+        } else if (domain === 'type_4') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'openness', threshold: 4.0 },
+            { trait: 'neuroticism', threshold: 3.5 }
+          );
+        } else if (domain === 'type_5') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'introversion', threshold: 3.5 },
+            { trait: 'openness', threshold: 4.0 }
+          );
+        } else if (domain === 'type_8') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'extraversion', threshold: 4.0 },
+            { trait: 'dominance', threshold: 3.5 }
+          );
+        }
+        criteria.adaptiveCriteria.triggerPatterns.push(`enneagram_${domain}`);
+      } else if (category === 'cognitive_functions') {
+        // MBTI cognitive functions adaptive questions
+        criteria.adaptiveCriteria.triggerTraits.push({
+          trait:
+            domain === 'Ni' || domain === 'Ti' || domain === 'Fi' || domain === 'Si'
+              ? 'introversion'
+              : 'extraversion',
+          threshold: 3.5
+        });
+        criteria.adaptiveCriteria.triggerPatterns.push(
+          `cognitive_${domain.toLowerCase()}`,
+          'mbti_indicators'
+        );
+      } else if (category === 'learning_style') {
+        // Learning style questions are adaptive based on cognitive patterns
+        criteria.adaptiveCriteria.triggerTraits.push(
+          { trait: 'openness', threshold: 3.5 },
+          { trait: 'learning_preference', threshold: 3.0 }
+        );
+        criteria.adaptiveCriteria.triggerPatterns.push(
+          'learning_challenges',
+          'cognitive_preferences'
+        );
+      }
+
+      return criteria;
+    };
+
     // Helper function to format questions
     const formatQuestions = (questionSet, category, instrument) => {
-      return questionSet.map((q, index) => ({
-        questionId: `${instrument}_${questionId++}`,
-        text: q.text,
-        category: category,
-        subcategory: q.subcategory,
-        domain: q.domain || q.subcategory,
-        instrument: instrument,
-        trait: q.domain || q.subcategory,
-        responseType: 'likert',
-        options: [
-          { value: 1, label: 'Never', score: 1 },
-          { value: 2, label: 'Rarely', score: 2 },
-          { value: 3, label: 'Sometimes', score: 3 },
-          { value: 4, label: 'Often', score: 4 },
-          { value: 5, label: 'Always', score: 5 }
-        ],
-        weight: 1.0,
-        tier: 'core',
-        active: true,
-        metadata: {
-          addedDate: new Date(),
-          version: '2.0',
-          scientificSource: instrument
-        }
-      }));
+      return questionSet.map((q, index) => {
+        const adaptiveCriteria = getAdaptiveCriteria(
+          category,
+          q.subcategory,
+          q.domain,
+          q.text,
+          index
+        );
+        return {
+          questionId: `${instrument}_${questionId++}`,
+          text: q.text,
+          category: category,
+          subcategory: q.subcategory,
+          domain: q.domain || q.subcategory,
+          instrument: instrument,
+          trait: q.domain || q.subcategory,
+          responseType: 'likert',
+          options: [
+            { value: 1, label: 'Never', score: 1 },
+            { value: 2, label: 'Rarely', score: 2 },
+            { value: 3, label: 'Sometimes', score: 3 },
+            { value: 4, label: 'Often', score: 4 },
+            { value: 5, label: 'Always', score: 5 }
+          ],
+          weight: 1.0,
+          tier: 'core',
+          active: true,
+          adaptive: adaptiveCriteria,
+          metadata: {
+            addedDate: new Date(),
+            version: '2.0',
+            scientificSource: instrument
+          }
+        };
+      });
     };
 
     // Add all neurodiversity questions

@@ -13,7 +13,6 @@ module.exports = {
         'custom-media-queries': true
       }
     }),
-    require('postcss-viewport-height-correction')(), // Fix vh units on mobile browsers
     require('postcss-combine-media-query')() // Combine duplicate media queries
   ]
 };

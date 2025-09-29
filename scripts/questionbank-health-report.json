@@ -1,0 +1,25 @@
+{
+  "passed": [
+    "✓ 30 baseline questions configured",
+    "✓ 100% of adaptive questions have criteria",
+    "✓ All question IDs are unique",
+    "✓ All questions have required fields",
+    "✓ Good category diversity (8 categories)",
+    "✓ All Big Five traits covered adequately",
+    "✓ 100% have metadata"
+  ],
+  "warnings": ["⚠ 54 different ID patterns found"],
+  "failures": [],
+  "metrics": {
+    "total": 218,
+    "baseline": 30,
+    "adaptive": 188,
+    "withCriteria": 188,
+    "duplicateIds": 0,
+    "idPatterns": 54,
+    "missingRequired": 0,
+    "categories": 8,
+    "withMetadata": 218,
+    "healthScore": 94
+  }
+}

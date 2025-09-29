@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Assessment - Neurlyn</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/neurlyn.css">
+    <link rel="stylesheet" href="styles/neurlyn-consolidated.css">
+    <link rel="stylesheet" href="styles/neurlyn-navigation.css">
+    <link rel="stylesheet" href="styles/neurlyn-mobile-consolidated.css">
+    <link rel="stylesheet" href="styles/neurlyn-gamified.css">
+    <link rel="stylesheet" href="styles/neurlyn-interactive.css">
+    <link rel="stylesheet" href="styles/neurlyn-neurodiversity.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Navbar Component -->
+    <script src="js/navbar-component.js"></script>
+
+    <style>
+        /* Apply same theme from index page */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+            --soft-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+            --hover-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --nordic-white: #fafafa;
+            --nordic-gray: #e8e8e8;
+            --nordic-charcoal: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--nordic-white);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            padding-top: 90px;
+            color: var(--nordic-charcoal);
+        }
+
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            margin-top: 1rem; /* Add space below navbar */
+        }
+
+        .assessment-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .assessment-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .assessment-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .free-badge {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.5rem;
+            box-shadow: var(--soft-shadow);
+        }
+
+        .loading-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #7c9885;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .free-features {
+            background: white;
+            border: 1px solid var(--nordic-gray);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--soft-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .free-features:hover {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-2px);
+        }
+
+        .free-features h3 {
+            margin-top: 0;
+            color: var(--nordic-charcoal);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .free-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .free-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .free-features li::before {
+            content: "✓";
+            color: #7c9885;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 0.25rem;
+        }
+
+        .demographics-section {
+            background: white;
+            border: 1px solid var(--nordic-gray);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--soft-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .demographics-section:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .demographics-section h2 {
+            margin-top: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--nordic-charcoal);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .demographics-section p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--nordic-charcoal);
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--nordic-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--nordic-white);
+            color: var(--nordic-charcoal);
+        }
+
+        .form-group select:focus {
+            outline: none;
+            border-color: #7c9885;
+            box-shadow: 0 0 0 3px rgba(124, 152, 133, 0.1);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--soft-shadow);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+            filter: brightness(1.05);
+        }
+
+        .assessment-intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .assessment-intro-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background: white;
+            border: 1px solid var(--nordic-gray);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--nordic-charcoal);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 50;
+            box-shadow: var(--soft-shadow);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background: #f5f5f5;
+            transform: translateX(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Override navbar positioning to fix at top */
+        .main-nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+        }
+
+        /* Ensure container has proper width */
+        .main-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Question display navigation styling */
+        .navigation-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0 1rem 0;
+            gap: 1rem;
+        }
+
+        .btn-secondary,
+        .btn-primary {
+            background: var(--primary-gradient) !important;
+            color: white !important;
+            border: none !important;
+            padding: 0.75rem 1.5rem !important;
+            border-radius: 8px !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            font-family: 'Inter', sans-serif !important;
+            box-shadow: var(--soft-shadow) !important;
+        }
+
+        .btn-secondary:hover,
+        .btn-primary:hover {
+            transform: translateY(-1px) !important;
+            box-shadow: var(--hover-shadow) !important;
+            filter: brightness(1.05) !important;
+        }
+
+        .btn-secondary:disabled,
+        .btn-primary:disabled {
+            background: var(--nordic-gray) !important;
+            color: #999 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+            box-shadow: none !important;
+            filter: none !important;
+        }
+
+        /* Assessment info styling */
+        .assessment-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--nordic-charcoal);
+        }
+
+        .tier-badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .time-estimate {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Fix for rectangle appearing around radio buttons on click */
+        .likert-option:focus-within {
+            outline: none !important;
+        }
+
+        .likert-option input[type="radio"]:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Remove default browser focus styles but keep accessibility */
+        .likert-option:focus-visible {
+            outline: 2px solid var(--primary-gradient);
+            outline-offset: 2px;
+        }
+
+        /* Ensure the radio input doesn't show focus rectangle */
+        input[type="radio"]:focus-visible {
+            outline: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="container">
+        <div class="nav-content">
+          <div class="nav-brand-group">
+            <a href="/" class="nav-brand">Neurlyn</a>
+            <span class="nav-tagline">Intelligent Personality Assessment</span>
+          </div>
+          <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="#" class="nav-link active">Assessment</a>
+            <a href="support.html" class="nav-link">Support</a>
+            <a href="about.html" class="nav-link">About</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Back to Home Button -->
+    <a href="/" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Home
+    </a>
+
+    <div class="assessment-container" id="main-content">
+        <div class="assessment-header">
+            <h1 class="assessment-title">Comprehensive Personality Assessment</h1>
+            <p class="assessment-subtitle">Deep personality analysis with 70 questions</p>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-spinner"></div>
+            <p style="margin-top: 1rem; color: #666;">Loading assessment...</p>
+        </div>
+
+        <!-- Error Screen (hidden by default) -->
+        <div id="error-screen" style="display: none;">
+            <div class="error-message">
+                <h3>Unable to Load Assessment</h3>
+                <p id="error-details">There was an error loading the assessment. Please try again.</p>
+                <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #7c9885; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Retry
+                </button>
+            </div>
+        </div>
+
+        <!-- Assessment Content (will be populated by JavaScript) -->
+        <div id="assessment-content" style="display: none;">
+            <!-- Demographics Section -->
+            <div id="demographics-section" class="screen" style="display: none;">
+                <div class="assessment-intro-grid">
+                    <!-- Features Section -->
+                    <div class="free-features">
+                        <h3>What You'll Get</h3>
+                        <ul>
+                            <li>Core personality assessment</li>
+                            <li>Big Five personality traits analysis</li>
+                            <li>Basic insights and recommendations</li>
+                            <li>Instant results</li>
+                        </ul>
+                    </div>
+
+                    <!-- Demographics Form -->
+                    <div class="demographics-section">
+                        <h2>Tell Us About Yourself</h2>
+                        <p>This helps us provide more accurate insights</p>
+
+                        <form id="demographics-form">
+                            <div class="form-group">
+                                <label for="age">Age Range</label>
+                                <select id="age" name="age">
+                                    <option value="">Select age range</option>
+                                    <option value="18-24">18-24</option>
+                                    <option value="25-34">25-34</option>
+                                    <option value="35-44">35-44</option>
+                                    <option value="45-54">45-54</option>
+                                    <option value="55+">55+</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender (Optional)</label>
+                                <select id="gender" name="gender">
+                                    <option value="">Prefer not to say</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="non-binary">Non-binary</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-primary">Start Assessment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions Section -->
+            <div id="questions-section" class="screen" style="display: none;">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-section" class="screen" style="display: none;">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Load API Client -->
+    <script src="js/api-client.js?v=33"></script>
+
+    <!-- Load Report Generators -->
+    <script src="js/advanced-report-generator.js?v=33"></script>
+
+    <!-- Load Assessment Module -->
+    <script src="js/neurlyn-adaptive-integration.js?v=35"></script>
+
+    <!-- Initialize Free Assessment -->
+    <script>
+        // Configuration for free tier
+        window.assessmentConfig = {
+            tier: 'standard',  // Use standard tier for proper baseline + adaptive flow
+            apiEndpoint: 'http://localhost:3008/api',
+            autoStart: false
+        };
+
+        // Wait for DOM and scripts to load
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                console.log('Initializing premium assessment...');
+
+                // Check if assessment module is loaded
+                if (!window.NeurlynAdaptiveAssessment) {
+                    throw new Error('Assessment module not loaded');
+                }
+
+                // Initialize the assessment
+                const assessment = new window.NeurlynAdaptiveAssessment({
+                    tier: 'comprehensive',
+                    apiEndpoint: window.assessmentConfig.apiEndpoint
+                });
+
+                // Store globally for access
+                window.assessment = assessment;
+
+                // Hide loading, show content
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('assessment-content').style.display = 'block';
+                document.getElementById('demographics-section').style.display = 'block';
+
+                // Handle demographics form submission
+                document.getElementById('demographics-form').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    // Convert age range to representative number for backend
+                    const ageValue = document.getElementById('age').value;
+                    const ageMap = {
+                        '18-24': 21,
+                        '25-34': 29,
+                        '35-44': 39,
+                        '45-54': 49,
+                        '55+': 60
+                    };
+
+                    const demographics = {
+                        age: ageMap[ageValue] || null,
+                        gender: document.getElementById('gender').value
+                    };
+
+                    // Start assessment with demographics
+                    await assessment.startAssessment({demographics, tier: 'comprehensive'});
+
+                    // Hide demographics, show questions
+                    const demographicsSection = document.getElementById('demographics-section');
+                    const questionsSection = document.getElementById('questions-section');
+
+                    if (demographicsSection) {
+                        demographicsSection.style.display = 'none';
+                    }
+                    if (questionsSection) {
+                        questionsSection.style.display = 'block';
+                    }
+                });
+
+                console.log('Premium assessment ready');
+
+            } catch (error) {
+                console.error('Failed to initialize assessment:', error);
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('error-screen').style.display = 'block';
+                document.getElementById('error-details').textContent = error.message;
+            }
+        });
+
+        // Prevent accidental navigation
+        window.addEventListener('beforeunload', function(e) {
+            if (window.assessment && window.assessment.isActive) {
+                e.preventDefault();
+                e.returnValue = 'Your assessment is in progress. Are you sure you want to leave?';
+            }
+        });
+
+        // Toggle functions for report sections
+        window.toggleSection = function(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = section.style.display === 'none' ? 'block' : 'none';
+            }
+        };
+
+        window.togglePercentileChart = function() {
+            const chartContainer = document.querySelector('.percentile-chart');
+            if (chartContainer) {
+                chartContainer.style.display = chartContainer.style.display === 'none' ? 'block' : 'none';
+            }
+        };
+    </script>
+</body>
+</html>

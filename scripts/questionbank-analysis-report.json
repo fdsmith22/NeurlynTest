@@ -1,0 +1,2448 @@
+{
+  "totalQuestions": 218,
+  "duplicates": [],
+  "missingTags": [
+    {
+      "questionId": "BFI_OPEN_008",
+      "text": "When I discover a hidden path while walking, I usu...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_OPEN_001",
+      "text": "I get excited when someone recommends music from a...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_OPEN_002",
+      "text": "I prefer restaurants where I can order the same di...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_OPEN_003",
+      "text": "Abstract art often speaks to me in ways I can't qu...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_OPEN_004",
+      "text": "I enjoy conversations that challenge my fundamenta...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_OPEN_005",
+      "text": "When traveling, I prefer having every detail plann...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_OPEN_007",
+      "text": "I often find myself lost in Wikipedia rabbit holes...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_OPEN_006",
+      "text": "I'd rather watch a documentary about quantum physi...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_002",
+      "text": "My workspace naturally stays organized without muc...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_003",
+      "text": "I often start projects with enthusiasm but struggl...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_001",
+      "text": "I arrive at least 10 minutes early to appointments...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_004",
+      "text": "My to-do lists have sub-lists with their own sub-l...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_005",
+      "text": "I can work effectively even when my environment is...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_006",
+      "text": "I review my work multiple times before considering...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_007",
+      "text": "Deadlines motivate me - I work best under pressure...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_CONSC_008",
+      "text": "I keep track of my expenses down to the penny...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_002",
+      "text": "After a long week, a crowded party sounds perfect...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_003",
+      "text": "I need alone time to recharge after social events...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_004",
+      "text": "I naturally take charge when working in groups...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_008",
+      "text": "Small talk with strangers energizes me...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_001",
+      "text": "I prefer texting over phone calls...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_007",
+      "text": "Being the center of attention feels natural to me...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_006",
+      "text": "I do my best thinking when talking ideas through w...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_EXTRA_005",
+      "text": "I'd choose a quiet coffee shop over a bustling caf...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_008",
+      "text": "I instinctively trust people until they prove othe...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_007",
+      "text": "I find it satisfying when someone who wronged me f...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_006",
+      "text": "I often go out of my way to help strangers...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_002",
+      "text": "In negotiations, I focus on what I can gain rather...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_001",
+      "text": "Seeing others succeed genuinely makes me happy...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_003",
+      "text": "I believe most people would take advantage if give...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_004",
+      "text": "I tend to forgive easily and rarely hold grudges...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_AGREE_005",
+      "text": "I enjoy debates where I can prove my point...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_002",
+      "text": "Minor setbacks can affect my mood for the entire d...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_003",
+      "text": "I remain calm even when everything seems to go wro...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_004",
+      "text": "I often replay embarrassing moments from years ago...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_005",
+      "text": "Uncertainty excites me rather than worries me...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_006",
+      "text": "I check my sent emails multiple times to ensure th...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_007",
+      "text": "I sleep soundly even before important events...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_008",
+      "text": "Small changes in routine make me anxious...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_NEURO_001",
+      "text": "I can laugh at myself when I make mistakes...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_001",
+      "text": "I keep my phone on silent to avoid distractions...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_002",
+      "text": "I've stayed up all night pursuing a fascinating to...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_003",
+      "text": "I prefer working alone on important projects...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_004",
+      "text": "I double-check locks and appliances before leaving...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_005",
+      "text": "I share my food without being asked...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_006",
+      "text": "I color-code my calendar and notes...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_007",
+      "text": "I enjoy movies that leave the ending open to inter...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_BEHAV_008",
+      "text": "I feel drained after video calls, even with friend...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_003",
+      "text": "If I won the lottery, I'd invest most of it rather...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_001",
+      "text": "At a museum, I read every placard thoroughly...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_004",
+      "text": "In group photos, I naturally position myself in th...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_005",
+      "text": "When someone cuts in line, I speak up immediately...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_008",
+      "text": "Before a trip, I research everything that could go...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_007",
+      "text": "I notice when picture frames are slightly crooked...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_006",
+      "text": "I'd rather explore a new city without a map or gui...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_SITUA_002",
+      "text": "At parties, I'm usually the last to leave...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_PREF_005",
+      "text": "I prefer fiction that explores impossible worlds o...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_PREF_004",
+      "text": "My ideal vacation involves a detailed itinerary...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_PREF_003",
+      "text": "I'd choose dinner with one close friend over a par...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_PREF_002",
+      "text": "I enjoy competitive activities more than cooperati...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "BFI_PREF_001",
+      "text": "I prefer predictable routines over spontaneous adv...",
+      "missingRequired": [],
+      "missingOptional": ["subcategory", "domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ADHD_001",
+      "text": "I have trouble concentrating on tasks that require...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ORG_001",
+      "text": "I often lose things necessary for tasks (keys, pho...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ADHD_002",
+      "text": "I fidget or feel restless when I have to sit still...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ADHD_003",
+      "text": "I interrupt others or have difficulty waiting my t...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_001",
+      "text": "I struggle to follow through on instructions and f...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SOCIAL_001",
+      "text": "I find social situations confusing and overwhelmin...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ASD_002",
+      "text": "I prefer routines and get upset when they are disr...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ASD_001",
+      "text": "I notice patterns and details that others seem to ...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ASD_004",
+      "text": "I have intense interests in specific topics...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_ASD_003",
+      "text": "I find it difficult to understand non-verbal commu...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_AUD_001",
+      "text": "Certain textures, sounds, or lights cause me signi...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_GEN_001",
+      "text": "I often need to stim (fidget, rock, etc.) to regul...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_TIME_001",
+      "text": "I have difficulty estimating how long tasks will t...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_TASK_001",
+      "text": "I struggle with task initiation even for important...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_HYPER_001",
+      "text": "I often hyperfocus on tasks and lose track of ever...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_015",
+      "text": "I start tasks right away rather than procrastinati...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_011",
+      "text": "I put off important tasks until the last minute...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_007",
+      "text": "I need external deadlines to get things done...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_017",
+      "text": "I lose track of time when engaged in activities I ...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_019",
+      "text": "I need multiple alarms to ensure I wake up or reme...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_018",
+      "text": "I underestimate how long tasks will take...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_013",
+      "text": "I'm frequently late despite my best efforts...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_003",
+      "text": "I can easily switch between different tasks...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_016",
+      "text": "I struggle to return to a task after being interru...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_009",
+      "text": "I get stuck on one activity and can't move on...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_021",
+      "text": "I often forget where I put things...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_012",
+      "text": "I walk into rooms and forget why I went there...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_006",
+      "text": "I need to write everything down or I'll forget...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_002",
+      "text": "I forget appointments even when they're important ...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_008",
+      "text": "My living space is usually organized and tidy...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_010",
+      "text": "I create detailed plans before starting projects...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_020",
+      "text": "I use organizational tools effectively (calendars,...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_014",
+      "text": "I feel overwhelmed when faced with multi-step task...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_004",
+      "text": "I can manage my emotions effectively under stress...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EXEC_005",
+      "text": "Small frustrations can derail my entire day...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_011",
+      "text": "Certain fabric textures make me extremely uncomfor...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_013",
+      "text": "I cut tags out of clothing because they bother me...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_012",
+      "text": "Light touches feel painful or overwhelming...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_009",
+      "text": "I prefer deep pressure hugs over light touches...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_008",
+      "text": "I bump into things or misjudge distances frequentl...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_002",
+      "text": "I notice subtle sounds that others miss...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_001",
+      "text": "Background noise makes it impossible for me to con...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_003",
+      "text": "I use noise-canceling headphones or earplugs regul...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_004",
+      "text": "Sudden loud noises cause me physical pain or panic...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_015",
+      "text": "Bright lights give me headaches or make me feel ov...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_018",
+      "text": "I prefer dim lighting or natural light...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_017",
+      "text": "Fluorescent lights make me feel sick or anxious...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_016",
+      "text": "I notice visual details that others overlook...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_006",
+      "text": "Strong smells make me feel nauseous or overwhelmed...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_005",
+      "text": "I have a very limited diet due to texture or taste...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_007",
+      "text": "I can smell things others don't notice...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_014",
+      "text": "I feel dizzy or nauseous on swings or rides...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SENS_010",
+      "text": "I crave movement and physical activity...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_013",
+      "text": "I rehearse conversations before having them...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_006",
+      "text": "I copy other people's expressions or phrases to fi...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_009",
+      "text": "I have different personas for different social sit...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_004",
+      "text": "I force myself to make eye contact even when it's ...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_015",
+      "text": "I suppress my natural reactions to appear 'normal'...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_012",
+      "text": "I feel exhausted after social interactions...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_010",
+      "text": "I need days to recover after social events...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_002",
+      "text": "Maintaining my 'normal' appearance is exhausting...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_005",
+      "text": "I don't know who I really am beneath the mask...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_008",
+      "text": "I feel like I'm performing rather than being mysel...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_001",
+      "text": "I've lost touch with my authentic preferences...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_011",
+      "text": "People would reject the real me...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_014",
+      "text": "I hide my need to fidget or move repetitively...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_003",
+      "text": "I've trained myself not to show excitement physica...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_MASK_007",
+      "text": "I suppress my natural body movements in public...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_004",
+      "text": "My emotions feel more intense than other people's...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_GEN_003",
+      "text": "I have intense interests that consume most of my t...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_012",
+      "text": "I experience emotions as physical sensations in my...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_006",
+      "text": "Happy moments feel euphoric and overwhelming...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_005",
+      "text": "My mood can change rapidly throughout the day...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_007",
+      "text": "Small triggers cause disproportionate emotional re...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_008",
+      "text": "I struggle to return to baseline after emotional u...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_011",
+      "text": "Perceived criticism feels like physical pain...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_010",
+      "text": "I assume people are mad at me without evidence...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_009",
+      "text": "I avoid situations where I might face rejection...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_001",
+      "text": "I struggle to identify what emotion I'm feeling...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_002",
+      "text": "I don't notice I'm stressed until I'm overwhelmed...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_EMREG_003",
+      "text": "Others notice my emotions before I do...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_HYPER_002",
+      "text": "I can talk about my interests for hours without no...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_GEN_002",
+      "text": "I collect detailed information about specific topi...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_SOCIAL_002",
+      "text": "My interests bring me more joy than social activit...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_GEN_004",
+      "text": "I struggle to engage with topics outside my intere...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "NDV_GEN_005",
+      "text": "My interests have remained consistent for years...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "COG_ANALY_001",
+      "text": "When solving problems, I prefer to think step-by-s...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "COG_LKIN_001",
+      "text": "I learn best through hands-on experience rather th...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "COG_SPAT_001",
+      "text": "I can easily visualize objects from different angl...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "COG_LVIS_001",
+      "text": "I remember information better when I can associate...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "COG_HOLIS_001",
+      "text": "I prefer to see the big picture before focusing on...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAUMA_HYPERVIGIL_001",
+      "text": "I'm constantly scanning for potential threats...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAUMA_STARTLERES_002",
+      "text": "I startle easily at unexpected sounds or movements...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAUMA_CHRONICTEN_003",
+      "text": "I can't relax even in safe environments...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAUMA_DISSOCIATI_004",
+      "text": "I feel disconnected from my body...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAU_screening_001",
+      "text": "Reality sometimes feels unreal or dreamlike...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAU_screening_006",
+      "text": "I lose time or can't remember parts of my day...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAU_screening_007",
+      "text": "I have difficulty trusting others...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAUMA_ESCAPEPLAN_008",
+      "text": "I need to know all exits in a room...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAU_screening_002",
+      "text": "I feel safer alone than with others...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAU_screening_005",
+      "text": "My body holds tension even when I try to relax...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAU_screening_003",
+      "text": "I experience unexplained physical pain...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "TRAU_screening_004",
+      "text": "My body reacts before my mind processes danger...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_ANX_002",
+      "text": "I worry constantly about my relationships ending...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_ANX_003",
+      "text": "I need constant reassurance from loved ones...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_ANX_001",
+      "text": "I panic when people don't respond to messages quic...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_AVOID_001",
+      "text": "I prefer to handle problems alone...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_AVOID_002",
+      "text": "I feel uncomfortable when people get too close emo...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_AVOID_003",
+      "text": "I keep parts of myself hidden even from close frie...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_DISORG_001",
+      "text": "I both crave and fear close relationships...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_DISORG_002",
+      "text": "My relationship patterns are chaotic and unpredict...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_DISORG_003",
+      "text": "I don't have a consistent way of connecting with o...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_SEC_001",
+      "text": "I feel comfortable depending on others and having ...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_SEC_002",
+      "text": "I can express my needs directly in relationships...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ATT_SEC_003",
+      "text": "I trust that relationships can weather difficultie...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_001",
+      "text": "I have a strong inner critic that never stops...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_002",
+      "text": "I notice mistakes and imperfections immediately...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_004",
+      "text": "I often know what others need before they do...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_003",
+      "text": "I feel guilty when I prioritize my own needs...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_006",
+      "text": "My worth is tied to my achievements...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_005",
+      "text": "I adapt my personality to succeed in different sit...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_007",
+      "text": "I feel fundamentally different from everyone else...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_EMOT_001",
+      "text": "I'm drawn to melancholy and deep emotions...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_008",
+      "text": "I need to understand everything before I can act...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_009",
+      "text": "I hoard knowledge and resources for future needs...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_PLAN_001",
+      "text": "I constantly plan for worst-case scenarios...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_SOCIAL_001",
+      "text": "I test people's loyalty before trusting them...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_EMOT_002",
+      "text": "I avoid negative emotions by staying busy...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_PLAN_002",
+      "text": "I always have multiple backup plans for fun...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_010",
+      "text": "I automatically take charge in group situations...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_011",
+      "text": "Showing vulnerability feels like weakness...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_012",
+      "text": "I merge with others' opinions to avoid conflict...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "ENNE_GEN_013",
+      "text": "I struggle to identify my own wants and needs...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_NI_001",
+      "text": "I see patterns and connections others miss...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_NI_002",
+      "text": "I have sudden insights that prove to be accurate...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_NE_003",
+      "text": "I see endless possibilities in every situation...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_NE_004",
+      "text": "I make unexpected connections between ideas...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_TI_005",
+      "text": "I need to understand how things work at a fundamen...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_TI_006",
+      "text": "I create my own logical frameworks...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_TE_007",
+      "text": "I focus on efficiency and measurable results...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_TE_008",
+      "text": "I organize the external world to achieve goals...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_FI_009",
+      "text": "I have a strong internal sense of right and wrong...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_FI_010",
+      "text": "My values are deeply personal and non-negotiable...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "COG_functions_001",
+      "text": "I naturally harmonize with the emotional atmospher...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "COG_functions_002",
+      "text": "I prioritize group harmony over personal preferenc...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_SI_013",
+      "text": "I compare present experiences to past memories...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_SI_014",
+      "text": "I value tradition and proven methods...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_SE_015",
+      "text": "I'm highly aware of my physical environment...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "JUNG_SE_016",
+      "text": "I live fully in the present moment...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEARN_KINESTHETI_001",
+      "text": "I learn best by doing rather than reading...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEARN_VISUAL_002",
+      "text": "I need visual aids to understand concepts...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEARN_AUDITORY_003",
+      "text": "I remember things better when I hear them explaine...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEARN_GLOBAL_004",
+      "text": "I need to understand the big picture before detail...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEARN_SEQUENTIAL_005",
+      "text": "I prefer step-by-step sequential instructions...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEAR_style_002",
+      "text": "I learn through trial and error...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEAR_style_003",
+      "text": "I need to teach others to truly understand somethi...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    },
+    {
+      "questionId": "LEAR_style_001",
+      "text": "I learn best in complete silence...",
+      "missingRequired": [],
+      "missingOptional": ["domain", "scoringDirection"]
+    }
+  ],
+  "incompleteAdaptiveCriteria": [
+    {
+      "questionId": "BFI_OPEN_008",
+      "text": "When I discover a hidden path while walking, I usu...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_OPEN_001",
+      "text": "I get excited when someone recommends music from a...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_OPEN_002",
+      "text": "I prefer restaurants where I can order the same di...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_OPEN_003",
+      "text": "Abstract art often speaks to me in ways I can't qu...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_OPEN_004",
+      "text": "I enjoy conversations that challenge my fundamenta...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_OPEN_005",
+      "text": "When traveling, I prefer having every detail plann...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_OPEN_007",
+      "text": "I often find myself lost in Wikipedia rabbit holes...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_OPEN_006",
+      "text": "I'd rather watch a documentary about quantum physi...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_002",
+      "text": "My workspace naturally stays organized without muc...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_003",
+      "text": "I often start projects with enthusiasm but struggl...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_001",
+      "text": "I arrive at least 10 minutes early to appointments...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_004",
+      "text": "My to-do lists have sub-lists with their own sub-l...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_005",
+      "text": "I can work effectively even when my environment is...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_006",
+      "text": "I review my work multiple times before considering...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_007",
+      "text": "Deadlines motivate me - I work best under pressure...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_CONSC_008",
+      "text": "I keep track of my expenses down to the penny...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_002",
+      "text": "After a long week, a crowded party sounds perfect...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_003",
+      "text": "I need alone time to recharge after social events...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_004",
+      "text": "I naturally take charge when working in groups...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_008",
+      "text": "Small talk with strangers energizes me...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_001",
+      "text": "I prefer texting over phone calls...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_007",
+      "text": "Being the center of attention feels natural to me...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_006",
+      "text": "I do my best thinking when talking ideas through w...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_EXTRA_005",
+      "text": "I'd choose a quiet coffee shop over a bustling caf...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_008",
+      "text": "I instinctively trust people until they prove othe...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_007",
+      "text": "I find it satisfying when someone who wronged me f...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_006",
+      "text": "I often go out of my way to help strangers...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_002",
+      "text": "In negotiations, I focus on what I can gain rather...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_001",
+      "text": "Seeing others succeed genuinely makes me happy...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_003",
+      "text": "I believe most people would take advantage if give...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_004",
+      "text": "I tend to forgive easily and rarely hold grudges...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_AGREE_005",
+      "text": "I enjoy debates where I can prove my point...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_002",
+      "text": "Minor setbacks can affect my mood for the entire d...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_003",
+      "text": "I remain calm even when everything seems to go wro...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_004",
+      "text": "I often replay embarrassing moments from years ago...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_005",
+      "text": "Uncertainty excites me rather than worries me...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_006",
+      "text": "I check my sent emails multiple times to ensure th...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_007",
+      "text": "I sleep soundly even before important events...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_008",
+      "text": "Small changes in routine make me anxious...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_NEURO_001",
+      "text": "I can laugh at myself when I make mistakes...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_001",
+      "text": "I keep my phone on silent to avoid distractions...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_002",
+      "text": "I've stayed up all night pursuing a fascinating to...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_003",
+      "text": "I prefer working alone on important projects...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_004",
+      "text": "I double-check locks and appliances before leaving...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_005",
+      "text": "I share my food without being asked...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_006",
+      "text": "I color-code my calendar and notes...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_007",
+      "text": "I enjoy movies that leave the ending open to inter...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_BEHAV_008",
+      "text": "I feel drained after video calls, even with friend...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_003",
+      "text": "If I won the lottery, I'd invest most of it rather...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_001",
+      "text": "At a museum, I read every placard thoroughly...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_004",
+      "text": "In group photos, I naturally position myself in th...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_005",
+      "text": "When someone cuts in line, I speak up immediately...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_008",
+      "text": "Before a trip, I research everything that could go...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_007",
+      "text": "I notice when picture frames are slightly crooked...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_006",
+      "text": "I'd rather explore a new city without a map or gui...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_SITUA_002",
+      "text": "At parties, I'm usually the last to leave...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_PREF_005",
+      "text": "I prefer fiction that explores impossible worlds o...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_PREF_004",
+      "text": "My ideal vacation involves a detailed itinerary...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_PREF_003",
+      "text": "I'd choose dinner with one close friend over a par...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_PREF_002",
+      "text": "I enjoy competitive activities more than cooperati...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "BFI_PREF_001",
+      "text": "I prefer predictable routines over spontaneous adv...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ADHD_001",
+      "text": "I have trouble concentrating on tasks that require...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ORG_001",
+      "text": "I often lose things necessary for tasks (keys, pho...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ADHD_002",
+      "text": "I fidget or feel restless when I have to sit still...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ADHD_003",
+      "text": "I interrupt others or have difficulty waiting my t...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_001",
+      "text": "I struggle to follow through on instructions and f...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SOCIAL_001",
+      "text": "I find social situations confusing and overwhelmin...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ASD_002",
+      "text": "I prefer routines and get upset when they are disr...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ASD_001",
+      "text": "I notice patterns and details that others seem to ...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ASD_004",
+      "text": "I have intense interests in specific topics...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_ASD_003",
+      "text": "I find it difficult to understand non-verbal commu...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_AUD_001",
+      "text": "Certain textures, sounds, or lights cause me signi...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_GEN_001",
+      "text": "I often need to stim (fidget, rock, etc.) to regul...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_TIME_001",
+      "text": "I have difficulty estimating how long tasks will t...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_TASK_001",
+      "text": "I struggle with task initiation even for important...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_HYPER_001",
+      "text": "I often hyperfocus on tasks and lose track of ever...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_015",
+      "text": "I start tasks right away rather than procrastinati...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_011",
+      "text": "I put off important tasks until the last minute...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_007",
+      "text": "I need external deadlines to get things done...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_017",
+      "text": "I lose track of time when engaged in activities I ...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_019",
+      "text": "I need multiple alarms to ensure I wake up or reme...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_018",
+      "text": "I underestimate how long tasks will take...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_013",
+      "text": "I'm frequently late despite my best efforts...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_003",
+      "text": "I can easily switch between different tasks...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_016",
+      "text": "I struggle to return to a task after being interru...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_009",
+      "text": "I get stuck on one activity and can't move on...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_021",
+      "text": "I often forget where I put things...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_012",
+      "text": "I walk into rooms and forget why I went there...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_006",
+      "text": "I need to write everything down or I'll forget...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_002",
+      "text": "I forget appointments even when they're important ...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_008",
+      "text": "My living space is usually organized and tidy...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_010",
+      "text": "I create detailed plans before starting projects...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_020",
+      "text": "I use organizational tools effectively (calendars,...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_014",
+      "text": "I feel overwhelmed when faced with multi-step task...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_004",
+      "text": "I can manage my emotions effectively under stress...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EXEC_005",
+      "text": "Small frustrations can derail my entire day...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_011",
+      "text": "Certain fabric textures make me extremely uncomfor...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_013",
+      "text": "I cut tags out of clothing because they bother me...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_012",
+      "text": "Light touches feel painful or overwhelming...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_009",
+      "text": "I prefer deep pressure hugs over light touches...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_008",
+      "text": "I bump into things or misjudge distances frequentl...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_002",
+      "text": "I notice subtle sounds that others miss...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_001",
+      "text": "Background noise makes it impossible for me to con...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_003",
+      "text": "I use noise-canceling headphones or earplugs regul...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_004",
+      "text": "Sudden loud noises cause me physical pain or panic...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_015",
+      "text": "Bright lights give me headaches or make me feel ov...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_018",
+      "text": "I prefer dim lighting or natural light...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_017",
+      "text": "Fluorescent lights make me feel sick or anxious...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_016",
+      "text": "I notice visual details that others overlook...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_006",
+      "text": "Strong smells make me feel nauseous or overwhelmed...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_005",
+      "text": "I have a very limited diet due to texture or taste...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_007",
+      "text": "I can smell things others don't notice...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_014",
+      "text": "I feel dizzy or nauseous on swings or rides...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SENS_010",
+      "text": "I crave movement and physical activity...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_013",
+      "text": "I rehearse conversations before having them...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_006",
+      "text": "I copy other people's expressions or phrases to fi...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_009",
+      "text": "I have different personas for different social sit...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_004",
+      "text": "I force myself to make eye contact even when it's ...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_015",
+      "text": "I suppress my natural reactions to appear 'normal'...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_012",
+      "text": "I feel exhausted after social interactions...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_010",
+      "text": "I need days to recover after social events...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_002",
+      "text": "Maintaining my 'normal' appearance is exhausting...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_005",
+      "text": "I don't know who I really am beneath the mask...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_008",
+      "text": "I feel like I'm performing rather than being mysel...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_001",
+      "text": "I've lost touch with my authentic preferences...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_011",
+      "text": "People would reject the real me...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_014",
+      "text": "I hide my need to fidget or move repetitively...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_003",
+      "text": "I've trained myself not to show excitement physica...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_MASK_007",
+      "text": "I suppress my natural body movements in public...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_004",
+      "text": "My emotions feel more intense than other people's...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_GEN_003",
+      "text": "I have intense interests that consume most of my t...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_012",
+      "text": "I experience emotions as physical sensations in my...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_006",
+      "text": "Happy moments feel euphoric and overwhelming...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_005",
+      "text": "My mood can change rapidly throughout the day...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_007",
+      "text": "Small triggers cause disproportionate emotional re...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_008",
+      "text": "I struggle to return to baseline after emotional u...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_011",
+      "text": "Perceived criticism feels like physical pain...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_010",
+      "text": "I assume people are mad at me without evidence...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_009",
+      "text": "I avoid situations where I might face rejection...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_001",
+      "text": "I struggle to identify what emotion I'm feeling...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_002",
+      "text": "I don't notice I'm stressed until I'm overwhelmed...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_EMREG_003",
+      "text": "Others notice my emotions before I do...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_HYPER_002",
+      "text": "I can talk about my interests for hours without no...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_GEN_002",
+      "text": "I collect detailed information about specific topi...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_SOCIAL_002",
+      "text": "My interests bring me more joy than social activit...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_GEN_004",
+      "text": "I struggle to engage with topics outside my intere...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "NDV_GEN_005",
+      "text": "My interests have remained consistent for years...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "COG_ANALY_001",
+      "text": "When solving problems, I prefer to think step-by-s...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "COG_LKIN_001",
+      "text": "I learn best through hands-on experience rather th...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "COG_SPAT_001",
+      "text": "I can easily visualize objects from different angl...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "COG_LVIS_001",
+      "text": "I remember information better when I can associate...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "COG_HOLIS_001",
+      "text": "I prefer to see the big picture before focusing on...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAUMA_HYPERVIGIL_001",
+      "text": "I'm constantly scanning for potential threats...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAUMA_STARTLERES_002",
+      "text": "I startle easily at unexpected sounds or movements...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAUMA_CHRONICTEN_003",
+      "text": "I can't relax even in safe environments...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAUMA_DISSOCIATI_004",
+      "text": "I feel disconnected from my body...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAU_screening_001",
+      "text": "Reality sometimes feels unreal or dreamlike...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAU_screening_006",
+      "text": "I lose time or can't remember parts of my day...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAU_screening_007",
+      "text": "I have difficulty trusting others...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAUMA_ESCAPEPLAN_008",
+      "text": "I need to know all exits in a room...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAU_screening_002",
+      "text": "I feel safer alone than with others...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAU_screening_005",
+      "text": "My body holds tension even when I try to relax...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAU_screening_003",
+      "text": "I experience unexplained physical pain...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "TRAU_screening_004",
+      "text": "My body reacts before my mind processes danger...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_ANX_002",
+      "text": "I worry constantly about my relationships ending...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_ANX_003",
+      "text": "I need constant reassurance from loved ones...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_ANX_001",
+      "text": "I panic when people don't respond to messages quic...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_AVOID_001",
+      "text": "I prefer to handle problems alone...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_AVOID_002",
+      "text": "I feel uncomfortable when people get too close emo...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_AVOID_003",
+      "text": "I keep parts of myself hidden even from close frie...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_DISORG_001",
+      "text": "I both crave and fear close relationships...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_DISORG_002",
+      "text": "My relationship patterns are chaotic and unpredict...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_DISORG_003",
+      "text": "I don't have a consistent way of connecting with o...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_SEC_001",
+      "text": "I feel comfortable depending on others and having ...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_SEC_002",
+      "text": "I can express my needs directly in relationships...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ATT_SEC_003",
+      "text": "I trust that relationships can weather difficultie...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_001",
+      "text": "I have a strong inner critic that never stops...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_002",
+      "text": "I notice mistakes and imperfections immediately...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_004",
+      "text": "I often know what others need before they do...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_003",
+      "text": "I feel guilty when I prioritize my own needs...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_006",
+      "text": "My worth is tied to my achievements...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_005",
+      "text": "I adapt my personality to succeed in different sit...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_007",
+      "text": "I feel fundamentally different from everyone else...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_EMOT_001",
+      "text": "I'm drawn to melancholy and deep emotions...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_008",
+      "text": "I need to understand everything before I can act...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_009",
+      "text": "I hoard knowledge and resources for future needs...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_PLAN_001",
+      "text": "I constantly plan for worst-case scenarios...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_SOCIAL_001",
+      "text": "I test people's loyalty before trusting them...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_EMOT_002",
+      "text": "I avoid negative emotions by staying busy...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_PLAN_002",
+      "text": "I always have multiple backup plans for fun...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_010",
+      "text": "I automatically take charge in group situations...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_011",
+      "text": "Showing vulnerability feels like weakness...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_012",
+      "text": "I merge with others' opinions to avoid conflict...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "ENNE_GEN_013",
+      "text": "I struggle to identify my own wants and needs...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_NI_001",
+      "text": "I see patterns and connections others miss...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_NI_002",
+      "text": "I have sudden insights that prove to be accurate...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_NE_003",
+      "text": "I see endless possibilities in every situation...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_NE_004",
+      "text": "I make unexpected connections between ideas...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_TI_005",
+      "text": "I need to understand how things work at a fundamen...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_TI_006",
+      "text": "I create my own logical frameworks...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_TE_007",
+      "text": "I focus on efficiency and measurable results...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_TE_008",
+      "text": "I organize the external world to achieve goals...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_FI_009",
+      "text": "I have a strong internal sense of right and wrong...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_FI_010",
+      "text": "My values are deeply personal and non-negotiable...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "COG_functions_001",
+      "text": "I naturally harmonize with the emotional atmospher...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "COG_functions_002",
+      "text": "I prioritize group harmony over personal preferenc...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_SI_013",
+      "text": "I compare present experiences to past memories...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_SI_014",
+      "text": "I value tradition and proven methods...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_SE_015",
+      "text": "I'm highly aware of my physical environment...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "JUNG_SE_016",
+      "text": "I live fully in the present moment...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEARN_KINESTHETI_001",
+      "text": "I learn best by doing rather than reading...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEARN_VISUAL_002",
+      "text": "I need visual aids to understand concepts...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEARN_AUDITORY_003",
+      "text": "I remember things better when I hear them explaine...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEARN_GLOBAL_004",
+      "text": "I need to understand the big picture before detail...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEARN_SEQUENTIAL_005",
+      "text": "I prefer step-by-step sequential instructions...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEAR_style_002",
+      "text": "I learn through trial and error...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEAR_style_003",
+      "text": "I need to teach others to truly understand somethi...",
+      "issue": "No adaptive criteria defined"
+    },
+    {
+      "questionId": "LEAR_style_001",
+      "text": "I learn best in complete silence...",
+      "issue": "No adaptive criteria defined"
+    }
+  ],
+  "questionsByCategory": {
+    "personality": 61,
+    "neurodiversity": 86,
+    "cognitive": 5,
+    "trauma_screening": 12,
+    "attachment": 12,
+    "enneagram": 18,
+    "cognitive_functions": 16,
+    "learning_style": 8
+  },
+  "questionsByInstrument": {
+    "BFI-2-Improved": 61,
+    "ASRS-5": 5,
+    "AQ-10": 10,
+    "NEURLYN_EXECUTIVE": 20,
+    "NEURLYN_SENSORY": 18,
+    "NEURLYN_MASKING": 15,
+    "NEURLYN_EMOTIONAL": 12,
+    "NEURLYN_INTERESTS": 6,
+    "COGNITIVE_STYLE": 5,
+    "NEURLYN_TRAUMA": 12,
+    "NEURLYN_ATTACHMENT": 12,
+    "NEURLYN_ENNEAGRAM": 18,
+    "NEURLYN_JUNGIAN": 16,
+    "NEURLYN_LEARNING": 8
+  },
+  "questionsByTrait": {
+    "openness": 8,
+    "conscientiousness": 8,
+    "extraversion": 8,
+    "agreeableness": 8,
+    "neuroticism": 8,
+    "behavioral": 8,
+    "situational": 8,
+    "preferences": 5
+  },
+  "idIssues": [],
+  "recommendations": [
+    "Standardize question ID format for consistency",
+    "Define adaptive criteria for all non-baseline questions",
+    "Balance personality trait questions for even coverage"
+  ]
+}

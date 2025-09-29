@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const logger = require('../utils/logger');
+const StatisticalAnalyzer = require('./statistical-analyzer');
+const NeurodivergentScreener = require('./neurodivergent-screener');
 
 /**
  * Adaptive Assessment Engine
@@ -10,16 +12,27 @@ class AdaptiveAssessmentEngine {
   constructor() {
     this.assessmentLimits = {
       quick: 20,
-      standard: 45,
+      standard: 30, // 10 baseline + 20 adaptive
+      comprehensive: 70, // 20 baseline + 50 adaptive (PAID tier)
       deep: 75
     };
 
-    // Question categories with priorities and dependencies
+    this.baselineLimits = {
+      quick: 8,
+      standard: 10,
+      comprehensive: 20, // Enhanced baseline for paid tier
+      deep: 15
+    };
+
+    this.statisticalAnalyzer = new StatisticalAnalyzer();
+    this.neurodivergentScreener = new NeurodivergentScreener();
+
+    // Enhanced question categories with better neurodiversity coverage
     this.questionPriorities = {
       core: {
-        personality: { priority: 10, minQuestions: 5, maxQuestions: 10 },
-        neurodiversity_screening: { priority: 9, minQuestions: 3, maxQuestions: 8 },
-        mental_health_screen: { priority: 8, minQuestions: 2, maxQuestions: 6 }
+        personality: { priority: 10, minQuestions: 5, maxQuestions: 15 },
+        neurodiversity_screening: { priority: 10, minQuestions: 5, maxQuestions: 12 }, // Increased priority
+        mental_health_screen: { priority: 8, minQuestions: 3, maxQuestions: 8 }
       },
       branching: {
         adhd_deep: { priority: 7, triggers: ['adhd_indicators'], minQuestions: 5 },
@@ -142,39 +155,53 @@ class AdaptiveAssessmentEngine {
    */
   async generateAdaptiveAssessment(tier = 'standard', initialData = {}) {
     try {
+      const QuestionBank = mongoose.model('QuestionBank');
       const limit = this.assessmentLimits[tier];
+      const baselineLimit = this.baselineLimits[tier];
+
       const assessment = {
         tier,
         totalQuestions: limit,
-        questions: [],
+        baselineQuestions: [],
+        adaptiveQuestions: [],
+        phase: 'baseline', // 'baseline' -> 'adaptive' -> 'complete'
         adaptiveMetadata: {
           pathways: [],
           branchingDecisions: [],
-          priorityAdjustments: []
+          priorityAdjustments: [],
+          profile: null
         }
       };
 
-      // Phase 1: Core questions (always included)
-      const coreQuestions = await this.selectCoreQuestions(tier, limit);
-      assessment.questions.push(...coreQuestions);
+      // Phase 1: Get baseline questions for initial profiling
+      const baselineQuestions = await QuestionBank.getBaselineQuestions(tier);
 
-      // Phase 2: Initial branching based on user profile (if provided)
+      // Ensure we have baseline questions
+      if (!baselineQuestions || !Array.isArray(baselineQuestions)) {
+        logger.error('Failed to get baseline questions:', { tier, baselineQuestions });
+        throw new Error('No baseline questions available');
+      }
+
+      assessment.baselineQuestions = baselineQuestions.slice(0, baselineLimit);
+
+      // Phase 2: Reserve space for adaptive questions (will be selected after baseline)
+      const adaptiveSlots = limit - assessment.baselineQuestions.length;
+      assessment.adaptiveSlots = adaptiveSlots;
+
+      // Phase 3: Initial profile-based questions if user provided concerns
       if (initialData.demographics || initialData.concerns) {
         const profileQuestions = await this.selectProfileBasedQuestions(
           initialData,
-          limit - coreQuestions.length
+          Math.min(adaptiveSlots, 5) // Limit initial profile questions
         );
-        assessment.questions.push(...profileQuestions);
+        assessment.adaptiveQuestions.push(...profileQuestions);
       }
-
-      // Phase 3: Reserve space for adaptive questions
-      const reservedAdaptive = Math.floor(limit * 0.4);
-      assessment.adaptiveSlots = reservedAdaptive;
 
       logger.info('Generated adaptive assessment structure', {
         tier,
-        totalQuestions: assessment.questions.length,
-        adaptiveSlots: reservedAdaptive
+        baselineQuestions: assessment.baselineQuestions.length,
+        initialAdaptive: assessment.adaptiveQuestions.length,
+        totalAdaptiveSlots: adaptiveSlots
       });
 
       return assessment;
@@ -282,46 +309,167 @@ class AdaptiveAssessmentEngine {
   }
 
   /**
-   * Dynamically select next question based on responses
+   * Process baseline responses and create user profile
    */
-  async selectNextQuestion(sessionId, currentResponses, remainingQuestions) {
+  async processBaselineResponses(baselineResponses, tier = 'standard') {
     try {
-      // Analyze response patterns
-      const patterns = this.analyzeResponsePatterns(currentResponses);
+      const QuestionBank = mongoose.model('QuestionBank');
+
+      // Analyze baseline responses to create initial profile
+      const profile = await this.analyzeResponsePatterns(baselineResponses);
+
+      // Use statistical analyzer for clustering and pattern detection
+      const statisticalAnalysis = this.statisticalAnalyzer.analyzeResponses(baselineResponses, {
+        traits: profile.traits,
+        responses: baselineResponses,
+        metadata: { phase: 'baseline' }
+      });
+
+      // Screen for neurodivergent indicators with enhanced detection
+      const neurodivergentScreening = this.neurodivergentScreener.screenForNeurodivergence(
+        baselineResponses,
+        profile.traits,
+        {
+          responses: baselineResponses,
+          traits: profile.traits,
+          metadata: { responseCount: baselineResponses.length }
+        }
+      );
+
+      // Detect activated pathways based on baseline patterns
+      const activatedPathways = this.detectBaselinePathways(profile, neurodivergentScreening);
+
+      // Enhanced profile with statistical insights and pathway activation
+      const enhancedProfile = {
+        traits: profile.traits,
+        patterns: profile.indicators,
+        archetype: statisticalAnalysis.archetype,
+        neurodivergentIndicators: neurodivergentScreening.indicators,
+        confidence: statisticalAnalysis.confidence,
+        responseStyle: profile.responseStyle,
+        activatedPathways: activatedPathways,
+        tier: tier
+      };
+
+      // Get adaptive questions based on profile
+      const excludeIds = baselineResponses.map(r => r.questionId);
+      const adaptiveCount = this.assessmentLimits[tier] - baselineResponses.length;
+
+      // Enhanced adaptive selection for comprehensive (paid) tier
+      let adaptiveQuestions;
+      if (tier === 'comprehensive') {
+        // Allocate questions based on activated pathways and priorities
+        const questionAllocation = this.calculateQuestionAllocation(
+          enhancedProfile,
+          activatedPathways,
+          adaptiveCount
+        );
+
+        // Get comprehensive adaptive questions with pathway-based selection
+        adaptiveQuestions = await this.selectPathwayBasedQuestions(
+          QuestionBank,
+          enhancedProfile,
+          questionAllocation,
+          excludeIds,
+          tier
+        );
+
+        // Ensure continuous neurodiversity screening throughout
+        const neurodiversityQuestions = await this.ensureNeurodiversityCoverage(
+          QuestionBank,
+          adaptiveQuestions,
+          enhancedProfile,
+          excludeIds
+        );
+
+        if (neurodiversityQuestions.length > 0) {
+          // Replace some lower-priority questions with neurodiversity ones
+          adaptiveQuestions = this.balanceQuestionSet(
+            adaptiveQuestions,
+            neurodiversityQuestions,
+            adaptiveCount
+          );
+        }
+      } else {
+        // Standard adaptive selection for other tiers
+        adaptiveQuestions = await QuestionBank.getAdaptiveQuestions(
+          enhancedProfile,
+          excludeIds,
+          adaptiveCount
+        );
+      }
+
+      logger.info('Processed baseline responses', {
+        profileTraits: Object.keys(enhancedProfile.traits).length,
+        archetype: enhancedProfile.archetype?.name,
+        neurodivergentFlags: neurodivergentScreening?.indicators?.length || 0,
+        adaptiveQuestionsSelected: adaptiveQuestions?.length || 0
+      });
+
+      return {
+        profile: enhancedProfile,
+        adaptiveQuestions,
+        analysis: {
+          statistical: statisticalAnalysis,
+          neurodivergent: neurodivergentScreening
+        }
+      };
+    } catch (error) {
+      logger.error('Error processing baseline responses:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Dynamically select next adaptive question based on responses
+   */
+  async selectNextAdaptiveQuestion(sessionId, allResponses, remainingQuestions, userProfile) {
+    try {
+      // Analyze current response patterns
+      const currentPatterns = await this.analyzeResponsePatterns(allResponses);
+
+      // Update profile with new responses
+      const updatedProfile = this.updateProfile(userProfile, currentPatterns);
 
       // Check branching rules
-      const activatedPathways = this.checkBranchingRules(patterns);
+      const activatedPathways = this.checkBranchingRules(currentPatterns);
 
-      // Calculate question priorities
-      const priorityScores = await this.calculateQuestionPriorities(
-        patterns,
+      // Calculate question priorities with enhanced logic
+      const priorityScores = await this.calculateAdaptivePriorities(
+        updatedProfile,
         activatedPathways,
-        remainingQuestions
+        remainingQuestions,
+        allResponses.length
       );
 
       // Select highest priority question
       const nextQuestion = this.selectHighestPriority(priorityScores, remainingQuestions);
 
-      // Log decision
       logger.info('Selected next adaptive question', {
         sessionId,
         questionId: nextQuestion._id,
         pathway: activatedPathways[0]?.id,
-        priority: priorityScores[nextQuestion._id]
+        priority: priorityScores[nextQuestion._id],
+        profileConfidence: updatedProfile.confidence
       });
 
-      return nextQuestion;
+      return {
+        question: nextQuestion,
+        updatedProfile,
+        pathways: activatedPathways
+      };
     } catch (error) {
-      logger.error('Error selecting next question:', error);
-      // Fallback to random selection from remaining
-      return remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)];
+      logger.error('Error selecting next adaptive question:', error);
+      // Fallback to highest weight question from remaining
+      const fallback = remainingQuestions.sort((a, b) => (b.weight || 1) - (a.weight || 1))[0];
+      return { question: fallback, updatedProfile: userProfile, pathways: [] };
     }
   }
 
   /**
    * Analyze patterns in responses
    */
-  analyzeResponsePatterns(responses) {
+  async analyzeResponsePatterns(responses) {
     const patterns = {
       traits: {},
       indicators: [],
@@ -330,22 +478,52 @@ class AdaptiveAssessmentEngine {
       responseStyle: 'balanced'
     };
 
-    // Calculate trait scores
-    responses.forEach(r => {
-      if (r.traits) {
-        Object.entries(r.traits).forEach(([trait, weight]) => {
-          patterns.traits[trait] = (patterns.traits[trait] || 0) + r.score * weight;
-        });
-      }
+    const QuestionBank = mongoose.model('QuestionBank');
 
-      // Collect indicators
-      if (r.score >= 4 && r.personalizationMarkers) {
-        patterns.indicators.push(...r.personalizationMarkers);
+    // Collect all scores per trait for averaging
+    const traitScores = {};
+
+    // Calculate trait scores by looking up questions in database
+    for (const r of responses) {
+      const question = await QuestionBank.findOne({ questionId: r.questionId }).lean();
+      if (question && question.trait) {
+        const score = r.response || r.score || 3; // Use response value or default to 3
+
+        // Initialize array for this trait if needed
+        if (!traitScores[question.trait]) {
+          traitScores[question.trait] = [];
+        }
+
+        // Add score to trait's array
+        traitScores[question.trait].push(score);
+        logger.info(
+          `Added score ${score} for trait: ${question.trait} from question ${r.questionId}`
+        );
+
+        // Collect indicators for high scores
+        if (score >= 4) {
+          patterns.indicators.push(question.trait);
+        }
+      } else {
+        logger.warn(`Question not found or no trait: ${r.questionId}`);
       }
+    }
+
+    // Calculate average score for each trait
+    Object.keys(traitScores).forEach(trait => {
+      const scores = traitScores[trait];
+      const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+      // Convert 1-5 scale to 0-1 for compatibility with adaptive selection
+      patterns.traits[trait] = (average - 1) / 4; // This gives 0-1 range
+      logger.info(
+        `Trait ${trait}: ${scores.length} responses, average = ${average}, normalized = ${patterns.traits[trait]}`
+      );
     });
 
+    logger.info('Final traits extracted:', patterns.traits);
+
     // Calculate average response score
-    const scores = responses.map(r => r.score);
+    const scores = responses.map(r => r.response || r.score || 3);
     patterns.averageScore = scores.reduce((a, b) => a + b, 0) / scores.length;
 
     // Detect response style
@@ -407,9 +585,9 @@ class AdaptiveAssessmentEngine {
   }
 
   /**
-   * Calculate priority scores for remaining questions
+   * Calculate priority scores for adaptive questions with enhanced logic
    */
-  async calculateQuestionPriorities(patterns, pathways, remainingQuestions) {
+  async calculateAdaptivePriorities(profile, pathways, remainingQuestions, responseCount) {
     const Question = mongoose.model('QuestionBank');
     const priorityScores = {};
 
@@ -418,7 +596,17 @@ class AdaptiveAssessmentEngine {
     const questions = await Question.find({ _id: { $in: questionIds } });
 
     for (const question of questions) {
-      let priority = question.basePriority || 50;
+      let priority = question.weight || 50;
+
+      // Use adaptive diagnostic weight if available
+      if (question.adaptive?.diagnosticWeight) {
+        priority += question.adaptive.diagnosticWeight * 10;
+      }
+
+      // Use discrimination index for better differentiation
+      if (question.adaptive?.discriminationIndex) {
+        priority += question.adaptive.discriminationIndex * 20;
+      }
 
       // Boost priority for activated pathways
       pathways.forEach(pathway => {
@@ -430,57 +618,146 @@ class AdaptiveAssessmentEngine {
         }
       });
 
-      // Boost priority for high trait indicators
-      Object.entries(patterns.traits).forEach(([trait, score]) => {
-        if (question.traits?.[trait] && score > 3.5) {
-          priority += 10 * question.traits[trait];
+      // Enhanced trait matching with profile confidence
+      if (question.adaptive?.adaptiveCriteria?.triggerTraits) {
+        for (const trigger of question.adaptive.adaptiveCriteria.triggerTraits) {
+          const userScore = profile.traits[trigger.trait];
+          if (userScore >= trigger.minScore && userScore <= trigger.maxScore) {
+            priority += 25 * profile.confidence;
+          }
         }
-      });
+      }
+
+      // Pattern-based priority boost
+      if (question.adaptive?.adaptiveCriteria?.triggerPatterns) {
+        const matchingPatterns = question.adaptive.adaptiveCriteria.triggerPatterns.filter(
+          pattern => profile.patterns.includes(pattern)
+        );
+        priority += matchingPatterns.length * 15;
+      }
+
+      // Neurodivergent indicator boost
+      if (profile.neurodivergentIndicators?.length > 0) {
+        const ndCategories = ['neurodiversity', 'executive_function', 'sensory_processing'];
+        if (ndCategories.includes(question.category)) {
+          priority += 20;
+        }
+      }
+
+      // Archetype-specific adjustments
+      if (profile.archetype?.traits) {
+        const archetypeMatch = this.calculateArchetypeMatch(question, profile.archetype);
+        priority += archetypeMatch * 10;
+      }
+
+      // Progressive difficulty adjustment
+      if (question.adaptive?.difficultyLevel) {
+        const targetDifficulty = Math.min(3 + Math.floor(responseCount / 10), 5);
+        const difficultyDiff = Math.abs(question.adaptive.difficultyLevel - targetDifficulty);
+        priority -= difficultyDiff * 5;
+      }
 
       // Reduce priority for redundant questions
-      if (this.isRedundant(question, patterns)) {
-        priority -= 20;
+      if (this.isAdaptiveRedundant(question, profile, responseCount)) {
+        priority -= 25;
       }
 
-      // Adjust for response style
-      if (patterns.responseStyle === 'extreme' && question.type === 'forced_choice') {
+      // Response style adjustments
+      if (profile.responseStyle === 'extreme' && question.responseType === 'binary') {
         priority += 15;
       }
-      if (patterns.responseStyle === 'central' && question.type === 'slider') {
+      if (profile.responseStyle === 'central' && question.responseType === 'slider') {
         priority += 10;
       }
 
-      // Store priority score
-      priorityScores[question._id] = priority;
+      priorityScores[question._id] = Math.max(priority, 0);
     }
 
     return priorityScores;
   }
 
   /**
-   * Check if question is redundant
+   * Check if adaptive question is redundant with enhanced logic
    */
-  isRedundant(question, patterns) {
-    // Check if we already have strong signal for this trait
-    const primaryTrait = Object.keys(question.traits || {})[0];
-    if (primaryTrait && patterns.traits[primaryTrait] > 4.5) {
-      return true;
+  isAdaptiveRedundant(question, profile, responseCount) {
+    // Check incompatible questions
+    if (question.adaptive?.adaptiveCriteria?.incompatibleWith?.length > 0) {
+      // Would need to check against already answered questions
+      // This requires session context that we don't have here
     }
 
-    // Check if we have enough data for this category
-    const categoryCount = patterns.categoryCounts?.[question.category] || 0;
+    // Check if we already have strong confidence for this trait area
+    if (question.trait && profile.traits[question.trait]) {
+      const traitScore = profile.traits[question.trait];
+      const confidence = profile.confidence || 0.5;
+
+      // If we have high confidence and extreme score, question might be redundant
+      if (confidence > 0.8 && (traitScore < 1.5 || traitScore > 4.5)) {
+        return true;
+      }
+    }
+
+    // Category saturation check based on response count
     const categoryLimits = {
-      personality: 10,
-      neurodiversity: 15,
-      mental_health: 8,
-      cognitive_functions: 6
+      personality: Math.min(8, Math.floor(responseCount * 0.4)),
+      neurodiversity: Math.min(12, Math.floor(responseCount * 0.5)),
+      cognitive: Math.min(6, Math.floor(responseCount * 0.3)),
+      psychoanalytic: Math.min(8, Math.floor(responseCount * 0.3))
     };
 
-    if (categoryCount >= (categoryLimits[question.category] || 10)) {
+    const categoryCount = profile.categoryCounts?.[question.category] || 0;
+    if (categoryCount >= (categoryLimits[question.category] || 8)) {
       return true;
     }
 
     return false;
+  }
+
+  /**
+   * Calculate how well question matches user's archetype
+   */
+  calculateArchetypeMatch(question, archetype) {
+    if (!archetype?.traits || !question.trait) return 0;
+
+    const archetypeTraitScore = archetype.traits[question.trait];
+    if (archetypeTraitScore === undefined) return 0;
+
+    // Higher match for questions that target archetype's key traits
+    if (archetypeTraitScore > 3.5) return 2;
+    if (archetypeTraitScore < 2.5) return 1;
+    return 0;
+  }
+
+  /**
+   * Update user profile with new response patterns
+   */
+  updateProfile(originalProfile, newPatterns) {
+    const updatedProfile = { ...originalProfile };
+
+    // Merge traits with weighted average (new responses get slight boost)
+    Object.entries(newPatterns.traits).forEach(([trait, newScore]) => {
+      const oldScore = updatedProfile.traits[trait] || newScore;
+      updatedProfile.traits[trait] = oldScore * 0.7 + newScore * 0.3;
+    });
+
+    // Merge patterns
+    updatedProfile.patterns = [
+      ...new Set([...(updatedProfile.patterns || []), ...newPatterns.indicators])
+    ];
+
+    // Update response style if it changed significantly
+    if (newPatterns.responseStyle !== updatedProfile.responseStyle) {
+      updatedProfile.responseStyle = newPatterns.responseStyle;
+    }
+
+    // Adjust confidence based on consistency
+    if (newPatterns.consistency < 0.8) {
+      updatedProfile.confidence = Math.max(0.3, updatedProfile.confidence * 0.9);
+    } else {
+      updatedProfile.confidence = Math.min(0.95, updatedProfile.confidence * 1.05);
+    }
+
+    return updatedProfile;
   }
 
   /**
@@ -561,8 +838,8 @@ class AdaptiveAssessmentEngine {
     };
   }
 
-  determinePrimaryProfile(sessionData) {
-    const patterns = this.analyzeResponsePatterns(sessionData.responses);
+  async determinePrimaryProfile(sessionData) {
+    const patterns = await this.analyzeResponsePatterns(sessionData.responses);
     const profiles = [];
 
     // Check for neurodivergent profiles
@@ -587,7 +864,7 @@ class AdaptiveAssessmentEngine {
     return profiles.length > 0 ? profiles.join(' + ') : 'Neurotypical with variations';
   }
 
-  calculateConfidence(sessionData) {
+  async calculateConfidence(sessionData) {
     const responses = sessionData.responses;
 
     // Factors affecting confidence
@@ -599,7 +876,7 @@ class AdaptiveAssessmentEngine {
     else if (responses.length >= 20) confidence += 0.1;
 
     // Consistent responses = higher confidence
-    const patterns = this.analyzeResponsePatterns(responses);
+    const patterns = await this.analyzeResponsePatterns(responses);
     confidence += patterns.consistency * 0.2;
 
     // Activated pathways = higher confidence
@@ -638,6 +915,214 @@ class AdaptiveAssessmentEngine {
     }
 
     return recommendations;
+  }
+
+  /**
+   * Detect baseline pathways for comprehensive assessment
+   */
+  detectBaselinePathways(profile, neurodivergentScreening) {
+    const activatedPathways = [];
+    const traits = profile.traits || {};
+    const indicators = neurodivergentScreening?.indicators || {};
+
+    // Check ADHD pathway activation
+    if (traits.conscientiousness < 35 || indicators.adhd?.likelihood === 'High') {
+      activatedPathways.push({
+        id: 'adhd_pathway',
+        strength: indicators.adhd?.score || (100 - traits.conscientiousness) / 2,
+        priority: 9,
+        categories: ['executive_function', 'adhd_comprehensive', 'rejection_sensitivity']
+      });
+    }
+
+    // Check autism pathway activation
+    if (traits.extraversion < 35 || indicators.autism?.likelihood === 'High') {
+      activatedPathways.push({
+        id: 'autism_pathway',
+        strength: indicators.autism?.score || (100 - traits.extraversion) / 2,
+        priority: 9,
+        categories: ['sensory_processing', 'masking_assessment', 'monotropism']
+      });
+    }
+
+    // Check combined AUDHD pathway
+    const hasADHD = activatedPathways.some(p => p.id === 'adhd_pathway');
+    const hasAutism = activatedPathways.some(p => p.id === 'autism_pathway');
+    if (hasADHD && hasAutism) {
+      activatedPathways.push({
+        id: 'audhd_pathway',
+        strength: 80,
+        priority: 10,
+        categories: ['audhd_specific', 'competing_needs', 'dual_presentation']
+      });
+    }
+
+    // Check high neuroticism pathway
+    if (traits.neuroticism > 65) {
+      activatedPathways.push({
+        id: 'anxiety_pathway',
+        strength: traits.neuroticism,
+        priority: 7,
+        categories: ['anxiety_screen', 'emotional_regulation', 'stress_management']
+      });
+    }
+
+    // Check giftedness pathway
+    if (traits.openness > 75 && profile.consistency > 0.8) {
+      activatedPathways.push({
+        id: 'gifted_pathway',
+        strength: traits.openness,
+        priority: 6,
+        categories: ['giftedness_screen', 'overexcitabilities', 'asynchronous_development']
+      });
+    }
+
+    return activatedPathways;
+  }
+
+  /**
+   * Calculate question allocation for comprehensive tier
+   */
+  calculateQuestionAllocation(profile, pathways, totalQuestions) {
+    const allocation = {};
+    const remainingQuestions = totalQuestions;
+
+    // Always include core personality and neurodiversity questions (30% minimum)
+    allocation.core = {
+      personality: Math.ceil(totalQuestions * 0.15),
+      neurodiversity: Math.ceil(totalQuestions * 0.15)
+    };
+
+    // Allocate based on activated pathways (50%)
+    const pathwayAllocation = Math.floor(totalQuestions * 0.5);
+    if (pathways.length > 0) {
+      const questionsPerPathway = Math.floor(pathwayAllocation / pathways.length);
+      pathways.forEach(pathway => {
+        allocation[pathway.id] = {
+          questions: questionsPerPathway,
+          categories: pathway.categories,
+          priority: pathway.priority
+        };
+      });
+    }
+
+    // Allocate remaining for exploration and validation (20%)
+    allocation.exploration = {
+      questions: Math.floor(totalQuestions * 0.2),
+      categories: ['validation', 'exploration', 'depth_questions']
+    };
+
+    return allocation;
+  }
+
+  /**
+   * Select pathway-based questions for comprehensive assessment
+   */
+  async selectPathwayBasedQuestions(QuestionBank, profile, allocation, excludeIds, tier) {
+    const selectedQuestions = [];
+
+    try {
+      // Get core questions first
+      if (allocation.core) {
+        const coreQuestions = await QuestionBank.find({
+          category: { $in: ['personality', 'neurodiversity'] },
+          _id: { $nin: excludeIds },
+          tier: { $in: [tier, 'standard', 'core'] }
+        }).limit(allocation.core.personality + allocation.core.neurodiversity);
+
+        selectedQuestions.push(...coreQuestions);
+      }
+
+      // Get pathway-specific questions
+      for (const [pathwayId, config] of Object.entries(allocation)) {
+        if (pathwayId !== 'core' && pathwayId !== 'exploration' && config.categories) {
+          const pathwayQuestions = await QuestionBank.find({
+            $or: [
+              { category: { $in: config.categories } },
+              { subcategory: { $in: config.categories } },
+              { tags: { $in: config.categories } }
+            ],
+            _id: { $nin: [...excludeIds, ...selectedQuestions.map(q => q._id)] }
+          }).limit(config.questions);
+
+          selectedQuestions.push(...pathwayQuestions);
+        }
+      }
+
+      // Fill remaining with exploration questions
+      if (allocation.exploration) {
+        const remainingCount = allocation.exploration.questions;
+        const explorationQuestions = await QuestionBank.find({
+          _id: { $nin: [...excludeIds, ...selectedQuestions.map(q => q._id)] },
+          weight: { $gte: 0.6 }
+        })
+          .sort({ weight: -1 })
+          .limit(remainingCount);
+
+        selectedQuestions.push(...explorationQuestions);
+      }
+    } catch (error) {
+      logger.error('Error selecting pathway-based questions:', error);
+    }
+
+    return selectedQuestions;
+  }
+
+  /**
+   * Ensure comprehensive neurodiversity coverage
+   */
+  async ensureNeurodiversityCoverage(QuestionBank, currentQuestions, profile, excludeIds) {
+    const neurodiversityQuestions = [];
+
+    // Check if we have enough neurodiversity questions
+    const ndCount = currentQuestions.filter(
+      q =>
+        q.category === 'neurodiversity' ||
+        q.subcategory?.includes('adhd') ||
+        q.subcategory?.includes('autism')
+    ).length;
+
+    // For comprehensive tier, ensure at least 20% are neurodiversity-focused
+    const targetNdCount = Math.ceil(currentQuestions.length * 0.2);
+
+    if (ndCount < targetNdCount) {
+      const additionalNeeded = targetNdCount - ndCount;
+      const additionalQuestions = await QuestionBank.find({
+        $or: [
+          { category: 'neurodiversity' },
+          { subcategory: { $regex: /adhd|autism|executive|sensory/i } },
+          { tags: { $in: ['neurodiversity', 'adhd', 'autism', 'executive_function'] } }
+        ],
+        _id: { $nin: [...excludeIds, ...currentQuestions.map(q => q._id)] }
+      }).limit(additionalNeeded);
+
+      neurodiversityQuestions.push(...additionalQuestions);
+    }
+
+    return neurodiversityQuestions;
+  }
+
+  /**
+   * Balance question set to ensure proper coverage
+   */
+  balanceQuestionSet(adaptiveQuestions, neurodiversityQuestions, targetCount) {
+    // Combine and prioritize questions
+    const allQuestions = [...adaptiveQuestions, ...neurodiversityQuestions];
+
+    // Sort by weight/importance
+    allQuestions.sort((a, b) => {
+      // Prioritize neurodiversity questions
+      const aIsND = a.category === 'neurodiversity' ? 1 : 0;
+      const bIsND = b.category === 'neurodiversity' ? 1 : 0;
+
+      if (aIsND !== bIsND) return bIsND - aIsND;
+
+      // Then by weight
+      return (b.weight || 0.5) - (a.weight || 0.5);
+    });
+
+    // Return target number of questions
+    return allQuestions.slice(0, targetCount);
   }
 }
 

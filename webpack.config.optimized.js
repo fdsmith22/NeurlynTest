@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const isAnalyze = process.env.ANALYZE === 'true';
@@ -13,10 +14,10 @@ module.exports = {
 
   // Multiple entry points for code splitting
   entry: {
-    main: './js/neurlyn-integrated.js',
-    report: './js/report-generator.js',
-    tasks: './js/tasks/base-task.js',
-    modules: './js/modules/task-controller.js'
+    main: './js/neurlyn-adaptive-integration.js',
+    report: './js/advanced-report-generator.js',
+    'report-display': './js/report-display-component.js',
+    'api-client': './js/api-client.js'
   },
 
   output: {
@@ -53,7 +54,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -115,6 +116,13 @@ module.exports = {
         { from: 'sw.js', to: 'sw.js' }
       ]
     }),
+
+    // Extract CSS into separate files in production
+    !isDevelopment &&
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].chunk.css'
+      }),
 
     // Compression in production
     !isDevelopment &&

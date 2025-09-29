@@ -29,6 +29,70 @@ function convertImprovedQuestions() {
     neuroticism: 'neuroticism'
   };
 
+  // Helper function to get adaptive criteria for personality questions
+  const getPersonalityAdaptiveCriteria = (trait, index, tier) => {
+    const criteria = {
+      isBaseline: false,
+      baselinePriority: null,
+      adaptiveCriteria: {
+        triggerTraits: [],
+        triggerPatterns: [],
+        followUpTo: []
+      }
+    };
+
+    // Mark first 2 questions of each Big Five trait as baseline for core/comprehensive tiers
+    if (tier !== 'free' && index < 2) {
+      criteria.isBaseline = true;
+      criteria.baselinePriority = index + 1;
+    }
+
+    // ALWAYS add adaptive criteria for non-baseline questions (regardless of baseline status)
+    // This ensures all questions have adaptive criteria populated
+    if (!criteria.isBaseline) {
+      if (trait === 'openness') {
+        criteria.adaptiveCriteria.triggerTraits.push(
+          { trait: 'openness', threshold: 3.5 },
+          { trait: 'creativity', threshold: 3.0 }
+        );
+        criteria.adaptiveCriteria.triggerPatterns.push('high_openness', 'creative_thinking');
+      } else if (trait === 'conscientiousness') {
+        criteria.adaptiveCriteria.triggerTraits.push(
+          { trait: 'conscientiousness', threshold: 3.5 },
+          { trait: 'organization', threshold: 3.0 }
+        );
+        criteria.adaptiveCriteria.triggerPatterns.push(
+          'high_conscientiousness',
+          'organized_behavior'
+        );
+      } else if (trait === 'extraversion') {
+        criteria.adaptiveCriteria.triggerTraits.push(
+          { trait: 'extraversion', threshold: 3.5 },
+          { trait: 'sociability', threshold: 3.0 }
+        );
+        criteria.adaptiveCriteria.triggerPatterns.push('high_extraversion', 'social_energy');
+      } else if (trait === 'agreeableness') {
+        criteria.adaptiveCriteria.triggerTraits.push(
+          { trait: 'agreeableness', threshold: 3.5 },
+          { trait: 'empathy', threshold: 3.0 }
+        );
+        criteria.adaptiveCriteria.triggerPatterns.push('high_agreeableness', 'empathetic_behavior');
+      } else if (trait === 'neuroticism') {
+        criteria.adaptiveCriteria.triggerTraits.push(
+          { trait: 'neuroticism', threshold: 3.5 },
+          { trait: 'emotional_sensitivity', threshold: 3.0 }
+        );
+        criteria.adaptiveCriteria.triggerPatterns.push('high_neuroticism', 'emotional_intensity');
+      } else {
+        // For other traits (behavioral, situational, preferences), add generic adaptive criteria
+        criteria.adaptiveCriteria.triggerTraits.push({ trait: trait, threshold: 3.0 });
+        criteria.adaptiveCriteria.triggerPatterns.push(`high_${trait}`, `${trait}_patterns`);
+      }
+    }
+
+    return criteria;
+  };
+
   // Process each trait category
   Object.keys(improvedQuestionsData.improvedQuestions).forEach(traitKey => {
     const traitQuestions = improvedQuestionsData.improvedQuestions[traitKey];
@@ -42,6 +106,8 @@ function convertImprovedQuestions() {
       } else if (index >= 12) {
         tier = 'comprehensive';
       }
+
+      const adaptiveCriteria = getPersonalityAdaptiveCriteria(trait, index, tier);
 
       questions.push({
         questionId: `BFI_${trait.toUpperCase()}_${questionId++}`,
@@ -61,6 +127,7 @@ function convertImprovedQuestions() {
         weight: tier === 'comprehensive' ? 1.2 : 1.0,
         tier: tier,
         active: true,
+        adaptive: adaptiveCriteria,
         metadata: {
           addedDate: new Date(),
           version: '2.0',
@@ -202,9 +269,70 @@ async function seedQuestions() {
     allQuestions.push(...personalityQuestions);
     logger.info(`Prepared ${personalityQuestions.length} personality questions`);
 
+    // Helper function to get neurodiversity adaptive criteria
+    const getNeurodiversityAdaptiveCriteria = (trait, subcategory, index) => {
+      const criteria = {
+        isBaseline: false,
+        baselinePriority: null,
+        adaptiveCriteria: {
+          triggerTraits: [],
+          triggerPatterns: [],
+          followUpTo: []
+        }
+      };
+
+      // Mark first ADHD and autism questions as baseline
+      if (
+        (trait === 'adhd' && subcategory === 'attention' && index === 0) ||
+        (trait === 'autism' && subcategory === 'social_communication' && index === 0)
+      ) {
+        criteria.isBaseline = true;
+        criteria.baselinePriority = trait === 'adhd' ? 5 : 6;
+      } else {
+        // Add adaptive criteria based on trait
+        if (trait === 'adhd') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'adhd', threshold: 3.0 },
+            { trait: 'executive_dysfunction', threshold: 2.5 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push('adhd_indicators', `adhd_${subcategory}`);
+        } else if (trait === 'autism') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'autism', threshold: 3.0 },
+            { trait: 'social_difficulties', threshold: 2.5 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push(
+            'autism_indicators',
+            `autism_${subcategory}`
+          );
+        } else if (trait === 'sensory') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'sensory_sensitivity', threshold: 3.0 },
+            { trait: 'neuroticism', threshold: 3.5 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push(
+            'sensory_processing_issues',
+            'high_sensitivity'
+          );
+        } else if (trait === 'executive_function') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'executive_dysfunction', threshold: 3.0 },
+            { trait: 'adhd', threshold: 2.5 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push(
+            'executive_difficulties',
+            'time_management_issues'
+          );
+        }
+      }
+
+      return criteria;
+    };
+
     // Add neurodiversity questions
     let ndQuestionId = 1;
-    neurodiversityQuestions.forEach(q => {
+    neurodiversityQuestions.forEach((q, index) => {
+      const adaptiveCriteria = getNeurodiversityAdaptiveCriteria(q.trait, q.subcategory, index);
       allQuestions.push({
         questionId: `ND_${q.trait.toUpperCase()}_${ndQuestionId++}`,
         text: q.text,
@@ -222,14 +350,76 @@ async function seedQuestions() {
         ],
         weight: 1.0,
         tier: 'free',
-        active: true
+        active: true,
+        adaptive: adaptiveCriteria
       });
     });
     logger.info(`Prepared ${neurodiversityQuestions.length} neurodiversity questions`);
 
+    // Helper function to get cognitive adaptive criteria
+    const getCognitiveAdaptiveCriteria = (trait, subcategory, index) => {
+      const criteria = {
+        isBaseline: false,
+        baselinePriority: null,
+        adaptiveCriteria: {
+          triggerTraits: [],
+          triggerPatterns: [],
+          followUpTo: []
+        }
+      };
+
+      // Mark first cognitive question as baseline
+      if (index === 0 && trait === 'analytical') {
+        criteria.isBaseline = true;
+        criteria.baselinePriority = 7;
+      } else {
+        // Add adaptive criteria based on cognitive style
+        if (trait === 'analytical') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'analytical_thinking', threshold: 3.5 },
+            { trait: 'conscientiousness', threshold: 3.0 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push(
+            'logical_reasoning',
+            'systematic_thinking'
+          );
+        } else if (trait === 'kinesthetic') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'hands_on_learning', threshold: 3.0 },
+            { trait: 'physical_engagement', threshold: 3.5 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push(
+            'kinesthetic_learning',
+            'experiential_preference'
+          );
+        } else if (trait === 'spatial') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'spatial_intelligence', threshold: 3.5 },
+            { trait: 'visual_processing', threshold: 3.0 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push('spatial_reasoning', 'visual_thinking');
+        } else if (trait === 'visual') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'visual_learning', threshold: 3.5 },
+            { trait: 'memory_visual', threshold: 3.0 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push('visual_processing', 'image_based_memory');
+        } else if (trait === 'holistic') {
+          criteria.adaptiveCriteria.triggerTraits.push(
+            { trait: 'big_picture_thinking', threshold: 3.5 },
+            { trait: 'intuitive_processing', threshold: 3.0 }
+          );
+          criteria.adaptiveCriteria.triggerPatterns.push('holistic_processing', 'systems_thinking');
+        }
+      }
+
+      return criteria;
+    };
+
     // Add cognitive questions
     let cogQuestionId = 1;
-    cognitiveQuestions.forEach(q => {
+    cognitiveQuestions.forEach((q, index) => {
+      const adaptiveCriteria = getCognitiveAdaptiveCriteria(q.trait, q.subcategory, index);
       allQuestions.push({
         questionId: `COG_${cogQuestionId++}`,
         text: q.text,
@@ -247,7 +437,8 @@ async function seedQuestions() {
         ],
         weight: 1.0,
         tier: 'core',
-        active: true
+        active: true,
+        adaptive: adaptiveCriteria
       });
     });
     logger.info(`Prepared ${cognitiveQuestions.length} cognitive questions`);

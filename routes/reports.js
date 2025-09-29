@@ -18,59 +18,98 @@ const reportGenerator = new ComprehensiveReportGenerator();
  */
 router.post('/generate', async (req, res) => {
   try {
-    const { sessionId, assessmentId } = req.body;
+    const { sessionId, assessmentId, responses, tier, duration, metadata } = req.body;
 
-    // Find assessment by sessionId or assessmentId
-    const assessment = await Assessment.findOne({
-      $or: [{ sessionId: sessionId }, { _id: assessmentId }]
-    });
+    let assessmentData;
 
-    if (!assessment) {
-      return res.status(404).json({
-        error: 'Assessment not found'
+    // If direct response data is provided (for testing), use it
+    if (responses && tier) {
+      assessmentData = {
+        mode: 'adaptive',
+        tier: tier,
+        track: 'comprehensive',
+        duration: duration || 600,
+        responses: responses,
+        results: null,
+        demographics: metadata || {},
+        metadata: metadata || {}
+      };
+    } else {
+      // Otherwise, find assessment by sessionId or assessmentId
+      const assessment = await Assessment.findOne({
+        $or: [{ sessionId: sessionId }, { _id: assessmentId }]
       });
-    }
 
-    if (!assessment.completionTime) {
-      return res.status(400).json({
-        error: 'Assessment not yet completed'
-      });
-    }
+      if (!assessment) {
+        return res.status(404).json({
+          error: 'Assessment not found'
+        });
+      }
 
-    // Prepare assessment data for report generation
-    const assessmentData = {
-      mode: assessment.mode,
-      tier: assessment.tier,
-      track: determineTrack(assessment),
-      duration: calculateDuration(assessment),
-      responses: assessment.responses,
-      results: assessment.results,
-      demographics: assessment.demographics,
-      metadata: assessment.metadata
-    };
+      if (!assessment.completionTime) {
+        return res.status(400).json({
+          error: 'Assessment not yet completed'
+        });
+      }
+
+      // Prepare assessment data for report generation
+      assessmentData = {
+        mode: assessment.mode,
+        tier: assessment.tier,
+        track: determineTrack(assessment),
+        duration: calculateDuration(assessment),
+        responses: assessment.responses,
+        results: assessment.results,
+        demographics: assessment.demographics,
+        metadata: assessment.metadata
+      };
+    }
 
     // Generate comprehensive report
-    const report = await reportGenerator.generateComprehensiveReport(assessmentData);
+    const report = await reportGenerator.generateReport(assessmentData);
 
-    // Store report reference in assessment
-    assessment.reportGenerated = true;
-    assessment.reportGeneratedAt = new Date();
-    assessment.reportId = report.id;
-    await assessment.save();
+    // Store report reference in assessment if it exists
+    if (!responses || !tier) {
+      const assessment = await Assessment.findOne({
+        $or: [{ sessionId: sessionId }, { _id: assessmentId }]
+      });
 
-    // Log report generation
-    logger.info('Report generated', {
-      sessionId: assessment.sessionId,
-      reportId: report.id,
-      duration: report.meta.duration
-    });
+      if (assessment) {
+        assessment.reportGenerated = true;
+        assessment.reportGeneratedAt = new Date();
+        assessment.reportId = report.id;
+        await assessment.save();
 
-    res.json({
-      success: true,
-      report: report,
-      assessmentId: assessment._id,
-      sessionId: assessment.sessionId
-    });
+        // Log report generation
+        logger.info('Report generated', {
+          sessionId: assessment.sessionId,
+          reportId: report.id,
+          duration: report.meta.duration
+        });
+
+        res.json({
+          success: true,
+          report: report,
+          assessmentId: assessment._id,
+          sessionId: assessment.sessionId
+        });
+      } else {
+        res.json({
+          success: true,
+          report: report
+        });
+      }
+    } else {
+      // Direct response data was used (testing)
+      console.log(
+        '[API Response] Sending report with personality.bigFive:',
+        report?.personality?.bigFive
+      );
+      res.json({
+        success: true,
+        report: report
+      });
+    }
   } catch (error) {
     logger.error('Report generation failed:', error);
     res.status(500).json({
@@ -114,7 +153,7 @@ router.get('/:sessionId', async (req, res) => {
       metadata: assessment.metadata
     };
 
-    const report = await reportGenerator.generateComprehensiveReport(assessmentData);
+    const report = await reportGenerator.generateReport(assessmentData);
 
     res.json({
       success: true,

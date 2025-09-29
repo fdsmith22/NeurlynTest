@@ -13,148 +13,548 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles/neurlyn.css" />
+    <!-- Neurlyn Consolidated Stylesheets -->
+    <link rel="stylesheet" href="styles/neurlyn-consolidated.css" />
     <link rel="stylesheet" href="styles/neurlyn-navigation.css" />
-    <link rel="stylesheet" href="styles/neurlyn-mobile.css" />
+    <link rel="stylesheet" href="styles/neurlyn-mobile-consolidated.css" />
+    <link rel="stylesheet" href="styles/neurlyn-pages.css" />
+
+    <!-- Navbar Component -->
+    <script src="js/navbar-component.js"></script>
+
     <style>
-      .support-hero {
-        background: linear-gradient(135deg, #6c9e83 0%, #5a8a70 100%);
-        color: white;
-        padding: 2rem 0;
-        text-align: center;
-      }
-      .support-hero h1 {
-        margin: 0 0 0.5rem 0;
-        font-size: 2rem;
-      }
-      .support-hero p {
-        margin: 0;
-        opacity: 0.9;
-        font-size: 1.1rem;
-      }
-      .crisis-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-      }
-      .crisis-card {
-        background: white;
-        border-radius: 10px;
-        padding: 1.25rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        border: 1px solid #e5e7eb;
-      }
-      .crisis-card h3 {
-        color: #6c9e83;
-        margin: 0 0 0.75rem 0;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.1rem;
-      }
-      .crisis-icon {
-        width: 20px;
-        height: 20px;
-        fill: #6c9e83;
-      }
-      .crisis-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .crisis-link {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.75rem;
-        background: #f9fafb;
-        border: 1px solid #e5e7eb;
-        border-radius: 6px;
-        text-decoration: none;
-        color: #374151;
-        font-weight: 500;
-        font-size: 0.9rem;
-        transition: all 0.2s ease;
-      }
-      .crisis-link:hover {
-        background: #f3f4f6;
-        border-color: #d1d5db;
-        transform: translateY(-1px);
-      }
+      /* Reset conflicting styles */
       .resources-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin: 3rem 0;
+        all: unset;
+        display: block;
+        width: 100%;
       }
-      @media (max-width: 1024px) {
-        .resources-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 768px) {
-        .resources-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      .resource-card {
-        background: white;
-        border-radius: 10px;
-        padding: 1.25rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        border-left: 3px solid #6c9e83;
-      }
-      .resource-card h3 {
-        color: #6c9e83;
-        margin: 0 0 0.75rem 0;
-        font-size: 1.1rem;
-      }
-      .resource-links {
+
+      .crisis-grid {
         display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-      .resource-link {
-        color: #6c9e83;
-        text-decoration: none;
-        padding: 0.4rem 0;
-        border-bottom: 1px solid #f3f4f6;
-        transition: color 0.2s ease;
-        font-size: 0.9rem;
-      }
-      .resource-link:hover {
-        color: #5a8a70;
-      }
-      .back-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: #6c9e83;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 500;
-        margin: 2rem 0;
-        transition: background 0.2s ease;
-      }
-      .back-button:hover {
-        background: #5a8a70;
-      }
-      .container {
-        max-width: 1400px;
+        gap: 0.75rem;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        width: auto;
         margin: 0 auto;
-        padding: 0 2rem;
       }
-      .footer-content {
+
+      .resource-card,
+      .crisis-card {
+        all: unset;
+        display: block;
+      }
+
+      /* New Collapsible Gallery Layout */
+      .gallery-container {
+        position: relative;
+        width: 100%;
+        margin: 1rem auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 0.75rem;
       }
-      .footer-separator {
-        color: #9ca3af;
+
+      .cards-wrapper {
+        display: flex;
+        gap: 0.75rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 1rem 0;
+        scroll-behavior: smooth;
+        min-height: 340px;
+        align-items: center;
+        -webkit-overflow-scrolling: touch;
+        /* Show exactly 5 cards */
+        width: calc(5 * 120px + 4 * 0.75rem);
+        max-width: 100%;
+        /* Snap scrolling */
+        scroll-snap-type: x mandatory;
+        margin: 0 auto;
+      }
+
+      .cards-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Precise card positioning */
+      .cards-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      /* Scroll Navigation Buttons */
+      .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 2px solid rgba(140, 165, 149, 0.3);
+        background: linear-gradient(135deg, rgba(140, 165, 149, 0.9) 0%, rgba(165, 191, 174, 0.9) 100%);
+        box-shadow: 0 4px 16px rgba(140, 165, 149, 0.25), 0 2px 8px rgba(140, 165, 149, 0.15);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+      }
+
+      .scroll-btn:hover {
+        transform: translateY(-50%) scale(1.15);
+        background: linear-gradient(135deg, rgba(140, 165, 149, 1) 0%, rgba(165, 191, 174, 1) 100%);
+        box-shadow: 0 6px 24px rgba(140, 165, 149, 0.4), 0 3px 12px rgba(140, 165, 149, 0.2);
+        border-color: rgba(140, 165, 149, 0.5);
+      }
+
+      .scroll-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+      }
+
+      .scroll-btn-left {
+        left: -5px !important;
+      }
+
+      .scroll-btn-right {
+        right: -5px !important;
+      }
+
+      .scroll-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: #5d7e68;
+      }
+
+      /* Hide scroll buttons when not needed */
+      .scroll-btn.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Card Styles */
+      .card-item {
+        flex: 0 0 auto;
+        width: 120px;
+        height: 320px;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(124, 152, 133, 0.12);
+        position: relative;
+        scroll-snap-align: start;
+      }
+
+      .card-item.expanded {
+        width: 360px;
+        z-index: 10;
+        position: relative;
+      }
+
+      /* Smooth content reveal on expansion */
+      .card-item:not(.expanded) .card-content * {
+        opacity: 0;
+      }
+
+      /* Smooth closing animation */
+      .card-item.closing .card-content {
+        animation: contentFadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .card-item.closing .close-btn {
+        opacity: 0;
+        transform: scale(0.7) rotate(90deg);
+        transition: all 0.2s ease;
+      }
+
+      .card-item.closing .card-links .card-link {
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.2s ease;
+      }
+
+      @keyframes contentFadeOut {
+        to {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+      }
+
+      .card-item.resource {
+        background: linear-gradient(to bottom, #f8faf9, white);
+      }
+
+      .card-item.crisis {
+        background: linear-gradient(to bottom, #fff9f5, white);
+      }
+
+      .card-item.selfhelp {
+        background: linear-gradient(to bottom, #f7f9fc, white);
+      }
+
+      .card-item.financial {
+        background: linear-gradient(to bottom, #faf8f6, white);
+      }
+
+      /* Card Inner Structure */
+      .card-inner {
+        display: flex;
+        height: 100%;
+        position: relative;
+      }
+
+      .card-item.expanded .card-inner {
+        flex-direction: column;
+      }
+
+      /* Card Title (Vertical when collapsed) */
+      .card-title {
+        width: 120px;
+        min-width: 120px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        color: white;
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+        position: relative;
+        z-index: 2;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card-item:not(.expanded) .card-title {
+        background: linear-gradient(135deg, #7c9885 0%, #8ca595 100%);
+        flex-direction: column;
+        text-align: center;
+        line-height: 1.2;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .card-item.crisis:not(.expanded) .card-title {
+        background: linear-gradient(135deg, #d4a574 0%, #e6b590 100%);
+      }
+
+      .card-item.expanded .card-title {
+        width: 100%;
+        height: auto;
+        min-height: 60px;
+        background: linear-gradient(135deg, #8ca595 0%, #a5bfae 100%);
+        padding: 1.25rem;
+        font-size: 1.1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+
+      .card-item.crisis.expanded .card-title {
+        background: linear-gradient(135deg, #e6b590 0%, #f0c5a0 100%);
+      }
+
+      .card-item.selfhelp:not(.expanded) .card-title {
+        background: linear-gradient(135deg, #6b9bd1 0%, #8db4d8 100%);
+      }
+
+      .card-item.selfhelp.expanded .card-title {
+        background: linear-gradient(135deg, #8db4d8 0%, #a5c7df 100%);
+      }
+
+      .card-item.financial:not(.expanded) .card-title {
+        background: linear-gradient(135deg, #c49a6c 0%, #d4b084 100%);
+      }
+
+      .card-item.financial.expanded .card-title {
+        background: linear-gradient(135deg, #d4b084 0%, #e0c29b 100%);
+      }
+
+      /* Specific styles for combined section cards */
+      .card-item.selfhelp,
+      .card-item.financial {
+        width: 130px;
+      }
+
+      .card-item.selfhelp .card-title,
+      .card-item.financial .card-title {
+        width: 130px;
+        min-width: 130px;
+        font-size: 0.9rem;
+      }
+
+      /* Expanded cards in combined section break out of containers */
+      .card-item.selfhelp.expanded,
+      .card-item.financial.expanded {
+        position: absolute;
+        width: 380px;
+        z-index: 100;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        border-radius: 16px;
+      }
+
+      /* Ensure expanded cards display above other content */
+      .card-item.selfhelp.expanded .card-content,
+      .card-item.financial.expanded .card-content {
+        max-height: none;
+        overflow: visible;
+      }
+
+      /* Card Content */
+      .card-content {
+        flex: 1;
+        padding: 1.5rem;
+        overflow-y: auto;
+        background: white;
+        opacity: 0;
+        transform: translateY(20px);
+        display: none;
+      }
+
+      .card-item.expanded .card-content {
+        display: block;
+        animation: contentFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+      }
+
+      @keyframes contentFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .card-content h3 {
+        color: #2c2c2c;
+        margin: 0 0 1rem 0;
+        font-size: 1.1rem;
+        opacity: 0;
+        animation: titleFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+      }
+
+      .card-item.expanded .card-content h3 {
+        animation: titleFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+      }
+
+      @keyframes titleFadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Links styling */
+      .card-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      /* Staggered link animation */
+      .card-item.expanded .card-links .card-link {
+        opacity: 0;
+        transform: translateX(-15px);
+        animation: linkSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .card-item.expanded .card-links .card-link:nth-child(1) { animation-delay: 0.25s; }
+      .card-item.expanded .card-links .card-link:nth-child(2) { animation-delay: 0.3s; }
+      .card-item.expanded .card-links .card-link:nth-child(3) { animation-delay: 0.35s; }
+      .card-item.expanded .card-links .card-link:nth-child(4) { animation-delay: 0.4s; }
+      .card-item.expanded .card-links .card-link:nth-child(5) { animation-delay: 0.45s; }
+      .card-item.expanded .card-links .card-link:nth-child(6) { animation-delay: 0.5s; }
+
+      @keyframes linkSlideIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .card-link {
+        padding: 0.625rem 0.875rem;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        display: block;
+      }
+
+      .resource .card-link {
+        background: rgba(140, 165, 149, 0.08);
+        border: 1px solid rgba(124, 152, 133, 0.2);
+        color: #5d7e68;
+      }
+
+      .resource .card-link:hover {
+        background: rgba(124, 152, 133, 0.15);
+        border-color: rgba(124, 152, 133, 0.4);
+        transform: translateX(3px);
+      }
+
+      .crisis .card-link {
+        background: rgba(230, 181, 144, 0.08);
+        border: 1px solid rgba(212, 165, 116, 0.2);
+        color: #b8935f;
+      }
+
+      .crisis .card-link:hover {
+        background: rgba(212, 165, 116, 0.15);
+        border-color: rgba(212, 165, 116, 0.4);
+        transform: translateX(3px);
+      }
+
+      /* Expand Icon */
+      .expand-icon {
+        width: 16px;
+        height: 16px;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        flex-shrink: 0;
+      }
+
+      .card-item:not(.expanded) .expand-icon {
+        margin-top: 0.5rem;
+      }
+
+      .card-item:not(.expanded):hover .expand-icon {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+      .card-item.expanded .expand-icon {
+        transform: rotate(90deg);
+        opacity: 0.9;
+        margin-left: auto;
+      }
+
+      /* Close Button */
+      .close-btn {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 28px;
+        height: 28px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        opacity: 0;
+        transform: scale(0.7) rotate(-90deg);
+        pointer-events: none;
+      }
+
+      .card-item.expanded .close-btn {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        pointer-events: all;
+        transition-delay: 0.35s;
+      }
+
+      .close-btn:hover {
+        background: white;
+        transform: scale(1.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Scroll Hint */
+      .scroll-hint {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #666;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+        padding-left: 0.5rem;
+      }
+
+      .scroll-hint svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        animation: slideHint 2s ease-in-out infinite;
+      }
+
+      @keyframes slideHint {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
+      }
+
+      /* Section Styling */
+      .resources-section,
+      .crisis-section {
+        margin: 2rem 0;
+      }
+
+      .resources-section h2,
+      .crisis-section h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.25rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #7c9885 0%, #8ca595 50%, #a5bfae 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+        position: relative;
+      }
+
+      /* Add subtle underline to headers */
+      .resources-section h2::after,
+      .crisis-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, rgba(140, 165, 149, 0.6), transparent);
+        border-radius: 2px;
+      }
+
+      .resources-section,
+      .crisis-section {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 255, 254, 0.98) 100%);
+        backdrop-filter: blur(10px);
+        padding: 2.5rem;
+        border-radius: 24px;
+        border: 1px solid rgba(124, 152, 133, 0.12);
+        box-shadow: 0 1px 2px rgba(124, 152, 133, 0.05), 0 4px 8px rgba(124, 152, 133, 0.05);
+      }
+
+      .crisis-description {
+        color: #666;
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .card-item.expanded {
+          width: calc(100vw - 3rem);
+          max-width: 400px;
+        }
       }
     </style>
   </head>
@@ -209,198 +609,728 @@
     <!-- Main Content -->
     <main class="container">
       <!-- Mental Health Resources -->
-      <section style="margin-top: 3rem">
-        <h2 style="font-size: 1.75rem; margin-bottom: 2rem">Resources & Support</h2>
+      <section class="resources-section">
+        <h2 style="text-align: center;">Resources & Support</h2>
+        <p class="scroll-hint">
+          <svg viewBox="0 0 24 24">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+          </svg>
+          Scroll horizontally or click cards to explore
+        </p>
 
-        <div class="resources-grid">
-          <div class="resource-card">
-            <h3>Depression & Anxiety</h3>
-            <div class="resource-links">
-              <a href="https://www.nami.org" target="_blank" class="resource-link"
-                >National Alliance on Mental Illness (NAMI)</a
-              >
-              <a href="https://adaa.org" target="_blank" class="resource-link"
-                >Anxiety and Depression Association</a
-              >
-              <a href="https://www.mind.org.uk" target="_blank" class="resource-link"
-                >Mind (UK Mental Health Charity)</a
-              >
-              <a href="https://www.beyondblue.org.au" target="_blank" class="resource-link"
-                >Beyond Blue (Australia)</a
-              >
+        <div class="gallery-container">
+          <button class="scroll-btn scroll-btn-left" onclick="scrollCards('left', this.parentElement)">
+            <svg viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <button class="scroll-btn scroll-btn-right" onclick="scrollCards('right', this.parentElement)">
+            <svg viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
+          <div class="cards-wrapper resources-grid">
+            <!-- Mental Health Card -->
+            <div class="card-item resource" data-category="mental-health">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Mental Health</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>UK Mental Health Support</h3>
+                  <div class="card-links">
+                    <a href="https://www.mind.org.uk" target="_blank" class="card-link">
+                      Mind - Mental Health Support & Advice
+                    </a>
+                    <a href="https://www.rethink.org" target="_blank" class="card-link">
+                      Rethink Mental Illness
+                    </a>
+                    <a href="https://www.samaritans.org" target="_blank" class="card-link">
+                      Samaritans - 24/7 Support (116 123)
+                    </a>
+                    <a href="https://www.anxietyuk.org.uk" target="_blank" class="card-link">
+                      Anxiety UK - Specialist Support
+                    </a>
+                    <a href="https://www.nhs.uk/every-mind-matters" target="_blank" class="card-link">
+                      NHS Every Mind Matters
+                    </a>
+                    <a href="https://hubofhope.co.uk" target="_blank" class="card-link">
+                      Hub of Hope - Find Local Services
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Neurodiversity Card -->
+            <div class="card-item resource" data-category="neurodiversity">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Neurodiversity</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>UK Neurodiversity Support</h3>
+                  <div class="card-links">
+                    <a href="https://www.autism.org.uk" target="_blank" class="card-link">
+                      National Autistic Society
+                    </a>
+                    <a href="https://www.adhdfoundation.org.uk" target="_blank" class="card-link">
+                      ADHD Foundation UK
+                    </a>
+                    <a href="https://adhduk.co.uk" target="_blank" class="card-link">
+                      ADHD UK - Adult ADHD Support
+                    </a>
+                    <a href="https://www.bdadyslexia.org.uk" target="_blank" class="card-link">
+                      British Dyslexia Association
+                    </a>
+                    <a href="https://www.autistica.org.uk" target="_blank" class="card-link">
+                      Autistica - Research & Resources
+                    </a>
+                    <a href="https://www.ambitiousaboutautism.org.uk" target="_blank" class="card-link">
+                      Ambitious about Autism
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LGBTQ+ Card -->
+            <div class="card-item resource" data-category="lgbtq">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>LGBTQ+</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>UK LGBTQ+ Support</h3>
+                  <div class="card-links">
+                    <a href="https://www.stonewall.org.uk" target="_blank" class="card-link">
+                      Stonewall UK
+                    </a>
+                    <a href="https://switchboard.lgbt" target="_blank" class="card-link">
+                      Switchboard LGBT+ (0300 330 0630)
+                    </a>
+                    <a href="https://mermaidsuk.org.uk" target="_blank" class="card-link">
+                      Mermaids - Trans Youth Support
+                    </a>
+                    <a href="https://mindout.org.uk" target="_blank" class="card-link">
+                      MindOut - LGBTQ Mental Health
+                    </a>
+                    <a href="https://genderedintelligence.co.uk" target="_blank" class="card-link">
+                      Gendered Intelligence
+                    </a>
+                    <a href="https://www.allsortsyouth.org.uk" target="_blank" class="card-link">
+                      Allsorts Youth Project
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Work & Study Card -->
+            <div class="card-item resource" data-category="work-study">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Work & Study</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>UK Work & Study Support</h3>
+                  <div class="card-links">
+                    <a href="https://www.studentminds.org.uk" target="_blank" class="card-link">
+                      Student Minds UK
+                    </a>
+                    <a href="https://www.studentspace.org.uk" target="_blank" class="card-link">
+                      Student Space - Free Support
+                    </a>
+                    <a href="https://www.acas.org.uk/mental-health" target="_blank" class="card-link">
+                      ACAS - Workplace Mental Health
+                    </a>
+                    <a href="https://www.mentalhealthatwork.org.uk" target="_blank" class="card-link">
+                      Mental Health at Work
+                    </a>
+                    <a href="https://www.ucas.com/student-support" target="_blank" class="card-link">
+                      UCAS Student Support
+                    </a>
+                    <a href="https://www.nightline.ac.uk" target="_blank" class="card-link">
+                      Nightline - Student Listening Service
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Therapy Card -->
+            <div class="card-item resource" data-category="therapy">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Therapy</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>UK Therapy Access</h3>
+                  <div class="card-links">
+                    <a href="https://www.nhs.uk/service-search/mental-health/find-a-psychological-therapies-service/" target="_blank" class="card-link">
+                      NHS IAPT - Free Therapy Services
+                    </a>
+                    <a href="https://www.bacp.co.uk/about-therapy/how-to-find-a-therapist/" target="_blank" class="card-link">
+                      BACP - Find a Therapist
+                    </a>
+                    <a href="https://www.counselling-directory.org.uk" target="_blank" class="card-link">
+                      Counselling Directory UK
+                    </a>
+                    <a href="https://www.psychotherapy.org.uk" target="_blank" class="card-link">
+                      UKCP - Find a Psychotherapist
+                    </a>
+                    <a href="https://www.bps.org.uk/find-a-psychologist" target="_blank" class="card-link">
+                      BPS - Find a Psychologist
+                    </a>
+                    <a href="https://www.talkingtherapies.berkshire.nhs.uk" target="_blank" class="card-link">
+                      NHS Talking Therapies
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wellness Card -->
+            <div class="card-item resource" data-category="wellness">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Wellness</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>Highly Rated Apps & Tools</h3>
+                  <div class="card-links">
+                    <a href="https://www.headspace.com" target="_blank" class="card-link">
+                      Headspace - NHS Approved Meditation
+                    </a>
+                    <a href="https://www.kooth.com" target="_blank" class="card-link">
+                      Kooth - Free Youth Support (11-25)
+                    </a>
+                    <a href="https://www.silvercloudhealth.com/uk" target="_blank" class="card-link">
+                      SilverCloud - NHS Digital Therapy
+                    </a>
+                    <a href="https://www.unmind.com" target="_blank" class="card-link">
+                      Unmind - Workplace Wellbeing
+                    </a>
+                    <a href="https://www.togetherall.com" target="_blank" class="card-link">
+                      Togetherall - Peer Support Community
+                    </a>
+                    <a href="https://www.mydiscombobulated.me" target="_blank" class="card-link">
+                      MyDisco - ADHD Management App
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Peer Support Card -->
+            <div class="card-item resource" data-category="peer-support">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Peer Groups</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>👥 Peer Support Groups</h3>
+                  <div class="card-links">
+                    <a href="https://www.hearingvoicesnetwork.org" target="_blank" class="card-link">
+                      Hearing Voices Network
+                    </a>
+                    <a href="https://www.bipolaruk.org" target="_blank" class="card-link">
+                      Bipolar UK
+                    </a>
+                    <a href="https://www.depressionuk.org" target="_blank" class="card-link">
+                      Depression UK - Friends in Need
+                    </a>
+                    <a href="https://www.ocduk.org" target="_blank" class="card-link">
+                      OCD UK
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Family & Carers Card -->
+            <div class="card-item resource" data-category="family">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Family</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>👨‍👩‍👧‍👦 Family & Carers</h3>
+                  <div class="card-links">
+                    <a href="https://www.carersuk.org" target="_blank" class="card-link">
+                      Carers UK
+                    </a>
+                    <a href="https://www.familylives.org.uk" target="_blank" class="card-link">
+                      Family Lives
+                    </a>
+                    <a href="https://www.sibs.org.uk" target="_blank" class="card-link">
+                      Sibs - For Siblings
+                    </a>
+                    <a href="https://www.youngcarers.org" target="_blank" class="card-link">
+                      Young Carers Support
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education Card -->
+            <div class="card-item resource" data-category="education">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Education</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>🎓 Education & Training</h3>
+                  <div class="card-links">
+                    <a href="https://www.futurelearn.com/subjects/psychology-and-mental-health-courses" target="_blank" class="card-link">
+                      FutureLearn - Free Mental Health Courses
+                    </a>
+                    <a href="https://www.recoverycollegeonline.co.uk" target="_blank" class="card-link">
+                      Recovery College Online
+                    </a>
+                    <a href="https://www.openlearn.com/health-sports-psychology/mental-health" target="_blank" class="card-link">
+                      OpenLearn - Mental Health Education
+                    </a>
+                    <a href="https://www.mhfaengland.org" target="_blank" class="card-link">
+                      Mental Health First Aid England
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Combined Self-Help & Financial Support -->
+      <section class="resources-section" style="overflow: visible; position: relative;">
+        <h2 style="text-align: center;">Self-Help Strategies & Financial Support</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1rem; position: relative; overflow: visible;">
+          <!-- Self-Help Sub-section -->
+          <div style="position: relative; overflow: visible;">
+            <h3 style="color: #6b9bd1; margin-bottom: 1rem; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em;">Self-Help Resources</h3>
+            <div class="gallery-container" style="overflow: visible;">
+              <div class="cards-wrapper" style="width: calc(3 * 130px + 2 * 0.75rem); overflow: visible; position: relative;">
+                <!-- Self-Help Guides Card -->
+                <div class="card-item selfhelp" data-category="self-help">
+                  <div class="card-inner">
+                    <div class="card-title">
+                      <span>Self-Help</span>
+                      <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                      </svg>
+                    </div>
+                    <button class="close-btn" aria-label="Close">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                      </svg>
+                    </button>
+                    <div class="card-content">
+                      <h3>📚 Free Self-Help Guides</h3>
+                      <div class="card-links">
+                        <a href="https://www.getselfhelp.co.uk" target="_blank" class="card-link">
+                          Get Self Help UK - CBT Resources
+                        </a>
+                        <a href="https://www.cci.health.wa.gov.au/Resources/Looking-After-Yourself" target="_blank" class="card-link">
+                          CCI - Mental Health Workbooks
+                        </a>
+                        <a href="https://www.psychologytools.com/self-help" target="_blank" class="card-link">
+                          Psychology Tools - Free Worksheets
+                        </a>
+                        <a href="https://www.mindwell-leeds.org.uk" target="_blank" class="card-link">
+                          MindWell - Self-Help Resources
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mindfulness Card -->
+                <div class="card-item selfhelp" data-category="mindfulness">
+                  <div class="card-inner">
+                    <div class="card-title">
+                      <span>Mindfulness</span>
+                      <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                      </svg>
+                    </div>
+                    <button class="close-btn" aria-label="Close">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                      </svg>
+                    </button>
+                    <div class="card-content">
+                      <h3>🧘 Mindfulness & Meditation</h3>
+                      <div class="card-links">
+                        <a href="https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/free-nhs-wellbeing-apps/" target="_blank" class="card-link">
+                          NHS Approved Wellbeing Apps
+                        </a>
+                        <a href="https://www.freemindfulness.org" target="_blank" class="card-link">
+                          Free Mindfulness Project
+                        </a>
+                        <a href="https://palousemindfulness.com" target="_blank" class="card-link">
+                          Palouse - Free 8-Week MBSR Course
+                        </a>
+                        <a href="https://insighttimer.com" target="_blank" class="card-link">
+                          Insight Timer - Free Meditations
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Resilience Card -->
+                <div class="card-item selfhelp" data-category="resilience">
+                  <div class="card-inner">
+                    <div class="card-title">
+                      <span>Resilience</span>
+                      <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                      </svg>
+                    </div>
+                    <button class="close-btn" aria-label="Close">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                      </svg>
+                    </button>
+                    <div class="card-content">
+                      <h3>💪 Building Resilience</h3>
+                      <div class="card-links">
+                        <a href="https://www.actionforhappiness.org" target="_blank" class="card-link">
+                          Action for Happiness
+                        </a>
+                        <a href="https://www.mentalhealth.org.uk/our-work/public-engagement/unlock-your-way" target="_blank" class="card-link">
+                          Mental Health Foundation Resources
+                        </a>
+                        <a href="https://www.annafreud.org/on-my-mind/self-care/" target="_blank" class="card-link">
+                          Anna Freud - Self-Care Resources
+                        </a>
+                        <a href="https://youngminds.org.uk/find-help/looking-after-yourself/" target="_blank" class="card-link">
+                          YoungMinds - Self-Care Tips
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="resource-card">
-            <h3>Neurodiversity Support</h3>
-            <div class="resource-links">
-              <a href="https://autisticadvocacy.org" target="_blank" class="resource-link"
-                >Autistic Self Advocacy Network</a
-              >
-              <a href="https://chadd.org" target="_blank" class="resource-link"
-                >CHADD (ADHD Support)</a
-              >
-              <a href="https://www.autism.org.uk" target="_blank" class="resource-link"
-                >National Autistic Society (UK)</a
-              >
-              <a href="https://www.bdadyslexia.org.uk" target="_blank" class="resource-link"
-                >British Dyslexia Association</a
-              >
-            </div>
-          </div>
+          <!-- Financial Support Sub-section -->
+          <div style="position: relative; overflow: visible;">
+            <h3 style="color: #c49a6c; margin-bottom: 1rem; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em;">Financial Support</h3>
+            <div class="gallery-container" style="overflow: visible;">
+              <div class="cards-wrapper" style="width: calc(3 * 130px + 2 * 0.75rem); overflow: visible; position: relative;">
+                <!-- Benefits Card -->
+                <div class="card-item financial" data-category="benefits">
+                  <div class="card-inner">
+                    <div class="card-title">
+                      <span>Benefits</span>
+                      <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                      </svg>
+                    </div>
+                    <button class="close-btn" aria-label="Close">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                      </svg>
+                    </button>
+                    <div class="card-content">
+                      <h3>💷 Benefits & Allowances</h3>
+                      <div class="card-links">
+                        <a href="https://www.gov.uk/pip" target="_blank" class="card-link">
+                          Personal Independence Payment (PIP)
+                        </a>
+                        <a href="https://www.gov.uk/employment-support-allowance" target="_blank" class="card-link">
+                          Employment Support Allowance
+                        </a>
+                        <a href="https://www.gov.uk/universal-credit" target="_blank" class="card-link">
+                          Universal Credit
+                        </a>
+                        <a href="https://www.citizensadvice.org.uk/benefits/" target="_blank" class="card-link">
+                          Citizens Advice - Benefits Calculator
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-          <div class="resource-card">
-            <h3>LGBTQ+ Mental Health</h3>
-            <div class="resource-links">
-              <a href="https://www.thetrevorproject.org" target="_blank" class="resource-link"
-                >The Trevor Project</a
-              >
-              <a href="https://pflag.org" target="_blank" class="resource-link">PFLAG</a>
-              <a href="https://www.stonewall.org.uk" target="_blank" class="resource-link"
-                >Stonewall (UK)</a
-              >
-              <a href="https://www.translifeline.org" target="_blank" class="resource-link"
-                >Trans Lifeline</a
-              >
-            </div>
-          </div>
+                <!-- NHS Support Card -->
+                <div class="card-item financial" data-category="nhs">
+                  <div class="card-inner">
+                    <div class="card-title">
+                      <span>NHS</span>
+                      <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                      </svg>
+                    </div>
+                    <button class="close-btn" aria-label="Close">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                      </svg>
+                    </button>
+                    <div class="card-content">
+                      <h3>🏥 NHS Support</h3>
+                      <div class="card-links">
+                        <a href="https://www.nhs.uk/nhs-services/help-with-health-costs/nhs-low-income-scheme-lis/" target="_blank" class="card-link">
+                          NHS Low Income Scheme
+                        </a>
+                        <a href="https://www.nhs.uk/nhs-services/help-with-health-costs/free-nhs-prescriptions/" target="_blank" class="card-link">
+                          Free NHS Prescriptions
+                        </a>
+                        <a href="https://www.nhs.uk/nhs-services/mental-health-services/" target="_blank" class="card-link">
+                          NHS Mental Health Services
+                        </a>
+                        <a href="https://www.gov.uk/access-to-work" target="_blank" class="card-link">
+                          Access to Work Scheme
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-          <div class="resource-card">
-            <h3>Workplace & Academic Support</h3>
-            <div class="resource-links">
-              <a href="https://www.mentalhealth.gov" target="_blank" class="resource-link"
-                >MentalHealth.gov</a
-              >
-              <a href="https://www.workplacementalhealth.org" target="_blank" class="resource-link"
-                >Workplace Mental Health</a
-              >
-              <a href="https://www.studentminds.org.uk" target="_blank" class="resource-link"
-                >Student Minds (UK)</a
-              >
-              <a href="https://www.activeminds.org" target="_blank" class="resource-link"
-                >Active Minds (Student Mental Health)</a
-              >
-            </div>
-          </div>
-
-          <div class="resource-card">
-            <h3>Therapy & Professional Help</h3>
-            <div class="resource-links">
-              <a href="https://www.psychologytoday.com" target="_blank" class="resource-link"
-                >Psychology Today (Find a Therapist)</a
-              >
-              <a href="https://www.betterhelp.com" target="_blank" class="resource-link"
-                >BetterHelp (Online Therapy)</a
-              >
-              <a href="https://www.nhs.uk/mental-health" target="_blank" class="resource-link"
-                >NHS Mental Health Services (UK)</a
-              >
-              <a href="https://www.headspace.com" target="_blank" class="resource-link"
-                >Headspace (Meditation & Mindfulness)</a
-              >
-            </div>
-          </div>
-
-          <div class="resource-card">
-            <h3>Self-Help & Wellness</h3>
-            <div class="resource-links">
-              <a href="https://www.calm.com" target="_blank" class="resource-link"
-                >Calm (Meditation App)</a
-              >
-              <a href="https://www.moodpath.com" target="_blank" class="resource-link"
-                >Moodpath (Mental Health Tracking)</a
-              >
-              <a href="https://www.kooth.com" target="_blank" class="resource-link"
-                >Kooth (Young People's Mental Health)</a
-              >
-              <a href="https://www.7cups.com" target="_blank" class="resource-link"
-                >7 Cups (Emotional Support)</a
-              >
+                <!-- Advocacy Card -->
+                <div class="card-item financial" data-category="advocacy">
+                  <div class="card-inner">
+                    <div class="card-title">
+                      <span>Advocacy</span>
+                      <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                      </svg>
+                    </div>
+                    <button class="close-btn" aria-label="Close">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                      </svg>
+                    </button>
+                    <div class="card-content">
+                      <h3>📋 Advocacy & Support</h3>
+                      <div class="card-links">
+                        <a href="https://www.rethink.org/advice-and-information/rights-restrictions/rights-and-restrictions/" target="_blank" class="card-link">
+                          Rethink - Rights & Legal Advice
+                        </a>
+                        <a href="https://www.disabilityrightsuk.org" target="_blank" class="card-link">
+                          Disability Rights UK
+                        </a>
+                        <a href="https://www.equalityhumanrights.com" target="_blank" class="card-link">
+                          Equality & Human Rights Commission
+                        </a>
+                        <a href="https://www.turn2us.org.uk" target="_blank" class="card-link">
+                          Turn2us - Financial Support Finder
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Crisis Support -->
-      <section
-        style="
-          margin-top: 4rem;
-          padding: 3rem 0;
-          background: #f9fafb;
-          border-radius: 12px;
-          margin-bottom: 3rem;
-        "
-      >
-        <h2 style="font-size: 1.75rem; margin-bottom: 1rem">Crisis Support</h2>
-        <p style="color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem">
+      <section class="crisis-section">
+        <h2 style="text-align: center;">Crisis Support</h2>
+        <p class="crisis-description" style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto;">
           If you're in immediate danger or having thoughts of self-harm, help is available 24/7:
         </p>
 
-        <div class="crisis-grid">
-          <div class="crisis-card">
-            <h3>
-              <svg class="crisis-icon" viewBox="0 0 24 24">
-                <path
-                  d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"
-                />
-              </svg>
-              Phone Support
-            </h3>
-            <div class="crisis-links">
-              <a href="tel:988" class="crisis-link">
-                <span>US: 988 - Suicide & Crisis Lifeline</span>
-              </a>
-              <a href="tel:116123" class="crisis-link">
-                <span>UK: 116 123 - Samaritans</span>
-              </a>
-              <a href="tel:13114" class="crisis-link">
-                <span>Australia: 13 11 14 - Lifeline</span>
-              </a>
-              <a href="tel:18662773553" class="crisis-link">
-                <span>Canada: 1-866-277-3553 - Talk Suicide</span>
-              </a>
+        <div class="gallery-container" style="display: flex; justify-content: center; width: 100%;">
+          <div class="cards-wrapper crisis-grid" style="margin: 0 auto; max-width: fit-content;">
+            <!-- Phone Support Card -->
+            <div class="card-item crisis" data-category="phone">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Phone</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>UK Crisis Hotlines (24/7)</h3>
+                  <div class="card-links">
+                    <a href="tel:116123" class="card-link">
+                      116 123 - Samaritans (Free, 24/7)
+                    </a>
+                    <a href="tel:08001110111" class="card-link">
+                      0800 111 0111 - Papyrus (Under 35)
+                    </a>
+                    <a href="tel:08088082121" class="card-link">
+                      0808 808 2121 - CALM (5pm-Midnight)
+                    </a>
+                    <a href="tel:111" class="card-link">
+                      111 Option 2 - NHS Crisis Support
+                    </a>
+                    <a href="tel:08001232040" class="card-link">
+                      0800 123 2040 - Elder Abuse Helpline
+                    </a>
+                    <a href="tel:08082000247" class="card-link">
+                      0808 2000 247 - Domestic Abuse
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="crisis-card">
-            <h3>
-              <svg class="crisis-icon" viewBox="0 0 24 24">
-                <path
-                  d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
-                />
-              </svg>
-              Text Support
-            </h3>
-            <div class="crisis-links">
-              <a href="https://www.crisistextline.org" target="_blank" class="crisis-link">
-                <span>Text HOME to 741741 (Crisis Text Line)</span>
-              </a>
-              <a href="https://www.imalive.org" target="_blank" class="crisis-link">
-                <span>IMAlive Online Crisis Chat</span>
-              </a>
+            <!-- Text Support Card -->
+            <div class="card-item crisis" data-category="text">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Text</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>UK Text & Online Support</h3>
+                  <div class="card-links">
+                    <a href="sms:85258" class="card-link">
+                      Text SHOUT to 85258 (24/7 Free)
+                    </a>
+                    <a href="https://www.thecalmzone.net/help/webchat" target="_blank" class="card-link">
+                      CALM Webchat (5pm-Midnight)
+                    </a>
+                    <a href="https://www.childline.org.uk/get-support/1-2-1-counsellor-chat/" target="_blank" class="card-link">
+                      Childline Chat (Under 19)
+                    </a>
+                    <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank" class="card-link">
+                      Email: jo@samaritans.org (24hr response)
+                    </a>
+                    <a href="https://www.themix.org.uk/get-support" target="_blank" class="card-link">
+                      The Mix - Under 25 Crisis Chat
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="crisis-card">
-            <h3>
-              <svg class="crisis-icon" viewBox="0 0 24 24">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                />
-              </svg>
-              International
-            </h3>
-            <div class="crisis-links">
-              <a href="https://findahelpline.com" target="_blank" class="crisis-link">
-                <span>Find A Helpline (Global Directory)</span>
-              </a>
-              <a href="https://www.befrienders.org" target="_blank" class="crisis-link">
-                <span>Befrienders Worldwide</span>
-              </a>
+            <!-- Global Support Card -->
+            <div class="card-item crisis" data-category="global">
+              <div class="card-inner">
+                <div class="card-title">
+                  <span>Global</span>
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                  </svg>
+                </div>
+                <button class="close-btn" aria-label="Close">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#666">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+                <div class="card-content">
+                  <h3>Emergency & Specialist UK Lines</h3>
+                  <div class="card-links">
+                    <a href="tel:999" class="card-link">
+                      999 - Emergency Services
+                    </a>
+                    <a href="tel:08088005000" class="card-link">
+                      0808 800 5000 - NSPCC (Child Protection)
+                    </a>
+                    <a href="tel:03001231212" class="card-link">
+                      0300 123 1212 - Refuge (Domestic Violence)
+                    </a>
+                    <a href="tel:08001337777" class="card-link">
+                      0800 1337 777 - Frank (Drug Support)
+                    </a>
+                    <a href="tel:03001230110" class="card-link">
+                      0300 123 0110 - Drinkline
+                    </a>
+                    <a href="tel:08088010677" class="card-link">
+                      0808 801 0677 - Rape Crisis
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
 
       <a href="index.html" class="back-button">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -422,5 +1352,114 @@
         <a href="#contact">Contact</a>
       </div>
     </footer>
+
+    <script>
+      // Scroll navigation function
+      function scrollCards(direction, container) {
+        const cardsWrapper = container.querySelector('.cards-wrapper');
+        const cardWidth = 120; // card width
+        const gap = 12; // gap between cards (0.75rem = 12px)
+        const cardWithGap = cardWidth + gap;
+        const containerWidth = cardsWrapper.clientWidth;
+        const cardsVisible = Math.floor(containerWidth / cardWithGap);
+        const scrollAmount = cardWithGap * cardsVisible; // scroll by full visible cards
+
+        if (direction === 'left') {
+          cardsWrapper.scrollLeft -= scrollAmount;
+        } else {
+          cardsWrapper.scrollLeft += scrollAmount;
+        }
+
+        // Update button visibility
+        setTimeout(() => updateScrollButtons(container), 100);
+      }
+
+      // Update scroll button visibility
+      function updateScrollButtons(container) {
+        const cardsWrapper = container.querySelector('.cards-wrapper');
+        const leftBtn = container.querySelector('.scroll-btn-left');
+        const rightBtn = container.querySelector('.scroll-btn-right');
+
+        if (leftBtn && rightBtn) {
+          // Hide left button if at start
+          leftBtn.classList.toggle('hidden', cardsWrapper.scrollLeft <= 10);
+
+          // Hide right button if at end
+          const maxScroll = cardsWrapper.scrollWidth - cardsWrapper.clientWidth;
+          rightBtn.classList.toggle('hidden', cardsWrapper.scrollLeft >= maxScroll - 10);
+        }
+      }
+
+      // Collapsible card functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const allCards = document.querySelectorAll('.card-item');
+
+        allCards.forEach(card => {
+          const cardTitle = card.querySelector('.card-title');
+          const closeBtn = card.querySelector('.close-btn');
+          const cardInner = card.querySelector('.card-inner');
+
+          // Handle card click (on title only when collapsed)
+          cardTitle.addEventListener('click', function(e) {
+            if (!card.classList.contains('expanded')) {
+              e.stopPropagation();
+
+              // Close other cards in the same container
+              const container = card.closest('.cards-wrapper');
+              container.querySelectorAll('.card-item').forEach(otherCard => {
+                if (otherCard !== card) {
+                  otherCard.classList.remove('expanded');
+                }
+              });
+
+              // Expand this card
+              card.classList.add('expanded');
+
+              // Scroll into view
+              setTimeout(() => {
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+              }, 100);
+            }
+          });
+
+          // Handle close button
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function(e) {
+              e.stopPropagation();
+
+              // Add closing class for smooth animation
+              card.classList.add('closing');
+
+              setTimeout(() => {
+                card.classList.remove('expanded');
+                card.classList.remove('closing');
+              }, 300);
+            });
+          }
+        });
+
+        // Optional: Close cards when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.card-item')) {
+            allCards.forEach(card => {
+              card.classList.remove('expanded');
+            });
+          }
+        });
+
+        // Initialize scroll buttons
+        document.querySelectorAll('.gallery-container').forEach(container => {
+          updateScrollButtons(container);
+
+          // Update buttons on scroll
+          const cardsWrapper = container.querySelector('.cards-wrapper');
+          if (cardsWrapper) {
+            cardsWrapper.addEventListener('scroll', () => {
+              updateScrollButtons(container);
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>

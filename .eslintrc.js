@@ -1,13 +1,35 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es6: true,
     node: true
   },
   extends: ['eslint:recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
+  },
+  globals: {
+    // Third-party libraries
+    Chart: 'readonly',
+    html2canvas: 'readonly',
+    AdvancedReportGenerator: 'readonly',
+
+    // Custom globals
+    neurlyn: 'readonly',
+    NeurlynAdaptiveAssessment: 'readonly',
+    ReportDisplayComponent: 'readonly',
+
+    // Test globals
+    describe: 'readonly',
+    it: 'readonly',
+    test: 'readonly',
+    expect: 'readonly',
+    jest: 'readonly',
+    beforeEach: 'readonly',
+    afterEach: 'readonly',
+    beforeAll: 'readonly',
+    afterAll: 'readonly'
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
