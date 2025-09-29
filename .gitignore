@@ -14,3 +14,20 @@ coverage/
 *.localtest-results/
 playwright-report/
 test-results/
+
+# Test artifacts and screenshots
+test-screenshots/
+*.png
+!assets/**/*.png
+!images/**/*.png
+!public/**/*.png
+
+# Archived files
+scripts/archive/
+docs/archive/
+
+# Test scripts in root (should be in tests/)
+/test-*.js
+/test-*.html
+/debug-*.js
+/check-*.js
