@@ -16,7 +16,6 @@ module.exports = {
   entry: {
     main: './js/neurlyn-adaptive-integration.js',
     report: './js/advanced-report-generator.js',
-    'report-display': './js/report-display-component.js',
     'api-client': './js/api-client.js'
   },
 
