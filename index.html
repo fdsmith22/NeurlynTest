@@ -1165,7 +1165,7 @@
                 </svg>
                 <div>
                   <strong>Adaptive Intelligence</strong>
-                  <p>241+ validated questions</p>
+                  <p>Smart question selection</p>
                 </div>
               </div>
 
@@ -1178,7 +1178,7 @@
                 </svg>
                 <div>
                   <strong>100% Private</strong>
-                  <p>No data stored</p>
+                  <p>Zero data retention</p>
                 </div>
               </div>
 
@@ -1191,9 +1191,42 @@
                 </svg>
                 <div>
                   <strong>Personalized Reports</strong>
-                  <p>15-section deep analysis</p>
+                  <p>22+ section comprehensive analysis</p>
                 </div>
               </div>
+            </div>
+
+            <!-- Privacy Notice -->
+            <div style="
+              background: linear-gradient(135deg, rgba(124, 152, 133, 0.08) 0%, rgba(124, 152, 133, 0.04) 100%);
+              border: 1px solid rgba(124, 152, 133, 0.2);
+              border-radius: 12px;
+              padding: 1rem 1.5rem;
+              margin: 1rem 0;
+              text-align: center;
+            ">
+              <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                <svg style="width: 24px; height: 24px; fill: #7c9885;" viewBox="0 0 24 24">
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+                <h3 style="
+                  font-family: 'Space Grotesk', sans-serif;
+                  font-size: 1.1rem;
+                  color: #4a6b56;
+                  margin: 0;
+                  font-weight: 600;
+                ">Your Privacy Is Paramount</h3>
+              </div>
+              <p style="
+                font-family: 'Inter', sans-serif;
+                font-size: 0.85rem;
+                color: #5a7a6a;
+                margin: 0.5rem 0 0 0;
+                line-height: 1.5;
+              ">
+                <strong>Zero data retention.</strong> No user profiles. No data storage. No affiliation with data gathering services.<br>
+                <strong style="color: #dc2626;">⚠️ Important:</strong> Save your report before closing - it cannot be recovered once you leave.
+              </p>
             </div>
 
             <!-- Pricing Cards -->
@@ -1254,9 +1287,9 @@
                   <div class="pricing-card-select"></div>
                   <span class="pricing-card-badge">Complete</span>
                 </div>
-                <p class="pricing-card-price">£1.99</p>
+                <p class="pricing-card-price">£7.99</p>
                 <p class="pricing-card-description">
-                  Complete 75-question adaptive assessment with comprehensive analysis
+                  Complete 70-question adaptive assessment with comprehensive analysis
                 </p>
                 <ul class="pricing-card-features">
                   <li>
@@ -1269,7 +1302,7 @@
                         stroke-linejoin="round"
                       />
                     </svg>
-                    Full neurodiversity screening
+                    Neurodiversity insights (ADHD, Autism, Executive Function)
                   </li>
                   <li>
                     <svg viewBox="0 0 24 24">
@@ -1281,7 +1314,7 @@
                         stroke-linejoin="round"
                       />
                     </svg>
-                    Hidden strengths discovery
+                    22+ section comprehensive report
                   </li>
                   <li>
                     <svg viewBox="0 0 24 24">
@@ -1293,7 +1326,7 @@
                         stroke-linejoin="round"
                       />
                     </svg>
-                    15-section detailed report
+                    Career & relationship insights
                   </li>
                   <li>
                     <svg viewBox="0 0 24 24">
@@ -1305,7 +1338,19 @@
                         stroke-linejoin="round"
                       />
                     </svg>
-                    Personalized strategies
+                    Hidden strengths & cognitive patterns
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24">
+                      <polyline
+                        points="20 6 9 17 4 12"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Personalized action strategies
                   </li>
                 </ul>
               </div>
@@ -1401,7 +1446,7 @@
                 <li>Actionable strategies</li>
               </ul>
               <button class="assessment-select-btn" onclick="window.startQuickAssessment('comprehensive', 'comprehensive', 'deep')">
-                Start Deep Analysis - £1.99
+                Start Deep Analysis - £7.99
               </button>
             </div>
 
@@ -1556,11 +1601,11 @@
       <div class="footer-content">
         <span>&copy; 2024 Neurlyn. All rights reserved.</span>
         <span class="footer-separator">|</span>
-        <a href="#privacy">Privacy</a>
+        <a href="privacy.html">Privacy</a>
         <span class="footer-separator">|</span>
-        <a href="#terms">Terms</a>
+        <a href="about.html">About</a>
         <span class="footer-separator">|</span>
-        <a href="#contact">Contact</a>
+        <a href="support.html">Support</a>
       </div>
     </footer>
 
@@ -1643,7 +1688,7 @@
                 }
               } else if (plan === 'premium') {
                 if (acceptBtn) {
-                  acceptBtn.textContent = 'Start In-Depth Analysis - £1.99';
+                  acceptBtn.textContent = 'Start In-Depth Analysis - £7.99';
                 }
               }
 
@@ -1684,7 +1729,7 @@
                     'Complete neurodiversity screening with detailed analysis and downloadable report';
                 }
                 if (acceptBtn) {
-                  acceptBtn.textContent = 'Start In-Depth Analysis - £1.99';
+                  acceptBtn.textContent = 'Start In-Depth Analysis - £7.99';
                 }
               }
             });
