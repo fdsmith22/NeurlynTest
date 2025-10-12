@@ -62,7 +62,7 @@ class Database {
    */
   async connectWithRetry(options, attempt = 1) {
     try {
-      const uri = env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn';
+      const uri = env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test';
 
       logger.info(`Attempting database connection (attempt ${attempt}/${this.maxRetries})`);
 

@@ -84,7 +84,7 @@ async function checkDatabase() {
 
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
     addCheck('MongoDB connection', true, 'Connected successfully');
 
     // Check collections

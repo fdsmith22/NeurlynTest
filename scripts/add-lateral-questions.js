@@ -252,7 +252,7 @@ const lateralQuestions = [
 async function addLateralQuestions() {
   try {
     // Connect to MongoDB
-    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn';
+    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test';
     await mongoose.connect(mongoUri);
     console.log('Connected to MongoDB');
 

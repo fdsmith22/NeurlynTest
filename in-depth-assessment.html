@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Assessment - Neurlyn</title>
+    <title>In-Depth Analysis - Neurlyn</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles/neurlyn.css">
@@ -42,7 +42,8 @@
         }
 
         .assessment-container {
-            max-width: 800px;
+            max-width: 75%;
+            width: 100%;
             margin: 0 auto;
             padding: 2rem;
             margin-top: 1rem; /* Add space below navbar */
@@ -402,9 +403,141 @@
         input[type="radio"]:focus-visible {
             outline: none !important;
         }
+
+        /* Passcode Modal Styles */
+        .passcode-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .passcode-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .passcode-modal h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .passcode-modal p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .passcode-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: 2px solid var(--nordic-gray);
+            border-radius: 12px;
+            text-align: center;
+            letter-spacing: 0.5em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', monospace;
+        }
+
+        .passcode-input:focus {
+            outline: none;
+            border-color: #7c9885;
+            box-shadow: 0 0 0 4px rgba(124, 152, 133, 0.1);
+        }
+
+        .passcode-input.error {
+            border-color: #dc3545;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .passcode-error {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            min-height: 20px;
+        }
+
+        .passcode-submit {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .passcode-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 152, 133, 0.3);
+        }
+
+        .passcode-hint {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--nordic-gray);
+            font-size: 0.85rem;
+            color: #999;
+        }
     </style>
 </head>
 <body>
+    <!-- Passcode Gate Modal -->
+    <div id="passcode-overlay" class="passcode-overlay">
+        <div class="passcode-modal">
+            <h2>🔒 Access Code Required</h2>
+            <p>Enter your access code to begin the In-Depth Analysis</p>
+
+            <input
+                type="text"
+                id="passcode-input"
+                class="passcode-input"
+                placeholder="••••••"
+                maxlength="20"
+                autocomplete="off"
+            />
+            <div id="passcode-error" class="passcode-error"></div>
+
+            <button id="passcode-submit" class="passcode-submit">
+                Unlock Assessment
+            </button>
+
+            <div class="passcode-hint">
+                Don't have an access code? <a href="/" style="color: #7c9885; text-decoration: none;">Return to Home</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -436,8 +569,7 @@
 
     <div class="assessment-container" id="main-content">
         <div class="assessment-header">
-            <h1 class="assessment-title">Comprehensive Personality Assessment</h1>
-            <p class="assessment-subtitle">Deep personality analysis with 70 questions</p>
+            <h1 class="assessment-title">In-Depth Analysis</h1>
         </div>
 
         <!-- Loading Screen -->
@@ -461,49 +593,74 @@
         <div id="assessment-content" style="display: none;">
             <!-- Demographics Section -->
             <div id="demographics-section" class="screen" style="display: none;">
-                <div class="assessment-intro-grid">
-                    <!-- Features Section -->
-                    <div class="free-features">
-                        <h3>What You'll Get</h3>
-                        <ul>
-                            <li>Core personality assessment</li>
-                            <li>Big Five personality traits analysis</li>
-                            <li>Basic insights and recommendations</li>
-                            <li>Instant results</li>
-                        </ul>
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <!-- Hero Section -->
+                    <div style="text-align: center; margin-bottom: 3rem;">
+                        <h2 style="font-size: 2.25rem; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem;">Ready to Begin?</h2>
+                        <p style="font-size: 1.05rem; color: #6b7280;">Your comprehensive personality assessment starts here.</p>
                     </div>
 
-                    <!-- Demographics Form -->
-                    <div class="demographics-section">
-                        <h2>Tell Us About Yourself</h2>
-                        <p>This helps us provide more accurate insights</p>
+                    <!-- Two Column Cards -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem;">
+                        <!-- How It Works -->
+                        <div style="background: linear-gradient(135deg, #f0f9f3 0%, #e8f5ec 100%); border: 1px solid #d1e5d8; border-radius: 16px; padding: 2rem;">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; color: #3d6b4a; margin-bottom: 1.5rem;">How It Works</h3>
 
-                        <form id="demographics-form">
-                            <div class="form-group">
-                                <label for="age">Age Range</label>
-                                <select id="age" name="age">
-                                    <option value="">Select age range</option>
-                                    <option value="18-24">18-24</option>
-                                    <option value="25-34">25-34</option>
-                                    <option value="35-44">35-44</option>
-                                    <option value="45-54">45-54</option>
-                                    <option value="55+">55+</option>
-                                </select>
+                            <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                                <div style="display: flex; gap: 1rem;">
+                                    <div style="flex-shrink: 0; width: 32px; height: 32px; background: #7c9885; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">1</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.25rem;">Baseline Questions</div>
+                                        <div style="font-size: 0.9rem; color: #6b7280;">20 questions to establish your core profile</div>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; gap: 1rem;">
+                                    <div style="flex-shrink: 0; width: 32px; height: 32px; background: #7c9885; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">2</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.25rem;">Adaptive Questions</div>
+                                        <div style="font-size: 0.9rem; color: #6b7280;">50 personalized questions based on your responses</div>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; gap: 1rem;">
+                                    <div style="flex-shrink: 0; width: 32px; height: 32px; background: #7c9885; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">3</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.25rem;">Your Detailed Report</div>
+                                        <div style="font-size: 0.9rem; color: #6b7280;">22+ sections with comprehensive insights</div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="gender">Gender (Optional)</label>
-                                <select id="gender" name="gender">
-                                    <option value="">Prefer not to say</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="non-binary">Non-binary</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
+                        <!-- Before You Begin -->
+                        <div style="background: linear-gradient(135deg, #f0f9f3 0%, #e8f5ec 100%); border: 1px solid #d1e5d8; border-radius: 16px; padding: 2rem;">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; color: #3d6b4a; margin-bottom: 1.5rem;">Before You Begin</h3>
+                            <ul style="margin: 0; padding-left: 1.5rem; color: #6b7280; line-height: 1.8; font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.75rem;">Set aside 15-20 minutes in a quiet space</li>
+                                <li style="margin-bottom: 0.75rem;">Answer honestly based on how you truly are, not how you'd like to be</li>
+                                <li style="margin-bottom: 0.75rem;">There are no right or wrong answers</li>
+                                <li>You can complete the assessment in one session</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                            <button type="submit" class="btn-primary">Start Assessment</button>
-                        </form>
+                    <!-- Start Button -->
+                    <div style="text-align: center;">
+                        <button id="start-assessment-btn" style="
+                            padding: 1rem 3rem;
+                            font-size: 1.1rem;
+                            font-weight: 600;
+                            background: linear-gradient(135deg, #7c9885 0%, #6a8a73 100%);
+                            color: white;
+                            border: none;
+                            border-radius: 12px;
+                            cursor: pointer;
+                            box-shadow: 0 4px 12px rgba(124, 152, 133, 0.3);
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(124, 152, 133, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(124, 152, 133, 0.3)'">
+                            Begin Assessment
+                        </button>
                     </div>
                 </div>
             </div>
@@ -521,27 +678,78 @@
     </div>
 
     <!-- Load API Client -->
-    <script src="js/api-client.js?v=33"></script>
+    <script src="js/api-client.js?v=37"></script>
 
     <!-- Load Report Generators -->
-    <script src="js/advanced-report-generator.js?v=33"></script>
+    <script src="js/advanced-report-generator.js?v=37"></script>
 
     <!-- Load Assessment Module -->
-    <script src="js/neurlyn-adaptive-integration.js?v=35"></script>
+    <script src="js/neurlyn-adaptive-integration.js?v=45"></script>
 
-    <!-- Initialize Free Assessment -->
+    <!-- Initialize In-Depth Assessment -->
     <script>
-        // Configuration for free tier
+        // ===================================
+        // ACCESS GATE CONFIGURATION
+        // ===================================
+        // To switch to payment gate later, replace checkAccess() function
+        // with Stripe payment verification
+        const ACCESS_CONFIG = {
+            type: 'passcode', // Change to 'payment' when ready
+            passcode: 'NEURLYN2025', // Simple passcode for now
+            stripeKey: null // Will be set when switching to payment
+        };
+
+        // Access gate functions
+        function checkAccess() {
+            const passcodeInput = document.getElementById('passcode-input');
+            const errorDiv = document.getElementById('passcode-error');
+            const enteredCode = passcodeInput.value.trim().toUpperCase();
+
+            if (enteredCode === ACCESS_CONFIG.passcode) {
+                // Access granted
+                document.getElementById('passcode-overlay').style.display = 'none';
+                sessionStorage.setItem('neurlyn-access-granted', 'true');
+                return true;
+            } else {
+                // Access denied
+                passcodeInput.classList.add('error');
+                errorDiv.textContent = 'Invalid access code. Please try again.';
+                setTimeout(() => {
+                    passcodeInput.classList.remove('error');
+                }, 500);
+                passcodeInput.value = '';
+                return false;
+            }
+        }
+
+        // Configuration for comprehensive tier
         window.assessmentConfig = {
-            tier: 'standard',  // Use standard tier for proper baseline + adaptive flow
-            apiEndpoint: 'http://localhost:3008/api',
+            tier: 'comprehensive',
+            apiEndpoint: 'http://localhost:3000/api',
             autoStart: false
         };
 
         // Wait for DOM and scripts to load
         document.addEventListener('DOMContentLoaded', async function() {
+            // Check if access already granted
+            const accessGranted = sessionStorage.getItem('neurlyn-access-granted');
+            if (accessGranted === 'true') {
+                document.getElementById('passcode-overlay').style.display = 'none';
+            }
+
+            // Setup passcode modal handlers
+            const passcodeInput = document.getElementById('passcode-input');
+            const passcodeSubmit = document.getElementById('passcode-submit');
+
+            passcodeSubmit.addEventListener('click', checkAccess);
+            passcodeInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    checkAccess();
+                }
+            });
+
             try {
-                console.log('Initializing premium assessment...');
+                console.log('Initializing in-depth assessment...');
 
                 // Check if assessment module is loaded
                 if (!window.NeurlynAdaptiveAssessment) {
@@ -551,7 +759,8 @@
                 // Initialize the assessment
                 const assessment = new window.NeurlynAdaptiveAssessment({
                     tier: 'comprehensive',
-                    apiEndpoint: window.assessmentConfig.apiEndpoint
+                    apiEndpoint: window.assessmentConfig.apiEndpoint,
+                    useIntelligentSelector: true  // ENABLED: Intelligent adaptive system
                 });
 
                 // Store globally for access
@@ -562,29 +771,12 @@
                 document.getElementById('assessment-content').style.display = 'block';
                 document.getElementById('demographics-section').style.display = 'block';
 
-                // Handle demographics form submission
-                document.getElementById('demographics-form').addEventListener('submit', async (e) => {
-                    e.preventDefault();
+                // Handle start assessment button
+                document.getElementById('start-assessment-btn').addEventListener('click', async () => {
+                    // Start assessment without demographics
+                    await assessment.startAssessment({tier: 'comprehensive'});
 
-                    // Convert age range to representative number for backend
-                    const ageValue = document.getElementById('age').value;
-                    const ageMap = {
-                        '18-24': 21,
-                        '25-34': 29,
-                        '35-44': 39,
-                        '45-54': 49,
-                        '55+': 60
-                    };
-
-                    const demographics = {
-                        age: ageMap[ageValue] || null,
-                        gender: document.getElementById('gender').value
-                    };
-
-                    // Start assessment with demographics
-                    await assessment.startAssessment({demographics, tier: 'comprehensive'});
-
-                    // Hide demographics, show questions
+                    // Hide start button, show questions
                     const demographicsSection = document.getElementById('demographics-section');
                     const questionsSection = document.getElementById('questions-section');
 
@@ -596,7 +788,7 @@
                     }
                 });
 
-                console.log('Premium assessment ready');
+                console.log('In-depth assessment ready');
 
             } catch (error) {
                 console.error('Failed to initialize assessment:', error);

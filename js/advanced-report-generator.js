@@ -307,13 +307,13 @@ class AdvancedReportGenerator {
   generateTraitVisualizations(traits, confidence = {}) {
     const visualizations = [];
 
-    // Generate radar chart for all traits
-    const radarData = this.generateRadarChartData(traits, confidence);
-    visualizations.push({
-      type: 'radar',
-      title: 'Personality Profile Overview',
-      html: this.renderRadarChart(radarData)
-    });
+    // Generate radar chart for all traits (DISABLED - using neurlyn-adaptive-integration.js visualizations instead)
+    // const radarData = this.generateRadarChartData(traits, confidence);
+    // visualizations.push({
+    //   type: 'radar',
+    //   title: 'Personality Profile Overview',
+    //   html: this.renderRadarChart(radarData)
+    // });
 
     // Generate progress bars for each trait
     Object.entries(traits).forEach(([trait, score]) => {

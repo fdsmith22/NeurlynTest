@@ -6,8 +6,9 @@ const logger = require('../utils/logger');
 // Import the comprehensive report generator
 const ComprehensiveReportGenerator = require('../services/comprehensive-report-generator');
 
-// Get Assessment model
+// Get models
 const Assessment = mongoose.model('Assessment');
+const AssessmentSession = require('../models/AssessmentSession');
 
 // Initialize report generator
 const reportGenerator = new ComprehensiveReportGenerator();
@@ -36,9 +37,15 @@ router.post('/generate', async (req, res) => {
       };
     } else {
       // Otherwise, find assessment by sessionId or assessmentId
-      const assessment = await Assessment.findOne({
+      // Check both Assessment and AssessmentSession collections
+      let assessment = await Assessment.findOne({
         $or: [{ sessionId: sessionId }, { _id: assessmentId }]
       });
+
+      // If not found in Assessment, check AssessmentSession
+      if (!assessment && sessionId) {
+        assessment = await AssessmentSession.findOne({ sessionId: sessionId });
+      }
 
       if (!assessment) {
         return res.status(404).json({
@@ -46,7 +53,12 @@ router.post('/generate', async (req, res) => {
         });
       }
 
-      if (!assessment.completionTime) {
+      // Check if assessment is completed (either has completionTime, status='completed', or sufficient responses)
+      const isCompleted = assessment.completionTime ||
+                         assessment.status === 'completed' ||
+                         (assessment.responses && assessment.responses.length >= 30);
+
+      if (!isCompleted) {
         return res.status(400).json({
           error: 'Assessment not yet completed'
         });
@@ -54,14 +66,14 @@ router.post('/generate', async (req, res) => {
 
       // Prepare assessment data for report generation
       assessmentData = {
-        mode: assessment.mode,
-        tier: assessment.tier,
+        mode: assessment.mode || 'adaptive',
+        tier: assessment.tier || 'COMPREHENSIVE',
         track: determineTrack(assessment),
         duration: calculateDuration(assessment),
         responses: assessment.responses,
         results: assessment.results,
-        demographics: assessment.demographics,
-        metadata: assessment.metadata
+        demographics: assessment.demographics || {},
+        metadata: assessment.metadata || {}
       };
     }
 
@@ -84,7 +96,7 @@ router.post('/generate', async (req, res) => {
         logger.info('Report generated', {
           sessionId: assessment.sessionId,
           reportId: report.id,
-          duration: report.meta.duration
+          duration: report.meta?.duration || 'unknown'
         });
 
         res.json({

@@ -203,8 +203,7 @@ const insightPatternSchema = new mongoose.Schema(
     },
     tags: [
       {
-        type: String,
-        index: true
+        type: String
       }
     ],
     culturalConsiderations: [

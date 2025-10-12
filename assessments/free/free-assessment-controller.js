@@ -41,6 +41,9 @@ class FreeAssessmentController {
     this.tier = tier;
     this.currentPhase = 'baseline';
 
+    // Track actual start time
+    this.assessmentStartTime = Date.now();
+
     try {
       // Show loading state
       this.showLoading('Initializing your personalized assessment...');
@@ -420,15 +423,30 @@ class FreeAssessmentController {
                       .join('')}
                 </div>
             `;
-    } else if (responseType === 'multiple_choice') {
+    } else if (responseType === 'multiple_choice' || responseType === 'multiple-choice') {
       return `
                 <div class="multiple-choice" data-question-id="${question.id}">
                     ${options
                       .map(
                         (opt, i) => `
                         <label class="mc-option">
-                            <input type="radio" name="q-${question.id}" value="${opt}" data-index="${i}">
-                            <span class="mc-label">${opt}</span>
+                            <input type="radio" name="q-${question.id}" value="${opt.value}" data-index="${i}" data-score="${opt.score}">
+                            <span class="mc-label">${opt.label || opt}</span>
+                        </label>
+                    `
+                      )
+                      .join('')}
+                </div>
+            `;
+    } else if (responseType === 'binary') {
+      return `
+                <div class="binary-choice" data-question-id="${question.id}">
+                    ${options
+                      .map(
+                        (opt, i) => `
+                        <label class="binary-option">
+                            <input type="radio" name="q-${question.id}" value="${opt.value}" data-index="${i}" data-score="${opt.score}">
+                            <span class="binary-label">${opt.label || opt}</span>
                         </label>
                     `
                       )
@@ -2744,13 +2762,18 @@ class FreeAssessmentController {
    * Calculate total completion time
    */
   calculateCompletionTime() {
-    if (this.responses.length === 0) return 0;
+    // If we have a tracked start time, use actual elapsed time
+    if (this.assessmentStartTime) {
+      const elapsedMs = Date.now() - this.assessmentStartTime;
+      return Math.round(elapsedMs / 1000); // Convert to seconds
+    }
 
+    // Final fallback: sum response times (legacy behavior)
+    if (this.responses.length === 0) return 0;
     const totalTime = this.responses.reduce((total, response) => {
       return total + (response.responseTime || 0);
     }, 0);
-
-    return Math.round(totalTime / 1000); // Convert to seconds
+    return Math.round(totalTime / 1000);
   }
 
   /**

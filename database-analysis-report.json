@@ -1,0 +1,2598 @@
+{
+  "timestamp": "2025-09-30T12:57:34.541Z",
+  "totalQuestions": 375,
+  "issues": {
+    "categoryMismatches": [],
+    "traitMismatches": [
+      {
+        "id": "ATTACH_2043",
+        "text": "I find it easy to trust and depend on others.",
+        "category": "attachment",
+        "trait": "attachment",
+        "expected": "Attachment trait (anxious, avoidant, etc.)",
+        "instrument": "NEURLYN_ATTACHMENT"
+      },
+      {
+        "id": "ATTACH_2044",
+        "text": "I worry that people will abandon me.",
+        "category": "attachment",
+        "trait": "attachment",
+        "expected": "Attachment trait (anxious, avoidant, etc.)",
+        "instrument": "NEURLYN_ATTACHMENT"
+      },
+      {
+        "id": "ATTACH_2045",
+        "text": "I prefer to keep emotional distance in relationships.",
+        "category": "attachment",
+        "trait": "attachment",
+        "expected": "Attachment trait (anxious, avoidant, etc.)",
+        "instrument": "NEURLYN_ATTACHMENT"
+      },
+      {
+        "id": "ATTACH_2046",
+        "text": "I am comfortable with closeness and intimacy.",
+        "category": "attachment",
+        "trait": "attachment",
+        "expected": "Attachment trait (anxious, avoidant, etc.)",
+        "instrument": "NEURLYN_ATTACHMENT"
+      },
+      {
+        "id": "ATTACH_2047",
+        "text": "I fear being too dependent on others.",
+        "category": "attachment",
+        "trait": "attachment",
+        "expected": "Attachment trait (anxious, avoidant, etc.)",
+        "instrument": "NEURLYN_ATTACHMENT"
+      },
+      {
+        "id": "NEURLYN_SENSORY_105",
+        "text": "I prefer deep pressure hugs over light touches",
+        "category": "neurodiversity",
+        "trait": "proprioceptive",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_108",
+        "text": "I use noise-canceling headphones or earplugs regularly",
+        "category": "neurodiversity",
+        "trait": "auditory_coping",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_109",
+        "text": "Sudden loud noises cause me physical pain or panic",
+        "category": "neurodiversity",
+        "trait": "auditory_startle",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_111",
+        "text": "I prefer dim lighting or natural light",
+        "category": "neurodiversity",
+        "trait": "visual_preference",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_112",
+        "text": "Fluorescent lights make me feel sick or anxious",
+        "category": "neurodiversity",
+        "trait": "visual_fluorescent",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_113",
+        "text": "I notice visual details that others overlook",
+        "category": "neurodiversity",
+        "trait": "visual_detail",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_115",
+        "text": "I have a very limited diet due to texture or taste sensitivi",
+        "category": "neurodiversity",
+        "trait": "gustatory",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_116",
+        "text": "I can smell things others don't notice",
+        "category": "neurodiversity",
+        "trait": "olfactory_sensitivity",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_118",
+        "text": "I crave movement and physical activity",
+        "category": "neurodiversity",
+        "trait": "sensory_seeking",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_119",
+        "text": "I bump into things or misjudge distances frequently",
+        "category": "neurodiversity",
+        "trait": "proprioceptive",
+        "expected": "Sensory domain (visual, auditory, etc.)",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_41",
+        "text": "I keep my phone on silent to avoid distractions",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_42",
+        "text": "I've stayed up all night pursuing a fascinating topic",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_43",
+        "text": "I prefer working alone on important projects",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_44",
+        "text": "I double-check locks and appliances before leaving home",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_45",
+        "text": "I share my food without being asked",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_46",
+        "text": "I color-code my calendar and notes",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_47",
+        "text": "I enjoy movies that leave the ending open to interpretation",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_48",
+        "text": "I feel drained after video calls, even with friends",
+        "category": "personality",
+        "trait": "behavioral",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_49",
+        "text": "If I won the lottery, I'd invest most of it rather than spen",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_50",
+        "text": "At a museum, I read every placard thoroughly",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_51",
+        "text": "In group photos, I naturally position myself in the center",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_52",
+        "text": "When someone cuts in line, I speak up immediately",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_53",
+        "text": "Before a trip, I research everything that could go wrong",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_54",
+        "text": "I notice when picture frames are slightly crooked",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_55",
+        "text": "I'd rather explore a new city without a map or guide",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_56",
+        "text": "At parties, I'm usually the last to leave",
+        "category": "personality",
+        "trait": "situational",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_57",
+        "text": "I prefer fiction that explores impossible worlds over realis",
+        "category": "personality",
+        "trait": "preferences",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_58",
+        "text": "My ideal vacation involves a detailed itinerary",
+        "category": "personality",
+        "trait": "preferences",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_59",
+        "text": "I'd choose dinner with one close friend over a party with tw",
+        "category": "personality",
+        "trait": "preferences",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_60",
+        "text": "I enjoy competitive activities more than cooperative ones",
+        "category": "personality",
+        "trait": "preferences",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_61",
+        "text": "I prefer predictable routines over spontaneous adventures",
+        "category": "personality",
+        "trait": "preferences",
+        "expected": "Big Five trait",
+        "instrument": "BFI-2-Improved"
+      }
+    ],
+    "missingCorrelatedTraits": [
+      "NEURLYN_ATTACHMENT_165",
+      "NEURLYN_ATTACHMENT_166",
+      "NEURLYN_ATTACHMENT_167",
+      "NEURLYN_ATTACHMENT_168",
+      "NEURLYN_ATTACHMENT_169",
+      "NEURLYN_ATTACHMENT_170",
+      "NEURLYN_ATTACHMENT_171",
+      "NEURLYN_ATTACHMENT_172",
+      "NEURLYN_ATTACHMENT_173",
+      "NEURLYN_ATTACHMENT_174",
+      "NEURLYN_ATTACHMENT_175",
+      "NEURLYN_ATTACHMENT_176",
+      "ATTACH_2043",
+      "ATTACH_2044",
+      "ATTACH_2045",
+      "ATTACH_2046",
+      "ATTACH_2047",
+      "ATTACHMENT_ANXIOUS_BASELINE",
+      "ATTACHMENT_AVOIDANT_BASELINE",
+      "COG_1",
+      "COG_2",
+      "COG_3",
+      "COG_4",
+      "COG_5",
+      "COMM_STYLE_2000",
+      "COMM_STYLE_2001",
+      "COMM_STYLE_2002",
+      "COMM_STYLE_2003",
+      "COMM_STYLE_2004",
+      "COMM_STYLE_2005",
+      "COMM_STYLE_2006",
+      "COMM_STYLE_2007",
+      "COMM_STYLE_2008",
+      "COMM_STYLE_2009",
+      "COMM_STYLE_2010",
+      "COMM_STYLE_2011",
+      "COMM_STYLE_2012",
+      "COMM_STYLE_2013",
+      "COMM_STYLE_2014",
+      "PROC_STYLE_2015",
+      "PROC_STYLE_2016",
+      "PROC_STYLE_2017",
+      "PROC_STYLE_2018",
+      "PROC_STYLE_2019",
+      "PROC_STYLE_2020",
+      "PROC_STYLE_2021",
+      "PROC_STYLE_2022",
+      "PROC_STYLE_2023",
+      "PROC_STYLE_2024",
+      "PROC_STYLE_2025",
+      "PROC_STYLE_2026",
+      "PROC_STYLE_2027",
+      "PROC_STYLE_2028",
+      "PROC_STYLE_2029",
+      "PROC_STYLE_2030",
+      "PROC_STYLE_2031",
+      "PROC_STYLE_2032",
+      "DECISION_2033",
+      "DECISION_2034",
+      "DECISION_2035",
+      "DECISION_2036",
+      "DECISION_2037",
+      "NEURLYN_JUNGIAN_195",
+      "NEURLYN_JUNGIAN_196",
+      "NEURLYN_JUNGIAN_197",
+      "NEURLYN_JUNGIAN_198",
+      "NEURLYN_JUNGIAN_199",
+      "NEURLYN_JUNGIAN_200",
+      "NEURLYN_JUNGIAN_201",
+      "NEURLYN_JUNGIAN_202",
+      "NEURLYN_JUNGIAN_203",
+      "NEURLYN_JUNGIAN_204",
+      "NEURLYN_JUNGIAN_205",
+      "NEURLYN_JUNGIAN_206",
+      "NEURLYN_JUNGIAN_207",
+      "NEURLYN_JUNGIAN_208",
+      "NEURLYN_JUNGIAN_209",
+      "NEURLYN_JUNGIAN_210",
+      "NEURLYN_ENNEAGRAM_177",
+      "NEURLYN_ENNEAGRAM_178",
+      "NEURLYN_ENNEAGRAM_179",
+      "NEURLYN_ENNEAGRAM_180",
+      "NEURLYN_ENNEAGRAM_181",
+      "NEURLYN_ENNEAGRAM_182",
+      "NEURLYN_ENNEAGRAM_183",
+      "NEURLYN_ENNEAGRAM_184",
+      "NEURLYN_ENNEAGRAM_185",
+      "NEURLYN_ENNEAGRAM_186",
+      "NEURLYN_ENNEAGRAM_187",
+      "NEURLYN_ENNEAGRAM_188",
+      "NEURLYN_ENNEAGRAM_189",
+      "NEURLYN_ENNEAGRAM_190",
+      "NEURLYN_ENNEAGRAM_191",
+      "NEURLYN_ENNEAGRAM_192",
+      "NEURLYN_ENNEAGRAM_193",
+      "NEURLYN_ENNEAGRAM_194",
+      "NEURLYN_LEARNING_211",
+      "NEURLYN_LEARNING_212",
+      "NEURLYN_LEARNING_213",
+      "NEURLYN_LEARNING_214",
+      "NEURLYN_LEARNING_215",
+      "NEURLYN_LEARNING_216",
+      "NEURLYN_LEARNING_217",
+      "NEURLYN_LEARNING_218",
+      "ND_ADHD_1",
+      "ND_ADHD_2",
+      "ND_ADHD_3",
+      "ND_ADHD_4",
+      "ND_ADHD_5",
+      "ND_AUTISM_6",
+      "ND_AUTISM_7",
+      "ND_AUTISM_8",
+      "ND_AUTISM_9",
+      "ND_AUTISM_10",
+      "ND_SENSORY_11",
+      "ND_SENSORY_12",
+      "ND_EXECUTIVE_FUNCTION_13",
+      "ND_EXECUTIVE_FUNCTION_14",
+      "ND_EXECUTIVE_FUNCTION_15",
+      "NEURLYN_EXECUTIVE_82",
+      "NEURLYN_EXECUTIVE_83",
+      "NEURLYN_EXECUTIVE_84",
+      "NEURLYN_EXECUTIVE_85",
+      "NEURLYN_EXECUTIVE_86",
+      "NEURLYN_EXECUTIVE_87",
+      "NEURLYN_EXECUTIVE_88",
+      "NEURLYN_EXECUTIVE_89",
+      "NEURLYN_EXECUTIVE_90",
+      "NEURLYN_EXECUTIVE_91",
+      "NEURLYN_EXECUTIVE_92",
+      "NEURLYN_EXECUTIVE_93",
+      "NEURLYN_EXECUTIVE_94",
+      "NEURLYN_EXECUTIVE_95",
+      "NEURLYN_EXECUTIVE_96",
+      "NEURLYN_EXECUTIVE_97",
+      "NEURLYN_EXECUTIVE_98",
+      "NEURLYN_EXECUTIVE_99",
+      "NEURLYN_EXECUTIVE_100",
+      "NEURLYN_EXECUTIVE_101",
+      "NEURLYN_SENSORY_102",
+      "NEURLYN_SENSORY_103",
+      "NEURLYN_SENSORY_104",
+      "NEURLYN_SENSORY_105",
+      "NEURLYN_SENSORY_106",
+      "NEURLYN_SENSORY_107",
+      "NEURLYN_SENSORY_108",
+      "NEURLYN_SENSORY_109",
+      "NEURLYN_SENSORY_110",
+      "NEURLYN_SENSORY_111",
+      "NEURLYN_SENSORY_112",
+      "NEURLYN_SENSORY_113",
+      "NEURLYN_SENSORY_114",
+      "NEURLYN_SENSORY_115",
+      "NEURLYN_SENSORY_116",
+      "NEURLYN_SENSORY_117",
+      "NEURLYN_SENSORY_118",
+      "NEURLYN_SENSORY_119",
+      "NEURLYN_MASKING_120",
+      "NEURLYN_MASKING_121",
+      "NEURLYN_MASKING_122",
+      "NEURLYN_MASKING_123",
+      "NEURLYN_MASKING_124",
+      "NEURLYN_MASKING_125",
+      "NEURLYN_MASKING_126",
+      "NEURLYN_MASKING_127",
+      "NEURLYN_MASKING_128",
+      "NEURLYN_MASKING_129",
+      "NEURLYN_MASKING_130",
+      "NEURLYN_MASKING_131",
+      "NEURLYN_MASKING_132",
+      "NEURLYN_MASKING_133",
+      "NEURLYN_MASKING_134",
+      "NEURLYN_EMOTIONAL_135",
+      "NEURLYN_EMOTIONAL_136",
+      "NEURLYN_EMOTIONAL_137",
+      "NEURLYN_EMOTIONAL_138",
+      "NEURLYN_EMOTIONAL_139",
+      "NEURLYN_EMOTIONAL_140",
+      "NEURLYN_EMOTIONAL_141",
+      "NEURLYN_EMOTIONAL_142",
+      "NEURLYN_EMOTIONAL_143",
+      "NEURLYN_EMOTIONAL_144",
+      "NEURLYN_EMOTIONAL_145",
+      "NEURLYN_EMOTIONAL_146",
+      "NEURLYN_INTERESTS_147",
+      "NEURLYN_INTERESTS_148",
+      "NEURLYN_INTERESTS_149",
+      "NEURLYN_INTERESTS_150",
+      "NEURLYN_INTERESTS_151",
+      "NEURLYN_INTERESTS_152",
+      "BFI_OPENNESS_1",
+      "BFI_OPENNESS_2",
+      "BFI_OPENNESS_3",
+      "BFI_OPENNESS_4",
+      "BFI_OPENNESS_5",
+      "BFI_OPENNESS_6",
+      "BFI_OPENNESS_7",
+      "BFI_OPENNESS_8",
+      "BFI_CONSCIENTIOUSNESS_9",
+      "BFI_CONSCIENTIOUSNESS_10",
+      "BFI_CONSCIENTIOUSNESS_11",
+      "BFI_CONSCIENTIOUSNESS_12",
+      "BFI_CONSCIENTIOUSNESS_13",
+      "BFI_CONSCIENTIOUSNESS_14",
+      "BFI_CONSCIENTIOUSNESS_15",
+      "BFI_CONSCIENTIOUSNESS_16",
+      "BFI_EXTRAVERSION_17",
+      "BFI_EXTRAVERSION_18",
+      "BFI_EXTRAVERSION_19",
+      "BFI_EXTRAVERSION_20",
+      "BFI_EXTRAVERSION_21",
+      "BFI_EXTRAVERSION_22",
+      "BFI_EXTRAVERSION_23",
+      "BFI_EXTRAVERSION_24",
+      "BFI_AGREEABLENESS_25",
+      "BFI_AGREEABLENESS_26",
+      "BFI_AGREEABLENESS_27",
+      "BFI_AGREEABLENESS_28",
+      "BFI_AGREEABLENESS_29",
+      "BFI_AGREEABLENESS_30",
+      "BFI_AGREEABLENESS_31",
+      "BFI_AGREEABLENESS_32",
+      "BFI_NEUROTICISM_33",
+      "BFI_NEUROTICISM_34",
+      "BFI_NEUROTICISM_35",
+      "BFI_NEUROTICISM_36",
+      "BFI_NEUROTICISM_37",
+      "BFI_NEUROTICISM_38",
+      "BFI_NEUROTICISM_39",
+      "BFI_NEUROTICISM_40",
+      "BFI_BEHAVIORAL_41",
+      "BFI_BEHAVIORAL_42",
+      "BFI_BEHAVIORAL_43",
+      "BFI_BEHAVIORAL_44",
+      "BFI_BEHAVIORAL_45",
+      "BFI_BEHAVIORAL_46",
+      "BFI_BEHAVIORAL_47",
+      "BFI_BEHAVIORAL_48",
+      "BFI_SITUATIONAL_49",
+      "BFI_SITUATIONAL_50",
+      "BFI_SITUATIONAL_51",
+      "BFI_SITUATIONAL_52",
+      "BFI_SITUATIONAL_53",
+      "BFI_SITUATIONAL_54",
+      "BFI_SITUATIONAL_55",
+      "BFI_SITUATIONAL_56",
+      "BFI_PREFERENCES_57",
+      "BFI_PREFERENCES_58",
+      "BFI_PREFERENCES_59",
+      "BFI_PREFERENCES_60",
+      "BFI_PREFERENCES_61",
+      "NEO_FACET_1000",
+      "NEO_FACET_1001",
+      "NEO_FACET_1002",
+      "NEO_FACET_1003",
+      "NEO_FACET_1004",
+      "NEO_FACET_1005",
+      "NEO_FACET_1006",
+      "NEO_FACET_1007",
+      "NEO_FACET_1008",
+      "NEO_FACET_1009",
+      "NEO_FACET_1010",
+      "NEO_FACET_1011",
+      "NEO_FACET_1012",
+      "NEO_FACET_1013",
+      "NEO_FACET_1014",
+      "NEO_FACET_1015",
+      "NEO_FACET_1016",
+      "NEO_FACET_1017",
+      "NEO_FACET_1018",
+      "NEO_FACET_1019",
+      "NEO_FACET_1020",
+      "NEO_FACET_1021",
+      "NEO_FACET_1022",
+      "NEO_FACET_1023",
+      "NEO_FACET_1024",
+      "NEO_FACET_1025",
+      "NEO_FACET_1026",
+      "NEO_FACET_1027",
+      "NEO_FACET_1028",
+      "NEO_FACET_1029",
+      "NEO_FACET_1030",
+      "NEO_FACET_1031",
+      "NEO_FACET_1032",
+      "NEO_FACET_1033",
+      "NEO_FACET_1034",
+      "NEO_FACET_1035",
+      "NEO_FACET_1036",
+      "NEO_FACET_1037",
+      "NEO_FACET_1038",
+      "NEO_FACET_1039",
+      "NEO_FACET_1040",
+      "NEO_FACET_1041",
+      "NEO_FACET_1042",
+      "NEO_FACET_1043",
+      "NEO_FACET_1044",
+      "NEO_FACET_1045",
+      "NEO_FACET_1046",
+      "NEO_FACET_1047",
+      "NEO_FACET_1048",
+      "NEO_FACET_1049",
+      "NEO_FACET_1050",
+      "NEO_FACET_1051",
+      "NEO_FACET_1052",
+      "NEO_FACET_1053",
+      "NEO_FACET_1054",
+      "NEO_FACET_1055",
+      "NEO_FACET_1056",
+      "NEO_FACET_1057",
+      "NEO_FACET_1058",
+      "NEO_FACET_1059",
+      "NEO_FACET_1060",
+      "NEO_FACET_1061",
+      "NEO_FACET_1062",
+      "NEO_FACET_1063",
+      "NEO_FACET_1064",
+      "NEO_FACET_1065",
+      "NEO_FACET_1066",
+      "NEO_FACET_1067",
+      "NEO_FACET_1068",
+      "NEO_FACET_1069",
+      "NEO_FACET_1070",
+      "NEO_FACET_1071",
+      "NEO_FACET_1072",
+      "NEO_FACET_1073",
+      "NEO_FACET_1074",
+      "NEO_FACET_1075",
+      "NEO_FACET_1076",
+      "NEO_FACET_1077",
+      "NEO_FACET_1078",
+      "NEO_FACET_1079",
+      "NEO_FACET_1080",
+      "NEO_FACET_1081",
+      "NEO_FACET_1082",
+      "NEO_FACET_1083",
+      "NEO_FACET_1084",
+      "NEO_FACET_1085",
+      "NEO_FACET_1086",
+      "NEO_FACET_1087",
+      "NEO_FACET_1088",
+      "NEO_FACET_1089",
+      "NEO_FACET_1090",
+      "NEO_FACET_1091",
+      "NEO_FACET_1092",
+      "NEO_FACET_1093",
+      "NEO_FACET_1094",
+      "NEO_FACET_1095",
+      "NEO_FACET_1096",
+      "NEO_FACET_1097",
+      "NEO_FACET_1098",
+      "STRESS_MGMT_2038",
+      "STRESS_MGMT_2039",
+      "STRESS_MGMT_2040",
+      "STRESS_MGMT_2041",
+      "STRESS_MGMT_2042",
+      "gateway_sensory_1",
+      "gateway_executive_1",
+      "gateway_social_1",
+      "gateway_routine_1",
+      "gateway_attention_1",
+      "BFI_EXTRAVERSION_BASELINE_3",
+      "EMOTIONAL_REGULATION_BASELINE",
+      "SENSORY_ADHD_GATEWAY_BASELINE",
+      "NEURLYN_TRAUMA_153",
+      "NEURLYN_TRAUMA_154",
+      "NEURLYN_TRAUMA_155",
+      "NEURLYN_TRAUMA_156",
+      "NEURLYN_TRAUMA_157",
+      "NEURLYN_TRAUMA_158",
+      "NEURLYN_TRAUMA_159",
+      "NEURLYN_TRAUMA_160",
+      "NEURLYN_TRAUMA_161",
+      "NEURLYN_TRAUMA_162",
+      "NEURLYN_TRAUMA_163",
+      "NEURLYN_TRAUMA_164"
+    ],
+    "missingTags": [
+      "NEURLYN_ATTACHMENT_165",
+      "NEURLYN_ATTACHMENT_166",
+      "NEURLYN_ATTACHMENT_167",
+      "NEURLYN_ATTACHMENT_168",
+      "NEURLYN_ATTACHMENT_169",
+      "NEURLYN_ATTACHMENT_170",
+      "NEURLYN_ATTACHMENT_171",
+      "NEURLYN_ATTACHMENT_172",
+      "NEURLYN_ATTACHMENT_173",
+      "NEURLYN_ATTACHMENT_174",
+      "NEURLYN_ATTACHMENT_175",
+      "NEURLYN_ATTACHMENT_176",
+      "ATTACH_2043",
+      "ATTACH_2044",
+      "ATTACH_2045",
+      "ATTACH_2046",
+      "ATTACH_2047",
+      "ATTACHMENT_ANXIOUS_BASELINE",
+      "ATTACHMENT_AVOIDANT_BASELINE",
+      "COG_1",
+      "COG_2",
+      "COG_3",
+      "COG_4",
+      "COG_5",
+      "COMM_STYLE_2000",
+      "COMM_STYLE_2001",
+      "COMM_STYLE_2002",
+      "COMM_STYLE_2003",
+      "COMM_STYLE_2004",
+      "COMM_STYLE_2005",
+      "COMM_STYLE_2006",
+      "COMM_STYLE_2007",
+      "COMM_STYLE_2008",
+      "COMM_STYLE_2009",
+      "COMM_STYLE_2010",
+      "COMM_STYLE_2011",
+      "COMM_STYLE_2012",
+      "COMM_STYLE_2013",
+      "COMM_STYLE_2014",
+      "PROC_STYLE_2015",
+      "PROC_STYLE_2016",
+      "PROC_STYLE_2017",
+      "PROC_STYLE_2018",
+      "PROC_STYLE_2019",
+      "PROC_STYLE_2020",
+      "PROC_STYLE_2021",
+      "PROC_STYLE_2022",
+      "PROC_STYLE_2023",
+      "PROC_STYLE_2024",
+      "PROC_STYLE_2025",
+      "PROC_STYLE_2026",
+      "PROC_STYLE_2027",
+      "PROC_STYLE_2028",
+      "PROC_STYLE_2029",
+      "PROC_STYLE_2030",
+      "PROC_STYLE_2031",
+      "PROC_STYLE_2032",
+      "DECISION_2033",
+      "DECISION_2034",
+      "DECISION_2035",
+      "DECISION_2036",
+      "DECISION_2037",
+      "NEURLYN_JUNGIAN_195",
+      "NEURLYN_JUNGIAN_196",
+      "NEURLYN_JUNGIAN_197",
+      "NEURLYN_JUNGIAN_198",
+      "NEURLYN_JUNGIAN_199",
+      "NEURLYN_JUNGIAN_200",
+      "NEURLYN_JUNGIAN_201",
+      "NEURLYN_JUNGIAN_202",
+      "NEURLYN_JUNGIAN_203",
+      "NEURLYN_JUNGIAN_204",
+      "NEURLYN_JUNGIAN_205",
+      "NEURLYN_JUNGIAN_206",
+      "NEURLYN_JUNGIAN_207",
+      "NEURLYN_JUNGIAN_208",
+      "NEURLYN_JUNGIAN_209",
+      "NEURLYN_JUNGIAN_210",
+      "NEURLYN_ENNEAGRAM_177",
+      "NEURLYN_ENNEAGRAM_178",
+      "NEURLYN_ENNEAGRAM_179",
+      "NEURLYN_ENNEAGRAM_180",
+      "NEURLYN_ENNEAGRAM_181",
+      "NEURLYN_ENNEAGRAM_182",
+      "NEURLYN_ENNEAGRAM_183",
+      "NEURLYN_ENNEAGRAM_184",
+      "NEURLYN_ENNEAGRAM_185",
+      "NEURLYN_ENNEAGRAM_186",
+      "NEURLYN_ENNEAGRAM_187",
+      "NEURLYN_ENNEAGRAM_188",
+      "NEURLYN_ENNEAGRAM_189",
+      "NEURLYN_ENNEAGRAM_190",
+      "NEURLYN_ENNEAGRAM_191",
+      "NEURLYN_ENNEAGRAM_192",
+      "NEURLYN_ENNEAGRAM_193",
+      "NEURLYN_ENNEAGRAM_194",
+      "NEURLYN_LEARNING_211",
+      "NEURLYN_LEARNING_212",
+      "NEURLYN_LEARNING_213",
+      "NEURLYN_LEARNING_214",
+      "NEURLYN_LEARNING_215",
+      "NEURLYN_LEARNING_216",
+      "NEURLYN_LEARNING_217",
+      "NEURLYN_LEARNING_218",
+      "ND_ADHD_1",
+      "ND_ADHD_2",
+      "ND_ADHD_3",
+      "ND_ADHD_4",
+      "ND_ADHD_5",
+      "ND_AUTISM_6",
+      "ND_AUTISM_7",
+      "ND_AUTISM_8",
+      "ND_AUTISM_9",
+      "ND_AUTISM_10",
+      "ND_SENSORY_11",
+      "ND_SENSORY_12",
+      "ND_EXECUTIVE_FUNCTION_13",
+      "ND_EXECUTIVE_FUNCTION_14",
+      "ND_EXECUTIVE_FUNCTION_15",
+      "NEURLYN_EXECUTIVE_82",
+      "NEURLYN_EXECUTIVE_83",
+      "NEURLYN_EXECUTIVE_84",
+      "NEURLYN_EXECUTIVE_85",
+      "NEURLYN_EXECUTIVE_86",
+      "NEURLYN_EXECUTIVE_87",
+      "NEURLYN_EXECUTIVE_88",
+      "NEURLYN_EXECUTIVE_89",
+      "NEURLYN_EXECUTIVE_90",
+      "NEURLYN_EXECUTIVE_91",
+      "NEURLYN_EXECUTIVE_92",
+      "NEURLYN_EXECUTIVE_93",
+      "NEURLYN_EXECUTIVE_94",
+      "NEURLYN_EXECUTIVE_95",
+      "NEURLYN_EXECUTIVE_96",
+      "NEURLYN_EXECUTIVE_97",
+      "NEURLYN_EXECUTIVE_98",
+      "NEURLYN_EXECUTIVE_99",
+      "NEURLYN_EXECUTIVE_100",
+      "NEURLYN_EXECUTIVE_101",
+      "NEURLYN_SENSORY_102",
+      "NEURLYN_SENSORY_103",
+      "NEURLYN_SENSORY_104",
+      "NEURLYN_SENSORY_105",
+      "NEURLYN_SENSORY_106",
+      "NEURLYN_SENSORY_107",
+      "NEURLYN_SENSORY_108",
+      "NEURLYN_SENSORY_109",
+      "NEURLYN_SENSORY_110",
+      "NEURLYN_SENSORY_111",
+      "NEURLYN_SENSORY_112",
+      "NEURLYN_SENSORY_113",
+      "NEURLYN_SENSORY_114",
+      "NEURLYN_SENSORY_115",
+      "NEURLYN_SENSORY_116",
+      "NEURLYN_SENSORY_117",
+      "NEURLYN_SENSORY_118",
+      "NEURLYN_SENSORY_119",
+      "NEURLYN_MASKING_120",
+      "NEURLYN_MASKING_121",
+      "NEURLYN_MASKING_122",
+      "NEURLYN_MASKING_123",
+      "NEURLYN_MASKING_124",
+      "NEURLYN_MASKING_125",
+      "NEURLYN_MASKING_126",
+      "NEURLYN_MASKING_127",
+      "NEURLYN_MASKING_128",
+      "NEURLYN_MASKING_129",
+      "NEURLYN_MASKING_130",
+      "NEURLYN_MASKING_131",
+      "NEURLYN_MASKING_132",
+      "NEURLYN_MASKING_133",
+      "NEURLYN_MASKING_134",
+      "NEURLYN_EMOTIONAL_135",
+      "NEURLYN_EMOTIONAL_136",
+      "NEURLYN_EMOTIONAL_137",
+      "NEURLYN_EMOTIONAL_138",
+      "NEURLYN_EMOTIONAL_139",
+      "NEURLYN_EMOTIONAL_140",
+      "NEURLYN_EMOTIONAL_141",
+      "NEURLYN_EMOTIONAL_142",
+      "NEURLYN_EMOTIONAL_143",
+      "NEURLYN_EMOTIONAL_144",
+      "NEURLYN_EMOTIONAL_145",
+      "NEURLYN_EMOTIONAL_146",
+      "NEURLYN_INTERESTS_147",
+      "NEURLYN_INTERESTS_148",
+      "NEURLYN_INTERESTS_149",
+      "NEURLYN_INTERESTS_150",
+      "NEURLYN_INTERESTS_151",
+      "NEURLYN_INTERESTS_152",
+      "BFI_OPENNESS_1",
+      "BFI_OPENNESS_2",
+      "BFI_OPENNESS_3",
+      "BFI_OPENNESS_4",
+      "BFI_OPENNESS_5",
+      "BFI_OPENNESS_6",
+      "BFI_OPENNESS_7",
+      "BFI_OPENNESS_8",
+      "BFI_CONSCIENTIOUSNESS_9",
+      "BFI_CONSCIENTIOUSNESS_10",
+      "BFI_CONSCIENTIOUSNESS_11",
+      "BFI_CONSCIENTIOUSNESS_12",
+      "BFI_CONSCIENTIOUSNESS_13",
+      "BFI_CONSCIENTIOUSNESS_14",
+      "BFI_CONSCIENTIOUSNESS_15",
+      "BFI_CONSCIENTIOUSNESS_16",
+      "BFI_EXTRAVERSION_17",
+      "BFI_EXTRAVERSION_18",
+      "BFI_EXTRAVERSION_19",
+      "BFI_EXTRAVERSION_20",
+      "BFI_EXTRAVERSION_21",
+      "BFI_EXTRAVERSION_22",
+      "BFI_EXTRAVERSION_23",
+      "BFI_EXTRAVERSION_24",
+      "BFI_AGREEABLENESS_25",
+      "BFI_AGREEABLENESS_26",
+      "BFI_AGREEABLENESS_27",
+      "BFI_AGREEABLENESS_28",
+      "BFI_AGREEABLENESS_29",
+      "BFI_AGREEABLENESS_30",
+      "BFI_AGREEABLENESS_31",
+      "BFI_AGREEABLENESS_32",
+      "BFI_NEUROTICISM_33",
+      "BFI_NEUROTICISM_34",
+      "BFI_NEUROTICISM_35",
+      "BFI_NEUROTICISM_36",
+      "BFI_NEUROTICISM_37",
+      "BFI_NEUROTICISM_38",
+      "BFI_NEUROTICISM_39",
+      "BFI_NEUROTICISM_40",
+      "BFI_BEHAVIORAL_41",
+      "BFI_BEHAVIORAL_42",
+      "BFI_BEHAVIORAL_43",
+      "BFI_BEHAVIORAL_44",
+      "BFI_BEHAVIORAL_45",
+      "BFI_BEHAVIORAL_46",
+      "BFI_BEHAVIORAL_47",
+      "BFI_BEHAVIORAL_48",
+      "BFI_SITUATIONAL_49",
+      "BFI_SITUATIONAL_50",
+      "BFI_SITUATIONAL_51",
+      "BFI_SITUATIONAL_52",
+      "BFI_SITUATIONAL_53",
+      "BFI_SITUATIONAL_54",
+      "BFI_SITUATIONAL_55",
+      "BFI_SITUATIONAL_56",
+      "BFI_PREFERENCES_57",
+      "BFI_PREFERENCES_58",
+      "BFI_PREFERENCES_59",
+      "BFI_PREFERENCES_60",
+      "BFI_PREFERENCES_61",
+      "NEO_FACET_1000",
+      "NEO_FACET_1001",
+      "NEO_FACET_1002",
+      "NEO_FACET_1003",
+      "NEO_FACET_1004",
+      "NEO_FACET_1005",
+      "NEO_FACET_1006",
+      "NEO_FACET_1007",
+      "NEO_FACET_1008",
+      "NEO_FACET_1009",
+      "NEO_FACET_1010",
+      "NEO_FACET_1011",
+      "NEO_FACET_1012",
+      "NEO_FACET_1013",
+      "NEO_FACET_1014",
+      "NEO_FACET_1015",
+      "NEO_FACET_1016",
+      "NEO_FACET_1017",
+      "NEO_FACET_1018",
+      "NEO_FACET_1019",
+      "NEO_FACET_1020",
+      "NEO_FACET_1021",
+      "NEO_FACET_1022",
+      "NEO_FACET_1023",
+      "NEO_FACET_1024",
+      "NEO_FACET_1025",
+      "NEO_FACET_1026",
+      "NEO_FACET_1027",
+      "NEO_FACET_1028",
+      "NEO_FACET_1029",
+      "NEO_FACET_1030",
+      "NEO_FACET_1031",
+      "NEO_FACET_1032",
+      "NEO_FACET_1033",
+      "NEO_FACET_1034",
+      "NEO_FACET_1035",
+      "NEO_FACET_1036",
+      "NEO_FACET_1037",
+      "NEO_FACET_1038",
+      "NEO_FACET_1039",
+      "NEO_FACET_1040",
+      "NEO_FACET_1041",
+      "NEO_FACET_1042",
+      "NEO_FACET_1043",
+      "NEO_FACET_1044",
+      "NEO_FACET_1045",
+      "NEO_FACET_1046",
+      "NEO_FACET_1047",
+      "NEO_FACET_1048",
+      "NEO_FACET_1049",
+      "NEO_FACET_1050",
+      "NEO_FACET_1051",
+      "NEO_FACET_1052",
+      "NEO_FACET_1053",
+      "NEO_FACET_1054",
+      "NEO_FACET_1055",
+      "NEO_FACET_1056",
+      "NEO_FACET_1057",
+      "NEO_FACET_1058",
+      "NEO_FACET_1059",
+      "NEO_FACET_1060",
+      "NEO_FACET_1061",
+      "NEO_FACET_1062",
+      "NEO_FACET_1063",
+      "NEO_FACET_1064",
+      "NEO_FACET_1065",
+      "NEO_FACET_1066",
+      "NEO_FACET_1067",
+      "NEO_FACET_1068",
+      "NEO_FACET_1069",
+      "NEO_FACET_1070",
+      "NEO_FACET_1071",
+      "NEO_FACET_1072",
+      "NEO_FACET_1073",
+      "NEO_FACET_1074",
+      "NEO_FACET_1075",
+      "NEO_FACET_1076",
+      "NEO_FACET_1077",
+      "NEO_FACET_1078",
+      "NEO_FACET_1079",
+      "NEO_FACET_1080",
+      "NEO_FACET_1081",
+      "NEO_FACET_1082",
+      "NEO_FACET_1083",
+      "NEO_FACET_1084",
+      "NEO_FACET_1085",
+      "NEO_FACET_1086",
+      "NEO_FACET_1087",
+      "NEO_FACET_1088",
+      "NEO_FACET_1089",
+      "NEO_FACET_1090",
+      "NEO_FACET_1091",
+      "NEO_FACET_1092",
+      "NEO_FACET_1093",
+      "NEO_FACET_1094",
+      "NEO_FACET_1095",
+      "NEO_FACET_1096",
+      "NEO_FACET_1097",
+      "NEO_FACET_1098",
+      "STRESS_MGMT_2038",
+      "STRESS_MGMT_2039",
+      "STRESS_MGMT_2040",
+      "STRESS_MGMT_2041",
+      "STRESS_MGMT_2042",
+      "gateway_sensory_1",
+      "gateway_executive_1",
+      "gateway_social_1",
+      "gateway_routine_1",
+      "gateway_attention_1",
+      "BFI_EXTRAVERSION_BASELINE_3",
+      "EMOTIONAL_REGULATION_BASELINE",
+      "SENSORY_ADHD_GATEWAY_BASELINE",
+      "NEURLYN_TRAUMA_153",
+      "NEURLYN_TRAUMA_154",
+      "NEURLYN_TRAUMA_155",
+      "NEURLYN_TRAUMA_156",
+      "NEURLYN_TRAUMA_157",
+      "NEURLYN_TRAUMA_158",
+      "NEURLYN_TRAUMA_159",
+      "NEURLYN_TRAUMA_160",
+      "NEURLYN_TRAUMA_161",
+      "NEURLYN_TRAUMA_162",
+      "NEURLYN_TRAUMA_163",
+      "NEURLYN_TRAUMA_164"
+    ],
+    "sensoryIssues": [
+      {
+        "id": "NEURLYN_SENSORY_102",
+        "issue": "Missing correlatedTraits",
+        "text": "Certain fabric textures make me extremely uncomfor"
+      },
+      {
+        "id": "NEURLYN_SENSORY_103",
+        "issue": "Missing correlatedTraits",
+        "text": "I cut tags out of clothing because they bother me"
+      },
+      {
+        "id": "NEURLYN_SENSORY_104",
+        "issue": "Missing correlatedTraits",
+        "text": "Light touches feel painful or overwhelming"
+      },
+      {
+        "id": "NEURLYN_SENSORY_105",
+        "issue": "Missing correlatedTraits",
+        "text": "I prefer deep pressure hugs over light touches"
+      },
+      {
+        "id": "NEURLYN_SENSORY_106",
+        "issue": "Missing correlatedTraits",
+        "text": "I notice subtle sounds that others miss"
+      },
+      {
+        "id": "NEURLYN_SENSORY_107",
+        "issue": "Missing correlatedTraits",
+        "text": "Background noise makes it impossible for me to con"
+      },
+      {
+        "id": "NEURLYN_SENSORY_108",
+        "issue": "Missing correlatedTraits",
+        "text": "I use noise-canceling headphones or earplugs regul"
+      },
+      {
+        "id": "NEURLYN_SENSORY_109",
+        "issue": "Missing correlatedTraits",
+        "text": "Sudden loud noises cause me physical pain or panic"
+      },
+      {
+        "id": "NEURLYN_SENSORY_110",
+        "issue": "Missing correlatedTraits",
+        "text": "Bright lights give me headaches or make me feel ov"
+      },
+      {
+        "id": "NEURLYN_SENSORY_111",
+        "issue": "Missing correlatedTraits",
+        "text": "I prefer dim lighting or natural light"
+      },
+      {
+        "id": "NEURLYN_SENSORY_112",
+        "issue": "Missing correlatedTraits",
+        "text": "Fluorescent lights make me feel sick or anxious"
+      },
+      {
+        "id": "NEURLYN_SENSORY_113",
+        "issue": "Missing correlatedTraits",
+        "text": "I notice visual details that others overlook"
+      },
+      {
+        "id": "NEURLYN_SENSORY_114",
+        "issue": "Missing correlatedTraits",
+        "text": "Strong smells make me feel nauseous or overwhelmed"
+      },
+      {
+        "id": "NEURLYN_SENSORY_115",
+        "issue": "Missing correlatedTraits",
+        "text": "I have a very limited diet due to texture or taste"
+      },
+      {
+        "id": "NEURLYN_SENSORY_116",
+        "issue": "Missing correlatedTraits",
+        "text": "I can smell things others don't notice"
+      },
+      {
+        "id": "NEURLYN_SENSORY_117",
+        "issue": "Missing correlatedTraits",
+        "text": "I feel dizzy or nauseous on swings or rides"
+      },
+      {
+        "id": "NEURLYN_SENSORY_118",
+        "issue": "Missing correlatedTraits",
+        "text": "I crave movement and physical activity"
+      },
+      {
+        "id": "NEURLYN_SENSORY_119",
+        "issue": "Missing correlatedTraits",
+        "text": "I bump into things or misjudge distances frequentl"
+      }
+    ],
+    "neurodiversityIssues": [
+      {
+        "id": "ND_ADHD_1",
+        "issue": "Missing correlatedTraits",
+        "instrument": "ASRS-5"
+      },
+      {
+        "id": "ND_ADHD_2",
+        "issue": "Missing correlatedTraits",
+        "instrument": "ASRS-5"
+      },
+      {
+        "id": "ND_ADHD_3",
+        "issue": "Missing correlatedTraits",
+        "instrument": "ASRS-5"
+      },
+      {
+        "id": "ND_ADHD_4",
+        "issue": "Missing correlatedTraits",
+        "instrument": "ASRS-5"
+      },
+      {
+        "id": "ND_ADHD_5",
+        "issue": "Missing correlatedTraits",
+        "instrument": "ASRS-5"
+      },
+      {
+        "id": "ND_AUTISM_6",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_AUTISM_7",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_AUTISM_8",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_AUTISM_9",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_AUTISM_10",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_SENSORY_11",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_SENSORY_12",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_EXECUTIVE_FUNCTION_13",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_EXECUTIVE_FUNCTION_14",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "ND_EXECUTIVE_FUNCTION_15",
+        "issue": "Missing correlatedTraits",
+        "instrument": "AQ-10"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_82",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_83",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_84",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_85",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_86",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_87",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_88",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_89",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_90",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_91",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_92",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_93",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_94",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_95",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_96",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_97",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_98",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_99",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_100",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_EXECUTIVE_101",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EXECUTIVE"
+      },
+      {
+        "id": "NEURLYN_SENSORY_102",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_103",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_104",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_105",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_106",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_107",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_108",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_109",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_110",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_111",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_112",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_113",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_114",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_115",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_116",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_117",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_118",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_SENSORY_119",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_SENSORY"
+      },
+      {
+        "id": "NEURLYN_MASKING_120",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_121",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_122",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_123",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_124",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_125",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_126",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_127",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_128",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_129",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_130",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_131",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_132",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_133",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_MASKING_134",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_MASKING"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_135",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_136",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_137",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_138",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_139",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_140",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_141",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_142",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_143",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_144",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_145",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_EMOTIONAL_146",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_EMOTIONAL"
+      },
+      {
+        "id": "NEURLYN_INTERESTS_147",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_INTERESTS"
+      },
+      {
+        "id": "NEURLYN_INTERESTS_148",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_INTERESTS"
+      },
+      {
+        "id": "NEURLYN_INTERESTS_149",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_INTERESTS"
+      },
+      {
+        "id": "NEURLYN_INTERESTS_150",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_INTERESTS"
+      },
+      {
+        "id": "NEURLYN_INTERESTS_151",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_INTERESTS"
+      },
+      {
+        "id": "NEURLYN_INTERESTS_152",
+        "issue": "Missing correlatedTraits",
+        "instrument": "NEURLYN_INTERESTS"
+      }
+    ],
+    "personalityIssues": [
+      {
+        "id": "BFI_OPENNESS_1",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_OPENNESS_2",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_OPENNESS_3",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_OPENNESS_4",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_OPENNESS_5",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_OPENNESS_6",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_OPENNESS_7",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_OPENNESS_8",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_9",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_10",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_11",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_12",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_13",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_14",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_15",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_CONSCIENTIOUSNESS_16",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_17",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_18",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_19",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_20",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_21",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_22",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_23",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_24",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_25",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_26",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_27",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_28",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_29",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_30",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_31",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_AGREEABLENESS_32",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "BFI_NEUROTICISM_33",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_NEUROTICISM_34",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_NEUROTICISM_35",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_NEUROTICISM_36",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_NEUROTICISM_37",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_NEUROTICISM_38",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_NEUROTICISM_39",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_NEUROTICISM_40",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_41",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_41",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_42",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_42",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_43",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_43",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_44",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_44",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_45",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_45",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_46",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_46",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_47",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_47",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_48",
+        "issue": "Invalid trait: behavioral",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_BEHAVIORAL_48",
+        "issue": "Missing correlatedTraits",
+        "trait": "behavioral"
+      },
+      {
+        "id": "BFI_SITUATIONAL_49",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_49",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_SITUATIONAL_50",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_50",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_SITUATIONAL_51",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_51",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_SITUATIONAL_52",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_52",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_SITUATIONAL_53",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_53",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_SITUATIONAL_54",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_54",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_SITUATIONAL_55",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_55",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_SITUATIONAL_56",
+        "issue": "Invalid trait: situational",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_SITUATIONAL_56",
+        "issue": "Missing correlatedTraits",
+        "trait": "situational"
+      },
+      {
+        "id": "BFI_PREFERENCES_57",
+        "issue": "Invalid trait: preferences",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_57",
+        "issue": "Missing correlatedTraits",
+        "trait": "preferences"
+      },
+      {
+        "id": "BFI_PREFERENCES_58",
+        "issue": "Invalid trait: preferences",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_58",
+        "issue": "Missing correlatedTraits",
+        "trait": "preferences"
+      },
+      {
+        "id": "BFI_PREFERENCES_59",
+        "issue": "Invalid trait: preferences",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_59",
+        "issue": "Missing correlatedTraits",
+        "trait": "preferences"
+      },
+      {
+        "id": "BFI_PREFERENCES_60",
+        "issue": "Invalid trait: preferences",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_60",
+        "issue": "Missing correlatedTraits",
+        "trait": "preferences"
+      },
+      {
+        "id": "BFI_PREFERENCES_61",
+        "issue": "Invalid trait: preferences",
+        "instrument": "BFI-2-Improved"
+      },
+      {
+        "id": "BFI_PREFERENCES_61",
+        "issue": "Missing correlatedTraits",
+        "trait": "preferences"
+      },
+      {
+        "id": "NEO_FACET_1000",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1001",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1002",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1003",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1004",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1005",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1006",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1007",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1008",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1009",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1010",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1011",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1012",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1013",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1014",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1015",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1016",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1017",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1018",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "NEO_FACET_1019",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1020",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1021",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1022",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1023",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1024",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1025",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1026",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1027",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1028",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1029",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1030",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1031",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1032",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1033",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1034",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1035",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1036",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1037",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1038",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "NEO_FACET_1039",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1040",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1041",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1042",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1043",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1044",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1045",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1046",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1047",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1048",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1049",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1050",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1051",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1052",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1053",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1054",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1055",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1056",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1057",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1058",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "NEO_FACET_1059",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1060",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1061",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1062",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1063",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1064",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1065",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1066",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1067",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1068",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1069",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1070",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1071",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1072",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1073",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1074",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1075",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1076",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1077",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1078",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "NEO_FACET_1079",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1080",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1081",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1082",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1083",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1084",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1085",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1086",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1087",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1088",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1089",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1090",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1091",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1092",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1093",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1094",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1095",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1096",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1097",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "NEO_FACET_1098",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "STRESS_MGMT_2038",
+        "issue": "Invalid trait: stress_management",
+        "instrument": "NEURLYN_STRESS"
+      },
+      {
+        "id": "STRESS_MGMT_2038",
+        "issue": "Missing correlatedTraits",
+        "trait": "stress_management"
+      },
+      {
+        "id": "STRESS_MGMT_2039",
+        "issue": "Invalid trait: stress_management",
+        "instrument": "NEURLYN_STRESS"
+      },
+      {
+        "id": "STRESS_MGMT_2039",
+        "issue": "Missing correlatedTraits",
+        "trait": "stress_management"
+      },
+      {
+        "id": "STRESS_MGMT_2040",
+        "issue": "Invalid trait: stress_management",
+        "instrument": "NEURLYN_STRESS"
+      },
+      {
+        "id": "STRESS_MGMT_2040",
+        "issue": "Missing correlatedTraits",
+        "trait": "stress_management"
+      },
+      {
+        "id": "STRESS_MGMT_2041",
+        "issue": "Invalid trait: stress_management",
+        "instrument": "NEURLYN_STRESS"
+      },
+      {
+        "id": "STRESS_MGMT_2041",
+        "issue": "Missing correlatedTraits",
+        "trait": "stress_management"
+      },
+      {
+        "id": "STRESS_MGMT_2042",
+        "issue": "Invalid trait: stress_management",
+        "instrument": "NEURLYN_STRESS"
+      },
+      {
+        "id": "STRESS_MGMT_2042",
+        "issue": "Missing correlatedTraits",
+        "trait": "stress_management"
+      },
+      {
+        "id": "gateway_sensory_1",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "gateway_executive_1",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "gateway_social_1",
+        "issue": "Missing correlatedTraits",
+        "trait": "agreeableness"
+      },
+      {
+        "id": "gateway_routine_1",
+        "issue": "Missing correlatedTraits",
+        "trait": "openness"
+      },
+      {
+        "id": "gateway_attention_1",
+        "issue": "Missing correlatedTraits",
+        "trait": "conscientiousness"
+      },
+      {
+        "id": "BFI_EXTRAVERSION_BASELINE_3",
+        "issue": "Missing correlatedTraits",
+        "trait": "extraversion"
+      },
+      {
+        "id": "EMOTIONAL_REGULATION_BASELINE",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      },
+      {
+        "id": "SENSORY_ADHD_GATEWAY_BASELINE",
+        "issue": "Missing correlatedTraits",
+        "trait": "neuroticism"
+      }
+    ]
+  },
+  "criticalIssues": [
+    {
+      "severity": "CRITICAL",
+      "issue": "375 questions missing correlatedTraits",
+      "impact": "Breaks adaptive question selection algorithm",
+      "fix": "Add correlatedTraits to all questions based on their category/trait"
+    },
+    {
+      "severity": "HIGH",
+      "issue": "375 questions missing tags",
+      "impact": "Reduces question discoverability and filtering",
+      "fix": "Add relevant tags to all questions"
+    },
+    {
+      "severity": "CRITICAL",
+      "issue": "18 sensory question issues",
+      "impact": "Sensory profile scoring may fail or be inaccurate",
+      "fix": "Fix sensory questions metadata (category, subcategory, correlatedTraits)"
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "36 questions with wrong trait",
+      "impact": "Scoring may be inaccurate",
+      "fix": "Correct trait assignments"
+    }
+  ]
+}

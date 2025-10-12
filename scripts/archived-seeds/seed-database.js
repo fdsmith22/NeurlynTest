@@ -294,7 +294,7 @@ async function seedReportTemplates() {
 async function main() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
     logger.info('Connected to MongoDB for seeding');
 
     // Seed data

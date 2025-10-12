@@ -16,6 +16,7 @@
     "logs:tail": "tail -f console.log",
     "logs:clear": "rm -f console.log && echo 'Console logs cleared'",
     "check:ports": "lsof -i :3000,3001,3002,8000,8080 | grep LISTEN || echo 'All ports are free'",
+    "check:requirements": "node scripts/check-requirements.js",
     "build": "webpack --config webpack.config.optimized.js --mode production",
     "build:dev": "webpack --config webpack.config.optimized.js --mode development",
     "build:analyze": "ANALYZE=true webpack --config webpack.config.optimized.js --mode production",

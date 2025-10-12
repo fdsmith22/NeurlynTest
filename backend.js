@@ -3,6 +3,8 @@ const logger = require('./utils/logger');
 const { env, isProduction: _isProduction } = require('./config/env.validation');
 const database = require('./config/database');
 const healthRoutes = require('./routes/health');
+const ComprehensiveReportGenerator = require('./services/comprehensive-report-generator');
+const PDFReportGenerator = require('./services/pdf-report-generator');
 const express = require('express'),
   cors = require('cors'),
   stripe = require('stripe')(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder'),
@@ -42,7 +44,18 @@ const express = require('express'),
 ),
   app.use(cors()),
   app.use(express.json({ limit: '10mb' })),
-  app.use(express.static('.')));
+  // Serve static files with disabled caching for development
+  app.use(express.static('.', {
+    etag: false,
+    lastModified: false,
+    setHeaders: (res, path) => {
+      if (path.endsWith('.js') || path.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+      }
+    }
+  })));
 const limiter = rateLimit({ windowMs: 9e5, max: 100 });
 app.use('/api/', limiter);
 
@@ -139,6 +152,9 @@ app.use('/api/reports', reportsRouter);
 // Adaptive assessment routes
 const adaptiveRouter = require('./routes/adaptive-assessment');
 app.use('/api/adaptive', adaptiveRouter);
+
+// Also mount adaptive routes at /api/assessments for compatibility
+app.use('/api/assessments', adaptiveRouter);
 
 function generateSessionId() {
   return 'pat_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
@@ -1271,6 +1287,393 @@ function generateEnhancedPreviewResults(results) {
     ]
   };
 }
+
+// PDF generation endpoint
+app.post('/api/report/generate-pdf', async (req, res) => {
+  let browser;
+  try {
+    const { html } = req.body;
+
+    if (!html) {
+      return res.status(400).json({ error: 'HTML content is required' });
+    }
+
+    logger.info(`PDF generation requested, HTML length: ${html.length}`);
+
+    // Import puppeteer dynamically
+    const puppeteer = require('puppeteer');
+
+    // Launch browser
+    browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-web-security',
+        '--disable-features=IsolateOrigins,site-per-process'
+      ]
+    });
+
+    const page = await browser.newPage();
+
+    // Set viewport for consistent rendering
+    await page.setViewport({
+      width: 1200,
+      height: 1600,
+      deviceScaleFactor: 1.5
+    });
+
+    // Intercept console messages from the page
+    page.on('console', msg => logger.info(`PAGE LOG: ${msg.text()}`));
+    page.on('pageerror', error => logger.error(`PAGE ERROR: ${error.message}`));
+
+    // Set content with proper base URL and timeout
+    await page.setContent(html, {
+      waitUntil: 'networkidle0',
+      timeout: 30000
+    });
+
+    // Wait for any dynamic content to fully render
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    // Wait for the enhanced report container to be fully populated
+    await page.waitForFunction(() => {
+      const container = document.querySelector('.enhanced-report-container');
+      if (!container) return false;
+      const htmlLength = container.innerHTML.length;
+      console.log('Report HTML length:', htmlLength);
+      return htmlLength > 15000; // Report HTML should have substantial content (includes hidden sections)
+    }, { timeout: 10000 }).catch(() => {
+      logger.warn('Timeout waiting for report content to load, proceeding anyway');
+    });
+
+    logger.info('Generating PDF...');
+
+    // Emulate print media for proper CSS application
+    await page.emulateMediaType('print');
+
+    // Inject PDF-specific styles to ensure proper rendering
+    await page.evaluate(() => {
+      document.documentElement.classList.add('pdf-mode');
+    });
+
+    // Generate PDF with optimized settings
+    const pdfBuffer = await page.pdf({
+      format: 'Letter',
+      printBackground: true,
+      margin: {
+        top: '0.5in',
+        right: '0.5in',
+        bottom: '0.5in',
+        left: '0.5in'
+      },
+      preferCSSPageSize: true,  // Respect CSS page-break rules
+      displayHeaderFooter: false,
+      scale: 0.95,
+      omitBackground: false,  // Include background colors/images
+      timeout: 60000  // Allow up to 60 seconds for PDF generation
+    });
+
+    await browser.close();
+    browser = null;
+
+    logger.info(`PDF generated successfully, size: ${pdfBuffer.length} bytes`);
+
+    // Verify the buffer is valid
+    if (!pdfBuffer || pdfBuffer.length === 0) {
+      throw new Error('Generated PDF buffer is empty');
+    }
+
+    // Verify it's actually a PDF (should start with %PDF - bytes 37 80 68 70)
+    const pdfHeader = pdfBuffer.slice(0, 4);
+    logger.info(`PDF header bytes: [${pdfHeader[0]}, ${pdfHeader[1]}, ${pdfHeader[2]}, ${pdfHeader[3]}]`);
+
+    if (pdfHeader[0] !== 0x25 || pdfHeader[1] !== 0x50 || pdfHeader[2] !== 0x44 || pdfHeader[3] !== 0x46) {
+      logger.error('Generated buffer is not a valid PDF!');
+      logger.error(`Expected: [37, 80, 68, 70], Got: [${pdfHeader[0]}, ${pdfHeader[1]}, ${pdfHeader[2]}, ${pdfHeader[3]}]`);
+      throw new Error('Generated buffer is not a valid PDF');
+    }
+
+    // Set headers for file download
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="neurlyn-report-${Date.now()}.pdf"`);
+    res.setHeader('Content-Length', pdfBuffer.length);
+    res.setHeader('Cache-Control', 'no-cache');
+
+    // Send PDF using res.end() for binary data
+    res.end(pdfBuffer, 'binary');
+
+  } catch (error) {
+    logger.error('PDF generation error:', error);
+    logger.error('Error stack:', error.stack);
+
+    // Clean up browser if still open
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (closeError) {
+        logger.error('Error closing browser:', closeError);
+      }
+    }
+
+    res.status(500).json({
+      error: 'Failed to generate PDF',
+      message: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+});
+
+// NEW: Backend-driven PDF generation endpoint
+app.post('/api/report/pdf/:sessionId', async (req, res) => {
+  let browser;
+  try {
+    const { sessionId } = req.params;
+    const { html, css } = req.body;
+
+    if (!sessionId) {
+      return res.status(400).json({ error: 'Session ID is required' });
+    }
+
+    logger.info(`Backend PDF generation requested for session: ${sessionId}`);
+
+    // If HTML is provided from frontend, use it directly
+    // Otherwise, generate from backend (fallback for API calls)
+    let finalHTML;
+
+    if (html && html.length > 0) {
+      logger.info(`Using frontend-provided HTML (${html.length} bytes)`);
+      if (css) {
+        logger.info(`Using frontend-provided CSS (${css.length} bytes)`);
+      }
+
+      // Add PDF-specific CSS for proper rendering
+      const pdfStyles = `
+        /* PDF-specific overrides */
+        @page {
+          margin: 0.5in;
+          size: letter;
+        }
+
+        body {
+          background: white !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+
+        /* Prevent page breaks inside content blocks */
+        .card, .section, [class*="card"], [class*="section"],
+        .insight-card, .recommendation-card, .trait-item,
+        .nd-domain, .profile-section, .facet-card,
+        .quality-metric, .sensory-domain, .pattern-card,
+        .strength-card, .recommendation-item, .story-section {
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+          margin-bottom: 16px;
+        }
+
+        /* Keep headers with their content - critical fix */
+        h1, h2, h3, h4, h5, h6 {
+          page-break-after: avoid !important;
+          break-after: avoid !important;
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+        }
+
+        /* Keep header + next element together */
+        h2 + *, h3 + *, h4 + * {
+          page-break-before: avoid !important;
+          break-before: avoid !important;
+        }
+
+        /* Section containers */
+        section, article, [class*="analysis"], [class*="profile"],
+        [class*="insights"], [class*="recommendations"] {
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+        }
+
+        /* Prevent orphans and widows */
+        p, li {
+          orphans: 3;
+          widows: 3;
+        }
+
+        /* Force page breaks before major sections */
+        h2:not(:first-child) {
+          margin-top: 24px;
+        }
+
+        /* Hide any generating/loading text */
+        .loading, .generating, [class*="loading"], [class*="generating"],
+        *[class*="status"], *[id*="status"] {
+          display: none !important;
+        }
+
+        /* Additional containers to keep together - adaptive for varying layouts */
+        [class*="grid"], [class*="flex"], [class*="container"],
+        [class*="column"], [class*="row"], [class*="layout"],
+        div[style*="display: grid"], div[style*="display: flex"] {
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+        }
+
+        /* Nested content blocks - avoid breaking deeply nested structures */
+        div > div[style*="margin-bottom"] {
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+        }
+      `;
+
+      // Wrap the HTML in a complete document with styles
+      finalHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neurlyn Assessment Report</title>
+  <style>
+    ${css || ''}
+    ${pdfStyles}
+  </style>
+</head>
+<body>
+  ${html}
+</body>
+</html>
+      `.trim();
+
+      logger.info(`Complete HTML prepared, length: ${finalHTML.length} bytes`);
+    } else {
+      // Fallback: Generate from database
+      logger.info('No HTML provided, generating from assessment data');
+
+      const assessment = await Assessment.findOne({ sessionId });
+      if (!assessment) {
+        return res.status(404).json({ error: 'Assessment not found' });
+      }
+
+      const reportGenerator = new ComprehensiveReportGenerator();
+      const reportData = await reportGenerator.generateReport({
+        responses: assessment.responses,
+        tier: assessment.tier || 'comprehensive',
+        duration: assessment.completionTime ?
+          (new Date(assessment.completionTime).getTime() - new Date(assessment.startTime).getTime()) :
+          null,
+        metadata: assessment.adaptiveMetadata || {}
+      });
+
+      const pdfGenerator = new PDFReportGenerator();
+      finalHTML = pdfGenerator.generatePdfHtml(reportData);
+      logger.info(`PDF HTML generated, length: ${finalHTML.length} bytes`);
+    }
+
+    // 4. Use Puppeteer to convert HTML to PDF
+    const puppeteer = require('puppeteer');
+
+    browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-web-security',
+        '--disable-features=IsolateOrigins,site-per-process'
+      ]
+    });
+
+    const page = await browser.newPage();
+
+    await page.setViewport({
+      width: 1200,
+      height: 1600,
+      deviceScaleFactor: 1.5
+    });
+
+    // Intercept console messages
+    page.on('console', msg => logger.info(`PUPPETEER: ${msg.text()}`));
+    page.on('pageerror', error => logger.error(`PUPPETEER ERROR: ${error.message}`));
+
+    // Set HTML content
+    await page.setContent(finalHTML, {
+      waitUntil: 'networkidle0',
+      timeout: 30000
+    });
+
+    // Small delay to ensure rendering is complete
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    logger.info('Generating PDF from backend-generated HTML...');
+
+    // Emulate print media for proper CSS application
+    await page.emulateMediaType('print');
+
+    // Inject PDF-specific styles to ensure proper rendering
+    await page.evaluate(() => {
+      document.documentElement.classList.add('pdf-mode');
+    });
+
+    // Generate PDF
+    const pdfBuffer = await page.pdf({
+      format: 'Letter',
+      printBackground: true,
+      margin: {
+        top: '0.5in',
+        right: '0.5in',
+        bottom: '0.5in',
+        left: '0.5in'
+      },
+      preferCSSPageSize: true,
+      displayHeaderFooter: false,
+      scale: 0.95,
+      omitBackground: false,
+      timeout: 60000
+    });
+
+    await browser.close();
+    browser = null;
+
+    logger.info(`PDF generated successfully, size: ${pdfBuffer.length} bytes`);
+
+    // Verify PDF
+    if (!pdfBuffer || pdfBuffer.length === 0) {
+      throw new Error('Generated PDF buffer is empty');
+    }
+
+    const pdfHeader = pdfBuffer.slice(0, 4);
+    if (pdfHeader[0] !== 0x25 || pdfHeader[1] !== 0x50 || pdfHeader[2] !== 0x44 || pdfHeader[3] !== 0x46) {
+      logger.error('Generated buffer is not a valid PDF!');
+      throw new Error('Generated buffer is not a valid PDF');
+    }
+
+    // Send PDF
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="neurlyn-report-${sessionId}.pdf"`);
+    res.setHeader('Content-Length', pdfBuffer.length);
+    res.setHeader('Cache-Control', 'no-cache');
+    res.end(pdfBuffer, 'binary');
+
+  } catch (error) {
+    logger.error('Backend PDF generation error:', error);
+    logger.error('Error stack:', error.stack);
+
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (closeError) {
+        logger.error('Error closing browser:', closeError);
+      }
+    }
+
+    res.status(500).json({
+      error: 'Failed to generate PDF',
+      message: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+});
 
 // Only start server if not in test environment
 if (process.env.NODE_ENV !== 'test') {

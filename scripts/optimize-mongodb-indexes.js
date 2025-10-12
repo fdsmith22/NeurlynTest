@@ -11,7 +11,7 @@ const logger = require('../utils/logger');
 
 async function optimizeMongoDBIndexes() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
     logger.info('Connected to MongoDB for index optimization');
 
     const db = mongoose.connection.db;

@@ -10,8 +10,7 @@ const temporarySessionSchema = new mongoose.Schema(
     sessionId: {
       type: String,
       required: true,
-      unique: true,
-      index: true
+      unique: true
     },
     mode: {
       type: String,

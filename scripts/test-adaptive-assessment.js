@@ -14,7 +14,7 @@ const logger = require('../utils/logger');
 
 async function testAdaptiveSystem() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
     logger.info('Connected to MongoDB for testing');
 
     // console.log('\n🧪 Testing Enhanced Adaptive Assessment System\n');

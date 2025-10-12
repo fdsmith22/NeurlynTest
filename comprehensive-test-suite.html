@@ -413,8 +413,8 @@
     <script src="js/explanation-engine.js?v=14"></script>
     <script src="js/response-quality-assessor.js?v=14"></script>
     <script src="psychological-research-database-complete.js?v=1"></script>
-    <script src="js/advanced-report-generator.js?v=23"></script>
-    <script src="js/neurlyn-adaptive-integration.js"></script>
+    <script src="js/advanced-report-generator.js?v=1759350100"></script>
+    <script src="js/neurlyn-adaptive-integration.js?v=1759355300"></script>
     <script src="config/assessment-config.js"></script>
 
     <script>
@@ -422,6 +422,7 @@
         let testResults = {};
         let currentTab = 'overview';
         let currentTestingTier = 'free'; // Default to free tier
+        let cachedQuestions = null; // Cache for real questions from database
 
         // Function to set testing tier
         function setTestingTier(tier) {
@@ -968,6 +969,11 @@
                 const assessment = new NeurlynAdaptiveIntegration();
                 assessment.currentTier = currentTestingTier === 'free' ? 'standard' : 'comprehensive';
 
+                // Ensure report has tier set for display
+                if (!simulatedReport.tier) {
+                    simulatedReport.tier = currentTestingTier === 'free' ? 'standard' : 'comprehensive';
+                }
+
                 if (currentTestingTier === 'paid') {
                     // For paid tier, the report should already have neurodiversity data
                     // from simulateFullAssessmentWithVariations
@@ -1061,184 +1067,280 @@
             return desc;
         }
 
-        // Simulate assessment with variations
+        // Fetch real questions from database
+        async function fetchRealQuestions() {
+            if (cachedQuestions) return cachedQuestions;
+
+            try {
+                const response = await fetch('http://localhost:3456/api/assessments/questions/all');
+                if (response.ok) {
+                    const data = await response.json();
+                    cachedQuestions = data.questions || [];
+                    console.log('Fetched', cachedQuestions.length, 'real questions from database');
+
+                    // Log sample of sensory questions
+                    const sensoryQuestions = cachedQuestions.filter(q =>
+                        q.instrument && q.instrument.toLowerCase().includes('sensory')
+                    );
+                    console.log('Found', sensoryQuestions.length, 'sensory questions');
+
+                    return cachedQuestions;
+                }
+            } catch (error) {
+                console.log('Could not fetch real questions, using fallback:', error.message);
+            }
+
+            // Return empty array if fetch fails
+            return [];
+        }
+
+        // Simulate assessment using proper adaptive flow through API
         async function simulateFullAssessmentWithVariations(testCase) {
             const tier = currentTestingTier === 'free' ? 'standard' : 'comprehensive';
-            const baselineCount = tier === 'comprehensive' ? 20 : 10;
-            const adaptiveCount = tier === 'comprehensive' ? 50 : 20;
 
-            // Generate responses with variations
-            const baselineResponses = generateVariedResponses(
-                testCase.pattern,
-                baselineCount,
-                true,
-                testCase.variations
-            );
+            console.log(`\n=== Starting ${tier.toUpperCase()} Adaptive Assessment ===`);
+            console.log(`Test Case: ${testCase.name}`);
+            console.log(`Pattern: ${testCase.pattern}, ADHD: ${testCase.adhd}, Autism: ${testCase.autism}\n`);
 
-            const adaptiveResponses = generateVariedResponses(
+            // STEP 1: Start the assessment
+            const startResponse = await fetch('http://localhost:3456/api/adaptive/start', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    tier: tier,
+                    userId: 'test-user',
+                    demographics: { age: 25 + Math.floor(Math.random() * 15) }
+                })
+            });
+
+            if (!startResponse.ok) {
+                throw new Error('Failed to start assessment');
+            }
+
+            const startData = await startResponse.json();
+            const sessionId = startData.sessionId;
+            const baselineQuestions = startData.currentBatch || [];
+
+            console.log(`✓ Session created: ${sessionId}`);
+            console.log(`✓ Baseline questions received: ${baselineQuestions.length}`);
+
+            // STEP 2: Generate and submit baseline responses
+            const baselineResponses = generateResponsesForQuestions(
+                baselineQuestions,
                 testCase.pattern,
-                adaptiveCount,
-                false,
-                testCase.variations,
                 testCase.adhd,
                 testCase.autism
             );
 
-            const allResponses = [...baselineResponses, ...adaptiveResponses];
+            console.log(`✓ Generated ${baselineResponses.length} baseline responses`);
+
+            const nextResponse = await fetch('http://localhost:3456/api/adaptive/next', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sessionId: sessionId,
+                    responses: baselineResponses
+                })
+            });
+
+            if (!nextResponse.ok) {
+                throw new Error('Failed to submit baseline responses');
+            }
+
+            const nextData = await nextResponse.json();
+            const adaptiveQuestions = nextData.currentBatch || nextData.questions || [];
+
+            console.log(`✓ Baseline phase complete`);
+            console.log(`✓ First adaptive batch received: ${adaptiveQuestions.length}`);
+
+            // STEP 3: Loop through adaptive questions until assessment is complete
+            let allAdaptiveResponses = [];
+            let currentAdaptiveQuestions = adaptiveQuestions;
+            let isComplete = nextData.complete || false;
+            let loopCount = 0;
+            const maxLoops = 20; // Safety limit to prevent infinite loops
+
+            while (currentAdaptiveQuestions.length > 0 && loopCount < maxLoops) {
+                loopCount++;
+
+                // Generate responses for current batch
+                const batchResponses = generateResponsesForQuestions(
+                    currentAdaptiveQuestions,
+                    testCase.pattern,
+                    testCase.adhd,
+                    testCase.autism
+                );
+
+                allAdaptiveResponses.push(...batchResponses);
+                console.log(`  Batch ${loopCount}: Generated ${batchResponses.length} responses, Total adaptive: ${allAdaptiveResponses.length}`);
+
+                // Submit batch and get next questions
+                const batchNextResponse = await fetch('http://localhost:3456/api/adaptive/next', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        sessionId: sessionId,
+                        responses: batchResponses
+                    })
+                });
+
+                if (!batchNextResponse.ok) {
+                    console.error('Failed to submit batch responses');
+                    break;
+                }
+
+                const batchNextData = await batchNextResponse.json();
+                currentAdaptiveQuestions = batchNextData.currentBatch || batchNextData.questions || [];
+                isComplete = batchNextData.complete || false;
+
+                // Only break when there are no more questions, regardless of complete flag
+                if (currentAdaptiveQuestions.length === 0) {
+                    console.log(`✓ Adaptive phase complete after ${loopCount} batches`);
+                    break;
+                }
+            }
+
+            const allResponses = [...baselineResponses, ...allAdaptiveResponses];
 
             // Save for debugging
             window.lastGeneratedResponses = allResponses;
-            console.log('[Debug] Generated', allResponses.length, 'responses');
-            console.log('[Debug] Neurodiversity questions:', allResponses.filter(r => r.question?.category === 'neurodiversity').length);
+            console.log(`✓ Total responses: ${allResponses.length}`);
+            console.log(`  - Personality questions: ${allResponses.filter(r => r.question?.category === 'personality').length}`);
+            console.log(`  - Neurodiversity questions: ${allResponses.filter(r => r.question?.category === 'neurodiversity').length}`);
+            console.log(`  - Sensory questions: ${allResponses.filter(r => r.question?.instrument?.includes('SENSORY')).length}`);
 
-            if (typeof AdvancedReportGenerator !== 'undefined') {
-                // Try to use backend service first for enhanced report generation
-                let report;
+            // STEP 4: Complete assessment
+            const completeResponse = await fetch('http://localhost:3456/api/adaptive/complete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sessionId: sessionId,
+                    finalResponses: allResponses
+                })
+            });
 
-                try {
-                    // Call the backend comprehensive report generator for enhanced features
-                    const response = await fetch('http://localhost:3008/api/reports/generate', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            responses: allResponses,
-                            tier: tier,
-                            duration: 600000 + Math.random() * 300000,
-                            metadata: {
-                                age: 20 + Math.floor(Math.random() * 40),
-                                pattern: testCase.pattern,
-                                randomized: true,
-                                assessmentTier: tier
-                            }
-                        })
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        console.log('[Backend] Raw response data:', JSON.stringify(data, null, 2));
-                        console.log('[Backend] data.report exists?', !!data.report);
-                        console.log('[Backend] data.report.personality?', JSON.stringify(data.report?.personality, null, 2));
-                        console.log('[Backend] data.report.personality.bigFive?', JSON.stringify(data.report?.personality?.bigFive, null, 2));
-
-                        report = data.report || data;
-                        console.log('[Backend] Using enhanced report from backend service');
-                        console.log('[Backend] Final report object:', report);
-                        console.log('[Backend] Final report.personality:', report?.personality);
-                        console.log('[Backend] Final report.personality.bigFive:', report?.personality?.bigFive);
-                    } else {
-                        throw new Error('Backend service unavailable');
-                    }
-                } catch (error) {
-                    console.log('[Fallback] Using client-side report generator:', error.message);
-                    // Fallback to client-side generator
-                    const generator = new AdvancedReportGenerator();
-                    report = await generator.generateReport({
-                        responses: allResponses,
-                        tier: tier,
-                        duration: 600000 + Math.random() * 300000,
-                        metadata: {
-                            age: 20 + Math.floor(Math.random() * 40),
-                            pattern: testCase.pattern,
-                            randomized: true
-                        }
-                    });
-                }
-
-                // Save report data for debugging
-                window.lastReportData = report;
-                console.log('[Debug] Saved to window.lastReportData:', window.lastReportData);
-                console.log('[Debug] window.lastReportData.personality:', window.lastReportData?.personality);
-                console.log('[Debug] window.lastReportData.personality.bigFive:', window.lastReportData?.personality?.bigFive);
-                console.log('[Debug] Report neurodiversity data:', report.neurodiversity);
-
-                // For paid tier, ensure neurodiversity data is properly populated
-                if (tier === 'comprehensive') {
-                    // Calculate neurodiversity scores based on responses
-                    const ndResponses = allResponses.filter(r =>
-                        r.question && r.question.category === 'neurodiversity'
-                    );
-
-                    const adhdScore = ndResponses.filter(r =>
-                        r.question.instrument === 'ASRS-5'
-                    ).reduce((sum, r) => sum + (r.value >= 4 ? 1 : 0), 0);
-
-                    const autismScore = ndResponses.filter(r =>
-                        r.question.instrument === 'AQ-10'
-                    ).reduce((sum, r) => sum + (r.value >= 4 ? 1 : 0), 0);
-
-                    // Add properly structured neurodiversity data
-                    report.neurodiversity = {
-                        adhd: {
-                            score: testCase.adhd ? 65 + Math.random() * 20 : 20 + Math.random() * 20,
-                            severity: testCase.adhd ? 'moderate' : 'minimal',
-                            indicators: {
-                                inattention: testCase.adhd ? 5 + Math.floor(Math.random() * 5) : Math.floor(Math.random() * 3),
-                                hyperactivity: testCase.adhd ? 4 + Math.floor(Math.random() * 5) : Math.floor(Math.random() * 3),
-                                impulsivity: testCase.adhd ? 5 + Math.floor(Math.random() * 5) : Math.floor(Math.random() * 3)
-                            },
-                            traits: testCase.adhd ? ['hyperfocus', 'creative_thinking', 'task_switching'] : [],
-                            likelihood: testCase.adhd ? 'Moderate' : 'Minimal'
-                        },
-                        autism: {
-                            score: testCase.autism ? 60 + Math.random() * 20 : 15 + Math.random() * 20,
-                            severity: testCase.autism ? 'moderate' : 'minimal',
-                            indicators: {
-                                social: testCase.autism ? 4 + Math.floor(Math.random() * 5) : Math.floor(Math.random() * 3),
-                                sensory: testCase.autism ? 5 + Math.floor(Math.random() * 5) : Math.floor(Math.random() * 3),
-                                routine: testCase.autism ? 6 + Math.floor(Math.random() * 4) : Math.floor(Math.random() * 3),
-                                communication: testCase.autism ? 4 + Math.floor(Math.random() * 4) : Math.floor(Math.random() * 3)
-                            },
-                            traits: testCase.autism ? ['pattern_recognition', 'detail_oriented', 'systematic'] : [],
-                            likelihood: testCase.autism ? 'Moderate' : 'Minimal'
-                        },
-                        executiveFunction: {
-                            overall: testCase.adhd ? 30 + Math.random() * 20 : 60 + Math.random() * 20,
-                            domains: {
-                                planning: testCase.adhd ? 25 + Math.random() * 15 : 55 + Math.random() * 20,
-                                organization: testCase.adhd ? 20 + Math.random() * 20 : 60 + Math.random() * 20,
-                                timeManagement: testCase.adhd ? 15 + Math.random() * 20 : 55 + Math.random() * 25,
-                                workingMemory: testCase.adhd ? 35 + Math.random() * 20 : 65 + Math.random() * 15
-                            },
-                            strengths: testCase.adhd ? ['creative_problem_solving'] : ['systematic_approach'],
-                            challenges: testCase.adhd ? ['task_initiation', 'prioritization'] : []
-                        },
-                        sensoryProfile: {
-                            sensitivity: testCase.autism ? 'high' : 'moderate',
-                            avoidance: testCase.autism ? 'moderate' : 'low',
-                            seeking: testCase.adhd ? 'high' : 'moderate',
-                            registration: testCase.autism ? 'high' : 'moderate'
-                        }
-                    };
-
-                    // Also ensure these are in the report structure
-                    if (!report.detailed) report.detailed = {};
-                    report.detailed.neurodiversity = report.neurodiversity;
-                    report.neurodiversityIndicators = report.neurodiversity;
-                }
-
-                return report;
+            if (!completeResponse.ok) {
+                throw new Error('Failed to complete assessment');
             }
 
-            // Fallback
-            return {
-                traits: {
-                    openness: 50 + testCase.variations.openness,
-                    conscientiousness: 50 + testCase.variations.conscientiousness,
-                    extraversion: 50 + testCase.variations.extraversion,
-                    agreeableness: 50 + testCase.variations.agreeableness,
-                    neuroticism: 50 + testCase.variations.neuroticism
-                },
-                summary: 'Randomized test report',
-                tier: tier
-            };
+            const completeData = await completeResponse.json();
+
+            console.log(`\n✓ Assessment Complete!`);
+            console.log(`✓ Summary generated: ${completeData.summary?.pathwaysActivated?.length || 0} pathways activated`);
+
+            // STEP 5: Generate full report
+            const reportResponse = await fetch('http://localhost:3456/api/reports/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sessionId: sessionId
+                })
+            });
+
+            if (!reportResponse.ok) {
+                throw new Error('Failed to generate report');
+            }
+
+            const reportData = await reportResponse.json();
+            const report = reportData.report;
+
+            console.log(`✓ Full report generated successfully`);
+            if (report.personality?.bigFive) {
+                console.log(`  Big Five:`);
+                Object.entries(report.personality.bigFive).forEach(([trait, value]) => {
+                    console.log(`    - ${trait}: ${value}%`);
+                });
+            }
+            if (report.neurodiversity) {
+                console.log(`  Neurodiversity:`);
+                console.log(`    - ADHD score: ${report.neurodiversity.adhd?.score || 0}`);
+                console.log(`    - Autism score: ${report.neurodiversity.autism?.score || 0}`);
+                if (report.neurodiversity.sensoryProfile) {
+                    console.log(`    - Sensory: Visual ${report.neurodiversity.sensoryProfile.visual || 0}, Auditory ${report.neurodiversity.sensoryProfile.auditory || 0}, Tactile ${report.neurodiversity.sensoryProfile.tactile || 0}`);
+                }
+            }
+            console.log(`===\n`);
+
+            // Save report data for debugging
+            window.lastReportData = report;
+            window.lastSessionId = sessionId;
+
+            // Map tier from API ('deep') to frontend display ('comprehensive')
+            if (report.tier === 'deep') {
+                report.tier = 'comprehensive';
+            }
+
+            return report;
         }
 
-        // Generate responses with realistic variations
-        function generateVariedResponses(pattern, count, isBaseline, variations, hasADHD = false, hasAutism = false) {
+        // Generate responses for actual questions from adaptive API
+        function generateResponsesForQuestions(questions, pattern, hasADHD, hasAutism) {
+            return questions.map((question, index) => {
+                let value;
+                const responseTime = 2000 + Math.random() * 3000;
+
+                // Determine response based on question type and test case traits
+                const trait = question.trait || '';
+                const instrument = question.instrument || '';
+                const category = question.category || '';
+
+                // For sensory/ADHD/autism questions, use trait flags
+                if (instrument.includes('SENSORY')) {
+                    value = hasAutism ? 4 + Math.round(Math.random()) : 2 + Math.round(Math.random());
+                } else if (instrument === 'ASRS-5' || instrument.includes('EXECUTIVE')) {
+                    value = hasADHD ? 4 + Math.round(Math.random()) : 2 + Math.round(Math.random());
+                } else if (instrument === 'AQ-10') {
+                    value = hasAutism ? 4 + Math.round(Math.random()) : 2 + Math.round(Math.random());
+                } else {
+                    // For personality questions, use the pattern
+                    const traitModifier = {
+                        'high-open': { openness: 4, conscientiousness: 3, extraversion: 3, agreeableness: 3, neuroticism: 2 },
+                        'high-conscientious': { openness: 3, conscientiousness: 4, extraversion: 3, agreeableness: 3, neuroticism: 2 },
+                        'high-extrovert': { openness: 3, conscientiousness: 3, extraversion: 4, agreeableness: 3, neuroticism: 2 },
+                        'high-neurotic': { openness: 3, conscientiousness: 2, extraversion: 2, agreeableness: 3, neuroticism: 4 },
+                        'balanced': { openness: 3, conscientiousness: 3, extraversion: 3, agreeableness: 3, neuroticism: 3 }
+                    }[pattern] || { openness: 3, conscientiousness: 3, extraversion: 3, agreeableness: 3, neuroticism: 3 };
+
+                    value = traitModifier[trait] || 3;
+                    value += Math.round((Math.random() - 0.5) * 2); // Add some variation
+                    value = Math.max(1, Math.min(5, value)); // Clamp to 1-5
+                }
+
+                return {
+                    questionId: question.questionId || question._id,
+                    value: value,
+                    score: value,
+                    responseTime: responseTime,
+                    question: {
+                        questionId: question.questionId || question._id,
+                        text: question.text,
+                        category: question.category,
+                        instrument: question.instrument,
+                        subcategory: question.subcategory,
+                        trait: question.trait
+                    }
+                };
+            });
+        }
+
+        // Generate responses with realistic variations using real questions
+        async function generateVariedResponses(pattern, count, isBaseline, variations, hasADHD = false, hasAutism = false) {
             const responses = [];
             const traits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+
+            // Get real questions to use
+            const questions = cachedQuestions || [];
+            const personalityQuestions = questions.filter(q => q.category === 'personality' || q.instrument === 'BFI-2');
+            const sensoryQuestions = questions.filter(q =>
+                q.instrument && q.instrument.toLowerCase().includes('sensory')
+            );
+            const adhdQuestions = questions.filter(q => q.instrument === 'ASRS-5');
+            const autismQuestions = questions.filter(q => q.instrument === 'AQ-10');
+
+            console.log('Using real questions - Personality:', personalityQuestions.length,
+                       'Sensory:', sensoryQuestions.length,
+                       'ADHD:', adhdQuestions.length,
+                       'Autism:', autismQuestions.length);
 
             for (let i = 0; i < count; i++) {
                 const trait = traits[i % 5];
@@ -1246,15 +1348,30 @@
                 let questionCategory = 'personality';
                 let instrument = 'BFI-2';
                 let subcategory = null;
+                let realQuestion = null;
 
                 // Add neurodiversity questions for paid tier
-                if (!isBaseline && currentTestingTier === 'paid' && i % 3 === 0) {
-                    if (hasADHD && i % 6 === 0) {
+                if (!isBaseline && currentTestingTier === 'paid') {
+                    // Include sensory questions (20% of adaptive questions)
+                    if (i % 5 === 0 && sensoryQuestions.length > 0) {
+                        realQuestion = sensoryQuestions[Math.floor(Math.random() * sensoryQuestions.length)];
+                        questionCategory = realQuestion.category || 'neurodiversity';
+                        instrument = realQuestion.instrument || 'SENSORY';
+                        subcategory = realQuestion.subcategory || 'sensory_processing';
+                        // High sensitivity responses for autism pattern
+                        baseValue = hasAutism ? 4 + Math.floor(Math.random() * 2) : 2 + Math.floor(Math.random() * 2);
+                    }
+                    // Include ADHD questions if applicable
+                    else if (hasADHD && i % 6 === 1 && adhdQuestions.length > 0) {
+                        realQuestion = adhdQuestions[Math.floor(Math.random() * adhdQuestions.length)];
                         questionCategory = 'neurodiversity';
                         instrument = 'ASRS-5';
                         subcategory = 'executive_function';
                         baseValue = 3 + Math.floor(Math.random() * 3); // 3-5 range
-                    } else if (hasAutism && i % 6 === 3) {
+                    }
+                    // Include autism questions if applicable
+                    else if (hasAutism && i % 6 === 3 && autismQuestions.length > 0) {
+                        realQuestion = autismQuestions[Math.floor(Math.random() * autismQuestions.length)];
                         questionCategory = 'neurodiversity';
                         instrument = 'AQ-10';
                         subcategory = 'sensory_processing';
@@ -1308,9 +1425,29 @@
                     responseTime = 1000 + Math.random() * 1000; // Faster response for random answers
                 }
 
-                responses.push({
-                    questionId: `q_${i + 1}`,
-                    question: {
+                // Use real question if we haven't selected one yet
+                if (!realQuestion && personalityQuestions.length > 0) {
+                    const traitQuestions = personalityQuestions.filter(q =>
+                        q.trait && q.trait.toLowerCase() === trait.toLowerCase()
+                    );
+                    if (traitQuestions.length > 0) {
+                        realQuestion = traitQuestions[Math.floor(Math.random() * traitQuestions.length)];
+                    } else {
+                        realQuestion = personalityQuestions[Math.floor(Math.random() * personalityQuestions.length)];
+                    }
+                }
+
+                // Build response object
+                const responseObj = {
+                    questionId: realQuestion ? realQuestion.questionId : `q_${i + 1}`,
+                    question: realQuestion ? {
+                        id: realQuestion.questionId,
+                        text: realQuestion.text,
+                        category: realQuestion.category,
+                        instrument: realQuestion.instrument,
+                        subcategory: realQuestion.subcategory,
+                        trait: realQuestion.trait
+                    } : {
                         id: `q_${i + 1}`,
                         text: `Sample question ${i + 1}`,
                         category: questionCategory,
@@ -1318,12 +1455,14 @@
                         subcategory: subcategory,
                         trait: trait
                     },
-                    trait: trait,
+                    trait: realQuestion ? realQuestion.trait : trait,
                     value: finalValue,
                     score: finalValue,
                     responseTime: responseTime,
                     timestamp: Date.now() - (count - i) * 5000
-                });
+                };
+
+                responses.push(responseObj);
             }
 
             return responses;
@@ -1434,11 +1573,14 @@
             const baselineCount = tier === 'comprehensive' ? 20 : 10;
             const adaptiveCount = tier === 'comprehensive' ? 50 : 20;
 
+            // Fetch real questions first
+            await fetchRealQuestions();
+
             // Generate baseline responses
-            const baselineResponses = generateTargetedResponses(testCase.pattern, baselineCount, true);
+            const baselineResponses = await generateTargetedResponses(testCase.pattern, baselineCount, true);
 
             // Generate adaptive responses (influenced by neurodiversity flags)
-            const adaptiveResponses = generateTargetedResponses(testCase.pattern, adaptiveCount, false, testCase.adhd, testCase.autism);
+            const adaptiveResponses = await generateTargetedResponses(testCase.pattern, adaptiveCount, false, testCase.adhd, testCase.autism);
 
             // Combine all responses
             const allResponses = [...baselineResponses, ...adaptiveResponses];
@@ -1664,9 +1806,18 @@
         }
 
         // Generate targeted responses for specific personality patterns
-        function generateTargetedResponses(pattern, count = 30, isBaseline = false, hasADHD = false, hasAutism = false) {
+        async function generateTargetedResponses(pattern, count = 30, isBaseline = false, hasADHD = false, hasAutism = false) {
             const responses = [];
             const traits = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+
+            // Get real questions to use
+            const questions = cachedQuestions || [];
+            const personalityQuestions = questions.filter(q => q.category === 'personality' || q.instrument === 'BFI-2');
+            const sensoryQuestions = questions.filter(q =>
+                q.instrument && q.instrument.toLowerCase().includes('sensory')
+            );
+            const adhdQuestions = questions.filter(q => q.instrument === 'ASRS-5');
+            const autismQuestions = questions.filter(q => q.instrument === 'AQ-10');
 
             for (let i = 0; i < count; i++) {
                 const trait = traits[i % 5];
@@ -1674,15 +1825,26 @@
                 let questionCategory = 'personality';
                 let instrument = 'BFI-2';
                 let subcategory = null;
+                let realQuestion = null;
 
                 // Add neurodiversity questions for adaptive phase in comprehensive tier
-                if (!isBaseline && currentTestingTier === 'paid' && i % 3 === 0) {
-                    if (hasADHD && i % 6 === 0) {
+                if (!isBaseline && currentTestingTier === 'paid') {
+                    // Include sensory questions
+                    if (i % 4 === 0 && sensoryQuestions.length > 0) {
+                        realQuestion = sensoryQuestions[Math.floor(Math.random() * sensoryQuestions.length)];
+                        questionCategory = realQuestion.category || 'neurodiversity';
+                        instrument = realQuestion.instrument || 'SENSORY';
+                        subcategory = realQuestion.subcategory || 'sensory_processing';
+                        value = hasAutism ? 4 + Math.round(Math.random()) : 2 + Math.round(Math.random());
+                    }
+                    else if (hasADHD && i % 6 === 1 && adhdQuestions.length > 0) {
+                        realQuestion = adhdQuestions[Math.floor(Math.random() * adhdQuestions.length)];
                         questionCategory = 'neurodiversity';
                         instrument = 'ASRS-5';
                         subcategory = 'executive_function';
                         value = 4 + Math.round(Math.random()); // Higher scores for ADHD
-                    } else if (hasAutism && i % 6 === 3) {
+                    } else if (hasAutism && i % 6 === 3 && autismQuestions.length > 0) {
+                        realQuestion = autismQuestions[Math.floor(Math.random() * autismQuestions.length)];
                         questionCategory = 'neurodiversity';
                         instrument = 'AQ-10';
                         subcategory = 'sensory_processing';
@@ -1742,9 +1904,28 @@
                     }
                 }
 
+                // Use real question if we haven't selected one yet
+                if (!realQuestion && personalityQuestions.length > 0 && questionCategory === 'personality') {
+                    const traitQuestions = personalityQuestions.filter(q =>
+                        q.trait && q.trait.toLowerCase() === trait.toLowerCase()
+                    );
+                    if (traitQuestions.length > 0) {
+                        realQuestion = traitQuestions[Math.floor(Math.random() * traitQuestions.length)];
+                    } else {
+                        realQuestion = personalityQuestions[Math.floor(Math.random() * personalityQuestions.length)];
+                    }
+                }
+
                 responses.push({
-                    questionId: `q_${i + 1}`,
-                    question: {
+                    questionId: realQuestion ? realQuestion.questionId : `q_${i + 1}`,
+                    question: realQuestion ? {
+                        id: realQuestion.questionId,
+                        text: realQuestion.text,
+                        category: realQuestion.category,
+                        instrument: realQuestion.instrument,
+                        subcategory: realQuestion.subcategory,
+                        trait: realQuestion.trait
+                    } : {
                         id: `q_${i + 1}`,
                         text: `Sample question ${i + 1}`,
                         category: questionCategory,
@@ -1752,7 +1933,7 @@
                         subcategory: subcategory,
                         trait: trait
                     },
-                    trait: trait,
+                    trait: realQuestion ? realQuestion.trait : trait,
                     value: value,
                     score: value,  // Add score field for AdvancedReportGenerator
                     responseTime: responseTime,

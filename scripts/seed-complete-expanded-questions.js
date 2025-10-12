@@ -817,7 +817,7 @@ const specialInterestQuestions = [
 
 async function seedCompleteExpandedQuestions() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
     logger.info('Connected to MongoDB');
 
     // Don't delete existing - we're adding to them

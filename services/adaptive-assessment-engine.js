@@ -21,7 +21,7 @@ class AdaptiveAssessmentEngine {
       quick: 8,
       standard: 10,
       comprehensive: 20, // Enhanced baseline for paid tier
-      deep: 15
+      deep: 25 // Increased to accommodate all neurodiversity baseline questions
     };
 
     this.statisticalAnalyzer = new StatisticalAnalyzer();
@@ -555,7 +555,7 @@ class AdaptiveAssessmentEngine {
       // Check response-based triggers
       if (rule.triggers.responses) {
         const matchCount = rule.triggers.responses.filter(trigger =>
-          patterns.indicators.includes(trigger)
+          patterns.indicators && patterns.indicators.includes(trigger)
         ).length;
 
         if (matchCount >= rule.triggers.threshold) {
@@ -734,8 +734,13 @@ class AdaptiveAssessmentEngine {
   updateProfile(originalProfile, newPatterns) {
     const updatedProfile = { ...originalProfile };
 
+    // Ensure traits object exists
+    if (!updatedProfile.traits) {
+      updatedProfile.traits = {};
+    }
+
     // Merge traits with weighted average (new responses get slight boost)
-    Object.entries(newPatterns.traits).forEach(([trait, newScore]) => {
+    Object.entries(newPatterns.traits || {}).forEach(([trait, newScore]) => {
       const oldScore = updatedProfile.traits[trait] || newScore;
       updatedProfile.traits[trait] = oldScore * 0.7 + newScore * 0.3;
     });
@@ -816,6 +821,62 @@ class AdaptiveAssessmentEngine {
   }
 
   /**
+   * Calculate priority scores for candidate questions based on patterns and pathways
+   */
+  async calculateQuestionPriorities(patterns, activatedPathways, questions) {
+    const priorityScores = {};
+
+    for (const question of questions) {
+      let score = 1.0; // Base score
+
+      // Boost questions related to activated pathways
+      if (activatedPathways && activatedPathways.length > 0) {
+        for (const pathway of activatedPathways) {
+          if (pathway === 'adhd_pathway' && (question.subcategory === 'adhd' || question.instrument === 'ASRS-5')) {
+            score += 2.0;
+          }
+          if (pathway === 'autism_pathway' && (question.subcategory === 'autism' || question.instrument === 'AQ-10')) {
+            score += 2.0;
+          }
+          if (pathway === 'sensory_pathway' && question.instrument?.includes('SENSORY')) {
+            score += 1.5;
+          }
+        }
+      }
+
+      // Boost questions for traits with high variance or extreme scores
+      if (patterns && patterns.traits) {
+        const questionTrait = question.trait;
+        if (questionTrait && patterns.traits[questionTrait]) {
+          const traitScore = patterns.traits[questionTrait];
+          // Boost if trait score is extreme (high or low)
+          if (traitScore > 0.7 || traitScore < 0.3) {
+            score += 1.0;
+          }
+        }
+      }
+
+      // Boost questions with correlatedTraits that match current patterns
+      if (question.adaptive?.correlatedTraits && patterns && patterns.traits) {
+        for (const trait of question.adaptive.correlatedTraits) {
+          if (patterns.traits[trait]) {
+            score += 0.5;
+          }
+        }
+      }
+
+      // Apply diagnostic weight if present
+      if (question.adaptive?.diagnosticWeight) {
+        score *= question.adaptive.diagnosticWeight;
+      }
+
+      priorityScores[question._id] = score;
+    }
+
+    return priorityScores;
+  }
+
+  /**
    * Utility methods
    */
   calculateVariance(scores) {
@@ -827,13 +888,13 @@ class AdaptiveAssessmentEngine {
   /**
    * Generate assessment summary
    */
-  generateAdaptiveSummary(sessionData) {
+  async generateAdaptiveSummary(sessionData) {
     return {
       tier: sessionData.tier,
       totalQuestions: sessionData.responses.length,
-      pathwaysActivated: sessionData.adaptiveMetadata.pathways,
-      primaryProfile: this.determinePrimaryProfile(sessionData),
-      confidenceLevel: this.calculateConfidence(sessionData),
+      pathwaysActivated: sessionData.adaptiveMetadata?.pathwaysActivated || [],
+      primaryProfile: await this.determinePrimaryProfile(sessionData),
+      confidenceLevel: await this.calculateConfidence(sessionData),
       recommendations: this.generateRecommendations(sessionData)
     };
   }
@@ -880,7 +941,7 @@ class AdaptiveAssessmentEngine {
     confidence += patterns.consistency * 0.2;
 
     // Activated pathways = higher confidence
-    const pathwayCount = sessionData.adaptiveMetadata.pathways.length;
+    const pathwayCount = (sessionData.adaptiveMetadata?.pathwaysActivated || []).length;
     confidence += Math.min(pathwayCount * 0.05, 0.15);
 
     return Math.min(confidence, 0.95); // Cap at 95%
@@ -893,7 +954,7 @@ class AdaptiveAssessmentEngine {
       resources: []
     };
 
-    const pathways = sessionData.adaptiveMetadata.pathways;
+    const pathways = sessionData.adaptiveMetadata?.pathwaysActivated || [];
 
     // Generate pathway-specific recommendations
     if (pathways.includes('adhd_pathway')) {
@@ -1026,7 +1087,7 @@ class AdaptiveAssessmentEngine {
       if (allocation.core) {
         const coreQuestions = await QuestionBank.find({
           category: { $in: ['personality', 'neurodiversity'] },
-          _id: { $nin: excludeIds },
+          questionId: { $nin: excludeIds },
           tier: { $in: [tier, 'standard', 'core'] }
         }).limit(allocation.core.personality + allocation.core.neurodiversity);
 
@@ -1034,6 +1095,7 @@ class AdaptiveAssessmentEngine {
       }
 
       // Get pathway-specific questions
+      const usedQuestionIds = selectedQuestions.map(q => q.questionId);
       for (const [pathwayId, config] of Object.entries(allocation)) {
         if (pathwayId !== 'core' && pathwayId !== 'exploration' && config.categories) {
           const pathwayQuestions = await QuestionBank.find({
@@ -1042,10 +1104,11 @@ class AdaptiveAssessmentEngine {
               { subcategory: { $in: config.categories } },
               { tags: { $in: config.categories } }
             ],
-            _id: { $nin: [...excludeIds, ...selectedQuestions.map(q => q._id)] }
+            questionId: { $nin: [...excludeIds, ...usedQuestionIds] }
           }).limit(config.questions);
 
           selectedQuestions.push(...pathwayQuestions);
+          usedQuestionIds.push(...pathwayQuestions.map(q => q.questionId));
         }
       }
 
@@ -1053,7 +1116,7 @@ class AdaptiveAssessmentEngine {
       if (allocation.exploration) {
         const remainingCount = allocation.exploration.questions;
         const explorationQuestions = await QuestionBank.find({
-          _id: { $nin: [...excludeIds, ...selectedQuestions.map(q => q._id)] },
+          questionId: { $nin: [...excludeIds, ...selectedQuestions.map(q => q.questionId)] },
           weight: { $gte: 0.6 }
         })
           .sort({ weight: -1 })
@@ -1093,7 +1156,7 @@ class AdaptiveAssessmentEngine {
           { subcategory: { $regex: /adhd|autism|executive|sensory/i } },
           { tags: { $in: ['neurodiversity', 'adhd', 'autism', 'executive_function'] } }
         ],
-        _id: { $nin: [...excludeIds, ...currentQuestions.map(q => q._id)] }
+        questionId: { $nin: [...excludeIds, ...currentQuestions.map(q => q.questionId)] }
       }).limit(additionalNeeded);
 
       neurodiversityQuestions.push(...additionalQuestions);

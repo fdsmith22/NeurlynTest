@@ -5,7 +5,7 @@
 
 class APIClient {
   constructor() {
-    this.baseURL = window.location.hostname === 'localhost' ? 'http://localhost:3008' : '';
+    this.baseURL = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
     this.cache = new Map();
     this.cacheTimeout = 5 * 60 * 1000; // 5 minutes
   }
@@ -364,10 +364,16 @@ class APIClient {
    * Start a new adaptive assessment
    */
   async startAdaptiveAssessment(options = {}) {
-    const { tier = 'standard', concerns = [], demographics = {}, sessionId = null } = options;
+    const {
+      tier = 'standard',
+      concerns = [],
+      demographics = {},
+      sessionId = null,
+      useIntelligentSelector = false
+    } = options;
 
     try {
-      const response = await fetch(`${this.baseURL}/api/assessments/free/start`, {
+      const response = await fetch(`${this.baseURL}/api/adaptive/start`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -376,7 +382,8 @@ class APIClient {
           tier,
           concerns,
           demographics,
-          sessionId
+          sessionId,
+          useIntelligentSelector
         })
       });
 
@@ -394,7 +401,11 @@ class APIClient {
       this.currentSessionId = data.sessionId;
 
       console.log('Adaptive assessment started:', data.sessionId);
-      return data;
+      // Normalize response format
+      return {
+        ...data,
+        questions: data.currentBatch || data.questions || []
+      };
     } catch (error) {
       console.error('Failed to start adaptive assessment:', error);
       throw error;
@@ -406,15 +417,14 @@ class APIClient {
    */
   async completeBaseline(sessionId, baselineResponses) {
     try {
-      const response = await fetch(`${this.baseURL}/api/assessments/free/baseline-complete`, {
+      const response = await fetch(`${this.baseURL}/api/adaptive/next`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           sessionId,
-          baselineResponses,
-          tier: this.currentTier || 'standard'
+          responses: baselineResponses
         })
       });
 
@@ -429,7 +439,11 @@ class APIClient {
       }
 
       console.log('Baseline completed, moving to adaptive phase');
-      return data;
+      // Normalize response format
+      return {
+        ...data,
+        adaptiveQuestions: data.nextQuestions || data.currentBatch || []
+      };
     } catch (error) {
       console.error('Failed to complete baseline:', error);
       throw error;
@@ -441,14 +455,14 @@ class APIClient {
    */
   async getNextQuestion(sessionId, currentResponse = null) {
     try {
-      const response = await fetch(`${this.baseURL}/api/assessments/free/next-question`, {
+      const response = await fetch(`${this.baseURL}/api/adaptive/next`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           sessionId,
-          currentResponse
+          responses: currentResponse ? [currentResponse] : []
         })
       });
 
@@ -462,7 +476,12 @@ class APIClient {
         throw new Error(data.error || 'Failed to get next question');
       }
 
-      return data;
+      // Normalize response format
+      return {
+        ...data,
+        question: data.nextQuestion || data.question,
+        questions: data.nextQuestions || data.currentBatch || data.questions || []
+      };
     } catch (error) {
       console.error('Failed to get next question:', error);
       throw error;
@@ -474,7 +493,7 @@ class APIClient {
    */
   async completeAdaptiveAssessment(sessionId) {
     try {
-      const response = await fetch(`${this.baseURL}/api/assessment/adaptive/complete`, {
+      const response = await fetch(`${this.baseURL}/api/adaptive/complete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

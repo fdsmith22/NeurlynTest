@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const QuestionBank = require('../models/QuestionBank');
 
 async function checkDatabase() {
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
 
   const stats = await QuestionBank.aggregate([
     {

@@ -11,7 +11,7 @@ const QuestionBank = require('../models/QuestionBank');
 
 async function addComprehensiveQuestions() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
     console.log('✅ Connected to MongoDB');
 
     const comprehensiveQuestions = [

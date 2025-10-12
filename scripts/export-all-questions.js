@@ -14,7 +14,7 @@ const path = require('path');
 async function exportAllQuestions() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/neurlyn-test');
     // console.log('Connected to MongoDB');
 
     // Fetch all questions

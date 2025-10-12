@@ -1,0 +1,5265 @@
+{
+  "id": "rpt_1759237824489_fjpnfrf8n",
+  "timestamp": "2025-09-30T13:10:24.489Z",
+  "tier": "comprehensive",
+  "metadata": {
+    "totalQuestions": 62,
+    "completionTime": 866482.1038494916,
+    "responseQuality": {
+      "overall": "moderate",
+      "score": 70,
+      "avgResponseTime": 3491,
+      "uniquenessRatio": 0.08064516129032258,
+      "flags": [
+        "possible_straight_lining"
+      ]
+    },
+    "age": 25,
+    "pattern": "neurodivergent",
+    "assessmentTier": "comprehensive",
+    "sessionId": "session_1759237824347_0fwfvvl27"
+  },
+  "archetype": {
+    "name": "Creative Explorer",
+    "description": "navigating life with emotional depth and creative spontaneity.",
+    "detailed_explanation": "Your high emotional sensitivity combined with flexible structure creates a unique approach to life. You experience things deeply and use that emotional intelligence to fuel creative expression.",
+    "strengths": [
+      "Emotional intelligence",
+      "Creative expression",
+      "Adaptability",
+      "Empathetic understanding"
+    ],
+    "ideal_environments": [
+      "Creative arts",
+      "Counseling",
+      "Design",
+      "Human services"
+    ],
+    "growth_edge": "Develop routines that support your emotional well-being while maintaining creative freedom.",
+    "famous_examples": "Vincent van Gogh, Frida Kahlo, Robin Williams",
+    "population_percentage": "< 10%"
+  },
+  "personality": {
+    "bigFive": {
+      "openness": 54,
+      "conscientiousness": 42,
+      "extraversion": 52,
+      "agreeableness": 54,
+      "neuroticism": 58
+    },
+    "summary": "You are ambivert with balanced social energy. Your personality archetype is the \"Creative Explorer\" - navigating life with emotional depth and creative spontaneity.",
+    "subDimensions": {
+      "openness": {
+        "overall": 54,
+        "subScores": {
+          "intellectualCuriosity": {
+            "score": 45.90473803232013,
+            "name": "Intellectual Curiosity",
+            "description": "Drive to understand complex ideas and systems",
+            "level": "Moderate"
+          },
+          "aestheticSensitivity": {
+            "score": 53.92619245016071,
+            "name": "Aesthetic Sensitivity",
+            "description": "Appreciation for art, beauty, and creative expression",
+            "level": "Moderate"
+          },
+          "imagination": {
+            "score": 45.33321974413947,
+            "name": "Imagination",
+            "description": "Tendency to create rich mental worlds and possibilities",
+            "level": "Moderate"
+          },
+          "willingnessToExperiment": {
+            "score": 52.43734278891343,
+            "name": "Willingness to Experiment",
+            "description": "Comfort with trying new approaches and experiences",
+            "level": "Moderate"
+          }
+        },
+        "dominantFacet": "aestheticSensitivity",
+        "weakestFacet": "imagination",
+        "balance": 96.17680020702068
+      },
+      "conscientiousness": {
+        "overall": 42,
+        "subScores": {
+          "organization": {
+            "score": 47.15595186607878,
+            "name": "Organization",
+            "description": "Ability to create and maintain structured systems",
+            "level": "Moderate"
+          },
+          "selfDiscipline": {
+            "score": 46.89260569006851,
+            "name": "Self-Discipline",
+            "description": "Capacity to persist despite challenges or distractions",
+            "level": "Moderate"
+          },
+          "achievementStriving": {
+            "score": 53.59313113952655,
+            "name": "Achievement-Striving",
+            "description": "Drive to accomplish goals and excel",
+            "level": "Moderate"
+          },
+          "cautiousness": {
+            "score": 48.17851868847983,
+            "name": "Cautiousness",
+            "description": "Tendency to think before acting",
+            "level": "Moderate"
+          }
+        },
+        "dominantFacet": "achievementStriving",
+        "weakestFacet": "selfDiscipline",
+        "balance": 97.279465670055
+      },
+      "extraversion": {
+        "overall": 52,
+        "subScores": {
+          "sociability": {
+            "score": 53.03516897879042,
+            "name": "Sociability",
+            "description": "Enjoyment of social interactions and company",
+            "level": "Moderate"
+          },
+          "assertiveness": {
+            "score": 51.60867954493595,
+            "name": "Assertiveness",
+            "description": "Tendency to take charge and express opinions",
+            "level": "Moderate"
+          },
+          "energyLevel": {
+            "score": 46.7046669835402,
+            "name": "Energy Level",
+            "description": "General activity level and enthusiasm",
+            "level": "Moderate"
+          },
+          "positiveEmotions": {
+            "score": 52.71705422090557,
+            "name": "Positive Emotions",
+            "description": "Tendency to experience and express joy",
+            "level": "Moderate"
+          }
+        },
+        "dominantFacet": "sociability",
+        "weakestFacet": "energyLevel",
+        "balance": 97.45493174781302
+      },
+      "agreeableness": {
+        "overall": 54,
+        "subScores": {
+          "trust": {
+            "score": 53.187405167650844,
+            "name": "Trust",
+            "description": "Belief in others' good intentions",
+            "level": "Moderate"
+          },
+          "cooperation": {
+            "score": 46.36215712310364,
+            "name": "Cooperation",
+            "description": "Willingness to work with others harmoniously",
+            "level": "Moderate"
+          },
+          "altruism": {
+            "score": 49.27994086797401,
+            "name": "Altruism",
+            "description": "Genuine concern for others' welfare",
+            "level": "Moderate"
+          },
+          "modesty": {
+            "score": 54.40120428752505,
+            "name": "Modesty",
+            "description": "Humility and lack of pretension",
+            "level": "Moderate"
+          },
+          "sympathy": {
+            "score": 52.11324711860589,
+            "name": "Sympathy",
+            "description": "Emotional responsiveness to others' feelings",
+            "level": "Moderate"
+          }
+        },
+        "dominantFacet": "modesty",
+        "weakestFacet": "cooperation",
+        "balance": 97.10045589307784
+      },
+      "neuroticism": {
+        "overall": 58,
+        "subScores": {
+          "anxiety": {
+            "score": 48.158074721763626,
+            "name": "Anxiety",
+            "description": "Tendency to worry and feel nervous",
+            "level": "Moderate"
+          },
+          "anger": {
+            "score": 54.10139090496507,
+            "name": "Anger",
+            "description": "Propensity for frustration and irritation",
+            "level": "Moderate"
+          },
+          "depression": {
+            "score": 46.93976347127439,
+            "name": "Depression",
+            "description": "Susceptibility to feelings of sadness",
+            "level": "Moderate"
+          },
+          "selfConsciousness": {
+            "score": 54.967138946490756,
+            "name": "Self-Consciousness",
+            "description": "Sensitivity to others' opinions",
+            "level": "Moderate"
+          },
+          "vulnerability": {
+            "score": 53.86633297651844,
+            "name": "Vulnerability",
+            "description": "Difficulty coping with stress",
+            "level": "Moderate"
+          }
+        },
+        "dominantFacet": "selfConsciousness",
+        "weakestFacet": "depression",
+        "balance": 96.64454812109761
+      }
+    },
+    "additionalDimensions": {
+      "emotionalIntelligence": {
+        "overall": 47.5,
+        "subScores": {
+          "selfAwareness": {
+            "score": 47,
+            "name": "Self-Awareness",
+            "description": "Understanding of own emotions and motivations",
+            "level": "Moderate"
+          },
+          "selfRegulation": {
+            "score": 42,
+            "name": "Self-Regulation",
+            "description": "Ability to manage emotional responses",
+            "level": "Moderate"
+          },
+          "motivation": {
+            "score": 46,
+            "name": "Intrinsic Motivation",
+            "description": "Internal drive to achieve and improve",
+            "level": "Moderate"
+          },
+          "empathy": {
+            "score": 54,
+            "name": "Empathy",
+            "description": "Ability to understand others' emotions",
+            "level": "Moderate"
+          },
+          "socialSkills": {
+            "score": 53,
+            "name": "Social Skills",
+            "description": "Effectiveness in managing relationships",
+            "level": "Moderate"
+          }
+        },
+        "interpretation": "You have moderate emotional awareness with room for growth."
+      },
+      "cognitivePatterns": {
+        "overall": 48.2,
+        "subScores": {
+          "analyticalThinking": {
+            "score": 46,
+            "name": "Analytical Thinking",
+            "description": "Logical, systematic problem-solving approach",
+            "level": "Moderate"
+          },
+          "creativeThinking": {
+            "score": 54,
+            "name": "Creative Thinking",
+            "description": "Ability to generate novel ideas and solutions",
+            "level": "Moderate"
+          },
+          "practicalThinking": {
+            "score": 43,
+            "name": "Practical Thinking",
+            "description": "Focus on real-world applications and results",
+            "level": "Moderate"
+          },
+          "strategicThinking": {
+            "score": 48,
+            "name": "Strategic Thinking",
+            "description": "Long-term planning and big-picture perspective",
+            "level": "Moderate"
+          }
+        },
+        "interpretation": "You show balanced cognitive abilities across different domains."
+      },
+      "communicationStyle": {
+        "overall": 47.9,
+        "subScores": {
+          "directness": {
+            "score": 47,
+            "name": "Directness",
+            "description": "Straightforward vs diplomatic communication",
+            "level": "Moderate"
+          },
+          "formality": {
+            "score": 44,
+            "name": "Formality",
+            "description": "Professional vs casual communication preference",
+            "level": "Moderate"
+          },
+          "detailOrientation": {
+            "score": 46,
+            "name": "Detail Orientation",
+            "description": "Specific vs general information preference",
+            "level": "Moderate"
+          },
+          "emotionalExpression": {
+            "score": 54,
+            "name": "Emotional Expression",
+            "description": "Open vs reserved emotional communication",
+            "level": "Moderate"
+          }
+        },
+        "interpretation": "Your communication is generally effective with some areas for refinement."
+      },
+      "workPreferences": {
+        "overall": 49.1,
+        "subScores": {
+          "autonomy": {
+            "score": 49,
+            "name": "Autonomy",
+            "description": "Preference for independent vs guided work",
+            "level": "Moderate"
+          },
+          "structure": {
+            "score": 43,
+            "name": "Structure",
+            "description": "Need for clear guidelines vs flexibility",
+            "level": "Moderate"
+          },
+          "collaboration": {
+            "score": 53,
+            "name": "Collaboration",
+            "description": "Team vs individual work preference",
+            "level": "Moderate"
+          },
+          "innovation": {
+            "score": 52,
+            "name": "Innovation",
+            "description": "Creating new vs improving existing",
+            "level": "Moderate"
+          }
+        },
+        "interpretation": "You show flexibility in work approaches with some preferences."
+      },
+      "stressResponse": {
+        "overall": 46.8,
+        "subScores": {
+          "copingMechanisms": {
+            "score": 46,
+            "name": "Coping Mechanisms",
+            "description": "Strategies for managing stress",
+            "level": "Moderate"
+          },
+          "resilience": {
+            "score": 42,
+            "name": "Resilience",
+            "description": "Ability to bounce back from setbacks",
+            "level": "Moderate"
+          },
+          "triggerSensitivity": {
+            "score": 57,
+            "name": "Trigger Sensitivity",
+            "description": "Reactivity to stress triggers",
+            "level": "Moderate"
+          },
+          "recoverySpeed": {
+            "score": 45,
+            "name": "Recovery Speed",
+            "description": "Time needed to return to baseline",
+            "level": "Moderate"
+          }
+        },
+        "interpretation": "You have moderate stress resilience with typical responses."
+      }
+    }
+  },
+  "percentiles": {
+    "openness": 48,
+    "conscientiousness": 30,
+    "extraversion": 45,
+    "agreeableness": 48,
+    "neuroticism": 54
+  },
+  "psychologicalProfile": {
+    "attachment": {
+      "style": "secure",
+      "confidence": 0.5,
+      "characteristics": {
+        "selfView": "positive",
+        "othersView": "positive",
+        "emotionalRegulation": "effective",
+        "relationshipSatisfaction": "high"
+      },
+      "relationshipPatterns": [
+        "Comfortable with intimacy and independence",
+        "Effective communication during conflict",
+        "Trust and emotional availability"
+      ],
+      "workplaceImpact": {
+        "leadership": "Transformational style",
+        "teamwork": "Collaborative and supportive",
+        "stressResponse": "Adaptive problem-solving",
+        "performance": "Consistent and reliable"
+      },
+      "developmentAreas": [
+        "Consistent responsive caregiving",
+        "Emotional attunement in childhood",
+        "Safe exploration environment"
+      ],
+      "prevalence": 0.6
+    },
+    "cognitiveStyle": {
+      "primaryStyle": "integrated",
+      "analyticalScore": 64,
+      "intuitiveScore": 78,
+      "characteristics": {
+        "processingSpeed": "adaptive",
+        "decisionMaking": "contextual",
+        "problemSolving": "flexible",
+        "informationPreference": "balanced"
+      },
+      "developmentPath": [
+        "Metacognitive awareness",
+        "Deliberate practice",
+        "Cognitive flexibility training",
+        "Mindfulness meditation"
+      ]
+    },
+    "emotionalIntelligence": {
+      "overall": 49,
+      "dimensions": {
+        "selfAwareness": {
+          "score": 47,
+          "level": "medium",
+          "components": [
+            "Emotional awareness",
+            "Accurate self-assessment",
+            "Self-confidence"
+          ],
+          "development": [
+            "Emotion journaling",
+            "Body scan meditation",
+            "Feeling wheel practice",
+            "Mindful check-ins"
+          ]
+        },
+        "selfManagement": {
+          "score": 43,
+          "level": "medium",
+          "components": [
+            "Emotional self-control",
+            "Adaptability",
+            "Achievement orientation",
+            "Positive outlook"
+          ],
+          "strategies": {
+            "cognitive": [
+              "Reframing",
+              "Problem-solving",
+              "Planning"
+            ],
+            "behavioral": [
+              "Exercise",
+              "Progressive relaxation",
+              "Behavioral activation"
+            ],
+            "emotional": [
+              "Acceptance",
+              "Self-compassion",
+              "Emotional expression"
+            ],
+            "social": [
+              "Support seeking",
+              "Communication",
+              "Boundary setting"
+            ]
+          }
+        },
+        "socialAwareness": {
+          "score": 53,
+          "level": "medium",
+          "components": [
+            "Empathy",
+            "Organizational awareness",
+            "Service orientation"
+          ]
+        },
+        "relationshipManagement": {
+          "score": 51,
+          "level": "medium",
+          "components": [
+            "Influence",
+            "Conflict management",
+            "Leadership",
+            "Teamwork"
+          ],
+          "skills": {
+            "communication": [
+              "Active listening",
+              "Nonviolent communication",
+              "Assertiveness"
+            ],
+            "conflictResolution": [
+              "Mediation",
+              "Negotiation",
+              "De-escalation"
+            ],
+            "collaboration": [
+              "Team building",
+              "Consensus building",
+              "Facilitation"
+            ]
+          }
+        }
+      },
+      "correlations": {
+        "jobPerformance": 0.58,
+        "leadership": 0.67,
+        "wellbeing": 0.72,
+        "relationshipQuality": 0.65
+      }
+    },
+    "stressResponse": "Adaptive - adjusts response based on situation",
+    "decisionMaking": {
+      "primaryStyle": "dependent",
+      "styleScores": {
+        "rational": 46,
+        "intuitive": 55,
+        "dependent": 56,
+        "avoidant": 56,
+        "spontaneous": 55
+      },
+      "process": "Seeking advice and direction",
+      "accuracy": "Depends on advisor quality",
+      "satisfaction": "Moderate",
+      "enhancementStrategies": [
+        "Confidence building",
+        "Decision practice",
+        "Self-trust exercises",
+        "Gradual independence"
+      ]
+    },
+    "motivation": {
+      "primaryType": "intrinsic",
+      "intrinsicScore": 47,
+      "extrinsicScore": 51,
+      "drivers": [
+        "Autonomy",
+        "Mastery",
+        "Purpose"
+      ],
+      "characteristics": {
+        "persistence": "High",
+        "creativity": "Enhanced",
+        "wellbeing": "Elevated",
+        "performance": "Sustainable"
+      },
+      "cultivationStrategies": [
+        "Choice provision",
+        "Skill-challenge balance",
+        "Meaning connection",
+        "Progress tracking"
+      ]
+    },
+    "creativity": {
+      "creativityScore": 52,
+      "level": "miniC",
+      "levelDescription": "Personal meaningful insights",
+      "examples": [
+        "Personal problem solving",
+        "Daily innovations",
+        "Learning insights"
+      ],
+      "cultivation": [
+        "Journaling",
+        "Reflection",
+        "Experimentation"
+      ],
+      "cognitiveStyle": "convergent",
+      "strengths": [
+        "Idea evaluation",
+        "Implementation",
+        "Refinement"
+      ],
+      "exercises": [
+        "Criteria matrices",
+        "Prototyping",
+        "Testing"
+      ]
+    }
+  },
+  "detailed": {
+    "cognitiveStyle": {
+      "processingMode": "Balanced",
+      "decisionStyle": "Balanced",
+      "learningPreference": "Adaptive",
+      "cognitiveStrengths": [
+        "Balanced cognitive profile"
+      ],
+      "thinkingPatterns": [
+        "balanced-processing"
+      ],
+      "problemSolvingApproach": "Balanced analytical and creative approach",
+      "confidence": 0.75
+    },
+    "neurodiversity": {
+      "adhd": {
+        "score": 10,
+        "indicators": {
+          "inattention": 1,
+          "hyperactivity": 2,
+          "impulsivity": 0
+        },
+        "severity": "minimal",
+        "traits": [],
+        "percentile": 70
+      },
+      "autism": {
+        "score": 38,
+        "indicators": {
+          "social": 0,
+          "sensory": 7,
+          "routine": 0,
+          "communication": 0,
+          "interests": 0
+        },
+        "severity": "mild",
+        "traits": [],
+        "percentile": 95
+      },
+      "executiveFunction": {
+        "overall": 2.25,
+        "domains": {
+          "planning": 2,
+          "organization": 0,
+          "timeManagement": 6,
+          "workingMemory": 6,
+          "emotionalRegulation": 0,
+          "taskInitiation": 4,
+          "sustainedAttention": 0,
+          "flexibility": 0
+        },
+        "strengths": [
+          "Planning",
+          "Time management",
+          "Working memory",
+          "Task initiation"
+        ],
+        "challenges": []
+      },
+      "sensoryProfile": {
+        "sensitivity": 3,
+        "avoidance": 1,
+        "seeking": 0,
+        "registration": 0,
+        "patterns": [
+          "texture_sensitivity",
+          "light_sensitivity",
+          "light_sensitivity",
+          "sound_sensitivity",
+          "light_sensitivity"
+        ],
+        "visual": 5,
+        "auditory": 6,
+        "tactile": 8,
+        "vestibular": 0,
+        "oral": 0,
+        "olfactory": 0
+      },
+      "maskingBehaviors": {
+        "score": 0,
+        "indicators": [],
+        "compensationStrategies": []
+      },
+      "patterns": [],
+      "insights": [],
+      "recommendations": [
+        {
+          "category": "Autism Spectrum Support",
+          "suggestions": [
+            "Consider autism assessment by a qualified professional",
+            "Create sensory-friendly environments when possible",
+            "Use visual schedules and clear communication",
+            "Build in time for special interests as self-care",
+            "Connect with neurodivergent communities for support",
+            "Explore sensory accommodations (noise-canceling headphones, fidgets, etc.)"
+          ]
+        }
+      ],
+      "interpretations": {
+        "autism": {
+          "rawScore": 38,
+          "scale": {
+            "level": "Very High",
+            "value": 5,
+            "max": 5,
+            "description": "Strong trait indicators"
+          },
+          "percentile": 98,
+          "meaning": "Your responses indicate autism spectrum traits more strongly than approximately 98% of the general population. This suggests significant differences in how you process social information, sensory input, and routines.",
+          "functionalImpact": [
+            {
+              "area": "Sensory Processing",
+              "severity": "moderate",
+              "description": "Certain sensory inputs may be uncomfortable or distracting, though you have likely developed some coping strategies."
+            }
+          ],
+          "nextSteps": [
+            "Consider seeking evaluation from a qualified clinician specializing in autism assessment (psychologist, psychiatrist, or neuropsychologist)",
+            "Research autism in adults to better understand your experiences",
+            "Connect with autistic communities for peer support and shared experiences",
+            "Explore accommodations that might help (noise-canceling headphones, written instructions, predictable schedules)",
+            "Consider whether disclosure in workplace/relationships might reduce masking burden"
+          ],
+          "context": {
+            "important": "This is NOT a diagnostic tool",
+            "explanation": "These scores reflect trait indicators based on your responses. Autism is diagnosed by qualified clinicians through comprehensive assessment. Many autistic traits exist on a spectrum in the general population.",
+            "validatedInstruments": "Screening questions based on AQ-10 and clinical autism assessment criteria",
+            "limitations": "Self-report measures may be influenced by self-awareness, masking behaviors, and current context. Female and non-binary individuals may present differently than traditional diagnostic criteria expect."
+          }
+        },
+        "adhd": {
+          "rawScore": 10,
+          "scale": {
+            "level": "Moderate-High",
+            "value": 3,
+            "max": 5,
+            "description": "Moderate trait indicators"
+          },
+          "percentile": 85,
+          "meaning": "Your responses show ADHD traits more strongly than approximately 85% of the general population. This indicates notable difficulties with focus, organization, or impulse regulation.",
+          "functionalImpact": [],
+          "nextSteps": [
+            "Consider professional evaluation if symptoms cause distress or impairment",
+            "Explore ADHD-friendly organization systems and time management tools",
+            "Learn about executive function challenges and compensatory strategies",
+            "Consider whether symptoms vary with medication, sleep, or stress levels"
+          ]
+        },
+        "sensory": {
+          "visual": {
+            "rawScore": 5,
+            "domain": "visual",
+            "scale": {
+              "level": "Moderate-High",
+              "value": 3,
+              "max": 5,
+              "description": "Moderate sensitivity"
+            },
+            "meaning": "You experience moderate sensitivity to lights, patterns, visual clutter. Certain sensory situations are uncomfortable and you likely have developed preferences or avoidance strategies.",
+            "functionalImpact": [
+              "Difficulty in fluorescent-lit environments (offices, stores)",
+              "Overwhelm in visually busy spaces"
+            ],
+            "strategies": [
+              "Use blue-light filtering glasses or screen filters",
+              "Adjust lighting in your environment (lamps vs overhead)",
+              "Wear sunglasses or hats to reduce light input",
+              "Create visual calm zones with minimal patterns/clutter",
+              "Use privacy screens or room dividers in open spaces"
+            ]
+          },
+          "auditory": {
+            "rawScore": 6,
+            "domain": "auditory",
+            "scale": {
+              "level": "Moderate-High",
+              "value": 3,
+              "max": 5,
+              "description": "Moderate sensitivity"
+            },
+            "meaning": "You experience moderate sensitivity to sounds, noise levels, background noise. Certain sensory situations are uncomfortable and you likely have developed preferences or avoidance strategies.",
+            "functionalImpact": [
+              "Difficulty concentrating in noisy environments",
+              "Need for noise-canceling headphones"
+            ],
+            "strategies": [
+              "Use noise-canceling headphones or earplugs",
+              "Create quiet spaces for work/rest",
+              "Use white noise or preferred music to mask disturbing sounds",
+              "Request accommodations for quiet work environments",
+              "Plan activities during quieter times of day"
+            ]
+          },
+          "tactile": {
+            "rawScore": 8,
+            "domain": "tactile",
+            "scale": {
+              "level": "High",
+              "value": 4,
+              "max": 5,
+              "description": "Significant sensitivity"
+            },
+            "meaning": "You experience significant sensitivity to touch, textures, clothing. These sensory experiences regularly impact your comfort and may influence where you go, what you wear, or how you structure your environment.",
+            "functionalImpact": [
+              "Difficulty with certain clothing textures",
+              "Discomfort with tags, seams, or tight clothing",
+              "Strong preferences for specific fabrics",
+              "Challenges with physical touch or textures"
+            ],
+            "strategies": [
+              "Remove clothing tags and choose seamless garments",
+              "Identify comfortable fabrics (often soft, natural fibers)",
+              "Wash new clothes multiple times before wearing",
+              "Communicate touch preferences to close contacts",
+              "Use weighted blankets or compression clothing if helpful"
+            ]
+          },
+          "vestibular": {
+            "rawScore": 0,
+            "domain": "vestibular",
+            "scale": {
+              "level": "Typical",
+              "value": 0,
+              "max": 5,
+              "description": "Typical processing"
+            },
+            "meaning": "Your responses suggest typical sensitivity to movement, balance, spatial orientation.",
+            "functionalImpact": [],
+            "strategies": []
+          },
+          "oral": {
+            "rawScore": 0,
+            "domain": "oral",
+            "scale": {
+              "level": "Typical",
+              "value": 0,
+              "max": 5,
+              "description": "Typical processing"
+            },
+            "meaning": "Your responses suggest typical sensitivity to food textures, tastes, oral sensations.",
+            "functionalImpact": [],
+            "strategies": []
+          },
+          "olfactory": {
+            "rawScore": 0,
+            "domain": "olfactory",
+            "scale": {
+              "level": "Typical",
+              "value": 0,
+              "max": 5,
+              "description": "Typical processing"
+            },
+            "meaning": "Your responses suggest typical sensitivity to smells, scents, odors.",
+            "functionalImpact": [],
+            "strategies": []
+          }
+        }
+      }
+    },
+    "insights": {
+      "strengths": [
+        "Strong Planning abilities",
+        "Strong Time management abilities",
+        "Strong Working memory abilities",
+        "Strong Task initiation abilities"
+      ],
+      "challenges": [
+        "Identifying areas for focused development"
+      ],
+      "opportunities": [
+        "Roles leveraging systematic thinking and precision"
+      ],
+      "workStyle": "Balanced",
+      "uniqueInsights": [
+        {
+          "insight": "Adaptive Ambivert",
+          "description": "You have the rare ability to adapt your social energy to different situations.",
+          "explanation": "Your balanced extraversion score (52%) means you're neither strongly introverted nor extraverted. This gives you unique flexibility in social situations.",
+          "implications": "You can work effectively alone or in teams, making you highly adaptable in various work environments.",
+          "population_context": "True ambiverts represent about 20% of the population."
+        }
+      ],
+      "explanations": {},
+      "implications": {},
+      "neurodiversityInsights": [],
+      "populationContext": {
+        "openness": {
+          "score": 54,
+          "percentile": "average",
+          "percentage": 51,
+          "interpretation": "You balance creativity with practicality, being open to new ideas while maintaining some traditional values.",
+          "comparison": "Your openness score of 54% is higher than approximately 51% of the population."
+        },
+        "conscientiousness": {
+          "score": 42,
+          "percentile": "average",
+          "percentage": 33,
+          "interpretation": "You balance structure with flexibility, maintaining organization while adapting to changing circumstances.",
+          "comparison": "Your conscientiousness score of 42% is higher than approximately 33% of the population."
+        },
+        "extraversion": {
+          "score": 52,
+          "percentile": "average",
+          "percentage": 48,
+          "interpretation": "You're comfortable in both social and solitary settings, adapting your energy to the situation.",
+          "comparison": "Your extraversion score of 52% is higher than approximately 48% of the population."
+        },
+        "agreeableness": {
+          "score": 54,
+          "percentile": "average",
+          "percentage": 51,
+          "interpretation": "You balance concern for others with self-advocacy, being helpful while maintaining boundaries.",
+          "comparison": "Your agreeableness score of 54% is higher than approximately 51% of the population."
+        },
+        "neuroticism": {
+          "score": 58,
+          "percentile": "average",
+          "percentage": 57,
+          "interpretation": "You experience normal emotional ups and downs, with generally good emotional regulation.",
+          "comparison": "Your neuroticism score of 58% is higher than approximately 57% of the population."
+        }
+      }
+    },
+    "recommendations": {
+      "immediate": [
+        {
+          "title": "Personal Development",
+          "description": "Continue balanced personal development",
+          "steps": [
+            "Continue balanced personal development"
+          ]
+        },
+        {
+          "title": "Professional Excellence",
+          "description": "Leverage your balanced profile for versatile roles",
+          "steps": [
+            "Leverage your balanced profile for versatile roles"
+          ]
+        }
+      ],
+      "longTerm": [
+        {
+          "title": "Relationship Enhancement",
+          "description": "Maintain open communication about your needs",
+          "steps": [
+            "Maintain open communication about your needs"
+          ]
+        },
+        {
+          "title": "Continuous Growth",
+          "description": "Long-term development based on your personality profile",
+          "steps": []
+        }
+      ],
+      "personal": [
+        "Continue balanced personal development"
+      ],
+      "professional": [
+        "Leverage your balanced profile for versatile roles"
+      ],
+      "relationships": [
+        "Maintain open communication about your needs"
+      ],
+      "neurodiversity": [
+        {
+          "category": "Autism Spectrum Support",
+          "suggestions": [
+            "Consider autism assessment by a qualified professional",
+            "Create sensory-friendly environments when possible",
+            "Use visual schedules and clear communication",
+            "Build in time for special interests as self-care",
+            "Connect with neurodivergent communities for support",
+            "Explore sensory accommodations (noise-canceling headphones, fidgets, etc.)"
+          ]
+        }
+      ],
+      "integrated": []
+    },
+    "behavioralFingerprint": {
+      "signature": {
+        "primaryPattern": "Balanced",
+        "secondaryPatterns": [
+          "Adaptive",
+          "Growth-Oriented",
+          "Reflective"
+        ],
+        "uniqueMarkers": {
+          "responseStyle": "Thoughtful",
+          "consistencyPattern": "Stable",
+          "uniqueTraits": [
+            "Authentic",
+            "Complex",
+            "Nuanced"
+          ]
+        },
+        "stabilityIndex": 0.82
+      },
+      "patterns": {
+        "consistency": {
+          "score": 0.85,
+          "pattern": "Highly Consistent",
+          "reliability": "High"
+        },
+        "temporalPatterns": {
+          "averageResponseTime": 3491.008471681079,
+          "pattern": "Thoughtful Responder",
+          "consistency": "Stable"
+        },
+        "decisionStyle": "Analytical",
+        "emotionalReactivity": {
+          "level": "Moderate",
+          "stability": "Stable",
+          "range": "Balanced"
+        }
+      },
+      "tendencies": {
+        "stressResponse": "Adaptive - adjusts response based on situation",
+        "socialBehavior": "Selective - prefers quality over quantity",
+        "problemSolving": "Pragmatic-Flexible",
+        "motivationalDrivers": [
+          "Stability"
+        ],
+        "conflictStyle": "Direct - addresses issues head-on",
+        "learningPreferences": [
+          "Structured"
+        ]
+      },
+      "uniqueIdentifiers": {
+        "responseFingerprint": "FP-62-mg6ks0z2",
+        "behavioralDNA": "MMMMM",
+        "psychologicalProfile": {
+          "complexity": "High",
+          "coherence": "Integrated",
+          "maturity": "Developed"
+        }
+      },
+      "insights": [
+        "Your Balanced pattern reveals a unique approach to life",
+        "Key tendencies include Adaptive - adjusts response based on situation stress response",
+        "Your behavioral fingerprint suggests strong Authentic qualities"
+      ]
+    },
+    "relationshipInsights": {
+      "attachmentStyle": {
+        "style": "secure",
+        "confidence": 0.5,
+        "characteristics": {
+          "selfView": "positive",
+          "othersView": "positive",
+          "emotionalRegulation": "effective",
+          "relationshipSatisfaction": "high"
+        },
+        "relationshipPatterns": [
+          "Comfortable with intimacy and independence",
+          "Effective communication during conflict",
+          "Trust and emotional availability"
+        ],
+        "workplaceImpact": {
+          "leadership": "Transformational style",
+          "teamwork": "Collaborative and supportive",
+          "stressResponse": "Adaptive problem-solving",
+          "performance": "Consistent and reliable"
+        },
+        "developmentAreas": [
+          "Consistent responsive caregiving",
+          "Emotional attunement in childhood",
+          "Safe exploration environment"
+        ],
+        "prevalence": 0.6
+      },
+      "communicationStyle": {
+        "primaryMode": "Reflective",
+        "conflictResolution": "Diplomatic",
+        "emotionalExpression": "Balanced",
+        "listeningStyle": "Active",
+        "assertiveness": 56.4
+      },
+      "dynamics": {
+        "intimacyNeeds": "Moderate",
+        "boundaryStyle": "Flexible",
+        "trustPatterns": "Earned Trust",
+        "commitmentStyle": "Dedicated",
+        "socialEnergyBalance": "Social Recharge"
+      },
+      "compatibility": {
+        "idealPartnerTraits": [
+          "Understanding",
+          "Growth-minded",
+          "Authentic"
+        ],
+        "challengingDynamics": [
+          "Maintaining balance"
+        ],
+        "growthAreas": [
+          "Communication depth",
+          "Emotional availability"
+        ],
+        "strengthsInRelationships": []
+      },
+      "recommendations": [
+        "Build on your secure attachment strengths",
+        "Practice Reflective communication",
+        "Develop Moderate intimacy skills"
+      ],
+      "insights": "Your secure attachment style combined with Social Recharge creates unique relationship dynamics."
+    },
+    "careerInsights": {
+      "workStyle": "You bring a unique blend of traits to your work, adapting your style to different situations. Your balanced profile allows you to be versatile, shifting between independent and collaborative work as needed.",
+      "suitedRoles": "Various professional roles aligned with your personality profile",
+      "teamDynamics": "You adapt your team contribution style based on the situation and team needs. You can take various roles - from idea generator to implementer to supporter - making you a versatile team asset.",
+      "workEnvironment": "You thrive in balanced work environments that offer both structure and flexibility.",
+      "motivations": {
+        "primaryDrivers": [
+          "Achievement",
+          "Impact",
+          "Growth"
+        ],
+        "values": [
+          "Integrity",
+          "Excellence",
+          "Innovation"
+        ],
+        "rewards": [
+          "Autonomy",
+          "Mastery"
+        ],
+        "challengePreference": "Moderate",
+        "autonomyNeeds": 63.2
+      },
+      "idealEnvironment": {
+        "culture": "Balanced",
+        "pace": "Dynamic",
+        "structure": "Flat organization",
+        "socialAspects": "Independent work",
+        "physicalSpace": "Flexible workspace"
+      },
+      "careerPaths": [],
+      "development": {
+        "naturalStrengths": [],
+        "skillsToLeverage": [
+          "Strategic thinking",
+          "Problem solving"
+        ],
+        "areasForGrowth": [
+          "Delegation",
+          "Patience"
+        ],
+        "learningRecommendations": [
+          "Leadership development",
+          "Strategic planning"
+        ]
+      },
+      "insights": "Your Balanced work style aligns with careers in various fields.",
+      "recommendations": [
+        "Consider roles in Balanced cultures",
+        "Develop Delegation for career growth",
+        "Leverage your undefined strength"
+      ]
+    },
+    "subDimensions": {
+      "openness": {
+        "score": 54,
+        "facets": {
+          "imagination": {
+            "score": 58,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "artisticInterests": {
+            "score": 50,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "emotionality": {
+            "score": 63,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "adventurousness": {
+            "score": 57,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "intellect": {
+            "score": 35,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "liberalism": {
+            "score": 46,
+            "level": "Average",
+            "confidence": "Moderate"
+          }
+        },
+        "interpretation": "Balanced across facets",
+        "patterns": {
+          "dominant": "emotionality",
+          "range": "Moderate variation",
+          "coherence": "Integrated"
+        }
+      },
+      "conscientiousness": {
+        "score": 42,
+        "facets": {
+          "selfEfficacy": {
+            "score": 36,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "orderliness": {
+            "score": 64,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "dutifulness": {
+            "score": 46,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "achievementStriving": {
+            "score": 53,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "selfDiscipline": {
+            "score": 36,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "cautiousness": {
+            "score": 38,
+            "level": "Average",
+            "confidence": "Moderate"
+          }
+        },
+        "interpretation": "Balanced across facets",
+        "patterns": {
+          "dominant": "orderliness",
+          "range": "Moderate variation",
+          "coherence": "Integrated"
+        }
+      },
+      "extraversion": {
+        "score": 52,
+        "facets": {
+          "friendliness": {
+            "score": 46,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "gregariousness": {
+            "score": 55,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "assertiveness": {
+            "score": 54,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "activityLevel": {
+            "score": 56,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "excitementSeeking": {
+            "score": 50,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "cheerfulness": {
+            "score": 41,
+            "level": "Average",
+            "confidence": "Moderate"
+          }
+        },
+        "interpretation": "Balanced across facets",
+        "patterns": {
+          "dominant": "activityLevel",
+          "range": "Moderate variation",
+          "coherence": "Integrated"
+        }
+      },
+      "agreeableness": {
+        "score": 54,
+        "facets": {
+          "trust": {
+            "score": 44,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "morality": {
+            "score": 46,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "altruism": {
+            "score": 51,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "cooperation": {
+            "score": 63,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "modesty": {
+            "score": 44,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "sympathy": {
+            "score": 39,
+            "level": "Average",
+            "confidence": "Moderate"
+          }
+        },
+        "interpretation": "Balanced across facets",
+        "patterns": {
+          "dominant": "cooperation",
+          "range": "Moderate variation",
+          "coherence": "Integrated"
+        }
+      },
+      "neuroticism": {
+        "score": 58,
+        "facets": {
+          "anxiety": {
+            "score": 46,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "anger": {
+            "score": 40,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "depression": {
+            "score": 38,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "selfConsciousness": {
+            "score": 38,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "immoderation": {
+            "score": 43,
+            "level": "Average",
+            "confidence": "Moderate"
+          },
+          "vulnerability": {
+            "score": 35,
+            "level": "Average",
+            "confidence": "Moderate"
+          }
+        },
+        "interpretation": "Balanced across facets",
+        "patterns": {
+          "dominant": "anxiety",
+          "range": "Moderate variation",
+          "coherence": "Integrated"
+        }
+      }
+    },
+    "deeperNarrative": {
+      "narrative": "As a Creative Explorer, your unique psychological profile emerges from 62 carefully analyzed responses, revealing a rich tapestry of personality traits and behavioral patterns. Your personality journey shows remarkable groundedness combined with adaptability. Your core strengths of Emotional intelligence, Creative expression, Adaptability form the foundation of your unique approach to life. While you excel in many areas, growth opportunities exist in pushing comfort zones. Your future path holds tremendous potential for mastery and expertise.",
+      "personalJourney": "Your personality journey shows remarkable groundedness combined with adaptability.",
+      "uniqueStrengths": "Your core strengths of Emotional intelligence, Creative expression, Adaptability form the foundation of your unique approach to life.",
+      "growthOpportunities": "While you excel in many areas, growth opportunities exist in pushing comfort zones.",
+      "futureVision": "Your future path holds tremendous potential for mastery and expertise.",
+      "themes": [
+        "Growth",
+        "Connection",
+        "Purpose",
+        "Authenticity"
+      ],
+      "keyInsights": [
+        "Your personality shows remarkable depth and complexity",
+        "Key themes include growth, authenticity, and purpose",
+        "Your path forward involves continued self-discovery"
+      ],
+      "personalMythology": {
+        "archetype": "Creative Explorer",
+        "journey": "The path of self-discovery",
+        "quest": "To realize full potential",
+        "gifts": [
+          "Emotional intelligence",
+          "Creative expression",
+          "Adaptability",
+          "Empathetic understanding"
+        ]
+      }
+    },
+    "profiles": {
+      "cognitive": {
+        "processingStyle": "Balanced-Integrative",
+        "decisionMaking": "Balanced-Contextual",
+        "learningStyle": "Adaptive-Flexible",
+        "problemSolving": "Pragmatic-Flexible",
+        "strengths": [
+          "Pattern recognition"
+        ],
+        "description": "Your balanced cognitive approach allows you to adapt your thinking style to different situations and challenges."
+      },
+      "emotional": {
+        "regulation": "Adaptive",
+        "stressResponse": "Adaptive - adjusts response based on situation",
+        "patterns": "Balanced emotional expression",
+        "resilience": "Developing",
+        "description": "You experience a healthy range of emotions while maintaining good overall emotional balance and regulation."
+      },
+      "social": {
+        "style": "Adaptable-Balanced",
+        "preferences": [
+          "Flexible social engagement",
+          "Mixed social settings"
+        ],
+        "boundaries": "Flexible",
+        "energyBalance": "Social Recharge",
+        "description": "You adapt your social engagement style to the situation, balancing social time with personal space."
+      }
+    },
+    "explanations": {
+      "summary": "Detailed explanations available in comprehensive report",
+      "traits": {
+        "openness": 54,
+        "conscientiousness": 42,
+        "extraversion": 52,
+        "agreeableness": 54,
+        "neuroticism": 58
+      }
+    },
+    "patterns": {
+      "contributions": [
+        {
+          "questionId": "BFI_OPENNESS_1",
+          "questionText": "Question BFI_OPENNESS_1",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 3613.7118524776156,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_OPENNESS_2",
+          "questionText": "Question BFI_OPENNESS_2",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2512.363133126633,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_CONSCIENTIOUSNESS_9",
+          "questionText": "Question BFI_CONSCIENTIOUSNESS_9",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 4374.350841180302,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_CONSCIENTIOUSNESS_10",
+          "questionText": "Question BFI_CONSCIENTIOUSNESS_10",
+          "answer": 1,
+          "answerText": "Strongly Disagree",
+          "trait": "agreeableness",
+          "impact": -49,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 3264.4680596420435,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_EXTRAVERSION_17",
+          "questionText": "Question BFI_EXTRAVERSION_17",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "neuroticism",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 4966.311409428143,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_EXTRAVERSION_18",
+          "questionText": "Question BFI_EXTRAVERSION_18",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "openness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 4164.8552838568185,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_EXTRAVERSION_BASELINE_3",
+          "questionText": "Question BFI_EXTRAVERSION_BASELINE_3",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2747.373599144304,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "gateway_sensory_1",
+          "questionText": "Question gateway_sensory_1",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "extraversion",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2826.7614618753987,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_AGREEABLENESS_25",
+          "questionText": "Question BFI_AGREEABLENESS_25",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "agreeableness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2414.6456338086628,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "gateway_executive_1",
+          "questionText": "Question gateway_executive_1",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2935.8098421698473,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ATTACHMENT_ANXIOUS_BASELINE",
+          "questionText": "Question ATTACHMENT_ANXIOUS_BASELINE",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4906.896010083765,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ATTACHMENT_AVOIDANT_BASELINE",
+          "questionText": "Question ATTACHMENT_AVOIDANT_BASELINE",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2517.0125389802824,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "BFI_AGREEABLENESS_26",
+          "questionText": "Question BFI_AGREEABLENESS_26",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "extraversion",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2592.444904668248,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "gateway_social_1",
+          "questionText": "Question gateway_social_1",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "agreeableness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4624.375365641235,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "gateway_routine_1",
+          "questionText": "Question gateway_routine_1",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "neuroticism",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4262.172072853014,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_ADHD_1",
+          "questionText": "Question ND_ADHD_1",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "openness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3951.1851639962806,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_82",
+          "questionText": "Question NEURLYN_EXECUTIVE_82",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4616.647743554882,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_83",
+          "questionText": "Question NEURLYN_EXECUTIVE_83",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3409.422706870433,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_84",
+          "questionText": "Question NEURLYN_EXECUTIVE_84",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "agreeableness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3718.2287084303607,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_85",
+          "questionText": "Question NEURLYN_EXECUTIVE_85",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3445.2832160347107,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_86",
+          "questionText": "Question NEURLYN_EXECUTIVE_86",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2197.2935622911177,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_87",
+          "questionText": "Question NEURLYN_EXECUTIVE_87",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4928.941779134542,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_88",
+          "questionText": "Question NEURLYN_EXECUTIVE_88",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3522.411286014266,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_89",
+          "questionText": "Question NEURLYN_EXECUTIVE_89",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "agreeableness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2882.92279550938,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_90",
+          "questionText": "Question NEURLYN_EXECUTIVE_90",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4180.672259843817,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_91",
+          "questionText": "Question NEURLYN_EXECUTIVE_91",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "openness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3423.646411767121,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_92",
+          "questionText": "Question NEURLYN_EXECUTIVE_92",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3773.885308674805,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_93",
+          "questionText": "Question NEURLYN_EXECUTIVE_93",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4038.1037307406737,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_94",
+          "questionText": "Question NEURLYN_EXECUTIVE_94",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "agreeableness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3630.210003678869,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_95",
+          "questionText": "Question NEURLYN_EXECUTIVE_95",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2160.723151161014,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_96",
+          "questionText": "Question NEURLYN_EXECUTIVE_96",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4349.985766122117,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_97",
+          "questionText": "Question NEURLYN_EXECUTIVE_97",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2216.127629377648,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_98",
+          "questionText": "Question NEURLYN_EXECUTIVE_98",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2011.2421473684487,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_ADHD_2",
+          "questionText": "Question ND_ADHD_2",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "agreeableness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2436.1548894015823,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_ADHD_3",
+          "questionText": "Question ND_ADHD_3",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2687.5996350146684,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_ADHD_4",
+          "questionText": "Question ND_ADHD_4",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4729.422290377557,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_ADHD_5",
+          "questionText": "Question ND_ADHD_5",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "conscientiousness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3777.5850585437447,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_EXECUTIVE_FUNCTION_13",
+          "questionText": "Question ND_EXECUTIVE_FUNCTION_13",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "extraversion",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3612.913489270006,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_EXECUTIVE_FUNCTION_14",
+          "questionText": "Question ND_EXECUTIVE_FUNCTION_14",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "agreeableness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2787.5983376837758,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ND_EXECUTIVE_FUNCTION_15",
+          "questionText": "Question ND_EXECUTIVE_FUNCTION_15",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3913.4353971695905,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EMOTIONAL_141",
+          "questionText": "Question NEURLYN_EMOTIONAL_141",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "openness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2379.9846070563704,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_100",
+          "questionText": "Question NEURLYN_EXECUTIVE_100",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4457.287645751196,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_102",
+          "questionText": "Question NEURLYN_SENSORY_102",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "extraversion",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4089.3199553300187,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_103",
+          "questionText": "Question NEURLYN_SENSORY_103",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "agreeableness",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3372.6330902150985,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_104",
+          "questionText": "Question NEURLYN_SENSORY_104",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4703.216200141796,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_105",
+          "questionText": "Question NEURLYN_SENSORY_105",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "openness",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3735.582570125389,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_106",
+          "questionText": "Question NEURLYN_SENSORY_106",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "conscientiousness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2026.4711377719748,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_107",
+          "questionText": "Question NEURLYN_SENSORY_107",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "extraversion",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4207.425466099125,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_108",
+          "questionText": "Question NEURLYN_SENSORY_108",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "agreeableness",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2139.0246555513118,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_109",
+          "questionText": "Question NEURLYN_SENSORY_109",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2559.4410926053256,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_110",
+          "questionText": "Question NEURLYN_SENSORY_110",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "openness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2580.150751229363,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ATTACH_2046",
+          "questionText": "Question ATTACH_2046",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3317.088663160979,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ATTACH_2044",
+          "questionText": "Question ATTACH_2044",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4255.8788667672015,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ATTACH_2047",
+          "questionText": "Question ATTACH_2047",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "agreeableness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4965.07699416351,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ATTACH_2043",
+          "questionText": "Question ATTACH_2043",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3361.8730090223926,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "ATTACH_2045",
+          "questionText": "Question ATTACH_2045",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2521.0927553799547,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEO_FACET_1002",
+          "questionText": "Question NEO_FACET_1002",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4977.478176214727,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEO_FACET_1001",
+          "questionText": "Question NEO_FACET_1001",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "extraversion",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2339.0171636149284,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEO_FACET_1005",
+          "questionText": "Question NEO_FACET_1005",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "agreeableness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2366.389916900164,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEO_FACET_1004",
+          "questionText": "Question NEO_FACET_1004",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "neuroticism",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3514.9908223669067,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEO_FACET_1003",
+          "questionText": "Question NEO_FACET_1003",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "openness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4705.667620052188,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        },
+        {
+          "questionId": "NEO_FACET_1000",
+          "questionText": "Question NEO_FACET_1000",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4742.23960773931,
+          "reasoning": "Response to personality question",
+          "confidence": 1
+        }
+      ],
+      "traitImpacts": {
+        "openness": {
+          "totalImpact": -609,
+          "contributions": [
+            {
+              "questionId": "NEURLYN_EXECUTIVE_91",
+              "questionText": "Question NEURLYN_EXECUTIVE_91",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "openness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3423.646411767121,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EMOTIONAL_141",
+              "questionText": "Question NEURLYN_EMOTIONAL_141",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "openness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2379.9846070563704,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEO_FACET_1003",
+              "questionText": "Question NEO_FACET_1003",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "openness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4705.667620052188,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "BFI_OPENNESS_1",
+              "questionText": "Question BFI_OPENNESS_1",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "openness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 3613.7118524776156,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ATTACHMENT_ANXIOUS_BASELINE",
+              "questionText": "Question ATTACHMENT_ANXIOUS_BASELINE",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "openness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4906.896010083765,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_86",
+              "questionText": "Question NEURLYN_EXECUTIVE_86",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "openness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2197.2935622911177,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_96",
+              "questionText": "Question NEURLYN_EXECUTIVE_96",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "openness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4349.985766122117,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_ADHD_4",
+              "questionText": "Question ND_ADHD_4",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "openness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4729.422290377557,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ATTACH_2045",
+              "questionText": "Question ATTACH_2045",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "openness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2521.0927553799547,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "BFI_EXTRAVERSION_18",
+              "questionText": "Question BFI_EXTRAVERSION_18",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "openness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 4164.8552838568185,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_ADHD_1",
+              "questionText": "Question ND_ADHD_1",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "openness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3951.1851639962806,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_110",
+              "questionText": "Question NEURLYN_SENSORY_110",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "openness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2580.150751229363,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_105",
+              "questionText": "Question NEURLYN_SENSORY_105",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "openness",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3735.582570125389,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            }
+          ],
+          "averageConfidence": 1
+        },
+        "conscientiousness": {
+          "totalImpact": -615,
+          "contributions": [
+            {
+              "questionId": "BFI_EXTRAVERSION_BASELINE_3",
+              "questionText": "Question BFI_EXTRAVERSION_BASELINE_3",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "conscientiousness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 2747.373599144304,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ATTACHMENT_AVOIDANT_BASELINE",
+              "questionText": "Question ATTACHMENT_AVOIDANT_BASELINE",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "conscientiousness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2517.0125389802824,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_82",
+              "questionText": "Question NEURLYN_EXECUTIVE_82",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "conscientiousness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4616.647743554882,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_87",
+              "questionText": "Question NEURLYN_EXECUTIVE_87",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "conscientiousness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4928.941779134542,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_92",
+              "questionText": "Question NEURLYN_EXECUTIVE_92",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "conscientiousness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3773.885308674805,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_97",
+              "questionText": "Question NEURLYN_EXECUTIVE_97",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "conscientiousness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2216.127629377648,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "BFI_OPENNESS_2",
+              "questionText": "Question BFI_OPENNESS_2",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "conscientiousness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 2512.363133126633,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_100",
+              "questionText": "Question NEURLYN_EXECUTIVE_100",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "conscientiousness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4457.287645751196,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ATTACH_2046",
+              "questionText": "Question ATTACH_2046",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "conscientiousness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3317.088663160979,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEO_FACET_1002",
+              "questionText": "Question NEO_FACET_1002",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "conscientiousness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4977.478176214727,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEO_FACET_1000",
+              "questionText": "Question NEO_FACET_1000",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "conscientiousness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4742.23960773931,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_ADHD_5",
+              "questionText": "Question ND_ADHD_5",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "conscientiousness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3777.5850585437447,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_106",
+              "questionText": "Question NEURLYN_SENSORY_106",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "conscientiousness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2026.4711377719748,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            }
+          ],
+          "averageConfidence": 1
+        },
+        "extraversion": {
+          "totalImpact": -563,
+          "contributions": [
+            {
+              "questionId": "BFI_CONSCIENTIOUSNESS_9",
+              "questionText": "Question BFI_CONSCIENTIOUSNESS_9",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "extraversion",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 4374.350841180302,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_83",
+              "questionText": "Question NEURLYN_EXECUTIVE_83",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "extraversion",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3409.422706870433,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_88",
+              "questionText": "Question NEURLYN_EXECUTIVE_88",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "extraversion",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3522.411286014266,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_93",
+              "questionText": "Question NEURLYN_EXECUTIVE_93",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "extraversion",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4038.1037307406737,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_98",
+              "questionText": "Question NEURLYN_EXECUTIVE_98",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "extraversion",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2011.2421473684487,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ATTACH_2044",
+              "questionText": "Question ATTACH_2044",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "extraversion",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4255.8788667672015,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "BFI_AGREEABLENESS_26",
+              "questionText": "Question BFI_AGREEABLENESS_26",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "extraversion",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2592.444904668248,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_102",
+              "questionText": "Question NEURLYN_SENSORY_102",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "extraversion",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4089.3199553300187,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_107",
+              "questionText": "Question NEURLYN_SENSORY_107",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "extraversion",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4207.425466099125,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEO_FACET_1001",
+              "questionText": "Question NEO_FACET_1001",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "extraversion",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2339.0171636149284,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "gateway_sensory_1",
+              "questionText": "Question gateway_sensory_1",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "extraversion",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 2826.7614618753987,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_EXECUTIVE_FUNCTION_13",
+              "questionText": "Question ND_EXECUTIVE_FUNCTION_13",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "extraversion",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3612.913489270006,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            }
+          ],
+          "averageConfidence": 1
+        },
+        "agreeableness": {
+          "totalImpact": -562,
+          "contributions": [
+            {
+              "questionId": "BFI_CONSCIENTIOUSNESS_10",
+              "questionText": "Question BFI_CONSCIENTIOUSNESS_10",
+              "answer": 1,
+              "answerText": "Strongly Disagree",
+              "trait": "agreeableness",
+              "impact": -49,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 3264.4680596420435,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_84",
+              "questionText": "Question NEURLYN_EXECUTIVE_84",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "agreeableness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3718.2287084303607,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ATTACH_2047",
+              "questionText": "Question ATTACH_2047",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "agreeableness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4965.07699416351,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEO_FACET_1005",
+              "questionText": "Question NEO_FACET_1005",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "agreeableness",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2366.389916900164,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "BFI_AGREEABLENESS_25",
+              "questionText": "Question BFI_AGREEABLENESS_25",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "agreeableness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 2414.6456338086628,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_89",
+              "questionText": "Question NEURLYN_EXECUTIVE_89",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "agreeableness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2882.92279550938,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_94",
+              "questionText": "Question NEURLYN_EXECUTIVE_94",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "agreeableness",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3630.210003678869,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "gateway_social_1",
+              "questionText": "Question gateway_social_1",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "agreeableness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4624.375365641235,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_ADHD_2",
+              "questionText": "Question ND_ADHD_2",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "agreeableness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2436.1548894015823,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_EXECUTIVE_FUNCTION_14",
+              "questionText": "Question ND_EXECUTIVE_FUNCTION_14",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "agreeableness",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2787.5983376837758,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_103",
+              "questionText": "Question NEURLYN_SENSORY_103",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "agreeableness",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3372.6330902150985,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_108",
+              "questionText": "Question NEURLYN_SENSORY_108",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "agreeableness",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2139.0246555513118,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            }
+          ],
+          "averageConfidence": 1
+        },
+        "neuroticism": {
+          "totalImpact": -560,
+          "contributions": [
+            {
+              "questionId": "gateway_executive_1",
+              "questionText": "Question gateway_executive_1",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "neuroticism",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 2935.8098421698473,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_85",
+              "questionText": "Question NEURLYN_EXECUTIVE_85",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "neuroticism",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3445.2832160347107,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_90",
+              "questionText": "Question NEURLYN_EXECUTIVE_90",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "neuroticism",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4180.672259843817,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_EXECUTIVE_95",
+              "questionText": "Question NEURLYN_EXECUTIVE_95",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "neuroticism",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2160.723151161014,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ATTACH_2043",
+              "questionText": "Question ATTACH_2043",
+              "answer": 2,
+              "answerText": "Disagree",
+              "trait": "neuroticism",
+              "impact": -48,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3361.8730090223926,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "gateway_routine_1",
+              "questionText": "Question gateway_routine_1",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "neuroticism",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4262.172072853014,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEO_FACET_1004",
+              "questionText": "Question NEO_FACET_1004",
+              "answer": 3,
+              "answerText": "Neutral",
+              "trait": "neuroticism",
+              "impact": -47,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3514.9908223669067,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "BFI_EXTRAVERSION_17",
+              "questionText": "Question BFI_EXTRAVERSION_17",
+              "answer": 4,
+              "answerText": "Agree",
+              "trait": "neuroticism",
+              "impact": -46,
+              "weight": 1,
+              "timestamp": 1759237824491,
+              "responseTime": 4966.311409428143,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_ADHD_3",
+              "questionText": "Question ND_ADHD_3",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "neuroticism",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2687.5996350146684,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "ND_EXECUTIVE_FUNCTION_15",
+              "questionText": "Question ND_EXECUTIVE_FUNCTION_15",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "neuroticism",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 3913.4353971695905,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_104",
+              "questionText": "Question NEURLYN_SENSORY_104",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "neuroticism",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 4703.216200141796,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            },
+            {
+              "questionId": "NEURLYN_SENSORY_109",
+              "questionText": "Question NEURLYN_SENSORY_109",
+              "answer": 5,
+              "answerText": "Strongly Agree",
+              "trait": "neuroticism",
+              "impact": -45,
+              "weight": 1,
+              "timestamp": 1759237824492,
+              "responseTime": 2559.4410926053256,
+              "reasoning": "Response to personality question",
+              "confidence": 1
+            }
+          ],
+          "averageConfidence": 1
+        }
+      },
+      "archetypeInfluences": [],
+      "confidenceBreakdown": {
+        "overall": 0.8610483870967742,
+        "byTrait": {
+          "openness": {
+            "confidence": 1,
+            "sampleSize": 13,
+            "reliability": 0.9
+          },
+          "conscientiousness": {
+            "confidence": 1,
+            "sampleSize": 13,
+            "reliability": 0.9
+          },
+          "extraversion": {
+            "confidence": 1,
+            "sampleSize": 12,
+            "reliability": 0.9
+          },
+          "agreeableness": {
+            "confidence": 1,
+            "sampleSize": 12,
+            "reliability": 0.9
+          },
+          "neuroticism": {
+            "confidence": 1,
+            "sampleSize": 12,
+            "reliability": 0.9
+          }
+        },
+        "byCategory": {},
+        "factors": [
+          {
+            "name": "Response Quality",
+            "score": 0.5403225806451613,
+            "impact": "High"
+          },
+          {
+            "name": "Answer Consistency",
+            "score": 1,
+            "impact": "High"
+          }
+        ]
+      },
+      "explanation": {
+        "summary": {
+          "text": "Your personality assessment is based on careful analysis of all your responses.",
+          "keyFactors": [
+            {
+              "question": "Question BFI_CONSCIENTIOUSNESS_10",
+              "answer": "Strongly Disagree",
+              "impact": "Strongly influenced your agreeableness score",
+              "confidence": "100% confidence"
+            },
+            {
+              "question": "Question BFI_CONSCIENTIOUSNESS_9",
+              "answer": "Disagree",
+              "impact": "Strongly influenced your extraversion score",
+              "confidence": "100% confidence"
+            },
+            {
+              "question": "Question BFI_EXTRAVERSION_BASELINE_3",
+              "answer": "Disagree",
+              "impact": "Strongly influenced your conscientiousness score",
+              "confidence": "100% confidence"
+            }
+          ]
+        },
+        "criticalAnswers": [
+          {
+            "question": "Question BFI_CONSCIENTIOUSNESS_10",
+            "yourAnswer": "Strongly Disagree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 49,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_CONSCIENTIOUSNESS_9",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_EXTRAVERSION_BASELINE_3",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question gateway_executive_1",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ATTACHMENT_AVOIDANT_BASELINE",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_82",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_83",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_84",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_85",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_87",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_88",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_90",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_91",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_92",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_93",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_95",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_97",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_98",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EMOTIONAL_141",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ATTACH_2044",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ATTACH_2047",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ATTACH_2043",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEO_FACET_1005",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEO_FACET_1003",
+            "yourAnswer": "Disagree",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 48,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_OPENNESS_1",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_OPENNESS_2",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_AGREEABLENESS_25",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ATTACHMENT_ANXIOUS_BASELINE",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_AGREEABLENESS_26",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question gateway_routine_1",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_86",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_89",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_94",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_96",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_ADHD_4",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_EXECUTIVE_100",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ATTACH_2046",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ATTACH_2045",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEO_FACET_1002",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEO_FACET_1004",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEO_FACET_1000",
+            "yourAnswer": "Neutral",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 47,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_EXTRAVERSION_17",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question BFI_EXTRAVERSION_18",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question gateway_social_1",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_ADHD_1",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_ADHD_2",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_ADHD_5",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_EXECUTIVE_FUNCTION_14",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_102",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_106",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "conscientiousness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_107",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_110",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEO_FACET_1001",
+            "yourAnswer": "Agree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 46,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question gateway_sensory_1",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_ADHD_3",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_EXECUTIVE_FUNCTION_13",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "extraversion",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question ND_EXECUTIVE_FUNCTION_15",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_103",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_104",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_105",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "openness",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_108",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "agreeableness",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          },
+          {
+            "question": "Question NEURLYN_SENSORY_109",
+            "yourAnswer": "Strongly Agree",
+            "impact": {
+              "trait": "neuroticism",
+              "direction": "decreased",
+              "magnitude": 45,
+              "explanation": "Response to personality question"
+            }
+          }
+        ],
+        "traitBreakdown": {
+          "openness": {
+            "score": -609,
+            "confidence": "100%",
+            "basedOn": "13 responses",
+            "topContributors": [
+              {
+                "question": "Question NEURLYN_EXECUTIVE_91",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEURLYN_EMOTIONAL_141",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEO_FACET_1003",
+                "impact": "negative",
+                "weight": 1
+              }
+            ]
+          },
+          "conscientiousness": {
+            "score": -615,
+            "confidence": "100%",
+            "basedOn": "13 responses",
+            "topContributors": [
+              {
+                "question": "Question BFI_EXTRAVERSION_BASELINE_3",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question ATTACHMENT_AVOIDANT_BASELINE",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEURLYN_EXECUTIVE_82",
+                "impact": "negative",
+                "weight": 1
+              }
+            ]
+          },
+          "extraversion": {
+            "score": -563,
+            "confidence": "100%",
+            "basedOn": "12 responses",
+            "topContributors": [
+              {
+                "question": "Question BFI_CONSCIENTIOUSNESS_9",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEURLYN_EXECUTIVE_83",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEURLYN_EXECUTIVE_88",
+                "impact": "negative",
+                "weight": 1
+              }
+            ]
+          },
+          "agreeableness": {
+            "score": -562,
+            "confidence": "100%",
+            "basedOn": "12 responses",
+            "topContributors": [
+              {
+                "question": "Question BFI_CONSCIENTIOUSNESS_10",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEURLYN_EXECUTIVE_84",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question ATTACH_2047",
+                "impact": "negative",
+                "weight": 1
+              }
+            ]
+          },
+          "neuroticism": {
+            "score": -560,
+            "confidence": "100%",
+            "basedOn": "12 responses",
+            "topContributors": [
+              {
+                "question": "Question gateway_executive_1",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEURLYN_EXECUTIVE_85",
+                "impact": "negative",
+                "weight": 1
+              },
+              {
+                "question": "Question NEURLYN_EXECUTIVE_90",
+                "impact": "negative",
+                "weight": 1
+              }
+            ]
+          }
+        },
+        "archetypeReasoning": null,
+        "confidence": {
+          "overall": "86%",
+          "factors": [
+            {
+              "name": "Response Quality",
+              "score": "54%",
+              "impact": "High"
+            },
+            {
+              "name": "Answer Consistency",
+              "score": "100%",
+              "impact": "High"
+            }
+          ],
+          "interpretation": "Very high confidence - your responses were consistent and thoughtful"
+        }
+      },
+      "reasoningChains": [],
+      "criticalAnswers": [
+        {
+          "questionId": "BFI_CONSCIENTIOUSNESS_10",
+          "questionText": "Question BFI_CONSCIENTIOUSNESS_10",
+          "answer": 1,
+          "answerText": "Strongly Disagree",
+          "trait": "agreeableness",
+          "impact": -49,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 3264.4680596420435,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 49
+        },
+        {
+          "questionId": "BFI_CONSCIENTIOUSNESS_9",
+          "questionText": "Question BFI_CONSCIENTIOUSNESS_9",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 4374.350841180302,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "BFI_EXTRAVERSION_BASELINE_3",
+          "questionText": "Question BFI_EXTRAVERSION_BASELINE_3",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2747.373599144304,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "gateway_executive_1",
+          "questionText": "Question gateway_executive_1",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2935.8098421698473,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "ATTACHMENT_AVOIDANT_BASELINE",
+          "questionText": "Question ATTACHMENT_AVOIDANT_BASELINE",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2517.0125389802824,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_82",
+          "questionText": "Question NEURLYN_EXECUTIVE_82",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4616.647743554882,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_83",
+          "questionText": "Question NEURLYN_EXECUTIVE_83",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3409.422706870433,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_84",
+          "questionText": "Question NEURLYN_EXECUTIVE_84",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "agreeableness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3718.2287084303607,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_85",
+          "questionText": "Question NEURLYN_EXECUTIVE_85",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3445.2832160347107,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_87",
+          "questionText": "Question NEURLYN_EXECUTIVE_87",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4928.941779134542,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_88",
+          "questionText": "Question NEURLYN_EXECUTIVE_88",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3522.411286014266,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_90",
+          "questionText": "Question NEURLYN_EXECUTIVE_90",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4180.672259843817,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_91",
+          "questionText": "Question NEURLYN_EXECUTIVE_91",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "openness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3423.646411767121,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_92",
+          "questionText": "Question NEURLYN_EXECUTIVE_92",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3773.885308674805,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_93",
+          "questionText": "Question NEURLYN_EXECUTIVE_93",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4038.1037307406737,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_95",
+          "questionText": "Question NEURLYN_EXECUTIVE_95",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2160.723151161014,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_97",
+          "questionText": "Question NEURLYN_EXECUTIVE_97",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "conscientiousness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2216.127629377648,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_98",
+          "questionText": "Question NEURLYN_EXECUTIVE_98",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2011.2421473684487,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEURLYN_EMOTIONAL_141",
+          "questionText": "Question NEURLYN_EMOTIONAL_141",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "openness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2379.9846070563704,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "ATTACH_2044",
+          "questionText": "Question ATTACH_2044",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "extraversion",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4255.8788667672015,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "ATTACH_2047",
+          "questionText": "Question ATTACH_2047",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "agreeableness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4965.07699416351,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "ATTACH_2043",
+          "questionText": "Question ATTACH_2043",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "neuroticism",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3361.8730090223926,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEO_FACET_1005",
+          "questionText": "Question NEO_FACET_1005",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "agreeableness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2366.389916900164,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "NEO_FACET_1003",
+          "questionText": "Question NEO_FACET_1003",
+          "answer": 2,
+          "answerText": "Disagree",
+          "trait": "openness",
+          "impact": -48,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4705.667620052188,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 48
+        },
+        {
+          "questionId": "BFI_OPENNESS_1",
+          "questionText": "Question BFI_OPENNESS_1",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 3613.7118524776156,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "BFI_OPENNESS_2",
+          "questionText": "Question BFI_OPENNESS_2",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2512.363133126633,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "BFI_AGREEABLENESS_25",
+          "questionText": "Question BFI_AGREEABLENESS_25",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "agreeableness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2414.6456338086628,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "ATTACHMENT_ANXIOUS_BASELINE",
+          "questionText": "Question ATTACHMENT_ANXIOUS_BASELINE",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4906.896010083765,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "BFI_AGREEABLENESS_26",
+          "questionText": "Question BFI_AGREEABLENESS_26",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "extraversion",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2592.444904668248,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "gateway_routine_1",
+          "questionText": "Question gateway_routine_1",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "neuroticism",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4262.172072853014,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_86",
+          "questionText": "Question NEURLYN_EXECUTIVE_86",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2197.2935622911177,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_89",
+          "questionText": "Question NEURLYN_EXECUTIVE_89",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "agreeableness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2882.92279550938,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_94",
+          "questionText": "Question NEURLYN_EXECUTIVE_94",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "agreeableness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3630.210003678869,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_96",
+          "questionText": "Question NEURLYN_EXECUTIVE_96",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4349.985766122117,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "ND_ADHD_4",
+          "questionText": "Question ND_ADHD_4",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4729.422290377557,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEURLYN_EXECUTIVE_100",
+          "questionText": "Question NEURLYN_EXECUTIVE_100",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4457.287645751196,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "ATTACH_2046",
+          "questionText": "Question ATTACH_2046",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3317.088663160979,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "ATTACH_2045",
+          "questionText": "Question ATTACH_2045",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "openness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2521.0927553799547,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEO_FACET_1002",
+          "questionText": "Question NEO_FACET_1002",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4977.478176214727,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEO_FACET_1004",
+          "questionText": "Question NEO_FACET_1004",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "neuroticism",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3514.9908223669067,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "NEO_FACET_1000",
+          "questionText": "Question NEO_FACET_1000",
+          "answer": 3,
+          "answerText": "Neutral",
+          "trait": "conscientiousness",
+          "impact": -47,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4742.23960773931,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 47
+        },
+        {
+          "questionId": "BFI_EXTRAVERSION_17",
+          "questionText": "Question BFI_EXTRAVERSION_17",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "neuroticism",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 4966.311409428143,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "BFI_EXTRAVERSION_18",
+          "questionText": "Question BFI_EXTRAVERSION_18",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "openness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 4164.8552838568185,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "gateway_social_1",
+          "questionText": "Question gateway_social_1",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "agreeableness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4624.375365641235,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "ND_ADHD_1",
+          "questionText": "Question ND_ADHD_1",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "openness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3951.1851639962806,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "ND_ADHD_2",
+          "questionText": "Question ND_ADHD_2",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "agreeableness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2436.1548894015823,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "ND_ADHD_5",
+          "questionText": "Question ND_ADHD_5",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "conscientiousness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3777.5850585437447,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "ND_EXECUTIVE_FUNCTION_14",
+          "questionText": "Question ND_EXECUTIVE_FUNCTION_14",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "agreeableness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2787.5983376837758,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_102",
+          "questionText": "Question NEURLYN_SENSORY_102",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "extraversion",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4089.3199553300187,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_106",
+          "questionText": "Question NEURLYN_SENSORY_106",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "conscientiousness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2026.4711377719748,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_107",
+          "questionText": "Question NEURLYN_SENSORY_107",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "extraversion",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4207.425466099125,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_110",
+          "questionText": "Question NEURLYN_SENSORY_110",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "openness",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2580.150751229363,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "NEO_FACET_1001",
+          "questionText": "Question NEO_FACET_1001",
+          "answer": 4,
+          "answerText": "Agree",
+          "trait": "extraversion",
+          "impact": -46,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2339.0171636149284,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 46
+        },
+        {
+          "questionId": "gateway_sensory_1",
+          "questionText": "Question gateway_sensory_1",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "extraversion",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824491,
+          "responseTime": 2826.7614618753987,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "ND_ADHD_3",
+          "questionText": "Question ND_ADHD_3",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2687.5996350146684,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "ND_EXECUTIVE_FUNCTION_13",
+          "questionText": "Question ND_EXECUTIVE_FUNCTION_13",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "extraversion",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3612.913489270006,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "ND_EXECUTIVE_FUNCTION_15",
+          "questionText": "Question ND_EXECUTIVE_FUNCTION_15",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3913.4353971695905,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_103",
+          "questionText": "Question NEURLYN_SENSORY_103",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "agreeableness",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3372.6330902150985,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_104",
+          "questionText": "Question NEURLYN_SENSORY_104",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 4703.216200141796,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_105",
+          "questionText": "Question NEURLYN_SENSORY_105",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "openness",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 3735.582570125389,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_108",
+          "questionText": "Question NEURLYN_SENSORY_108",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "agreeableness",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2139.0246555513118,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        },
+        {
+          "questionId": "NEURLYN_SENSORY_109",
+          "questionText": "Question NEURLYN_SENSORY_109",
+          "answer": 5,
+          "answerText": "Strongly Agree",
+          "trait": "neuroticism",
+          "impact": -45,
+          "weight": 1,
+          "timestamp": 1759237824492,
+          "responseTime": 2559.4410926053256,
+          "reasoning": "Response to personality question",
+          "confidence": 1,
+          "criticalityScore": 45
+        }
+      ]
+    },
+    "statistics": {
+      "sampleSize": 62,
+      "completionRate": 100,
+      "averageResponseTime": 3491.008471681079,
+      "traitVariance": 28.8
+    },
+    "narratives": {},
+    "visualizations": {
+      "radarChart": {
+        "labels": [
+          "Openness",
+          "Conscientiousness",
+          "Extraversion",
+          "Agreeableness",
+          "Neuroticism"
+        ],
+        "values": [
+          54,
+          42,
+          52,
+          54,
+          58
+        ],
+        "populationAverage": [
+          50,
+          50,
+          50,
+          50,
+          50
+        ]
+      },
+      "subDimensionBars": [
+        {
+          "trait": "openness",
+          "dimensions": [
+            {
+              "name": "imagination",
+              "score": 58,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "artisticInterests",
+              "score": 50,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "emotionality",
+              "score": 63,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "adventurousness",
+              "score": 57,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "intellect",
+              "score": 35,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "liberalism",
+              "score": 46,
+              "level": "Average",
+              "confidence": "Moderate"
+            }
+          ]
+        },
+        {
+          "trait": "conscientiousness",
+          "dimensions": [
+            {
+              "name": "selfEfficacy",
+              "score": 36,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "orderliness",
+              "score": 64,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "dutifulness",
+              "score": 46,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "achievementStriving",
+              "score": 53,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "selfDiscipline",
+              "score": 36,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "cautiousness",
+              "score": 38,
+              "level": "Average",
+              "confidence": "Moderate"
+            }
+          ]
+        },
+        {
+          "trait": "extraversion",
+          "dimensions": [
+            {
+              "name": "friendliness",
+              "score": 46,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "gregariousness",
+              "score": 55,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "assertiveness",
+              "score": 54,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "activityLevel",
+              "score": 56,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "excitementSeeking",
+              "score": 50,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "cheerfulness",
+              "score": 41,
+              "level": "Average",
+              "confidence": "Moderate"
+            }
+          ]
+        },
+        {
+          "trait": "agreeableness",
+          "dimensions": [
+            {
+              "name": "trust",
+              "score": 44,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "morality",
+              "score": 46,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "altruism",
+              "score": 51,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "cooperation",
+              "score": 63,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "modesty",
+              "score": 44,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "sympathy",
+              "score": 39,
+              "level": "Average",
+              "confidence": "Moderate"
+            }
+          ]
+        },
+        {
+          "trait": "neuroticism",
+          "dimensions": [
+            {
+              "name": "anxiety",
+              "score": 46,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "anger",
+              "score": 40,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "depression",
+              "score": 38,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "selfConsciousness",
+              "score": 38,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "immoderation",
+              "score": 43,
+              "level": "Average",
+              "confidence": "Moderate"
+            },
+            {
+              "name": "vulnerability",
+              "score": 35,
+              "level": "Average",
+              "confidence": "Moderate"
+            }
+          ]
+        }
+      ],
+      "cognitiveStylePie": null,
+      "responseTimeline": {
+        "labels": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6",
+          "Q7",
+          "Q8",
+          "Q9",
+          "Q10",
+          "Q11",
+          "Q12",
+          "Q13",
+          "Q14",
+          "Q15",
+          "Q16",
+          "Q17",
+          "Q18",
+          "Q19",
+          "Q20",
+          "Q21",
+          "Q22",
+          "Q23",
+          "Q24",
+          "Q25",
+          "Q26",
+          "Q27",
+          "Q28",
+          "Q29",
+          "Q30",
+          "Q31",
+          "Q32",
+          "Q33",
+          "Q34",
+          "Q35",
+          "Q36",
+          "Q37",
+          "Q38",
+          "Q39",
+          "Q40",
+          "Q41",
+          "Q42",
+          "Q43",
+          "Q44",
+          "Q45",
+          "Q46",
+          "Q47",
+          "Q48",
+          "Q49",
+          "Q50",
+          "Q51",
+          "Q52",
+          "Q53",
+          "Q54",
+          "Q55",
+          "Q56",
+          "Q57",
+          "Q58",
+          "Q59",
+          "Q60",
+          "Q61",
+          "Q62"
+        ],
+        "responseTimes": [
+          3613.7118524776156,
+          2512.363133126633,
+          4374.350841180302,
+          3264.4680596420435,
+          4966.311409428143,
+          4164.8552838568185,
+          2747.373599144304,
+          2826.7614618753987,
+          2414.6456338086628,
+          2935.8098421698473,
+          4906.896010083765,
+          2517.0125389802824,
+          2592.444904668248,
+          4624.375365641235,
+          4262.172072853014,
+          3951.1851639962806,
+          4616.647743554882,
+          3409.422706870433,
+          3718.2287084303607,
+          3445.2832160347107,
+          2197.2935622911177,
+          4928.941779134542,
+          3522.411286014266,
+          2882.92279550938,
+          4180.672259843817,
+          3423.646411767121,
+          3773.885308674805,
+          4038.1037307406737,
+          3630.210003678869,
+          2160.723151161014,
+          4349.985766122117,
+          2216.127629377648,
+          2011.2421473684487,
+          2436.1548894015823,
+          2687.5996350146684,
+          4729.422290377557,
+          3777.5850585437447,
+          3612.913489270006,
+          2787.5983376837758,
+          3913.4353971695905,
+          2379.9846070563704,
+          4457.287645751196,
+          4089.3199553300187,
+          3372.6330902150985,
+          4703.216200141796,
+          3735.582570125389,
+          2026.4711377719748,
+          4207.425466099125,
+          2139.0246555513118,
+          2559.4410926053256,
+          2580.150751229363,
+          3317.088663160979,
+          4255.8788667672015,
+          4965.07699416351,
+          3361.8730090223926,
+          2521.0927553799547,
+          4977.478176214727,
+          2339.0171636149284,
+          2366.389916900164,
+          3514.9908223669067,
+          4705.667620052188,
+          4742.23960773931
+        ],
+        "responseValues": [
+          3,
+          3,
+          2,
+          1,
+          4,
+          4,
+          2,
+          5,
+          3,
+          2,
+          3,
+          2,
+          3,
+          4,
+          3,
+          4,
+          2,
+          2,
+          2,
+          2,
+          3,
+          2,
+          2,
+          3,
+          2,
+          2,
+          2,
+          2,
+          3,
+          2,
+          3,
+          2,
+          2,
+          4,
+          5,
+          3,
+          4,
+          5,
+          4,
+          5,
+          2,
+          3,
+          4,
+          5,
+          5,
+          5,
+          4,
+          4,
+          5,
+          5,
+          4,
+          3,
+          2,
+          2,
+          2,
+          3,
+          3,
+          4,
+          2,
+          3,
+          2,
+          3
+        ]
+      },
+      "traitInteractionHeatmap": {
+        "labels": [
+          "Openness",
+          "Conscientiousness",
+          "Extraversion",
+          "Agreeableness",
+          "Neuroticism"
+        ],
+        "data": [
+          [
+            54,
+            49.968,
+            50.024,
+            50,
+            50
+          ],
+          [
+            49.968,
+            42,
+            50,
+            50,
+            50.192
+          ],
+          [
+            50.024,
+            50,
+            52,
+            50.016,
+            50
+          ],
+          [
+            50,
+            50,
+            50.016,
+            54,
+            49.936
+          ],
+          [
+            50,
+            50.192,
+            50,
+            49.936,
+            58
+          ]
+        ]
+      },
+      "neurodiversityGauges": {
+        "adhd": {
+          "value": 1000,
+          "severity": "minimal",
+          "threshold": 50
+        },
+        "autism": {
+          "value": 3800,
+          "severity": "mild",
+          "threshold": 60
+        }
+      }
+    }
+  }
+}
